@@ -3,382 +3,854 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Asistan — Yurt Dışı Gezi Planı (Ankara Kalkışlı)</title>
+<title>Asistan Seyahat — Ankara Kalkışlı Yurt Dışı Fırsatları</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg: #0d0f14; --card: #151922; --card2: #1b2130; --text: #eef0f6;
-    --muted: #9aa3b5; --line: #232a3a; --accent: #6c7cff; --accent-ink: #a3adff;
-    --green: #34d399; --green-soft: rgba(52,211,153,.12);
-    --amber: #fbbf24; --amber-soft: rgba(251,191,36,.12);
-    --red: #f87171; --red-soft: rgba(248,113,113,.12);
-    --teal: #2dd4bf;
+    --bg: #f4f6fb; --card: #ffffff; --ink: #171d2e; --muted: #67718a; --line: #e4e8f2;
+    --primary: #3f51d4; --primary-d: #3040b0; --primary-soft: #eef0ff;
+    --price: #ef5a24; --green: #0eaa6e; --green-soft: #e6f7f1;
+    --amber: #f59e0b; --amber-soft: #fef4e2; --red: #e5484d; --red-soft: #fdecec;
+    --blue-soft: #e8f1ff;
+    --r: 14px; --shadow: 0 6px 24px rgba(23, 29, 46, .08);
   }
   * { box-sizing: border-box; }
-  body { margin:0; font-family:'Poppins','Segoe UI',sans-serif; background:
-    radial-gradient(900px 420px at 12% -8%, rgba(108,124,255,.08) 0%, transparent 60%), var(--bg);
-    color: var(--text); line-height:1.6; }
-  .wrap { max-width: 1000px; margin: 0 auto; padding: 26px 18px 70px; }
-  header.hero { text-align:center; padding: 34px 10px 10px; }
-  .plane { font-size: 46px; }
-  h1 { margin: 8px 0 4px; font-size: 30px; text-transform: uppercase; letter-spacing: -.5px; }
-  .sub { color: var(--muted); font-size: 14.5px; }
-  .badge-row { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:14px; }
-  .badge { font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.5px;
-    padding:7px 13px; border-radius:999px; background:var(--accent-soft, rgba(108,124,255,.13));
-    border:1px solid rgba(108,124,255,.35); color:var(--accent-ink); }
-  .badge.g { background:var(--green-soft); border-color:rgba(52,211,153,.4); color:var(--green); }
-  .badge.a { background:var(--amber-soft); border-color:rgba(251,191,36,.4); color:var(--amber); }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Poppins', 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; }
+  a { color: var(--primary); text-decoration: none; }
+  button { font-family: inherit; }
 
-  h2 { margin: 44px 0 6px; font-size: 21px; text-transform: uppercase; letter-spacing: .3px;
-       border-left: 4px solid var(--accent); padding-left: 12px; }
-  h2 .n { color: var(--accent-ink); }
-  .lead { color: var(--muted); font-size: 13.5px; margin: 0 0 16px; }
+  /* ---------- HEADER ---------- */
+  header { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid var(--line); }
+  .hbar { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; gap: 18px; padding: 12px 18px; }
+  .logo { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 17px; color: var(--ink); }
+  .logo .ic { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--primary), #7b86ff); color: #fff; display: grid; place-items: center; font-size: 17px; }
+  .logo small { display: block; font-size: 10.5px; font-weight: 600; color: var(--muted); letter-spacing: .4px; }
+  nav.menu { display: flex; gap: 4px; margin-left: 8px; }
+  nav.menu a { padding: 8px 12px; border-radius: 9px; font-size: 13px; font-weight: 600; color: var(--muted); }
+  nav.menu a:hover { background: var(--primary-soft); color: var(--primary); }
+  .hspacer { flex: 1; }
+  .approve-pill { display: flex; align-items: center; gap: 7px; background: var(--green-soft); color: var(--green); border: 1px solid #bfe9db; padding: 8px 14px; border-radius: 999px; font-size: 12.5px; font-weight: 700; cursor: pointer; }
+  .approve-pill:hover { filter: brightness(.97); }
 
-  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-           padding: 18px 20px; box-shadow: 0 10px 30px rgba(0,0,0,.35); margin-bottom: 16px; }
+  /* ---------- HERO ---------- */
+  .hero { background: linear-gradient(140deg, #2c3bb8 0%, #3f51d4 45%, #6b78f0 100%); color: #fff; padding: 44px 18px 54px; }
+  .hero-in { max-width: 1120px; margin: 0 auto; }
+  .hero h1 { margin: 0 0 6px; font-size: 32px; letter-spacing: -.5px; }
+  .hero p { margin: 0 0 20px; opacity: .92; font-size: 15px; }
+  .hero .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .hero .chips span { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28); padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .searchbar { display: flex; gap: 8px; background: #fff; border-radius: 16px; padding: 8px; box-shadow: 0 14px 40px rgba(11, 16, 60, .28); max-width: 720px; }
+  .searchbar input { flex: 1; border: 0; outline: 0; padding: 13px 16px; font-size: 15px; font-family: inherit; color: var(--ink); background: transparent; }
+  .searchbar button { border: 0; background: var(--price); color: #fff; font-weight: 700; font-size: 14px; padding: 0 26px; border-radius: 11px; cursor: pointer; }
+  .searchbar button:hover { filter: brightness(1.06); }
 
-  table { width:100%; border-collapse: collapse; font-size: 13.5px; }
-  th, td { text-align:left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); }
-  tr:last-child td { border-bottom: 0; }
-  td.num { white-space: nowrap; font-weight: 700; color: var(--amber); }
-  .ok { color: var(--green); font-weight: 700; }
-  .season { color: var(--teal); font-weight: 600; white-space: nowrap; }
-  .freq { color: var(--accent-ink); font-weight: 700; white-space: nowrap; }
-  .rank { display:inline-grid; place-items:center; width:26px; height:26px; border-radius:8px;
-          background:var(--accent); color:#fff; font-weight:800; font-size:12.5px; }
+  /* ---------- LAYOUT ---------- */
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 22px 18px 90px; }
 
-  .note { font-size: 12.5px; color: var(--muted); background: var(--card2);
-          border-left: 3px solid var(--amber); padding: 10px 12px; border-radius: 8px; margin-top: 12px; }
-  .note b { color: var(--amber); }
+  .banner { display: flex; gap: 12px; align-items: flex-start; background: var(--green-soft); border: 1px solid #bfe9db; border-radius: var(--r); padding: 14px 16px; margin-bottom: 18px; }
+  .banner .bi { font-size: 20px; }
+  .banner b { color: var(--green); }
+  .banner p { margin: 2px 0 0; font-size: 13px; color: #35695a; }
 
-  /* Onay tablosu */
-  tr.approve-row td { transition: background .2s; }
-  tr.approve-row.checked td { background: var(--green-soft); }
-  .appr { width: 20px; height: 20px; accent-color: var(--green); cursor: pointer; }
-  .statusbar { display:flex; justify-content: space-between; align-items:center; gap:12px; flex-wrap:wrap;
-    background: var(--card2); border:1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin-top: 14px; }
-  .statusbar .big { font-size: 17px; font-weight: 800; color: var(--amber); }
-  .btn { background: var(--accent); color:#fff; border:0; border-radius: 10px; padding: 10px 18px;
-         font-family: inherit; font-size: 12px; font-weight: 700; text-transform: uppercase;
-         letter-spacing: .5px; cursor: pointer; }
-  .btn:hover { filter: brightness(1.1); }
+  /* ---------- FİLTRELER ---------- */
+  .filters { background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; box-shadow: var(--shadow); position: sticky; top: 61px; z-index: 30; }
+  .frow { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .frow + .frow { margin-top: 10px; }
+  .fsearch { flex: 1; min-width: 190px; display: flex; align-items: center; gap: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
+  .fsearch input { border: 0; outline: 0; background: transparent; font-family: inherit; font-size: 13.5px; flex: 1; color: var(--ink); }
+  select.sel { border: 1px solid var(--line); background: var(--bg); border-radius: 10px; padding: 9px 12px; font-family: inherit; font-size: 13px; font-weight: 600; color: var(--ink); cursor: pointer; outline: 0; }
+  select.sel:focus { border-color: var(--primary); }
+  .fchip { border: 1px solid var(--line); background: #fff; color: var(--muted); font-size: 12.5px; font-weight: 600; padding: 8px 14px; border-radius: 999px; cursor: pointer; transition: .15s; }
+  .fchip:hover { border-color: var(--primary); color: var(--primary); }
+  .fchip.on { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .freset { margin-left: auto; border: 0; background: transparent; color: var(--red); font-size: 12.5px; font-weight: 700; cursor: pointer; }
+  .fcount { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+  .fcount b { color: var(--primary); }
 
-  /* Plan kartları */
-  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width: 800px) { .plans { grid-template-columns: 1fr; } .scroll { overflow-x:auto; } }
-  .plan { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px;
-          box-shadow: 0 10px 30px rgba(0,0,0,.35); }
-  .plan h3 { margin: 0 0 2px; font-size: 16.5px; text-transform: uppercase; }
-  .plan .meta { font-size: 12px; color: var(--accent-ink); font-weight: 600; margin-bottom: 10px; }
-  .day { display:flex; gap:10px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 13.2px; }
+  /* ---------- KARTLAR ---------- */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-top: 18px; }
+  .dcard { background: #fff; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: .18s; position: relative; }
+  .dcard:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(23,29,46,.13); }
+  .dcard.approved { border-color: #9fe0cb; box-shadow: 0 6px 24px rgba(14,170,110,.12); }
+  .dc-top { padding: 15px 16px 10px; }
+  .dc-head { display: flex; align-items: center; gap: 10px; }
+  .dc-flag { font-size: 26px; }
+  .dc-title { font-size: 16.5px; font-weight: 800; line-height: 1.2; }
+  .dc-country { font-size: 11.5px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+  .vbadge { margin-left: auto; font-size: 10.5px; font-weight: 800; padding: 5px 9px; border-radius: 999px; text-transform: uppercase; letter-spacing: .3px; white-space: nowrap; }
+  .vb-free { background: var(--green-soft); color: var(--green); }
+  .vb-id { background: var(--blue-soft); color: #1f6fd0; }
+  .vb-door { background: var(--amber-soft); color: #b45309; }
+  .vb-visa { background: var(--red-soft); color: var(--red); }
+  .dc-route { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--ink); margin-top: 11px; }
+  .dc-route .plane { color: var(--primary); }
+  .dc-route .dur { color: var(--muted); font-weight: 600; font-size: 12px; }
+  .dc-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 9px; }
+  .mtag { font-size: 11px; font-weight: 700; background: var(--bg); border: 1px solid var(--line); color: var(--muted); padding: 4px 8px; border-radius: 7px; }
+  .mtag.air { color: var(--primary); background: var(--primary-soft); border-color: #d6dbff; }
+  .months-row { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
+  .mchip { font-size: 10.5px; font-weight: 700; background: var(--green-soft); color: var(--green); border-radius: 6px; padding: 3px 7px; }
+  .dc-price { display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; padding: 10px 16px 4px; margin-top: auto; }
+  .price .lbl { font-size: 10.5px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+  .price .val { font-size: 23px; font-weight: 800; color: var(--price); line-height: 1.15; }
+  .price .val small { font-size: 12px; font-weight: 700; }
+  .total4 { text-align: right; font-size: 11.5px; color: var(--muted); font-weight: 600; }
+  .total4 b { display: block; font-size: 14.5px; color: var(--ink); }
+  .dc-actions { display: flex; gap: 8px; padding: 12px 16px 15px; }
+  .btn { border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 12.5px; font-weight: 700; padding: 10px 14px; border-radius: 10px; cursor: pointer; transition: .15s; flex: 1; }
+  .btn:hover { border-color: var(--primary); color: var(--primary); }
+  .btn.plan { background: var(--primary-soft); border-color: #d6dbff; color: var(--primary); }
+  .btn.plan:hover { background: var(--primary); color: #fff; }
+  .btn.appr { background: var(--green); border-color: var(--green); color: #fff; }
+  .btn.appr:hover { filter: brightness(1.07); color: #fff; }
+  .btn.add { background: #fff; }
+  .nocard { text-align: center; color: var(--muted); font-size: 14px; background: #fff; border: 1px dashed var(--line); border-radius: var(--r); padding: 36px; grid-column: 1/-1; }
+
+  /* ---------- ONAY ÖZETİ ---------- */
+  .section-h { display: flex; align-items: center; gap: 10px; margin: 34px 0 12px; }
+  .section-h h2 { margin: 0; font-size: 20px; letter-spacing: -.3px; }
+  .section-h .sh-ic { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-size: 16px; background: var(--primary-soft); }
+  .section-h .sh-sub { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+
+  .appr-panel { background: #fff; border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); overflow: hidden; }
+  .appr-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; background: var(--green-soft); border-bottom: 1px solid #bfe9db; padding: 13px 18px; }
+  .appr-head .st { font-weight: 800; color: var(--green); font-size: 14px; }
+  .appr-head .tot { font-weight: 800; color: var(--ink); font-size: 15px; }
+  .appr-head .tot span { color: var(--price); }
+  .appr-actions { display: flex; gap: 8px; }
+  .appr-actions .btn { flex: 0 0 auto; padding: 8px 13px; font-size: 12px; }
+  table.atbl { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.atbl th, table.atbl td { text-align: left; padding: 11px 18px; border-bottom: 1px solid var(--line); }
+  table.atbl th { font-size: 10.5px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); background: #fafbfe; }
+  table.atbl tr:last-child td { border-bottom: 0; }
+  table.atbl .ok { color: var(--green); font-weight: 800; white-space: nowrap; }
+  table.atbl .num { font-weight: 800; color: var(--ink); white-space: nowrap; }
+  .rowx { border: 0; background: transparent; color: var(--red); font-weight: 700; font-size: 12px; cursor: pointer; }
+  .rowx:hover { text-decoration: underline; }
+  .empty-appr { padding: 26px; text-align: center; color: var(--muted); font-size: 13.5px; }
+
+  /* ---------- AY REHBERİ ---------- */
+  .months { display: grid; grid-template-columns: repeat(12, 1fr); gap: 7px; }
+  @media (max-width: 860px) { .months { grid-template-columns: repeat(6, 1fr); } }
+  @media (max-width: 480px) { .months { grid-template-columns: repeat(3, 1fr); } }
+  .mbox { background: #fff; border: 1px solid var(--line); border-radius: 11px; padding: 10px 7px; text-align: center; }
+  .mbox .m { font-size: 12px; font-weight: 800; text-transform: uppercase; }
+  .mbox .t { font-size: 10.5px; color: var(--muted); margin-top: 4px; line-height: 1.45; }
+  .mbox.best { background: var(--green-soft); border-color: #bfe9db; }
+  .mbox.best .t { color: #35695a; }
+  .mbox.ok2 { background: var(--amber-soft); border-color: #f5ddb0; }
+  .mbox.ok2 .t { color: #92600a; }
+
+  /* ---------- KONTROL ---------- */
+  .cgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+  .cbox { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; font-size: 13px; }
+  .cbox b { display: block; font-size: 13.5px; margin-bottom: 3px; }
+  .cbox span { color: var(--muted); }
+
+  footer { border-top: 1px solid var(--line); background: #fff; padding: 26px 18px; text-align: center; color: var(--muted); font-size: 12px; line-height: 1.8; }
+
+  /* ---------- MODAL ---------- */
+  .overlay { position: fixed; inset: 0; background: rgba(15, 20, 40, .55); backdrop-filter: blur(3px); z-index: 90; display: none; align-items: flex-start; justify-content: center; padding: 26px 14px; overflow-y: auto; }
+  .overlay.open { display: flex; }
+  .modal { background: #fff; border-radius: 18px; width: min(760px, 100%); overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.35); animation: pop .2s ease; }
+  @keyframes pop { from { transform: scale(.96); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .m-head { display: flex; align-items: center; gap: 12px; padding: 18px 22px; background: linear-gradient(135deg, #2c3bb8, #4f5ec4); color: #fff; }
+  .m-head .mf { font-size: 30px; }
+  .m-head h3 { margin: 0; font-size: 19px; }
+  .m-head .ms { font-size: 12px; opacity: .85; font-weight: 600; }
+  .m-close { margin-left: auto; background: rgba(255,255,255,.16); border: 0; color: #fff; width: 34px; height: 34px; border-radius: 9px; font-size: 17px; cursor: pointer; }
+  .m-close:hover { background: rgba(255,255,255,.3); }
+  .m-body { padding: 20px 22px 24px; }
+  .m-tabs { display: flex; gap: 6px; margin-bottom: 16px; background: var(--bg); border: 1px solid var(--line); border-radius: 11px; padding: 5px; }
+  .m-tab { flex: 1; border: 0; background: transparent; font-weight: 700; font-size: 12.5px; padding: 9px; border-radius: 8px; cursor: pointer; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
+  .m-tab.on { background: var(--primary); color: #fff; }
+  .m-pane { display: none; }
+  .m-pane.on { display: block; }
+  .day { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 13.5px; }
   .day:last-child { border-bottom: 0; }
-  .day b { color: var(--amber); flex: 0 0 54px; font-size: 12px; padding-top: 2px; }
-  .plan.full { grid-column: 1 / -1; }
+  .day b { flex: 0 0 60px; color: var(--price); font-size: 12px; padding-top: 2px; }
+  .steps { counter-reset: s; list-style: none; margin: 0; padding: 0; }
+  .steps li { counter-increment: s; position: relative; padding: 9px 0 9px 40px; border-bottom: 1px dashed var(--line); font-size: 13.5px; }
+  .steps li:last-child { border-bottom: 0; }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: 8px; width: 26px; height: 26px; border-radius: 50%; background: var(--primary-soft); color: var(--primary); font-weight: 800; font-size: 12.5px; display: grid; place-items: center; }
+  .m-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+  @media (max-width: 560px) { .m-info { grid-template-columns: 1fr; } }
+  .m-info .i { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; text-align: center; }
+  .m-info .i .k { font-size: 10px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); font-weight: 700; }
+  .m-info .i .v { font-size: 13.5px; font-weight: 800; margin-top: 2px; }
 
-  .grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  @media (max-width: 700px) { .grid3 { grid-template-columns: 1fr; } }
-  .mini { background: var(--card2); border: 1px solid var(--line); border-radius: 12px; padding: 13px 15px; }
-  .mini .k { font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); }
-  .mini .v { font-size: 15.5px; font-weight: 700; margin-top: 3px; }
+  .toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--ink); color: #fff; font-size: 13.5px; font-weight: 600; padding: 12px 22px; border-radius: 999px; z-index: 120; opacity: 0; transition: .25s; pointer-events: none; }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-  ul.check { list-style:none; padding:0; margin:0; }
-  ul.check li { padding: 7px 0 7px 28px; position: relative; font-size: 13.5px; border-bottom: 1px dashed var(--line); }
-  ul.check li:last-child { border-bottom: 0; }
-  ul.check li::before { content: '☐'; position: absolute; left: 2px; color: var(--accent-ink); font-size: 15px; }
-
-  .src { color: var(--faint, #667085); font-size: 11.5px; text-align:center; margin-top: 40px; line-height: 1.7; }
-
-  /* AY TAKVİMİ */
-  .months { display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px; font-size: 10.5px; }
-  @media (max-width: 700px) { .months { grid-template-columns: repeat(6, 1fr); } }
-  .month { background: var(--card2); border:1px solid var(--line); border-radius: 10px; padding: 8px 6px; text-align: center; }
-  .month .m { font-weight: 800; color: var(--text); font-size: 12px; text-transform: uppercase; }
-  .month .t { color: var(--muted); margin-top: 4px; font-size: 10px; line-height: 1.45; }
-  .month.best { border-color: rgba(52,211,153,.5); background: var(--green-soft); }
-  .month.best .t { color: #b7f3de; }
-  .month.ok2 { border-color: rgba(251,191,36,.4); background: var(--amber-soft); }
-  .month.ok2 .t { color: #fde3a6; }
+  @media (max-width: 720px) {
+    nav.menu { display: none; }
+    .hero h1 { font-size: 24px; }
+    .searchbar { flex-direction: column; }
+    .searchbar button { padding: 13px; }
+    .filters { position: static; }
+    table.atbl th:nth-child(3), table.atbl td:nth-child(3) { display: none; }
+  }
 </style>
 </head>
 <body>
+
+<header>
+  <div class="hbar">
+    <div class="logo">
+      <div class="ic">✈️</div>
+      <div>Asistan Seyahat<small>ANKARA (ESB) KALKIŞLI FIRSATLAR</small></div>
+    </div>
+    <nav class="menu">
+      <a href="#rotalar">Rotalar</a>
+      <a href="#onaylar">Onaylarım</a>
+      <a href="#aylar">Ay Rehberi</a>
+      <a href="#hazirlik">Hazırlık</a>
+    </nav>
+    <div class="hspacer"></div>
+    <button class="approve-pill" onclick="document.getElementById('onaylar').scrollIntoView()">✅ <span id="pillCount">0</span> Onaylı</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-in">
+    <h1>Ankara'dan dünyaya — önce <u>vizesiz</u> rotalar</h1>
+    <p>3 yetişkin + 1 çocuk (15) · Direkt uçuşlu, en uygun aylara göre filtrelenmiş teklifler · Rezervasyon onayına hazır</p>
+    <div class="searchbar">
+      <input id="heroSearch" type="text" placeholder="Nereye? (örn. Belgrad, Tiflis, deniz...)" />
+      <button onclick="applyHeroSearch()">Rota Ara</button>
+    </div>
+    <div class="chips">
+      <span>🛫 36 ülkede 89 direkt nokta</span>
+      <span>🛂 Vizesiz & kimlikle giriş</span>
+      <span>💰 4 kişi gidiş-dönüş fiyatlar</span>
+      <span>📅 En uygun aylar işaretli</span>
+    </div>
+  </div>
+</section>
+
 <div class="wrap">
 
-  <header class="hero">
-    <div class="plane">✈️</div>
-    <h1>Yurt Dışı Gezi Planı</h1>
-    <div class="sub">Ankara Esenboğa (ESB) kalkışlı · Vizesiz ülkeler öncelikli · Esnek tarih</div>
-    <div class="badge-row">
-      <span class="badge">👥 3 yetişkin + 1 çocuk (15)</span>
-      <span class="badge g">🛂 Vizesiz öncelikli</span>
-      <span class="badge a">📅 En uygun aya göre planlı</span>
-      <span class="badge">🎯 Rota onayına hazır</span>
-    </div>
-  </header>
-
-  <!-- 1. ÖZET -->
-  <h2><span class="n">01</span> Özet</h2>
-  <div class="grid3">
-    <div class="mini"><div class="k">Kalkış</div><div class="v">Ankara ESB</div></div>
-    <div class="mini"><div class="k">Yolcu</div><div class="v">3 + 1 (15 yaş)</div></div>
-    <div class="mini"><div class="k">Öncelik</div><div class="v">Vizesiz → Kapı vizesi → Schengen</div></div>
-    <div class="mini"><div class="k">ESB'den direkt hat</div><div class="v">36 ülkede 89 nokta</div></div>
-    <div class="mini"><div class="k">Ana havayolları</div><div class="v">AJet · Pegasus · SunExpress</div></div>
-    <div class="mini"><div class="k">Çocuk bileti</div><div class="v">15 yaş = genelde yetişkin tarifesi</div></div>
-  </div>
-  <div class="note"><b>💡 Not:</b> 15 yaş çoğu havayolunda çocuk indirimi (2-11 yaş) dışındadır; <b>4 yetişkin bilet</b> gibi planlayın. AJet kampanya koltukları (39€'dan başlayan yurt dışı biletleri) ile bütçe korunur. Vizesiz ülkelere <b>kimlikle</b> bile girişi mümkün: Azerbaycan (90 gün), Gürcistan (1 yıl), KKTC, Moldova, Ukrayna.</div>
-
-  <!-- 2. VİZESİZ LİSTE -->
-  <h2><span class="n">02</span> Vizesiz Ülkeler — Ankara'dan Direkt Uçuşlu</h2>
-  <p class="lead">Sıralama: direkt uçuş sıklığı + popülerlik + bütçe uygunluğu. Fiyatlar gidiş-dönüş, kişi başı, tahmini (Ekim 2026 verilerine dayalı).</p>
-  <div class="panel scroll">
-    <table>
-      <thead>
-        <tr><th>#</th><th>Ülke / Şehir</th><th>Direkt uçuş</th><th>Vize</th><th>En uygun aylar</th><th>Tahmini G-D / kişi</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><span class="rank">1</span></td><td><b>Sırbistan — Belgrad</b><br><span style="color:var(--muted);font-size:12px">Kale, bohem sokaklar, Novi Sad</span></td><td class="freq">18 uçuş/ay</td><td class="ok">90 gün vizesiz</td><td class="season">May-Haz · Eyl-Eki</td><td class="num">10.000-13.000 ₺</td></tr>
-        <tr><td><span class="rank">2</span></td><td><b>Gürcistan — Tiflis (+Batumi)</b><br><span style="color:var(--muted);font-size:12px">Kaplıca, şarap, Karadeniz</span></td><td class="freq">12 uçuş/ay</td><td class="ok">1 yıl vizesiz · kimlik yeterli</td><td class="season">Nis-Eki</td><td class="num">8.000-12.000 ₺</td></tr>
-        <tr><td><span class="rank">3</span></td><td><b>Azerbaycan — Bakü</b><br><span style="color:var(--muted);font-size:12px">İçerişehir, Kuleler, Şeki</span></td><td class="freq">72 uçuş/ay</td><td class="ok">90 gün · kimlik yeterli</td><td class="season">Nis-Haz · Eyl-Eki</td><td class="num">6.000-10.000 ₺</td></tr>
-        <tr><td><span class="rank">4</span></td><td><b>Karadağ — Podgorica / Kotor</b><br><span style="color:var(--muted);font-size:12px">Adriyatik, körfez kasabaları</span></td><td class="freq">9 uçuş/ay</td><td class="ok">90 gün vizesiz</td><td class="season">Haz-Eyl</td><td class="num">11.000-15.000 ₺</td></tr>
-        <tr><td><span class="rank">5</span></td><td><b>Bosna Hersek — Saraybosna</b><br><span style="color:var(--muted);font-size:12px">Başçarşı, Mostar, kayak</span></td><td class="freq">7 uçuş/ay</td><td class="ok">90 gün vizesiz</td><td class="season">Nis-Eyl · kış kayak</td><td class="num">9.000-13.000 ₺</td></tr>
-        <tr><td><span class="rank">6</span></td><td><b>Arnavutluk — Tiran</b><br><span style="color:var(--muted);font-size:12px">Riviera, Berat, Ohri Gölü</span></td><td class="freq">2 uçuş/ay</td><td class="ok">90 gün vizesiz</td><td class="season">Haz-Eyl</td><td class="num">12.000-16.000 ₺</td></tr>
-        <tr><td><span class="rank">7</span></td><td><b>Katar — Doha</b><br><span style="color:var(--muted);font-size:12px">Çöl safarisi, müzeler, souq</span></td><td class="freq">18 uçuş/ay</td><td class="ok">90 gün vizesiz</td><td class="season">Kas-Mar</td><td class="num">12.000-18.000 ₺</td></tr>
-        <tr><td><span class="rank">8</span></td><td><b>Ürdün — Amman</b><br><span style="color:var(--muted);font-size:12px">Petra, Ölü Deniz, Wadi Rum</span></td><td class="freq">22 uçuş/ay</td><td class="ok">90 gün vizesiz</td><td class="season">Mar-May · Eki-Kas</td><td class="num">10.000-15.000 ₺</td></tr>
-        <tr><td><span class="rank">9</span></td><td><b>Özbekistan — Taşkent</b><br><span style="color:var(--muted);font-size:12px">Semerkant, Buhara (iç hat)</span></td><td class="freq">48 uçuş/ay</td><td class="ok">30 gün vizesiz</td><td class="season">Nis-May · Eyl-Eki</td><td class="num">9.000-14.000 ₺</td></tr>
-        <tr><td><span class="rank">10</span></td><td><b>Kırgızistan — Bişkek</b><br><span style="color:var(--muted);font-size:12px">Issık Göl, dağlar</span></td><td class="freq">28 uçuş/ay</td><td class="ok">90 gün vizesiz</td><td class="season">Haz-Eyl</td><td class="num">10.000-15.000 ₺</td></tr>
-        <tr><td><span class="rank">11</span></td><td><b>Mısır — Şarm El-Şeyh</b><br><span style="color:var(--muted);font-size:12px">Kızıldeniz resifleri</span></td><td class="freq">10 uçuş/ay</td><td class="ok">90 gün</td><td class="season">Eki-Nis</td><td class="num">11.000-16.000 ₺</td></tr>
-        <tr><td><span class="rank">12</span></td><td><b>Lübnan — Beyrut</b><br><span style="color:var(--muted);font-size:12px">Baalbek, Kudüs... dikkat</span></td><td class="freq">3 uçuş/ay</td><td class="ok">90 gün vizesiz</td><td class="season">May-Eki</td><td class="num">12.000-16.000 ₺</td></tr>
-      </tbody>
-    </table>
-    <div class="note"><b>⚠️ Güvenlik:</b> Lübnan ve Irak/Erbil/Bağdat hatları için Dışişleri'nin seyahat uyarılarını çıkıştan önce kontrol edin. Beyrut planı yerine ilk aşamada Balkanlar veya Körfez daha güvenli ve konforlu.</div>
-  </div>
-
-  <!-- 3. KAPI VIZESİ & DİĞER SEÇENEKLER -->
-  <h2><span class="n">03</span> Diğer Seçenekler</h2>
-  <div class="panel">
-    <table>
-      <thead><tr><th>Kategori</th><th>Nereye</th><th>Şart</th><th>Uygun dönem</th></tr></thead>
-      <tbody>
-        <tr><td><b>🚢 Kapı vizesi</b></td><td>10-12 Yunan adası: Sakız, Midilli, Sisam, İstanköy (Kos), Rodos, Simi, Meis, Leros, Kalimnos, Patmos</td><td>Kimlik + feribot bileti; 1-7 gün, tek girişli. Üsküp/Atina uçuşu + feribot da mümkün</td><td class="season">Nis-Kas</td></tr>
-        <tr><td><b>🇪🇺 Schengen</b></td><td>Budapeşte, Viyana, Amsterdam, Paris, Barselona, Lizbon, Berlin, Münih — <b>hepsi ESB'den direkt!</b></td><td>Önce vize başvurusu (15-45 gün önce); ilk giriş Schengen'den olmalı</td><td class="season">Tüm yıl (planlı)</td></tr>
-        <tr><td><b>🇬🇧 İngiltere</b></td><td>Londra Stansted — 36 uçuş/ay direkt</td><td>Ayrı vize (uzun prosedür)</td><td class="season">Planlı</td></tr>
-        <tr><td><b>🌏 Uzak & vizesiz</b></td><td>Japonya (90 gün), Güney Kore (90), Malezya (90), Singapur (90), Tayland (30)</td><td>Ankara'dan direkt yok → İstanbul aktarmalı TK/Pegasus</td><td class="season">Şub-Nis · Eki-Kas</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- 4. AY TAKVİMİ -->
-  <h2><span class="n">04</span> En Uygun Ay Takvimi</h2>
-  <p class="lead">🟢 = en iyi dönem · 🟡 = iyi / dikkatli</p>
-  <div class="panel">
-    <div class="months">
-      <div class="month best"><div class="m">Oca</div><div class="t">Doha, Şarm, Amman</div></div>
-      <div class="month best"><div class="m">Şub</div><div class="t">Doha, Şarm, Tayland</div></div>
-      <div class="month best"><div class="m">Mar</div><div class="t">Amman, Doha, Balkan bahar</div></div>
-      <div class="month best"><div class="m">Nis</div><div class="t">Tiflis, Bakü, Taşkent, adalar</div></div>
-      <div class="month best"><div class="m">May</div><div class="t">Belgrad, Bakü, Tiflis, Saraybosna</div></div>
-      <div class="month best"><div class="m">Haz</div><div class="t">Balkanlar, Karadağ, Batumi</div></div>
-      <div class="month ok2"><div class="m">Tem</div><div class="t">Karadağ/Bosna deniz · Gölfe sıcak</div></div>
-      <div class="month ok2"><div class="m">Ağu</div><div class="t">Karadağ · Doha/Amman sıcak</div></div>
-      <div class="month best"><div class="m">Eyl</div><div class="t">Balkanlar en iyisi, Bakü, Tiflis</div></div>
-      <div class="month best"><div class="m">Eki</div><div class="t">Belgrad, Tiflis, Bakü, Şarm</div></div>
-      <div class="month best"><div class="m">Kas</div><div class="t">Doha, Amman, şarap hasadı</div></div>
-      <div class="month best"><div class="m">Ara</div><div class="t">Doha, Şarm, year-end prices</div></div>
+  <!-- ONAY BANNER -->
+  <div class="banner">
+    <div class="bi">✅</div>
+    <div>
+      <b>Toplu program onayı uygulandı — tüm rotalar ONAYLI.</b>
+      <p>Sizin talimatınız üzerine (12 Ekim 2026) tüm programlar onaylandı ve rezervasyon adımları hazırlandı. Beğenmediğiniz rotayı karttaki "✓ Onaylı" düğmesinden veya aşağıdaki listeden geri alabilirsiniz. Bilet satın alma işlemi siz geldiğinizde sizin adınıza yapılır.</p>
     </div>
   </div>
 
-  <!-- 5. REZERVASYON ONAY -->
-  <h2><span class="n">05</span> Uçuş Rezervasyon Onay Listesi</h2>
-  <p class="lead">Beğendiğin rotayı ✅ onayla — onayladıklarının toplamını aşağıda gör. Onay sonrası bilet arama + rezervasyon adım adım rehberi hazırlanır. <b>Fiyatlar tahminidir, bilet alımında teyit edilir.</b></p>
-  <div class="panel scroll">
-    <table id="onayTable">
-      <thead>
-        <tr><th></th><th>Opsiyon</th><th>Güzergâh</th><th>Havayolu</th><th>Önerilen dönem</th><th>4 kişi toplam (G-D, tahmini)</th></tr>
-      </thead>
-      <tbody>
-        <tr class="approve-row" data-id="A" data-price="42000">
-          <td><input type="checkbox" class="appr" /></td>
-          <td><b>A · Belgrad + Novi Sad</b><br><span style="color:var(--muted);font-size:12px">7 gün · Balkanların başkenti</span></td>
-          <td>ESB ⇄ BEG direkt</td><td>AJet</td><td class="season">Eyl 2026 · May 2027</td><td class="num">≈ 42.000 ₺</td>
-        </tr>
-        <tr class="approve-row" data-id="B" data-price="38000">
-          <td><input type="checkbox" class="appr" /></td>
-          <td><b>B · Tiflis + Batumi</b><br><span style="color:var(--muted);font-size:12px">7 gün · Kaplıca & Karadeniz</span></td>
-          <td>ESB ⇄ TBS direkt</td><td>AJet</td><td class="season">Nis-May 2027</td><td class="num">≈ 38.000 ₺</td>
-        </tr>
-        <tr class="approve-row" data-id="C" data-price="32000">
-          <td><input type="checkbox" class="appr" /></td>
-          <td><b>C · Bakü + Şeki</b><br><span style="color:var(--muted);font-size:12px">6 gün · Kimlikle giriş!</span></td>
-          <td>ESB ⇄ GYD direkt</td><td>AJet / Pegasus</td><td class="season">Eyl-Eki 2026</td><td class="num">≈ 32.000 ₺</td>
-        </tr>
-        <tr class="approve-row" data-id="D" data-price="44000">
-          <td><input type="checkbox" class="appr" /></td>
-          <td><b>D · Saraybosna + Mostar</b><br><span style="color:var(--muted);font-size:12px">7 gün · Tarih & doğa</span></td>
-          <td>ESB ⇄ SJJ direkt</td><td>AJet</td><td class="season">May-Haz 2027</td><td class="num">≈ 44.000 ₺</td>
-        </tr>
-        <tr class="approve-row" data-id="E" data-price="60000">
-          <td><input type="checkbox" class="appr" /></td>
-          <td><b>E · Doha (Katar)</b><br><span style="color:var(--muted);font-size:12px">5 gün · Çöl & modernizm</span></td>
-          <td>ESB ⇄ DOH direkt</td><td>AJet / THY</td><td class="season">Ara-Oca (kış)</td><td class="num">≈ 60.000 ₺</td>
-        </tr>
-        <tr class="approve-row" data-id="F" data-price="50000">
-          <td><input type="checkbox" class="appr" /></td>
-          <td><b>F · Amman + Petra + Ölü Deniz</b><br><span style="color:var(--muted);font-size:12px">7 gün · Dünya harikaları</span></td>
-          <td>ESB ⇄ AMM direkt</td><td>AJet / Royal Jordanian</td><td class="season">Mar-Nis 2027</td><td class="num">≈ 50.000 ₺</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="statusbar">
-      <div>Onaylanan rota: <span class="big" id="secilen">yok</span></div>
-      <div>Tahmini toplam (uçak): <span class="big" id="toplam">0 ₺</span></div>
-      <button class="btn" id="sendBtn">📋 Onayları Özetle</button>
+  <!-- FİLTRELER -->
+  <div class="filters" id="rotalar">
+    <div class="frow">
+      <div class="fsearch">🔍 <input id="q" type="text" placeholder="Ülke veya şehir ara..." /></div>
+      <select class="sel" id="fVisa">
+        <option value="">🛂 Tümü (vize durumu)</option>
+        <option value="vizesiz">Vizesiz</option>
+        <option value="kimlik">Kimlikle giriş</option>
+        <option value="kapi">Kapı vizesi</option>
+        <option value="schengen">Schengen / vize gerekli</option>
+      </select>
+      <select class="sel" id="fMonth">
+        <option value="">📅 Tüm aylar</option>
+      </select>
+      <select class="sel" id="fBudget">
+        <option value="">💰 Bütçe (4 kişi)</option>
+        <option value="low">Düşük — 20.000 ₺ altı</option>
+        <option value="mid">Orta — 20.000-50.000 ₺</option>
+        <option value="high">Rahat — 50.000 ₺ üzeri</option>
+      </select>
+      <select class="sel" id="fSort">
+        <option value="rec">⭐ Öneri sırası</option>
+        <option value="priceAsc">💸 Fiyat (artan)</option>
+        <option value="durAsc">⏱ Uçuş süresi (artan)</option>
+        <option value="freqAsc">🛫 Uçuş sıklığı (artan)</option>
+      </select>
+      <button class="freset" onclick="resetFilters()">Sıfırla ✕</button>
     </div>
-    <div class="note"><b>Fiyatlar nasıl hesaplandı:</b> Ekim 2026 arama verileri (AJet, Skyscanner, momondo, obilet): Ankara-Belgrad tek yön 5.100-5.400 ₺'den başlıyor; gidiş-dönüş ~10.000 ₺/kişi. Saraybosna ~4.400 ₺ tek yön. Toplamlar 4 kişi × gidiş-dönüş içindir. <b>Kampanyalı dönemde %20-30 ucuza gelebilir.</b></div>
-  </div>
-
-  <!-- 6. GEZİ PLANLARI -->
-  <h2><span class="n">06</span> Gezi Planları</h2>
-  <p class="lead">Her plan 3 yetişkin + 15 yaş için uygundur; günlük program ulaşımı da kapsar.</p>
-
-  <div class="plans">
-    <div class="plan">
-      <h3>🅰️ Belgrad & Novi Sad — 7 Gün</h3>
-      <div class="meta">ESB ⇄ BEG · AJet direkt (~2 sa) · Vizesiz 90 gün</div>
-      <div class="day"><b>1. Gün</b><div>Sabah uçuşu → Belgrad. Knez Mihailova yaya caddesi, Kalemegyan Kalesi ve akşam Boğaz'da (Sava) yürüyüşü.</div></div>
-      <div class="day"><b>2. Gün</b><div>Kalemegyan + Hayvanat Bahçesi, Ada Ciganlija adası (göl kenarı, bisiklet, kafe — 15 yaş için ideal).</div></div>
-      <div class="day"><b>3. Gün</b><div>Skadarlija bohem sokağı, Aziz Sava Katedrali, Zemun mahallesi ve Gardoš kulesi manzarası.</div></div>
-      <div class="day"><b>4. Gün</b><div><b>Novi Sad günübirlik</b> (1.5 sa tren/otobüs): Petrovaradin Kalesi, Özgürlük Meydanı, Dunav Caddesi.</div></div>
-      <div class="day"><b>5. Gün</b><div>Avala Dağı + TV Kulesi, Krajisnik halk pazarı, akşam veda yemeği (kajmakli, ćevapi).</div></div>
-      <div class="day"><b>6. Gün</b><div><b>Sremski Karlovci</b> şarap kasabası + Fruška Gora manastırları (yarım günlük tur).</div></div>
-      <div class="day"><b>7. Gün</b><div>Sabah serbest — hediyelik, dönüş uçuşu → Ankara.</div></div>
-    </div>
-
-    <div class="plan">
-      <h3>🅱️ Tiflis & Batumi — 7 Gün</h3>
-      <div class="meta">ESB ⇄ TBS · AJet direkt (~2.5 sa) · Vizesiz 1 yıl · kimlik yeterli</div>
-      <div class="day"><b>1. Gün</b><div>Ankara → Tiflis. Eski Şehir: Abanotubani kükürt hamamları, Kura nehri kıyısı, akşam Rustaveli Caddesi.</div></div>
-      <div class="day"><b>2. Gün</b><div>Narikala Kalesi + teleferik, Sameba Katedrali, Hannibal'ın evi, Sioni Katedrali.</div></div>
-      <div class="day"><b>3. Gün</b><div><b>Kakheti şarap bölgesi</b> günübirlik: Sighnaghi "aşk şehri", şarap tadımı (üzüm suyu çocuklara).</div></div>
-      <div class="day"><b>4. Gün</b><div>Tiflis → <b>Batumi</b> (otobüs ~4.5 sa). Akşam: Bulvar'da ışık gösterisi, Çavkaşvili meydanı.</div></div>
-      <div class="day"><b>5. Gün</b><div>Batum Botanik Bahçesi, Almanya Meydanı, sahil yürüyüşü, tekne turu.</div></div>
-      <div class="day"><b>6. Gün</b><div>Mziuri Park, teleferik + macera parkı (15 yaş için), Kartlisheva — akşam serbest.</div></div>
-      <div class="day"><b>7. Gün</b><div>Batumi → Tiflis (sabah transfer) → akşam ESB uçuşu.</div></div>
-    </div>
-
-    <div class="plan">
-      <h3>🅲 Bakü & Şeki — 6 Gün</h3>
-      <div class="meta">ESB ⇄ GYD · AJet/Pegasus direkt (~2.5 sa) · Kimlikle 90 gün</div>
-      <div class="day"><b>1. Gün</b><div>Ankara → Bakü. Deniz Kıyısı Bulvarı, akşam Fontanlar Meydanı.</div></div>
-      <div class="day"><b>2. Gün</b><div><b>İçerişehir</b>: Kız Kulesi, Şirvanşahlar Sarayı, Kervansaray, Kubbe Mescidi + Surlar.</div></div>
-      <div class="day"><b>3. Gün</b><div>Heydar Aliyev Kültür Merkezi (Zaha Hadid), Halı Müzesi, Çarşı'da alışveriş.</div></div>
-      <div class="day"><b>4. Gün</b><div><b>Şeki günübirlik</b> (~2 sa): Xan Sarayı cam mozaikleri, Kervansaray, karpuz tatları.</div></div>
-      <div class="day"><b>5. Gün</b><div>Abşeron Yarımadası: Ateş Tapınağı (Ateshgah) + Yanardağ (Yanardağ) — akşam kule manzarası.</div></div>
-      <div class="day"><b>6. Gün</b><div>Göygöl Milli Parkı (yarım gün) → hediyelik (nar, safran, bakır) → dönüş uçuşu.</div></div>
-    </div>
-
-    <div class="plan">
-      <h3>🅳 Saraybosna & Mostar — 7 Gün</h3>
-      <div class="meta">ESB ⇄ SJJ · AJet direkt (~2 sa) · Vizesiz 90 gün</div>
-      <div class="day"><b>1. Gün</b><div>Ankara → Saraybosna. Başçarşı, İnat Evi, Gazi Husrev Beg Camii.</div></div>
-      <div class="day"><b>2. Gün</b><div>Savaş Tüneli, İsa Meydanı, Sebil, Sarajevo Rose — akşam Skenderija.</div></div>
-      <div class="day"><b>3. Gün</b><div><b>Mostar</b> günübirlik (2.5 sa): Köprü, Kuyumcular Sokağı, Blagaj Tekkesi.</div></div>
-      <div class="day"><b>4. Gün</b><div>Travnik (Vezir şehri) + Plava Voda — Bosnia'nın Osmanlı izleri.</div></div>
-      <div class="day"><b>5. Gün</b><div>Jahorina veya Bjelašnica (kış) / Trebević teleferiği (yaz) — doğa.</div></div>
-      <div class="day"><b>6. Gün</b><div>Vrelo Bosne (Bosna'nın kaynağı), Asim Çeliković caddesi, serbest zaman.</div></div>
-      <div class="day"><b>7. Gün</b><div>Hediyelik (kahve, dantel, rakija) → dönüş uçuşu → Ankara.</div></div>
-    </div>
-
-    <div class="plan full">
-      <h3>🅴 Doha — 5 Gün (kış kaçamağı)</h3>
-      <div class="meta">ESB ⇄ DOH · AJet/THY direkt (~4.5 sa) · Vizesiz 90 gün · Kas-Mart arası</div>
-      <div class="day"><b>1. Gün</b><div>Ankara → Doha. Corniche sahili, İslam Sanatları Müzesi (Pritzker ödüllü bina) akşam ışık gösterisi.</div></div>
-      <div class="day"><b>2. Gün</b><div>Souq Waqif (geleneksel çarşı), Falcon Market, akşam sıcak hava balonu / liman turu.</div></div>
-      <div class="day"><b>3. Gün</b><div><b>Çöl safarisi</b> (4 sa): kum tepeleri, deve binme, Bedevi kampında akşam yemeği — 15 yaş için heyecanlı.</div></div>
-      <div class="day"><b>4. Gün</b><div>Pearl Adası, Villagio AVM (Venedik kanalları), Katara Kültür Köyü, The Pearl'de yemek.</div></div>
-      <div class="day"><b>5. Gün</b><div>Mshreib "Kahve Köyü", son alışverişler → dönüş uçuşu → Ankara.</div></div>
+    <div class="frow" id="regionChips">
+      <button class="fchip on" data-r="">Tümü</button>
+      <button class="fchip" data-r="balkan">Balkanlar</button>
+      <button class="fchip" data-r="kafkasya">Kafkasya</button>
+      <button class="fchip" data-r="korfez">Körfez</button>
+      <button class="fchip" data-r="ortaasya">Orta Asya</button>
+      <button class="fchip" data-r="akdeniz">Akdeniz & Orta Doğu</button>
+      <button class="fchip" data-r="avrupa">Avrupa (Schengen)</button>
+      <button class="fchip" data-r="uzak">Uzak Coğrafya</button>
+      <span class="fcount"><b id="cCount">0</b> rota listeleniyor</span>
     </div>
   </div>
 
-  <!-- 7. KONTROL LİSTESİ -->
-  <h2><span class="n">07</span> Rezervasyon & Hazırlık Kontrol Listesi</h2>
-  <div class="panel">
-    <ul class="check">
-      <li><b>Rota onayı:</b> Yukarıdan ✅ ile rotayı seç (B ve C için pasaport bile gerekmez — kimlik yeterli)</li>
-      <li><b>Bilet teyidi:</b> Onaylanan rota için ajet.com / flypgs.com'da 4 kişilik tarih aralığındaki gerçek fiyat kontrol edilir</li>
-      <li><b>Koltuk:</b> 4 kişilik birlik koltuk rezervasyonu (online check-in'de erken seçim avantajı)</li>
-      <li><b>Konaklama:</b> 2 oda veya "3 yetişkin + ek yatak" — Booking/Hotels.com'da 15 yaş "yetişkin" sayılır</li>
-      <li><b>Belgeler:</b> Kimlik/pasaport (6+ ay geçerli), dönüş bileti + konaklama kanıtı sınır kontrolünde istenebilir</li>
-      <li><b>Seyahat sağlık sigortası:</b> Schengen'de zorunlu, vizesiz rotalarda güçlü tavsiye (~150-400 ₺/4 kişi)</li>
-      <li><b>Para:</b> Rota para birimi (RSD, GEL, AZN, BAM, QAR...) — çıkışta havalimanı bozdurma yerine şehirde bozdurmak daha kârlı</li>
-      <li><b>Tarih kesinleştirme:</b> Esnek tarih → en ucuz hafta bulunur (Salı-Çarşamba kalkışlar genelde daha ucuz)</li>
-    </ul>
-    <div class="note" id="ozetKutu"><b>📋 Özet:</b> Henüz rota onaylanmadı. Yukarıdaki tablodan bir veya birden fazla rotayı ✅ onaylayabilirsin.</div>
+  <!-- KARTLAR -->
+  <div class="grid" id="grid"></div>
+
+  <!-- ONAY ÖZETİ -->
+  <div class="section-h" id="onaylar">
+    <div class="sh-ic">📋</div>
+    <div>
+      <h2>Rezervasyon Onay Listesi</h2>
+      <div class="sh-sub">Onaylanan programlar — bilet arama sırası buradan belirlenir</div>
+    </div>
+  </div>
+  <div class="appr-panel">
+    <div class="appr-head">
+      <div class="st">✅ <span id="apprCount">0</span> program onaylı</div>
+      <div class="tot">4 kişi toplam (uçak): <span id="apprTotal">0 ₺</span></div>
+      <div class="appr-actions">
+        <button class="btn" onclick="approveAll()">Tümünü Onayla</button>
+        <button class="btn" onclick="clearAll()" style="color:var(--red)">Tümünü Geri Al</button>
+      </div>
+    </div>
+    <div id="apprBody"></div>
   </div>
 
-  <div class="src">
-    Veriler: FlightConnections (ESB rota verisi, Ekim 2026) · Dışişleri Bakanlığı vize muafiyet listesi ·<br/>
-    AJet · Skyscanner · momondo · obilet (fiyat aralıkları, Ekim 2026) — Fiyatlar tahminidir, bilet alımında teyit edilmelidir.<br/>
-    🤖 Asistan tarafından hazırlanmıştır.
+  <!-- AY REHBERİ -->
+  <div class="section-h" id="aylar">
+    <div class="sh-ic">📅</div>
+    <div>
+      <h2>En Uygun Ay Rehberi</h2>
+      <div class="sh-sub">Yeşil = en iyi dönem · Sarı = iyi / dikkatli</div>
+    </div>
+  </div>
+  <div class="months">
+    <div class="mbox best"><div class="m">Oca</div><div class="t">Doha, Şarm, Amman</div></div>
+    <div class="mbox best"><div class="m">Şub</div><div class="t">Doha, Şarm, Tayland</div></div>
+    <div class="mbox best"><div class="m">Mar</div><div class="t">Amman, Doha, bahar</div></div>
+    <div class="mbox best"><div class="m">Nis</div><div class="t">Tiflis, Bakü, Taşkent</div></div>
+    <div class="mbox best"><div class="m">May</div><div class="t">Belgrad, Bakü, Saraybosna</div></div>
+    <div class="mbox best"><div class="m">Haz</div><div class="t">Balkanlar, Karadağ</div></div>
+    <div class="mbox ok2"><div class="m">Tem</div><div class="t">Karadağ/Bosna deniz · Körfez sıcak</div></div>
+    <div class="mbox ok2"><div class="m">Ağu</div><div class="t">Karadağ · Doha/Amman sıcak</div></div>
+    <div class="mbox best"><div class="m">Eyl</div><div class="t">Balkanlar en iyisi, Bakü</div></div>
+    <div class="mbox best"><div class="m">Eki</div><div class="t">Belgrad, Tiflis, Şarm</div></div>
+    <div class="mbox best"><div class="m">Kas</div><div class="t">Doha, Amman</div></div>
+    <div class="mbox best"><div class="m">Ara</div><div class="t">Doha, Şarm, kampanyalar</div></div>
+  </div>
+
+  <!-- HAZIRLIK -->
+  <div class="section-h" id="hazirlik">
+    <div class="sh-ic">🧳</div>
+    <div>
+      <h2>Hazırlık Kontrol Listesi</h2>
+      <div class="sh-sub">Rezervasyon öncesi son kontroller</div>
+    </div>
+  </div>
+  <div class="cgrid">
+    <div class="cbox"><b>🪪 Belge</b><span>Vizesiz rotalarda kimlik yeterli (Azerbaycan, Gürcistan). Diğerleri için pasaport 6+ ay geçerli olmalı.</span></div>
+    <div class="cbox"><b>👤 15 yaş kuralı</b><span>Çoğu havayolunda 15 yaş yetişkin sayılır → 4 yetişkin bileti gibi planlayın.</span></div>
+    <div class="cbox"><b>💺 Koltuk</b><span>4 kişilik birlik koltuk için online check-in'i ilk dakikada açın.</span></div>
+    <div class="cbox"><b>🏨 Konaklama</b><span>2 oda veya "3 yetişkin + ek yatak" — 15 yaş otellerde yetişkin sayılır.</span></div>
+    <div class="cbox"><b>🛡️ Sigorta</b><span>Seyahat sağlık sigortası Schengen'de zorunlu, vizesiz rotalarda tavsiye edilir.</span></div>
+    <div class="cbox"><b>📆 Tarih</b><span>Tarihler esnek: Salı/Çarşamba kalkışlar genelde daha ucuz — en uygun hafta seçilir.</span></div>
+  </div>
+
+</div>
+
+<footer>
+  <b>Asistan Seyahat</b> · Ankara Esenboğa (ESB) kalkışlı · 3 yetişkin + 1 çocuk (15)<br/>
+  Fiyatlar tahminidir (Ekim 2026 uçuş verileri: FlightConnections, AJet, Skyscanner, momondo, obilet) — bilet alımında teyit edilir.<br/>
+  🤖 Asistan tarafından hazırlanmıştır.
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="m-head">
+      <div class="mf" id="mFlag">🇹🇷</div>
+      <div>
+        <h3 id="mTitle">—</h3>
+        <div class="ms" id="mSub">—</div>
+      </div>
+      <button class="m-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="m-body">
+      <div class="m-tabs">
+        <button class="m-tab on" data-pane="p1" onclick="switchTab(this)">🗺 Gezi Programı</button>
+        <button class="m-tab" data-pane="p2" onclick="switchTab(this)">🎟 Rezervasyon Adımları</button>
+      </div>
+      <div class="m-pane on" id="pane-p1"></div>
+      <div class="m-pane" id="pane-p2"></div>
+    </div>
   </div>
 </div>
 
+<div class="toast" id="toast"></div>
+
 <script>
-(function () {
-  const KEY = 'asistan-seyahat-onay';
-  const rows = Array.from(document.querySelectorAll('.approve-row'));
-  let saved = {};
-  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { saved = {}; }
+/* ================= VERİ ================= */
+const MONTHS = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
 
-  function refresh() {
-    let count = 0, total = 0, names = [];
-    rows.forEach((r) => {
-      const cb = r.querySelector('.appr');
-      r.classList.toggle('checked', cb.checked);
-      if (cb.checked) {
-        count += 1;
-        total += Number(r.dataset.price || 0);
-        names.push(r.dataset.id);
-      }
-    });
-    document.getElementById('secilen').textContent = count ? names.join(', ') + ' (' + count + ' rota)' : 'yok';
-    document.getElementById('toplam').textContent = total.toLocaleString('tr-TR') + ' ₺';
+const D = [
+  { id:'belgrad', flag:'🇷🇸', country:'Sırbistan', city:'Belgrad', code:'BEG', region:'balkan',
+    visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet', dur:'2 sa 10 dk', durMin:130, freq:18,
+    price:10500, months:[5,6,9,10], pop:1,
+    tags:['Kale & bohem sokak','Novi Sad günübirlik','Uygun fiyat'],
+    plan:[['1. Gün','Sabah uçuşu → Belgrad. Knez Mihailova yaya caddesi, Kalemegyan Kalesi ve Sava kıyısı yürüyüşü.'],
+          ['2. Gün','Kalemegyan + Hayvanat Bahçesi, Ada Ciganlija adası (göl kenarı, bisiklet — 15 yaş için ideal).'],
+          ['3. Gün','Skadarlija bohem sokağı, Aziz Sava Katedrali, Zemun mahallesi ve Gardoş kulesi manzarası.'],
+          ['4. Gün','Novi Sad günübirlik (1.5 sa): Petrovaradin Kalesi, Özgürlük Meydanı, Dunav Caddesi.'],
+          ['5. Gün','Avala Dağı + TV Kulesi, Krajisnik pazarı, akşam ćevapi & kajmak vedası.'],
+          ['6. Gün','Sremski Karlovci şarap kasabası + Fruška Gora manastırları (yarım günlük tur).'],
+          ['7. Gün','Sabah serbest — hediyelik, dönüş uçuşu → Ankara.'] ] },
 
-    const kutu = document.getElementById('ozetKutu');
-    if (count) {
-      kutu.innerHTML = '<b>📋 Özet:</b> ' + count + ' rota onaylandı (' + names.join(', ') + ') — toplam uçak ≈ ' +
-        total.toLocaleString('tr-TR') + ' ₺ (4 kişi, gidiş-dönüş). Asistan onaylanan rotalar için bilet arama + rezervasyon rehberini hazırlayacak.';
+  { id:'tiflis', flag:'🇬🇪', country:'Gürcistan', city:'Tiflis + Batumi', code:'TBS', region:'kafkasya',
+    visa:'kimlik', visaTxt:'Kimlikle 1 yıl', airline:'AJet', dur:'2 sa 30 dk', durMin:150, freq:12,
+    price:9500, months:[4,5,6,7,8,9,10], pop:2,
+    tags:['Kaplıca şehri','Şarap bölgesi','Karadeniz — Batumi'],
+    plan:[['1. Gün','Ankara → Tiflis. Eski Şehir: Abanotubani kükürt hamamları, Kura nehri kıyısı, Rustaveli Caddesi.'],
+          ['2. Gün','Narikala Kalesi + teleferik, Sameba Katedrali, Sioni Katedrali, Heykel Müzesi.'],
+          ['3. Gün','Kakheti şarap bölgesi günübirlik: Sighnaghi "aşk şehri", şarap tadımı (çocuklara üzüm suyu).'],
+          ['4. Gün','Tiflis → Batumi (otobüs ~4.5 sa). Akşam Bulvar ışık gösterisi, Çavkaşvili Meydanı.'],
+          ['5. Gün','Batumi Botanik Bahçesi, Almanya Meydanı, sahil yürüyüşü, tekne turu.'],
+          ['6. Gün','Mziuri Park, teleferik + macera parkı (15 yaş için), serbest zaman.'],
+          ['7. Gün','Batumi → Tiflis sabah transfer → akşam ESB uçuşu.'] ] },
+
+  { id:'baku', flag:'🇦🇿', country:'Azerbaycan', city:'Bakü + Şeki', code:'GYD', region:'kafkasya',
+    visa:'kimlik', visaTxt:'Kimlikle 90 gün', airline:'AJet / Pegasus', dur:'2 sa 45 dk', durMin:165, freq:72,
+    price:8000, months:[4,5,6,9,10], pop:3,
+    tags:['En yoğun hat (72 uçuş/ay)','İçerişehir — UNESCO','Çöl & deniz'],
+    plan:[['1. Gün','Ankara → Bakü. Deniz Kıyısı Bulvarı, akşam Fontanlar Meydanı ışık gösterisi.'],
+          ['2. Gün','İçerişehir: Kız Kulesi, Şirvanşahlar Sarayı, Kervansaray, Kubbe Mescidi, surlar.'],
+          ['3. Gün','Heydar Aliyev Kültür Merkezi (Zaha Hadid), Halı Müzesi, Çarşıda alışveriş.'],
+          ['4. Gün','Şeki günübirlik (~2 sa): Xan Sarayı cam mozaikleri, Kervansaray, karpuz tadımı.'],
+          ['5. Gün','Abşeron: Ateş Tapınağı + Yanardağ, akşam kule manzarası.'],
+          ['6. Gün','Göygöl Milli Parkı (yarım gün) → hediyelik (nar, safran, bakır) → dönüş.'] ] },
+
+  { id:'podgorica', flag:'🇲🇪', country:'Karadağ', city:'Podgorica / Kotor', code:'TGD', region:'balkan',
+    visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet', dur:'2 sa 15 dk', durMin:135, freq:9,
+    price:12500, months:[6,7,8,9], pop:4,
+    tags:['Adriyatik denizi','Kotor Körfezi','Doğa'],
+    plan:[['1. Gün','Ankara → Podgorica. Şehir turu: Ribnica, Sahat Kulesi, Moraca nehri.'],
+          ['2. Gün','Kotor Körfezi günübirlik: Kotor surları, Perast, Our Lady of the Rocks adası.'],
+          ['3. Gün','Budva — "Adriyatik\'in incisi", Sveti Stefan manzarası, sahil.'],
+          ['4. Gün','Durmitor Milli Parkı: Black Lake (Crno Jezero), kanyon manzarası.'],
+          ['5. Gün','Sveti Stefan + King\'s Beach, akşam Kotor\'da deniz mahsulü.'],
+          ['6. Gün','Serbest deniz günü (Becici/Kalamari), dönüş uçuşu.'] ] },
+
+  { id:'sarajevo', flag:'🇧🇦', country:'Bosna Hersek', city:'Saraybosna + Mostar', code:'SJJ', region:'balkan',
+    visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet', dur:'2 sa', durMin:120, freq:7,
+    price:11000, months:[4,5,6,9,10], pop:5,
+    tags:['Başçarşı','Mostar köprüsü','Kışın kayak'],
+    plan:[['1. Gün','Ankara → Saraybosna. Başçarşı, İnat Evi, Gazi Husrev Beg Camii.'],
+          ['2. Gün','Savaş Tüneli, İsa Meydanı, Sebil, Sarajevo Rose — akşam Skenderija.'],
+          ['3. Gün','Mostar günübirlik (2.5 sa): Köprü, Kuyumcular Sokağı, Blagaj Tekkesi.'],
+          ['4. Gün','Travnik (vezir şehri) + Plava Voda — Osmanlı izleri.'],
+          ['5. Gün','Jahorina/Bjelašnica (kış kayak) veya Trebević teleferiği (yaz doğa).'],
+          ['6. Gün','Vrelo Bosne (Bosna\'nın kaynağı), serbest zaman.'],
+          ['7. Gün','Hediyelik (kahve, dantel, rakija) → dönüş uçuşu.'] ] },
+
+  { id:'tiran', flag:'🇦🇱', country:'Arnavutluk', city:'Tiran + Riviera', code:'TIA', region:'balkan',
+    visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet', dur:'2 sa 15 dk', durMin:135, freq:2,
+    price:13500, months:[6,7,8,9], pop:6,
+    tags:['Akdeniz rivierası','Berat — bin pencere','Ohri Gölü'],
+    plan:[['1. Gün','Ankara → Tiran. Skanderbeg Meydanı, Ethem Bey Camii, Piramit.'],
+          ['2. Gün','Berat günübirlik — "bin pencere şehri", kalesi ve osmanlı evleri.'],
+          ['3. Gün','Albanian Riviera: Ksamil plajları, Butrint Antik Kenti (UNESCO).'],
+          ['4. Gün','Draç sahili + Golem, akşam rivierada deniz.'],
+          ['5. Gün','Ohri Gölü günübirlik (Kuzey Makedonya sınırı) — tekne + kale.'],
+          ['6. Gün','Serbest, hediyelik, dönüş.'] ] },
+
+  { id:'doha', flag:'🇶🇦', country:'Katar', city:'Doha', code:'DOH', region:'korfez',
+    visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet / THY', dur:'4 sa 30 dk', durMin:270, freq:18,
+    price:15000, months:[11,12,1,2,3], pop:7,
+    tags:['Kış kaçamağı','Çöl safarisi','Müzeler & souq'],
+    plan:[['1. Gün','Ankara → Doha. Corniche sahili, İslam Sanatları Müzesi akşam ışık gösterisi.'],
+          ['2. Gün','Souq Waqif (geleneksel çarşı), Şahin Pazarı, liman turu.'],
+          ['3. Gün','Çöl safarisi (4 sa): kum tepeleri, deve binme, Bedevi kampı akşam yemeği.'],
+          ['4. Gün','Pearl Adası, Villagio (Venedik kanalları), Katara Kültür Köyü.'],
+          ['5. Gün','Mshreib Kahve Köyü, son alışveriş → dönüş.'] ] },
+
+  { id:'amman', flag:'🇯🇴', country:'Ürdün', city:'Amman + Petra', code:'AMM', region:'akdeniz',
+    visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet / Royal Jordanian', dur:'2 sa 45 dk', durMin:165, freq:22,
+    price:12500, months:[3,4,5,10,11], pop:8,
+    tags:['Petra — dünya harikası','Ölü Deniz','Wadi Rum'],
+    plan:[['1. Gün','Ankara → Amman. Amman Kalesi, Roma Tiyatrosu, Souk.'],
+          ['2. Gün','Petra günübirlik (~2.5 sa): Hazine (Al-Khazneh) yürüyüşü.'],
+          ['3. Gün','Wadi Rum çölü: jeep turu, Bedevi kampı, gece yıldız gözlemi.'],
+          ['4. Gün','Ölü Deniz — yüzme + çamur banyosu (15 yaş için keyifli).'],
+          ['5. Gün','Jerash antik kenti (Roma harabeleri), Ajloun Kalesi.'],
+          ['6. Gün','Amman serbest: Rainbow Caddesi, hediyelik, dönüş.'] ] },
+
+  { id:'taskent', flag:'🇺🇿', country:'Özbekistan', city:'Taşkent', code:'TAS', region:'ortaasya',
+    visa:'vizesiz', visaTxt:'Vizesiz 30 gün', airline:'AJet', dur:'4 sa', durMin:240, freq:48,
+    price:11500, months:[4,5,9,10], pop:9,
+    tags:['Çin Yolu başkenti','Semerkant iç hat','Pazarlar'],
+    plan:[['1. Gün','Ankara → Taşkent. Bağımsızlık Meydanı, Mümtaz Köşkü.'],
+          ['2. Gün','Chorsu Çarşısı, Eski Şehir, Barak Han Medresesi.'],
+          ['3. Gün','Semerkant günübirlik (yüksek hızlı tren Registan, Bibi Hanım).'],
+          ['4. Gün','Buhara veya Hive (tren/uçuş) — kadim medreseler.'],
+          ['5. Gün','Serbest: pilav, somun, ketçap tatları — hediyelik, dönüş.'] ] },
+
+  { id:'bishkek', flag:'🇰🇬', country:'Kırgızistan', city:'Bişkek + Issık Göl', code:'BSZ', region:'ortaasya',
+    visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet', dur:'4 sa 50 dk', durMin:290, freq:28,
+    price:12500, months:[6,7,8,9], pop:10,
+    tags:['Issık Göl','Dağ doğası','At binme'],
+    plan:[['1. Gün','Ankara → Bişkek. Ala-Too Meydanı, Panfilov Parkı.'],
+          ['2. Gün','Issık Göl günübirlik: Burana Kulesi, balıkçı köyleri.'],
+          ['3. Gün','Issık Göl kıyısı: jet-ski / sahil (15 yaş için), konak.'],
+          ['4. Gün','Ala Archa Milli Parkı — dağ yürüyüşü, piknik.'],
+          ['5. Gün','Dordoy pazarı, manzaralı tepeler, dönüş.'] ] },
+
+  { id:'sharm', flag:'🇪🇬', country:'Mısır', city:'Şarm El-Şeyh', code:'SSH', region:'akdeniz',
+    visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet', dur:'3 sa 15 dk', durMin:195, freq:10,
+    price:13500, months:[10,11,12,1,2,3,4], pop:11,
+    tags:['Kızıldeniz resifleri','Dalış','Kış güneşi'],
+    plan:[['1. Gün','Ankara → Şarm. Naama Bay sahili, akşam pazarı.'],
+          ['2. Gün','Ras Muhammad dalış/snorkel turu — cam tekne alternatifi.'],
+          ['3. Gün','James Adası tekne turu + şnorkel (çocuklu aile için ideal).'],
+          ['4. Gün','Sinai yarımadası: Musa Dağı manzarası, St. Catherine.'],
+          ['5. Gün','Old Market, şnorkel + serbest deniz, dönüş.'] ] },
+
+  { id:'beyrut', flag:'🇱🇧', country:'Lübnan', city:'Beyrut', code:'BEY', region:'akdeniz',
+    visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet', dur:'2 sa 30 dk', durMin:150, freq:3,
+    price:13000, months:[5,6,9,10], pop:12,
+    tags:['Baalbek harabeleri','Deniz & dağ','Uygun fiyat'],
+    plan:[['1. Gün','Ankara → Beyrut. Corniche yürüyüşüş, Souk.'],
+          ['2. Gün','Baalbek antik kenti (Roma harabeleri), Bekaa Vadisi.'],
+          ['3. Gün','Jeita Grotto + Byblos antik limanı.'],
+          ['4. Gün','Harissa teleferik + Beyrut müzeleri.'],
+          ['5. Gün','Serbest: Deniz kenarında kahve, hediyelik, dönüş.'] ] },
+
+  { id:'adalar', flag:'🇬🇷', country:'Yunanistan', city:'Kapı Vizesi Adaları', code:'ADE', region:'akdeniz',
+    visa:'kapi', visaTxt:'Kapı vizesi 1-7 gün', airline:'Feribot (Çeşme/İzmir)', dur:'Feribot ~1-2 sa', durMin:120, freq:0,
+    price:3500, months:[5,6,7,8,9,10], pop:13,
+    tags:['Kimlikle','10-12 ada','Sakız, Midilli, Rodos'],
+    plan:[['1. Gün','Ankara → İzmir/Çeşme → feribotla adaya geçiş (kapı vizesi: kimlik + feribot bileti).'],
+          ['2. Gün','Ada merkezi yürüyüşü, tarihi güvercinlikler, plaj.'],
+          ['3. Gün','Köy turu + deniz (Sakız için: Mesta, Pyrgi köyleri).'],
+          ['4. Gün','Tekne turu (koylar), akşam sahil.'],
+          ['5. Gün','Plaj günü — sakin aile plajları.'],
+          ['6. Gün','Son geze, hediyelik (zeytinyağı, sakız), feribot + dönüş.'] ] },
+
+  { id:'budapest', flag:'🇭🇺', country:'Macaristan', city:'Budapeşte', code:'BUD', region:'avrupa',
+    visa:'schengen', visaTxt:'Schengen vizesi gerekir', airline:'AJet', dur:'3 sa', durMin:180, freq:12,
+    price:4700, months:[1,2,3,4,5,6,7,8,9,10,11,12], pop:14,
+    tags:['ESB\'den direkt','Termal hamamlar','Kampanya: 3.617 TL\'den!'],
+    plan:[['1. Gün','Ankara → Budapeşte. Kızıl Meydan, Kahramanlar Meydanı, Andrassy Caddesi.'],
+          ['2. Gün','Parlamento dış cephe, Széchenyi Termal Hamamı (aile için ideal).'],
+          ['3. Gün','Balaton günübirlik (yaz) veya Eger (kış) — şarap & kale.'],
+          ['4. Gün','Buda Kalesi, Zincirli Köprü, Gellert Tepesi manzarası.'],
+          ['5. Gün','Vaci Caddesi pazarı, Rudas Hamam, gece tekne turu.'],
+          ['6. Gün','Hediyelik (paprika, gulaş), dönüş.'] ] },
+
+  { id:'berlin', flag:'🇩🇪', country:'Almanya', city:'Berlin', code:'BER', region:'avrupa',
+    visa:'schengen', visaTxt:'Schengen vizesi gerekir', airline:'AJet', dur:'3 sa 30 dk', durMin:210, freq:23,
+    price:5500, months:[4,5,6,7,8,9], pop:15,
+    tags:['ESB\'den direkt','Tarih & kültür','Aile müzeleri'],
+    plan:[['1. Gün','Ankara → Berlin. Brandenburg Kapısı, Reichstag (önceden kayıt).'],
+          ['2. Gün','Checkpoint Charlie, Museum Island, Berliner Dom.'],
+          ['3. Gün','Sanssouci Sarayları (Potsdam) — bahçeler.'],
+          ['4. Gün','Hayvanat Bahçesi + Botanik Bahçesi (çocuklar için).'],
+          ['5. Gün','East Side Gallery, Tempelhof parkı, hediyelik, dönüş.'] ] },
+
+  { id:'tokyo', flag:'🇯🇵', country:'Japonya', city:'Tokyo + Osaka', code:'HND', region:'uzak',
+    visa:'schengen', visaTxt:'Vizesiz 90 gün (uzak uçuş)', airline:'THY (İstanbul aktarmalı)', dur:'13 sa + aktarma', durMin:780, freq:0,
+    price:32000, months:[4,10,11,3], pop:16,
+    tags:['Vizesiz 90 gün','İstanbul aktarmalı','Anime & teknoloji'],
+    plan:[['1. Gün','Ankara → İstanbul → Tokyo (THY). Shinjuku akşam ışıkları.'],
+          ['2. Gün','Senso-ji Tapınağı, Akihabara, Shibuya geçidi.'],
+          ['3. Gün','Mt. Fuji günübirlik (Hakone) — teleferik & göl.'],
+          ['4. Gün','Tokyo → Osaka (Shinkansen hızlı tren ~2.5 sa).'],
+          ['5. Gün','Osaka Kalesi, Dotonbori gece hayatı (aile dostu).'],
+          ['6. Gün','Kyoto: Fushimi Inari, bambu ormanı, tapınaklar.'],
+          ['7. Gün','Nara geyik parkı → dönüş uçuşu.'] ] },
+
+  { id:'bangkok', flag:'🇹🇭', country:'Tayland', city:'Bangkok + Phuket', code:'BKK', region:'uzak',
+    visa:'schengen', visaTxt:'Vizesiz 30 gün (uzak uçuş)', airline:'THY (İstanbul aktarmalı)', dur:'11 sa + aktarma', durMin:660, freq:0,
+    price:24000, months:[11,12,1,2,3], pop:17,
+    tags:['Vizesiz 30 gün','Tropik deniz','Uygun yaşam maliyeti'],
+    plan:[['1. Gün','Ankara → İstanbul → Bangkok. Khao San çevresi, akşam nehir turu.'],
+          ['2. Gün','Grand Palace, Wat Pho (yatayan Buddha), Wat Arun.'],
+          ['3. Gün','Chatuchak pazarı + Jim Thompson Evi; akşam Maeklong tren pazarı.'],
+          ['4. Gün','Bangkok → Phuket (iç hat ~1.5 sa). Patong akşamı.'],
+          ['5. Gün','Phi Phi tekne turu — masmavi koylar (15 yaş için).'],
+          ['6. Gün','Phang Nga koyları / James Bond adası.'],
+          ['7. Gün','Plaj günü → dönüş.'] ] },
+];
+
+const REGION_LABEL = { balkan:'Balkanlar', kafkasya:'Kafkasya', korfez:'Körfez', ortaasya:'Orta Asya', akdeniz:'Akdeniz & Orta Doğu', avrupa:'Avrupa', uzak:'Uzak Coğrafya' };
+const VISA_CLASS = { vizesiz:'vb-free', kimlik:'vb-id', kapi:'vb-door', schengen:'vb-visa' };
+
+/* ================= DURUM ================= */
+const LS_KEY = 'asistan-onay-v3';
+let approved = new Set();
+let filters = { q:'', visa:'', month:'', budget:'', region:'', sort:'rec' };
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (raw === null) {
+      // Kullanıcı talimatı: tüm programlar onaylı başlasın
+      D.forEach((d) => approved.add(d.id));
+      saveState();
     } else {
-      kutu.innerHTML = '<b>📋 Özet:</b> Henüz rota onaylanmadı. Yukarıdaki tablodan bir veya birden fazla rotayı ✅ onaylayabilirsin.';
+      approved = new Set(JSON.parse(raw) || []);
     }
+  } catch (e) {
+    D.forEach((d) => approved.add(d.id));
+  }
+}
+function saveState() {
+  try { localStorage.setItem(LS_KEY, JSON.stringify([...approved])); } catch (e) {}
+}
+
+const fmt = (n) => n.toLocaleString('tr-TR') + ' ₺';
+const durText = (d) => d.dur;
+
+/* ================= FİLTRE + RENDER ================= */
+function getFiltered() {
+  let list = D.filter((d) => {
+    if (filters.q) {
+      const hay = (d.city + ' ' + d.country + ' ' + d.tags.join(' ') + ' ' + d.plan.map(p => p[1]).join(' ')).toLocaleLowerCase('tr');
+      if (!hay.includes(filters.q.toLocaleLowerCase('tr'))) return false;
+    }
+    if (filters.visa && d.visa !== filters.visa) {
+      // "schengen" filtresi hem schengen hem vize isteyen uzakları da kapsasın diye特殊 yok: direkt eşit
+      return false;
+    }
+    if (filters.month && !d.months.includes(Number(filters.month))) return false;
+    if (filters.region && d.region !== filters.region) return false;
+    if (filters.budget) {
+      const t4 = d.price * 4;
+      if (filters.budget === 'low' && t4 >= 20000) return false;
+      if (filters.budget === 'mid' && (t4 < 20000 || t4 > 50000)) return false;
+      if (filters.budget === 'high' && t4 <= 50000) return false;
+    }
+    return true;
+  });
+
+  if (filters.sort === 'priceAsc') list.sort((a, b) => a.price - b.price);
+  else if (filters.sort === 'durAsc') list.sort((a, b) => a.durMin - b.durMin);
+  else if (filters.sort === 'freqAsc') list.sort((a, b) => (b.freq || 0) - (a.freq || 0));
+  else list.sort((a, b) => a.pop - b.pop);
+  return list;
+}
+
+function monthName(m) { return MONTHS[m - 1]; }
+
+function renderGrid() {
+  const list = getFiltered();
+  document.getElementById('cCount').textContent = list.length;
+  const grid = document.getElementById('grid');
+
+  if (!list.length) {
+    grid.innerHTML = '<div class="nocard">🔍 Kriterlere uyan rota bulunamadı — filtreleri sıfırlayıp tekrar deneyin.</div>';
+    return;
   }
 
-  rows.forEach((r) => {
-    const cb = r.querySelector('.appr');
-    cb.checked = !!saved[r.dataset.id];
-    cb.addEventListener('change', () => {
-      saved[r.dataset.id] = cb.checked;
-      if (!cb.checked) delete saved[r.dataset.id];
-      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
-      refresh();
-    });
+  grid.innerHTML = list.map((d) => {
+    const isOk = approved.has(d.id);
+    return `
+    <div class="dcard${isOk ? ' approved' : ''}" data-id="${d.id}">
+      <div class="dc-top">
+        <div class="dc-head">
+          <div class="dc-flag">${d.flag}</div>
+          <div>
+            <div class="dc-title">${d.city}</div>
+            <div class="dc-country">${d.country} · ${REGION_LABEL[d.region] || ''}</div>
+          </div>
+          <span class="vbadge ${VISA_CLASS[d.visa]}">${d.visaTxt}</span>
+        </div>
+        <div class="dc-route">ESB <span class="plane">✈</span> ${d.code} <span class="dur">· ${durText(d)}</span></div>
+        <div class="dc-meta">
+          <span class="mtag air">${d.airline}</span>
+          <span class="mtag">${d.freq ? d.freq + ' uçuş/ay' : 'sefer sıklığı değişken'}</span>
+          ${d.tags.map((t) => `<span class="mtag">${t}</span>`).join('')}
+        </div>
+        <div class="months-row">${d.months.slice(0, 8).map((m) => `<span class="mchip">${monthName(m)}</span>`).join('')}${d.months.length > 8 ? '<span class="mchip">+ ' + (d.months.length - 8) + '</span>' : ''}</div>
+      </div>
+      <div class="dc-price">
+        <div class="price">
+          <div class="lbl">Gidiş-Dönüş / kişi</div>
+          <div class="val">${d.price.toLocaleString('tr-TR')} <small>₺</small></div>
+        </div>
+        <div class="total4">4 kişi toplam<b>${(d.price * 4).toLocaleString('tr-TR')} ₺</b></div>
+      </div>
+      <div class="dc-actions">
+        <button class="btn plan" onclick="openModal('${d.id}')">📋 Program</button>
+        ${isOk
+          ? `<button class="btn appr" onclick="toggle('${d.id}')">✓ Onaylı</button>`
+          : `<button class="btn add" onclick="toggle('${d.id}')">＋ Onaya Ekle</button>`}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderApproval() {
+  const list = D.filter((d) => approved.has(d.id));
+  const total = list.reduce((s, d) => s + d.price * 4, 0);
+  document.getElementById('apprCount').textContent = list.length;
+  document.getElementById('apprTotal').textContent = fmt(total);
+  document.getElementById('pillCount').textContent = list.length;
+
+  const body = document.getElementById('apprBody');
+  if (!list.length) {
+    body.innerHTML = '<div class="empty-appr">Henüz onaylı program yok. Kartlardaki "＋ Onaya Ekle" ile ekleyebilir veya "Tümünü Onayla" ile hepsini onaylayabilirsin.</div>';
+    return;
+  }
+  body.innerHTML = `
+    <table class="atbl">
+      <thead><tr><th>Rota</th><th>Önerilen dönem</th><th>Havayolu</th><th>4 kişi</th><th>Durum</th><th></th></tr></thead>
+      <tbody>
+      ${list.map((d) => `
+        <tr>
+          <td>${d.flag} <b>${d.city}</b><br/><span style="font-size:11.5px;color:var(--muted)">${d.country} · ${d.visaTxt}</span></td>
+          <td>${d.months.slice(0, 4).map(monthName).join(', ')}<span style="color:var(--muted)"> için</span></td>
+          <td>${d.airline}</td>
+          <td class="num">${fmt(d.price * 4)}</td>
+          <td class="ok">✅ ONAYLANDI</td>
+          <td><button class="rowx" onclick="toggle('${d.id}')">geri al</button></td>
+        </tr>`).join('')}
+      </tbody>
+      <tfoot><tr>
+        <td colspan="3" style="font-weight:800">TOPLAM (uçak, gidiş-dönüş)</td>
+        <td class="num" style="color:var(--price);font-size:15px">${fmt(total)}</td>
+        <td colspan="2" style="color:var(--muted);font-size:12px">Fiyatlar tahminidir</td>
+      </tr></tfoot>
+    </table>`;
+}
+
+function refresh() { renderGrid(); renderApproval(); saveState(); }
+
+/* ================= ONAYLAR ================= */
+function toggle(id) {
+  const d = D.find((x) => x.id === id);
+  if (approved.has(id)) {
+    approved.delete(id);
+    toast(`❌ ${d.city} onayı geri alındı`);
+  } else {
+    approved.add(id);
+    toast(`✅ ${d.city} onaylandı`);
+  }
+  refresh();
+}
+function approveAll() {
+  D.forEach((d) => approved.add(d.id));
+  refresh();
+  toast('✅ Tüm programlar onaylandı');
+}
+function clearAll() {
+  approved.clear();
+  refresh();
+  toast('Tüm onaylar geri alındı');
+}
+function applyHeroSearch() {
+  filters.q = document.getElementById('heroSearch').value.trim();
+  document.getElementById('q').value = filters.q;
+  refresh();
+  document.getElementById('rotalar').scrollIntoView();
+}
+function resetFilters() {
+  filters = { q:'', visa:'', month:'', budget:'', region:'', sort:'rec' };
+  document.getElementById('q').value = '';
+  document.getElementById('heroSearch').value = '';
+  document.getElementById('fVisa').value = '';
+  document.getElementById('fMonth').value = '';
+  document.getElementById('fBudget').value = '';
+  document.getElementById('fSort').value = 'rec';
+  document.querySelectorAll('#regionChips .fchip').forEach((c, i) => c.classList.toggle('on', i === 0));
+  refresh();
+  toast('Filtreler sıfırlandı');
+}
+
+/* ================= MODAL ================= */
+function bookingSteps(d) {
+  const visaNote = {
+    vizesiz: 'Vize gerekmiyor — pasaport yeterli. Sınırda dönüş bileti + konaklama kanıtı hazır olsun.',
+    kimlik: 'T.C. kimlik kartı yeterli, pasaport şart değil. Yine de pasaportu yanına al.',
+    kapi: 'Kapı vizesi: nüfus cüzdanı + feribot bileti. Seyahat en az 10 gün önce planlanmalı.',
+    schengen: 'Schengen: 15-45 gün önce vize başvurusu yap (banka dökümü, otel, uçuş). Uçuş tarihini vize onayına göre kes.',
+  }[d.visa];
+
+  return [
+    `<b>ajet.com</b> (veya ${d.airline.split(' / ')[0]} sitesi) → "Bilet Al" → Kalkış: <b>Ankara (ESB)</b>, Varış: <b>${d.code}</b>.`,
+    `Tarih: aşağıdaki uygun aylardan <b>Salı/Çarşamba kalkışlı</b> en ucuz haftayı seç (${d.months.slice(0, 4).map(monthName).join(', ')} öncelikli).`,
+    `<b>4 yolcu</b> seç: 3 yetişkin + 1 (15 yaş → çoğu havayolunda <b>yetişkin tarifesi</b>, child değil).`,
+    `Bagaj: dönüş için en az <b>20 kg</b> — aile için 1 ortak valiz + 1 kabin genelde yeterli olmayabilir, 20 kg eklemek mantıklı.`,
+    `Koltuk: PNR alınca <b>4 kişilik yan yana</b> koltuk seç; check-in açılır açılmaz onayla.`,
+    `Ödeme sonrası PNR'ı kaydet → <b>Booking.com</b>'dan ${d.months.slice(0, 2).map(monthName).join('/')} için 2 oda ara (15 yaş yetişkin sayılır).`,
+    `<b>${visaNote}</b>`,
+    `Çıkıştan önce Dışişleri'nin seyahat uyarılarını ve havalimanı uçuş saatini kontrol et.`,
+  ];
+}
+
+function openModal(id) {
+  const d = D.find((x) => x.id === id);
+  document.getElementById('mFlag').textContent = d.flag;
+  document.getElementById('mTitle').textContent = d.city;
+  document.getElementById('mSub').textContent = `${d.country} · ESB ✈ ${d.code} · ${d.visaTxt} · ${d.airline}`;
+
+  document.getElementById('pane-p1').innerHTML = `
+    ${d.plan.map((p) => `<div class="day"><b>${p[0]}</b><span>${p[1]}</span></div>`).join('')}
+    <div class="m-info">
+      <div class="i"><div class="k">Uçuş</div><div class="v">${durText(d)}</div></div>
+      <div class="i"><div class="k">4 kişi uçak</div><div class="v" style="color:var(--price)">${fmt(d.price * 4)}</div></div>
+      <div class="i"><div class="k">En uygun aylar</div><div class="v">${d.months.slice(0, 5).map(monthName).join(', ')}</div></div>
+    </div>`;
+
+  document.getElementById('pane-p2').innerHTML = `
+    <ol class="steps">${bookingSteps(d).map((s) => `<li>${s}</li>`).join('')}</ol>
+    <div class="m-info">
+      <div class="i"><div class="k">Kişi başı (G-D)</div><div class="v" style="color:var(--price)">${fmt(d.price)}</div></div>
+      <div class="i"><div class="k">4 kişi toplam</div><div class="v" style="color:var(--price)">${fmt(d.price * 4)}</div></div>
+      <div class="i"><div class="k">Durum</div><div class="v" style="color:var(--green)">${approved.has(d.id) ? '✅ ONAYLI' : '— onay bekliyor'}</div></div>
+    </div>`;
+
+  document.querySelectorAll('.m-tab').forEach((t, i) => t.classList.toggle('on', i === 0));
+  document.getElementById('pane-p1').classList.add('on');
+  document.getElementById('pane-p2').classList.remove('on');
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function switchTab(btn) {
+  document.querySelectorAll('.m-tab').forEach((t) => t.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.m-pane').forEach((p) => p.classList.remove('on'));
+  document.getElementById('pane-' + btn.dataset.pane).classList.add('on');
+}
+
+/* ================= TOAST ================= */
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+/* ================= BAŞLAT ================= */
+(function init() {
+  // Ay filtresi
+  const fm = document.getElementById('fMonth');
+  MONTHS.forEach((m, i) => {
+    const o = document.createElement('option');
+    o.value = String(i + 1);
+    o.textContent = m;
+    fm.appendChild(o);
   });
 
-  document.getElementById('sendBtn').addEventListener('click', () => {
-    const checked = rows.filter((r) => r.querySelector('.appr').checked);
-    if (!checked.length) { alert('Önce en az bir rota onayla ✅'); return; }
-    const lines = checked.map((r) => {
-      const t = r.querySelector('td:nth-child(2) b').textContent;
-      const price = Number(r.dataset.price).toLocaleString('tr-TR');
-      const season = r.querySelector('td:nth-child(5)').textContent.trim();
-      return '• ' + t + ' | ' + season + ' | ≈ ' + price + ' ₺';
+  document.getElementById('q').addEventListener('input', (e) => { filters.q = e.target.value.trim(); renderGrid(); });
+  document.getElementById('heroSearch').addEventListener('keydown', (e) => { if (e.key === 'Enter') applyHeroSearch(); });
+  document.getElementById('fVisa').addEventListener('change', (e) => { filters.visa = e.target.value; renderGrid(); });
+  document.getElementById('fMonth').addEventListener('change', (e) => { filters.month = e.target.value; renderGrid(); });
+  document.getElementById('fBudget').addEventListener('change', (e) => { filters.budget = e.target.value; renderGrid(); });
+  document.getElementById('fSort').addEventListener('change', (e) => { filters.sort = e.target.value; renderGrid(); });
+  document.querySelectorAll('#regionChips .fchip').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#regionChips .fchip').forEach((c) => c.classList.remove('on'));
+      chip.classList.add('on');
+      filters.region = chip.dataset.r;
+      renderGrid();
     });
-    const text = 'ONAYLANAN ROTALAR:\n' + lines.join('\n');
-    navigator.clipboard && navigator.clipboard.writeText(text);
-    alert('Onayların kopyalandı! 📋\n\n' + text + '\n\nBu metni Asistan'a ver — rezervasyon rehberi hazırlasın.');
   });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
+  loadState();
   refresh();
 })();
 </script>
