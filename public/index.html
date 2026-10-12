@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Asistan — Görev & Hatırlatıcı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ÜST BANT -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="mark">A</div>
+      <div class="brand-text">
+        <div class="brand-name">Asistan</div>
+        <div class="brand-sub">görev &amp; hatırlatıcı</div>
+      </div>
+    </div>
+    <div class="stats">
+      <span class="chip" id="stActive">0 aktif</span>
+      <span class="chip green" id="stToday">0 bugün</span>
+      <span class="chip amber" id="stDone">0 tamam</span>
+      <span class="chip red hidden" id="stLate">0 gecikmiş</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- YENİ GÖREV -->
+    <section class="panel add-panel">
+      <form id="addForm" autocomplete="off">
+        <input id="fTitle" type="text" placeholder="Ne yapacaksın?" maxlength="200" required />
+        <input id="fNote" type="text" placeholder="Not (isteğe bağlı)" maxlength="500" />
+        <select id="fPriority">
+          <option value="orta">Orta öncelik</option>
+          <option value="yuksek">Yüksek öncelik</option>
+          <option value="dusuk">Düşük öncelik</option>
+        </select>
+        <input id="fDue" type="datetime-local" />
+        <button type="submit" class="btn primary">+ Ekle</button>
+      </form>
+      <p id="addError" class="error"></p>
+    </section>
+
+    <!-- LİSTE -->
+    <section class="panel list-panel">
+      <div class="toolbar">
+        <div class="tabs">
+          <button class="tab active" data-filter="active">Aktif</button>
+          <button class="tab" data-filter="done">Tamamlanan</button>
+          <button class="tab" data-filter="all">Hepsi</button>
+        </div>
+        <div class="tools">
+          <input id="search" type="search" placeholder="Ara…" />
+          <button id="bellBtn" class="icon-btn" title="Masaüstü bildirimlerine izin ver">🔔</button>
+        </div>
+      </div>
+
+      <ul id="list" class="list"></ul>
+      <p id="empty" class="empty"></p>
+    </section>
+  </main>
+
+  <div id="toasts" class="toasts"></div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Bağımlılıklar
+node_modules/
+
+# Görev verileri (kişisel veri — repoya girmez)
+data/
+
+# Günlükler / geçici
+*.log
+*.tmp
+.DS_Store

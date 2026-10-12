@@ -1,0 +1,281 @@
+/* =========================================================
+   ASİSTAN — koyu tema (Poppins)
+   ========================================================= */
+:root {
+  --bg: #0d0f14;
+  --card: #151922;
+  --card-2: #1b2130;
+  --text: #eef0f6;
+  --muted: #9aa3b5;
+  --faint: #667085;
+  --line: #232a3a;
+  --accent: #6c7cff;
+  --accent-soft: rgba(108, 124, 255, 0.13);
+  --accent-ink: #a3adff;
+  --green: #34d399;
+  --green-soft: rgba(52, 211, 153, 0.12);
+  --amber: #fbbf24;
+  --amber-soft: rgba(251, 191, 36, 0.12);
+  --red: #f87171;
+  --red-soft: rgba(248, 113, 113, 0.12);
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  font-size: 16px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 420px at 12% -8%, rgba(108, 124, 255, 0.08) 0%, transparent 60%),
+    var(--bg);
+}
+
+.hidden { display: none !important; }
+
+/* ---------- ÜST BANT ---------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 22px;
+  background: rgba(13, 15, 20, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+}
+.brand-name { font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: 0.4px; }
+.brand-sub { font-size: 11.5px; color: var(--muted); }
+
+.stats { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(108, 124, 255, 0.35);
+  color: var(--accent-ink);
+  white-space: nowrap;
+}
+.chip.green { background: var(--green-soft); border-color: rgba(52, 211, 153, 0.35); color: var(--green); }
+.chip.amber { background: var(--amber-soft); border-color: rgba(251, 191, 36, 0.35); color: var(--amber); }
+.chip.red { background: var(--red-soft); border-color: rgba(248, 113, 113, 0.4); color: var(--red); }
+
+/* ---------- YERLEŞİM ---------- */
+.wrap { max-width: 860px; margin: 0 auto; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- YENİ GÖREV ---------- */
+#addForm { display: grid; grid-template-columns: 2fr 2fr; gap: 10px; }
+#fTitle { grid-column: 1 / -1; }
+#addForm .btn { grid-column: 1 / -1; }
+
+input[type='text'],
+input[type='search'],
+input[type='datetime-local'],
+select {
+  padding: 12px 14px;
+  border-radius: 11px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14.5px;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+input:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108, 124, 255, 0.18); }
+input::placeholder { color: var(--faint); }
+input[type='datetime-local'] { color-scheme: dark; }
+
+.btn {
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 12px 18px;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  background: var(--card-2);
+  color: var(--text);
+  font-family: inherit;
+  transition: filter 0.15s ease, transform 0.05s ease;
+}
+.btn:hover { filter: brightness(1.2); }
+.btn:active { transform: scale(0.98); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.error { min-height: 16px; margin: 8px 0 0; font-size: 12.5px; color: var(--red); }
+
+/* ---------- ARAÇ ÇUBUĞU ---------- */
+.toolbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+.tabs { display: flex; gap: 6px; background: var(--bg); border: 1px solid var(--line); border-radius: 11px; padding: 4px; }
+.tab {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 8px 13px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.tab.active { background: var(--accent); color: #fff; }
+
+.tools { display: flex; gap: 8px; flex: 1; min-width: 220px; }
+.tools input { max-width: 260px; padding: 9px 12px; font-size: 13.5px; }
+.icon-btn {
+  width: 38px;
+  flex: 0 0 38px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--card-2);
+  cursor: pointer;
+  font-size: 15px;
+}
+.icon-btn:hover { filter: brightness(1.3); }
+.icon-btn.on { border-color: var(--green); background: var(--green-soft); }
+
+/* ---------- LİSTE ---------- */
+.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+
+.task {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--card-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  animation: rise 0.18s ease;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+.task.late { border-color: rgba(248, 113, 113, 0.45); background: linear-gradient(0deg, var(--card-2), var(--card-2)), var(--red-soft); }
+.task.done { opacity: 0.55; }
+
+.check {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  margin-top: 2px;
+  border-radius: 8px;
+  border: 2px solid var(--line);
+  background: var(--bg);
+  color: transparent;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+.check:hover { border-color: var(--accent); }
+.task.done .check { background: var(--green); border-color: var(--green); color: #06281f; }
+
+.task .body { flex: 1; min-width: 0; }
+.task .title { font-size: 14.5px; font-weight: 600; word-break: break-word; }
+.task.done .title { text-decoration: line-through; color: var(--muted); }
+
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; align-items: center; }
+.prio {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(108, 124, 255, 0.35);
+  color: var(--accent-ink);
+}
+.prio.yuksek { background: var(--red-soft); border-color: rgba(248, 113, 113, 0.4); color: var(--red); }
+.prio.dusuk { background: var(--green-soft); border-color: rgba(52, 211, 153, 0.35); color: var(--green); }
+
+.due { font-size: 11.5px; color: var(--muted); font-weight: 600; }
+.due.today { color: var(--amber); }
+.due.late { color: var(--red); }
+.note { font-size: 12.5px; color: var(--muted); font-style: italic; word-break: break-word; }
+
+.del {
+  border: 0;
+  background: transparent;
+  color: var(--faint);
+  cursor: pointer;
+  font-size: 15px;
+  padding: 2px 4px;
+  border-radius: 8px;
+}
+.del:hover { color: var(--red); background: var(--red-soft); }
+
+.empty { text-align: center; color: var(--faint); font-size: 13.5px; margin: 18px 0 4px; }
+
+/* ---------- BİLDİRİM TOASTLARI ---------- */
+.toasts {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 50;
+  max-width: min(340px, calc(100vw - 36px));
+}
+.toast {
+  background: var(--card);
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  border-left: 4px solid var(--amber);
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: var(--shadow);
+  animation: slide 0.22s ease;
+}
+.toast .t-title { font-size: 13.5px; font-weight: 700; }
+.toast .t-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+@keyframes slide { from { transform: translateX(30px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* ---------- SCROLLBAR ---------- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: #2a3347; border-radius: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* ---------- MOBİL ---------- */
+@media (max-width: 640px) {
+  #addForm { grid-template-columns: 1fr; }
+  .toolbar { flex-direction: column; align-items: stretch; }
+  .tools input { max-width: none; }
+}
