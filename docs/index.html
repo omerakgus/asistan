@@ -544,7 +544,7 @@ const D = [
           ['5. Gün','East Side Gallery, Tempelhof parkı, hediyelik, dönüş.'] ] },
 
   { id:'tokyo', flag:'🇯🇵', country:'Japonya', city:'Tokyo + Osaka', code:'HND', region:'uzak',
-    visa:'schengen', visaTxt:'Vizesiz 90 gün (uzak uçuş)', airline:'THY (İstanbul aktarmalı)', dur:'13 sa + aktarma', durMin:780, freq:0,
+    visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'THY (İstanbul aktarmalı)', dur:'13 sa + aktarma', durMin:780, freq:0,
     price:32000, months:[4,10,11,3], pop:16,
     tags:['Vizesiz 90 gün','İstanbul aktarmalı','Anime & teknoloji'],
     plan:[['1. Gün','Ankara → İstanbul → Tokyo (THY). Shinjuku akşam ışıkları.'],
@@ -556,7 +556,7 @@ const D = [
           ['7. Gün','Nara geyik parkı → dönüş uçuşu.'] ] },
 
   { id:'bangkok', flag:'🇹🇭', country:'Tayland', city:'Bangkok + Phuket', code:'BKK', region:'uzak',
-    visa:'schengen', visaTxt:'Vizesiz 30 gün (uzak uçuş)', airline:'THY (İstanbul aktarmalı)', dur:'11 sa + aktarma', durMin:660, freq:0,
+    visa:'vizesiz', visaTxt:'Vizesiz 30 gün', airline:'THY (İstanbul aktarmalı)', dur:'11 sa + aktarma', durMin:660, freq:0,
     price:24000, months:[11,12,1,2,3], pop:17,
     tags:['Vizesiz 30 gün','Tropik deniz','Uygun yaşam maliyeti'],
     plan:[['1. Gün','Ankara → İstanbul → Bangkok. Khao San çevresi, akşam nehir turu.'],
@@ -605,7 +605,7 @@ function getFiltered() {
       if (!hay.includes(filters.q.toLocaleLowerCase('tr'))) return false;
     }
     if (filters.visa && d.visa !== filters.visa) {
-      // "schengen" filtresi hem schengen hem vize isteyen uzakları da kapsasın diye特殊 yok: direkt eşit
+      // vize durumu birebir eşleşmeli (tüm etiketler doğru sınıflandırıldı)
       return false;
     }
     if (filters.month && !d.months.includes(Number(filters.month))) return false;
