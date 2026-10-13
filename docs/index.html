@@ -930,10 +930,8 @@ function scrollChat() { const c = chatLog(); c.scrollTop = c.scrollHeight; }
 function startChat() {
   if (started) return;
   started = true;
-  document.getElementById('landing').style.display = 'none';
   document.getElementById('dailyNote').style.display = 'none';
   document.getElementById('chatArea').style.display = 'flex';
-  document.getElementById('chatwrap').classList.add('started');
 }
 function askDaily() {
   startChat();
