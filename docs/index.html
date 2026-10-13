@@ -183,6 +183,94 @@
   .toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--ink); color: #fff; font-size: 13.5px; font-weight: 600; padding: 12px 22px; border-radius: 999px; z-index: 120; opacity: 0; transition: .25s; pointer-events: none; }
   .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
+  /* ---------- GÜNLÜK ASİSTAN ---------- */
+  .daily-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; }
+  .dbox { background: #fff; border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); padding: 16px 18px; }
+  .dbox h3 { margin: 0 0 4px; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  .dbox .dsub { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .tip-card { background: linear-gradient(135deg, #eef0ff, #f7f8ff); border: 1px dashed #b9c0ff; border-radius: 12px; padding: 13px 15px; }
+  .tip-card .tt { font-weight: 800; font-size: 13.5px; color: var(--primary); margin-bottom: 3px; }
+  .tip-card .tx { font-size: 13px; color: #3d4460; }
+  .stat-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .stat { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 7px 12px; font-size: 11.5px; font-weight: 700; color: var(--muted); }
+  .stat b { color: var(--ink); font-size: 12.5px; }
+  .task { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px dashed var(--line); font-size: 13px; }
+  .task:last-child { border-bottom: 0; }
+  .task .tck { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 7px; border: 1.5px solid var(--line); background: #fff; display: grid; place-items: center; font-size: 12px; font-weight: 800; color: var(--muted); margin-top: 2px; }
+  .task.done .tck { background: var(--green); border-color: var(--green); color: #fff; }
+  .task .tbody { flex: 1; }
+  .task .tt2 { font-weight: 700; font-size: 13px; }
+  .task.done .tt2 { text-decoration: line-through; color: var(--muted); }
+  .task .tdesc { color: var(--muted); font-size: 12px; }
+  .task .tbtn { flex: 0 0 auto; font-size: 11.5px; font-weight: 700; border: 1px solid var(--line); background: #fff; color: var(--primary); border-radius: 8px; padding: 6px 10px; cursor: pointer; white-space: nowrap; }
+  .task .tbtn:hover { background: var(--primary-soft); border-color: var(--primary); }
+  .streak { display: inline-flex; align-items: center; gap: 6px; background: var(--amber-soft); color: #92600a; border: 1px solid #f5ddb0; border-radius: 999px; padding: 5px 12px; font-size: 11.5px; font-weight: 800; white-space: nowrap; }
+
+  /* ---------- REZERVASYON MERKEZİ ---------- */
+  .rez-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+  .rez-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); padding: 14px 16px; transition: .18s; }
+  .rez-card:hover { transform: translateY(-2px); }
+  .rez-card.done { border-color: #9fe0cb; background: linear-gradient(180deg, #fff, #f4fcf9); }
+  .rez-card .rh { display: flex; align-items: center; gap: 9px; }
+  .rez-card .rf { font-size: 22px; }
+  .rez-card .rt { font-weight: 800; font-size: 15px; }
+  .rez-card .rs { font-size: 11.5px; color: var(--muted); font-weight: 600; }
+  .rez-badge { margin-left: auto; font-size: 10.5px; font-weight: 800; padding: 4px 9px; border-radius: 999px; background: var(--blue-soft); color: #1f6fd0; white-space: nowrap; }
+  .rez-badge.done { background: var(--green-soft); color: var(--green); }
+  .bar { height: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; margin: 11px 0 6px; }
+  .bar > span { display: block; height: 100%; background: linear-gradient(90deg, var(--primary), #7b86ff); transition: width .3s; }
+  .bar > span.done { background: linear-gradient(90deg, var(--green), #42d6a0); }
+  .rez-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 11.5px; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
+  .rez-btn { width: 100%; border: 0; background: var(--primary); color: #fff; font-weight: 700; font-size: 13px; padding: 10px; border-radius: 10px; cursor: pointer; font-family: inherit; }
+  .rez-btn:hover { background: var(--primary-d); }
+  .rez-btn.done { background: var(--green); }
+  .rez-empty { grid-column: 1/-1; text-align: center; padding: 26px; color: var(--muted); font-size: 13.5px; background: #fff; border: 1px dashed var(--line); border-radius: var(--r); }
+
+  /* ---------- REZERVASYON SİHİRBAZI ---------- */
+  .wiz-steps { display: flex; gap: 6px; margin-bottom: 16px; }
+  .wiz-step { flex: 1; text-align: center; font-size: 11px; font-weight: 800; color: var(--muted); background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 8px 4px; cursor: pointer; text-transform: uppercase; letter-spacing: .3px; font-family: inherit; }
+  .wiz-step.on { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .wiz-step.past { background: var(--green-soft); border-color: #bfe9db; color: var(--green); }
+  .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 9px; margin: 12px 0; }
+  .llink { display: flex; flex-direction: column; gap: 2px; background: var(--bg); border: 1px solid var(--line); border-radius: 11px; padding: 11px 13px; color: var(--ink); transition: .15s; }
+  .llink:hover { border-color: var(--primary); background: var(--primary-soft); transform: translateY(-2px); }
+  .llink .lk { font-size: 13px; font-weight: 800; }
+  .llink .ld { font-size: 11px; color: var(--muted); }
+  .llink.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .llink.primary .ld { color: #dfe3ff; }
+  .llink.primary:hover { background: var(--primary-d); }
+  .note { background: var(--amber-soft); border: 1px solid #f5ddb0; color: #92600a; border-radius: 10px; padding: 10px 13px; font-size: 12.5px; margin-top: 10px; }
+  .chk { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 13.5px; cursor: pointer; }
+  .chk:last-child { border-bottom: 0; }
+  .chk input { margin-top: 3px; accent-color: var(--green); width: 16px; height: 16px; cursor: pointer; flex: 0 0 auto; }
+  .chk.done span { color: var(--muted); text-decoration: line-through; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 10px; }
+  .form-row input { border: 1px solid var(--line); background: var(--bg); border-radius: 10px; padding: 11px 13px; font-family: inherit; font-size: 13.5px; outline: 0; width: 100%; color: var(--ink); }
+  .form-row input:focus { border-color: var(--primary); background: #fff; }
+  .form-row .full { grid-column: 1/-1; }
+  .wiz-actions { display: flex; gap: 9px; margin-top: 16px; }
+  .wiz-actions .btn { flex: 1; padding: 12px; font-size: 13px; }
+  .btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .btn.primary:hover { background: var(--primary-d); color: #fff; }
+  .btn.success { background: var(--green); border-color: var(--green); color: #fff; }
+  .btn.success:hover { color: #fff; filter: brightness(1.06); }
+  .sum-box { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 13px; font-size: 12.5px; white-space: pre-wrap; font-family: Consolas, monospace; max-height: 220px; overflow-y: auto; margin-top: 12px; color: #3d4460; user-select: all; }
+
+  /* ---------- ASİSTAN KABUĞU ---------- */
+  .fab { position: fixed; left: 20px; bottom: 20px; z-index: 80; width: 54px; height: 54px; border-radius: 50%; border: 0; background: linear-gradient(135deg, var(--primary), #7b86ff); color: #fff; font-size: 23px; cursor: pointer; box-shadow: 0 10px 26px rgba(63,81,212,.4); }
+  .fab:hover { transform: scale(1.06); }
+  .fab .dot { position: absolute; top: 2px; right: 2px; width: 14px; height: 14px; background: var(--red); border: 2px solid #fff; border-radius: 50%; }
+  .a-panel { position: fixed; left: 20px; bottom: 84px; z-index: 81; width: min(340px, calc(100vw - 40px)); background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 24px 60px rgba(15,20,40,.25); overflow: hidden; display: none; }
+  .a-panel.open { display: block; animation: pop .18s ease; }
+  .a-head { background: linear-gradient(135deg, #2c3bb8, #4f5ec4); color: #fff; padding: 13px 15px; font-weight: 800; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+  .a-head span { font-weight: 600; font-size: 11.5px; opacity: .85; }
+  .a-head button { margin-left: auto; background: transparent; border: 0; color: #fff; cursor: pointer; font-size: 16px; }
+  .a-body { padding: 13px 15px; max-height: 52vh; overflow-y: auto; }
+  .a-msg { font-size: 13px; padding: 8px 11px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line); margin-bottom: 8px; line-height: 1.5; }
+  .a-msg b { color: var(--primary); }
+  .a-actions { display: flex; gap: 7px; padding: 0 15px 14px; }
+  .a-actions .btn { font-size: 11.5px; padding: 8px 10px; }
+
   @media (max-width: 720px) {
     nav.menu { display: none; }
     .hero h1 { font-size: 24px; }
@@ -190,6 +278,9 @@
     .searchbar button { padding: 13px; }
     .filters { position: static; }
     table.atbl th:nth-child(3), table.atbl td:nth-child(3) { display: none; }
+    .daily-grid { grid-template-columns: 1fr; }
+    .wiz-steps .wiz-step { font-size: 9.5px; padding: 7px 2px; }
+    .fab { width: 48px; height: 48px; font-size: 20px; }
   }
 </style>
 </head>
@@ -202,10 +293,11 @@
       <div>Asistan Seyahat<small>ANKARA (ESB) KALKIŞLI FIRSATLAR</small></div>
     </div>
     <nav class="menu">
+      <a href="#gunluk">🤖 Asistan</a>
       <a href="#rotalar">Rotalar</a>
       <a href="#onaylar">Onaylarım</a>
+      <a href="#rezervasyon">🎟 Rezervasyon</a>
       <a href="#aylar">Ay Rehberi</a>
-      <a href="#hazirlik">Hazırlık</a>
     </nav>
     <div class="hspacer"></div>
     <button class="approve-pill" onclick="document.getElementById('onaylar').scrollIntoView()">✅ <span id="pillCount">0</span> Onaylı</button>
@@ -236,7 +328,41 @@
     <div class="bi">✅</div>
     <div>
       <b>Toplu program onayı uygulandı — tüm rotalar ONAYLI.</b>
-      <p>Sizin talimatınız üzerine (12 Ekim 2026) tüm programlar onaylandı ve rezervasyon adımları hazırlandı. Beğenmediğiniz rotayı karttaki "✓ Onaylı" düğmesinden veya aşağıdaki listeden geri alabilirsiniz. Bilet satın alma işlemi siz geldiğinizde sizin adınıza yapılır.</p>
+      <p>Sizin talimatınız üzerine (12 Ekim 2026) tüm programlar onaylandı. Beğenmediğiniz rotayı karttaki "✓ Onaylı" düğmesinden geri alabilirsiniz. <b>Devamı için:</b> aşağıdaki <b>Rezervasyon Merkezi</b>'ndeki sihirbaz adım adım bilet arama, otel ve PNR kaydını yürütür. 🤖 <b>Asistan Günlüğü</b> her gün kontrol edip size özel öneri üretir.</p>
+    </div>
+  </div>
+
+  <!-- GÜNLÜK ASİSTAN -->
+  <div class="section-h" id="gunluk">
+    <div class="sh-ic">🤖</div>
+    <div>
+      <h2>Asistan Günlüğü</h2>
+      <div class="sh-sub">Her gün kontrol eder, onaylı rotalarına göre öneri üretir</div>
+    </div>
+    <div style="margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <span class="streak" id="streakBox">🔥 Kontrol serisi: —</span>
+      <button class="btn" style="flex:0 0 auto;padding:8px 12px;font-size:12px" onclick="askNotify()">🔔 Günlük bildirim</button>
+    </div>
+  </div>
+  <div class="daily-grid">
+    <div class="dbox">
+      <h3>💡 Bugünün Önerisi <span style="margin-left:auto;font-size:11.5px;color:var(--muted);font-weight:600" id="todayDate">—</span></h3>
+      <div class="dsub" id="focusLine">—</div>
+      <div class="tip-card">
+        <div class="tt" id="tipTitle">—</div>
+        <div class="tx" id="tipText">—</div>
+      </div>
+      <div class="stat-row">
+        <span class="stat">Son kontrol: <b id="lastCheck">—</b></span>
+        <span class="stat">Onaylı: <b id="dAppr">—</b></span>
+        <span class="stat">Rezervasyon: <b id="dRez">—</b></span>
+        <span class="stat">Sıradaki sezon: <b id="dNext">—</b></span>
+      </div>
+    </div>
+    <div class="dbox">
+      <h3>✅ Günlük Kontrol Listesi</h3>
+      <div class="dsub" id="taskSub">Görevler her gün yenilenir — tamamladıklarınız işaretlenir.</div>
+      <div id="taskList"></div>
     </div>
   </div>
 
@@ -304,6 +430,16 @@
     <div id="apprBody"></div>
   </div>
 
+  <!-- REZERVASYON MERKEZİ -->
+  <div class="section-h" id="rezervasyon">
+    <div class="sh-ic">🎟</div>
+    <div>
+      <h2>Rezervasyon Merkezi</h2>
+      <div class="sh-sub">Onay sonrası adım adım sihirbaz: canlı arama linkleri → kontrol listesi → PNR kaydı</div>
+    </div>
+  </div>
+  <div class="rez-grid" id="rezGrid"></div>
+
   <!-- AY REHBERİ -->
   <div class="section-h" id="aylar">
     <div class="sh-ic">📅</div>
@@ -351,6 +487,44 @@
   Fiyatlar tahminidir (Ekim 2026 uçuş verileri: FlightConnections, AJet, Skyscanner, momondo, obilet) — bilet alımında teyit edilir.<br/>
   🤖 Asistan tarafından hazırlanmıştır.
 </footer>
+
+<!-- REZERVASYON SİHİRBAZI -->
+<div class="overlay" id="wizOverlay" onclick="if(event.target===this)closeWizard()">
+  <div class="modal">
+    <div class="m-head">
+      <div class="mf" id="wFlag">✈️</div>
+      <div>
+        <h3 id="wTitle">—</h3>
+        <div class="ms" id="wSub">—</div>
+      </div>
+      <button class="m-close" onclick="closeWizard()">✕</button>
+    </div>
+    <div class="m-body">
+      <div class="wiz-steps">
+        <button class="wiz-step on" onclick="wizNav(1)">1 · Uçuş Ara</button>
+        <button class="wiz-step" onclick="wizNav(2)">2 · Tarih &amp; Otel</button>
+        <button class="wiz-step" onclick="wizNav(3)">3 · Kontrol</button>
+        <button class="wiz-step" onclick="wizNav(4)">4 · Kayıt &amp; Bitir</button>
+      </div>
+      <div class="m-pane on" id="wpane-1"></div>
+      <div class="m-pane" id="wpane-2"></div>
+      <div class="m-pane" id="wpane-3"></div>
+      <div class="m-pane" id="wpane-4"></div>
+      <div class="wiz-actions" id="wizActions"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ASİSTAN KABUĞU -->
+<button class="fab" id="fab" title="Asistan" onclick="toggleAssistant()">🤖<span class="dot" id="fabDot"></span></button>
+<div class="a-panel" id="aPanel">
+  <div class="a-head">🤖 Asistan <span id="aDate"></span><button onclick="toggleAssistant()">✕</button></div>
+  <div class="a-body" id="aBody"></div>
+  <div class="a-actions">
+    <button class="btn" onclick="document.getElementById('gunluk').scrollIntoView();toggleAssistant()">Günlük kontrol</button>
+    <button class="btn" onclick="document.getElementById('rezervasyon').scrollIntoView();toggleAssistant()">Rezervasyon</button>
+  </div>
+</div>
 
 <!-- MODAL -->
 <div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
@@ -571,6 +745,37 @@ const D = [
 const REGION_LABEL = { balkan:'Balkanlar', kafkasya:'Kafkasya', korfez:'Körfez', ortaasya:'Orta Asya', akdeniz:'Akdeniz & Orta Doğu', avrupa:'Avrupa', uzak:'Uzak Coğrafya' };
 const VISA_CLASS = { vizesiz:'vb-free', kimlik:'vb-id', kapi:'vb-door', schengen:'vb-visa' };
 
+/* ============ ASİSTAN: GÜNLÜK & REZERVASYON DURUMU ============ */
+const REZ_KEY = 'asistan-rez-v1', GUN_KEY = 'asistan-gunluk-v1';
+const CHECKLIST = [
+  '4 yetişkin seçildi (15 yaş dahil)',
+  'Gidiş-dönüş + 20 kg bagaj eklendi',
+  '4 koltuk yan yana seçildi',
+  'Ödeme yapıldı, PNR kodu alındı',
+  'PNR / uçuş tarihi 4. adımda kaydedildi',
+  'Konaklama arandı (2 oda veya 3+1)',
+  'Konaklama rezervasyonu tamamlandı',
+  'Kimlik / pasaport geçerliliği kontrol edildi',
+  'Seyahat sigortası yapıldı (Schengen\u2019de zorunlu)'
+];
+const TIPS = [
+  { t:'Salı-Çarşamba kalkışı', x:'AJet ve Pegasus\u2019ta salı/çarşamba kalkışları hafta sonuna göre daha uygun oluyor. Tarih esnekse önce o günleri dene.' },
+  { t:'Bakü en yoğun hat', x:'Ankara-Bakü ayda 72 direkt uçuş — hafta içi talep düşerken fiyatlar da düşüyor. Kasım-Nisan arası ekstra bak.' },
+  { t:'Budapeşte kampanyası', x:'Ankara-Budapeşte gidiş-dönüş ~3.617 ₺\u2019den görüldü (AJet direkt). Schengen vizesi gerekiyor — 45 gün önce başvur.' },
+  { t:'Kapı vizesi zamanlaması', x:'Yunan adaları kapı vizesinde seyahat planı en az 10 gün önce yapılmalı; kimlik + feribot bileti yeterli.' },
+  { t:'15 yaş kuralı', x:'Çocuğun 15 — çoğu havayolunda yetişkin tarifesi geçerli. Bilet aramada \u201C4 yetişkin\u201D seçmek en doğru fiyatı verir.' },
+  { t:'20 kg bagaj', x:'Ailede 2. bagaj genelde 1. bagajdan daha hesaplıdır; dönüş için 20 kg\u2019ı baştan ekle, sonradan pahalıya gelir.' },
+  { t:'Otel: 2 oda', x:'15 yaş otellerde yetişkin sayılır — tek odada \u201C3 yetişkin + çocuk\u201D limiti aşılabilir, 2 oda veya 3+1 tipi ara.' },
+  { t:'Schengen vizesi', x:'Schengen başvurusu uçuştan 15-45 gün önce yapılır. Onaylı bir Schengen rotan varsa evrakları bugün hazırla.' },
+  { t:'En uygun ay', x:'Balkanlar mayıs-haziran ve eylül, körfez kasım-mart, Kafkasya nisan-ekimde en iyi. Tarih esnekse aya göre bilet kes.' },
+  { t:'Fiyat takibi', x:'Google Flights\u2019ta \u201CFiyat takibi\u201D aç — rota düşerse haber verir. Günlük görevdeki \u201CCanlı ara\u201D düğmesi bunun için.' },
+  { t:'Seyahat sigortası', x:'Schengen\u2019de zorunlu, vizesiz rotalarda da ~20-30 €. Ailenin tamamını tek poliçede almak daha ucuz.' },
+  { t:'Sabah uçuşu', x:'İlk gün uzun olmasın: 08:00-11:00 arası kalkış seç; gecikme riski düşük, akşama şehir turu sığar.' },
+  { t:'Check-in ilk dakika', x:'Online check-in açılır açılmaz gir: yan yana 4 koltuk ve daha geniş bagaj hakkı için kritik.' }
+];
+let rez = {}, gunluk = null;
+let wizId = null, wizStepNo = 1;
+
 /* ================= DURUM ================= */
 const LS_KEY = 'asistan-onay-v3';
 let approved = new Set();
@@ -690,7 +895,7 @@ function renderApproval() {
   }
   body.innerHTML = `
     <table class="atbl">
-      <thead><tr><th>Rota</th><th>Önerilen dönem</th><th>Havayolu</th><th>4 kişi</th><th>Durum</th><th></th></tr></thead>
+      <thead><tr><th>Rota</th><th>Önerilen dönem</th><th>Havayolu</th><th>4 kişi</th><th>Durum</th><th>İşlem</th></tr></thead>
       <tbody>
       ${list.map((d) => `
         <tr>
@@ -698,8 +903,8 @@ function renderApproval() {
           <td>${d.months.slice(0, 4).map(monthName).join(', ')}<span style="color:var(--muted)"> için</span></td>
           <td>${d.airline}</td>
           <td class="num">${fmt(d.price * 4)}</td>
-          <td class="ok">✅ ONAYLANDI</td>
-          <td><button class="rowx" onclick="toggle('${d.id}')">geri al</button></td>
+          <td class="ok">${isDone(d.id) ? '🎫 TAMAM' : '✅ ONAYLANDI'}</td>
+          <td style="white-space:nowrap"><button class="rowx" style="color:var(--primary)" onclick="openWizard('${d.id}')">rezervasyon →</button> <button class="rowx" onclick="toggle('${d.id}')">geri al</button></td>
         </tr>`).join('')}
       </tbody>
       <tfoot><tr>
@@ -710,7 +915,7 @@ function renderApproval() {
     </table>`;
 }
 
-function refresh() { renderGrid(); renderApproval(); saveState(); }
+function refresh() { renderGrid(); renderApproval(); renderRezCenter(); renderDaily(); saveState(); }
 
 /* ================= ONAYLAR ================= */
 function toggle(id) {
@@ -793,8 +998,9 @@ function openModal(id) {
     <div class="m-info">
       <div class="i"><div class="k">Kişi başı (G-D)</div><div class="v" style="color:var(--price)">${fmt(d.price)}</div></div>
       <div class="i"><div class="k">4 kişi toplam</div><div class="v" style="color:var(--price)">${fmt(d.price * 4)}</div></div>
-      <div class="i"><div class="k">Durum</div><div class="v" style="color:var(--green)">${approved.has(d.id) ? '✅ ONAYLI' : '— onay bekliyor'}</div></div>
-    </div>`;
+      <div class="i"><div class="k">Durum</div><div class="v" style="color:var(--green)">${approved.has(d.id) ? (isDone(d.id) ? '🎫 TAMAM' : '✅ ONAYLI') : '— onay bekliyor'}</div></div>
+    </div>
+    <button class="btn primary" style="width:100%;margin-top:14px" onclick="closeModal();openWizard('${d.id}')">▶ Rezervasyon Sihirbazına Geç</button>`;
 
   document.querySelectorAll('.m-tab').forEach((t, i) => t.classList.toggle('on', i === 0));
   document.getElementById('pane-p1').classList.add('on');
@@ -811,6 +1017,305 @@ function switchTab(btn) {
   btn.classList.add('on');
   document.querySelectorAll('.m-pane').forEach((p) => p.classList.remove('on'));
   document.getElementById('pane-' + btn.dataset.pane).classList.add('on');
+}
+
+/* ================= ASİSTAN: REZERVASYON YARDIMCILARI ================= */
+function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+function loadRez() { try { rez = JSON.parse(localStorage.getItem(REZ_KEY)) || {}; } catch (e) { rez = {}; } }
+function saveRez() { try { localStorage.setItem(REZ_KEY, JSON.stringify(rez)); } catch (e) {} }
+function rezOf(id) { if (!rez[id]) rez[id] = { chk: [], pnr: '', paid: '', fdate: '', done: false, doneAt: '' }; return rez[id]; }
+function isDone(id) { return !!(rez[id] && rez[id].done); }
+function chkCount(id) { const r = rez[id]; return r ? r.chk.filter(Boolean).length : 0; }
+function toggleChk(id, i) { const r = rezOf(id); r.chk[i] = !r.chk[i]; saveRez(); renderWizard(); renderRezCenter(); renderDaily(); }
+function saveField(k, v) { if (!wizId) return; const r = rezOf(wizId); r[k] = v; saveRez(); }
+function baseCity(d) { if (d.id === 'adalar') return 'Sakız Adası'; return d.city.split(' + ')[0].split(' / ')[0]; }
+function flightsLink(d) { return 'https://www.google.com/travel/flights?q=' + encodeURIComponent('Flights from Ankara to ' + baseCity(d) + ' for 4 adults') + '&curr=TRY'; }
+function skyLink(d) { if (d.code === 'ADE') return 'https://www.google.com/search?q=' + encodeURIComponent('Çeşme Sakız adası feribot saatleri'); return 'https://www.skyscanner.net/transport/flights/esb/' + d.code.toLowerCase() + '/?adultsv2=4&cabinclass=economy&rtn=1'; }
+function bookingLink(d) { return 'https://www.booking.com/searchresults.tr.html?ss=' + encodeURIComponent(baseCity(d)) + '&group_adults=3&group_children=1&age=15&no_rooms=2&lang=tr&selected_currency=TRY'; }
+function airlineLinks(d) {
+  const l = [];
+  if (/AJet/.test(d.airline)) l.push(['AJet', 'ajet.com — ESB çıkışlı', 'https://www.ajet.com']);
+  if (/Pegasus/.test(d.airline)) l.push(['Pegasus', 'flypgs.com', 'https://www.flypgs.com']);
+  if (/THY/.test(d.airline)) l.push(['THY', 'turkishairlines.com', 'https://www.turkishairlines.com']);
+  if (/Royal/.test(d.airline)) l.push(['Royal Jordanian', 'rj.com', 'https://www.rj.com']);
+  if (/Feribot/.test(d.airline)) l.push(['Feribot', 'Çeşme hattı — saatler', skyLink(d)]);
+  return l;
+}
+function summaryText(d) {
+  const r = rezOf(d.id);
+  return [
+    '🗺 ' + d.flag + ' ' + d.city + ' (' + d.country + ') — ESB ✈ ' + d.code,
+    '👥 4 kişi (3 yetişkin + 1 çocuk/15) · ' + d.airline + ' · uçuş ' + d.dur,
+    '🛂 ' + d.visaTxt,
+    '💰 Tahmini uçak: ' + fmt(d.price * 4) + ' (kişi başı ' + fmt(d.price) + ', gidiş-dönüş)',
+    '📅 Uygun aylar: ' + d.months.slice(0, 6).map(monthName).join(', '),
+    '🎟 Rezervasyon: ' + (r.done ? ('TAMAM ✓ PNR ' + (r.pnr || '-') + (r.paid ? ' · ' + r.paid : '') + ' · ' + (r.doneAt || '')) : ('yapılıyor — ' + chkCount(d.id) + '/' + CHECKLIST.length + ' adım')),
+    '✅ Program onaylı: ' + (approved.has(d.id) ? 'evet' : 'hayır'),
+    '🔗 Bilet: ' + flightsLink(d),
+    '🏨 Otel: ' + bookingLink(d),
+    '— Asistan Seyahat planı'
+  ].join('\n');
+}
+
+/* ================= ASİSTAN: SİHİRBAZ ================= */
+function openWizard(id) {
+  wizId = id; wizStepNo = 1;
+  renderWizard();
+  document.getElementById('wizOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeWizard() {
+  document.getElementById('wizOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  wizId = null;
+}
+function wizNav(n) { wizStepNo = n; renderWizard(); }
+function renderWizard() {
+  const d = D.find((x) => x.id === wizId);
+  if (!d) return;
+  const r = rezOf(d.id);
+  document.getElementById('wFlag').textContent = d.flag;
+  document.getElementById('wTitle').textContent = d.city;
+  document.getElementById('wSub').textContent = 'ESB ✈ ' + d.code + ' · ' + d.airline + ' · ' + d.visaTxt + ' · 4 kişi ≈ ' + fmt(d.price * 4);
+  const steps = document.querySelectorAll('.wiz-step');
+  steps.forEach((b, i) => { b.classList.toggle('on', i + 1 === wizStepNo); b.classList.toggle('past', i + 1 < wizStepNo); });
+  for (let i = 1; i <= 4; i++) document.getElementById('wpane-' + i).classList.toggle('on', i === wizStepNo);
+
+  if (wizStepNo === 1) {
+    document.getElementById('wpane-1').innerHTML = `
+      <div class="note">💡 Amaç: aynı rotada en ucuz bileti bulmak için 3 sitede karşılaştırma yap. ${d.months.slice(0, 3).map(monthName).join('/')} aylarında <b>Salı-Çarşamba</b> kalkışlarını dene.</div>
+      <div class="link-grid">
+        <a class="llink primary" target="_blank" rel="noopener" href="${flightsLink(d)}" onclick="taskDone('fly')"><span class="lk">🔎 Google Flights</span><span class="ld">4 yetişkin · ESB → ${d.code}</span></a>
+        <a class="llink" target="_blank" rel="noopener" href="${skyLink(d)}" onclick="taskDone('fly')"><span class="lk">🔎 Skyscanner</span><span class="ld">tarih esnek arama</span></a>
+        ${airlineLinks(d).map((l) => `<a class="llink" target="_blank" rel="noopener" href="${l[2]}"><span class="lk">${l[0]}</span><span class="ld">${l[1]}</span></a>`).join('')}
+      </div>
+      <div class="note">⚠️ Arama sonuçlarında <b>4 yetişkin</b> seç (15 yaş child değil, yetişkin tarifesi). Bagaj dahil mi kontrol et.</div>
+      <div class="m-info">
+        <div class="i"><div class="k">Kişi başı hedef</div><div class="v" style="color:var(--price)">${fmt(d.price)}</div></div>
+        <div class="i"><div class="k">4 kişi hedef</div><div class="v" style="color:var(--price)">${fmt(d.price * 4)}</div></div>
+        <div class="i"><div class="k">Uçuş süresi</div><div class="v">${d.dur}</div></div>
+      </div>`;
+  } else if (wizStepNo === 2) {
+    document.getElementById('wpane-2').innerHTML = `
+      <div class="note">📅 Uygun aylar: <b>${d.months.slice(0, 6).map(monthName).join(', ')}</b> — esnek tarihsen bu aylardaki en ucuz haftayı seç, takvim görünümüne bak.</div>
+      <div class="link-grid">
+        <a class="llink primary" target="_blank" rel="noopener" href="${bookingLink(d)}" onclick="taskDone('otel')"><span class="lk">🏨 Booking.com</span><span class="ld">3 yetişkin + 1 (15) · 2 oda</span></a>
+        <a class="llink" target="_blank" rel="noopener" href="https://www.google.com/search?q=${encodeURIComponent(baseCity(d) + ' nerede kalınır aile')}"><span class="lk">🔎 "Nerede kalınır"</span><span class="ld">mahalle karşılaştırması</span></a>
+      </div>
+      <div class="note">🏨 15 yaş otellerde yetişkin sayılır: tek oda "3 yetişkin" limitini aşabilir → 2 oda veya "3 yetişkin + ek yatak" ara.</div>`;
+  } else if (wizStepNo === 3) {
+    document.getElementById('wpane-3').innerHTML =
+      CHECKLIST.map((c, i) => `<label class="chk ${r.chk[i] ? 'done' : ''}"><input type="checkbox" ${r.chk[i] ? 'checked' : ''} onchange="toggleChk('${d.id}',${i})" /><span>${c}</span></label>`).join('') +
+      `<div class="note">İlerlemen tarayıcıda saklanır — sayfayı kapatsan da kaldığın yerden devam edersin; asistan günlük kontrolde bu adımları takip eder.</div>`;
+  } else {
+    document.getElementById('wpane-4').innerHTML = `
+      ${r.done ? `<div class="note" style="background:var(--green-soft);border-color:#bfe9db;color:#0a7d55">🎫 <b>REZERVASYON TAMAMLANDI</b> — ${r.doneAt} tarihinde kaydedildi. PNR: <b>${esc(r.pnr) || '—'}</b>${r.paid ? ' · ödenen: ' + esc(r.paid) : ''}</div>` : `
+      <div class="form-row">
+        <input id="wPnr" placeholder="PNR / rezervasyon kodu (örn. AB12XY)" value="${esc(r.pnr)}" oninput="saveField('pnr', this.value)" />
+        <input id="wPaid" placeholder="Ödenen tutar (örn. 41.500 ₺)" value="${esc(r.paid)}" oninput="saveField('paid', this.value)" />
+        <input id="wDate" class="full" type="date" value="${esc(r.fdate)}" onchange="saveField('fdate', this.value)" />
+      </div>
+      <div class="note">Ödeme yaptıktan sonra PNR\u2019ı buraya yaz → rota \u201Ctamamlandı\u201D işaretlensin; asistan günlük kontrolde bu rotayı kapatır.</div>`}
+      <div class="sum-box">${esc(summaryText(d))}</div>`;
+  }
+
+  const el = document.getElementById('wizActions');
+  el.innerHTML = `
+    ${wizStepNo > 1 ? `<button class="btn" onclick="wizNav(${wizStepNo - 1})">← Geri</button>` : ''}
+    ${wizStepNo < 4
+      ? `<button class="btn primary" onclick="wizNav(${wizStepNo + 1})">İleri →</button>`
+      : `<button class="btn success" onclick="finishRez('${d.id}')">${r.done ? '✓ Kaydı güncelle' : '✅ Rezervasyonu Tamamla'}</button>`}
+    <button class="btn" onclick="copySummary('${d.id}')">📋 Özeti Kopyala</button>`;
+}
+function finishRez(id) {
+  const r = rezOf(id);
+  const d = D.find((x) => x.id === id);
+  const pnrEl = document.getElementById('wPnr');
+  if (pnrEl) { r.pnr = pnrEl.value.trim(); r.paid = document.getElementById('wPaid').value.trim(); r.fdate = document.getElementById('wDate').value; }
+  if (!r.pnr) { toast('Önce PNR kodunu gir — ödeme yapılmadıysa kaydetme'); return; }
+  r.done = true;
+  r.doneAt = new Date().toLocaleDateString('tr-TR');
+  saveRez();
+  renderRezCenter(); renderApproval(); renderDaily();
+  renderWizard();
+  toast('🎫 Rezervasyon tamamlandı: ' + baseCity(d));
+}
+function copySummary(id) {
+  const d = D.find((x) => x.id === id);
+  const txt = summaryText(d);
+  let ok = false;
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+  } catch (e) { ok = false; }
+  if (!ok && navigator.clipboard) {
+    navigator.clipboard.writeText(txt).then(() => toast('📋 Kopyalandı')).catch(() => toast('Kopyalanamadı — aşağıdaki metni elle seç'));
+    return;
+  }
+  toast(ok ? '📋 Kopyalandı — WhatsApp/e-postaya yapıştırabilirsin' : 'Kopyalanamadı — aşağıdaki metni elle seç');
+}
+
+/* ================= ASİSTAN: REZERVASYON MERKEZİ ================= */
+function renderRezCenter() {
+  const g = document.getElementById('rezGrid');
+  if (!g) return;
+  const list = D.filter((d) => approved.has(d.id));
+  if (!list.length) {
+    g.innerHTML = '<div class="rez-empty">Onaylı rota yok — önce rotaları onaylayın (kartlardaki "＋ Onaya Ekle").</div>';
+    return;
+  }
+  g.innerHTML = list.map((d) => {
+    const r = rezOf(d.id);
+    const c = chkCount(d.id);
+    const pct = Math.round((c / CHECKLIST.length) * 100);
+    return `
+    <div class="rez-card${r.done ? ' done' : ''}">
+      <div class="rh">
+        <div class="rf">${d.flag}</div>
+        <div><div class="rt">${d.city}</div><div class="rs">ESB ✈ ${d.code} · ${d.months.slice(0, 3).map(monthName).join(', ')}</div></div>
+        <span class="rez-badge${r.done ? ' done' : ''}">${r.done ? '🎫 TAMAM' : 'ADIM ' + c + '/' + CHECKLIST.length}</span>
+      </div>
+      <div class="bar"><span class="${r.done ? 'done' : ''}" style="width:${r.done ? 100 : pct}%"></span></div>
+      <div class="rez-meta"><span>${r.done ? ('PNR: ' + esc(r.pnr) || '—') : 'bilet → otel → PNR adımları'}</span><span>${fmt(d.price * 4)}</span></div>
+      <button class="rez-btn${r.done ? ' done' : ''}" onclick="openWizard('${d.id}')">${r.done ? 'Ticket, özet ve kaydı gör' : '🎟 Rezervasyona Devam Et →'}</button>
+    </div>`;
+  }).join('');
+}
+
+/* ================= ASİSTAN: GÜNLÜK MOD ================= */
+function todayStr() { const t = new Date(); return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0'); }
+function yesterdayStr() { const t = new Date(Date.now() - 86400000); return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0'); }
+function dayOfYear() { const t = new Date(); return Math.floor((t - new Date(t.getFullYear(), 0, 0)) / 86400000); }
+function humanAgo(ms) { const m = Math.floor(ms / 60000); if (m < 2) return 'az önce'; if (m < 60) return m + ' dk önce'; const h = Math.floor(m / 60); if (h < 24) return h + ' saat önce'; return Math.floor(h / 24) + ' gün önce'; }
+function saveGunluk() { try { localStorage.setItem(GUN_KEY, JSON.stringify(gunluk)); } catch (e) {} }
+function loadGunluk() {
+  let g = null;
+  try { g = JSON.parse(localStorage.getItem(GUN_KEY)); } catch (e) {}
+  const today = todayStr();
+  if (!g || g.date !== today) {
+    const streak = (g && g.date === yesterdayStr()) ? (g.streak || 0) + 1 : 1;
+    const rollover = !!g;
+    g = { date: today, tasks: {}, streak: streak, lastVisit: g ? g.lastVisit : 0 };
+    gunluk = g;
+    saveGunluk();
+    if (rollover) notifyDaily();
+  } else {
+    gunluk = g;
+  }
+  gunluk.ago = gunluk.lastVisit ? humanAgo(Date.now() - gunluk.lastVisit) : 'ilk ziyaret';
+  gunluk.lastVisit = Date.now();
+  saveGunluk();
+}
+function notifyDaily() {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  const list = D.filter((d) => approved.has(d.id));
+  try { new Notification('🤖 Asistan günlük kontrolü', { body: list.length + ' onaylı rota · bugünün önerisi hazır. Sayfayı aç, kontrol listesini gör.' }); } catch (e) {}
+}
+function askNotify() {
+  if (!('Notification' in window)) { toast('Tarayıcın bildirimleri desteklemiyor'); return; }
+  Notification.requestPermission().then((p) => {
+    if (p === 'granted') {
+      toast('🔔 Günlük asistan bildirimi açıldı');
+      try { new Notification('🤖 Asistan hazır', { body: 'Her gün kontrol edip öneri göndereceğim.' }); } catch (e) {}
+    } else toast('Bildirim izni verilmedi');
+  }).catch(() => toast('Bildirim izni verilemedi'));
+}
+function focusRoute() {
+  const pool = D.filter((d) => approved.has(d.id));
+  const list = pool.length ? pool : D;
+  return list[dayOfYear() % list.length];
+}
+function nextSeason(list) {
+  if (!list.length) return '—';
+  const m = new Date().getMonth() + 1;
+  let best = null, bestGap = 99, bestM = 1;
+  list.forEach((d) => d.months.forEach((mm) => {
+    const gap = (mm - m + 12) % 12;
+    if (gap < bestGap) { bestGap = gap; best = d; bestM = mm; }
+  }));
+  if (!best) return '—';
+  const when = bestGap === 0 ? 'bu ay' : bestGap === 1 ? 'önümüzdeki ay' : bestGap + ' ay sonra';
+  return MONTHS[bestM - 1] + ' · ' + baseCity(best) + ' (' + when + ')';
+}
+function tasksFor() {
+  const f = focusRoute();
+  const r = rezOf(f.id);
+  const out = [];
+  out.push({ k: 'fly', t: 'Bilet fiyatı kontrolü — ' + baseCity(f), d: f.airline + ' · ' + f.months.slice(0, 3).map(monthName).join('/') + ' en uygun · hedef ' + fmt(f.price * 4) + ' / 4 kişi', btn: '🔍 Canlı ara', href: flightsLink(f) });
+  if (!r.done) out.push({ k: 'rez', t: 'Rezervasyon adımlarını ilerlet — ' + baseCity(f), d: chkCount(f.id) + '/' + CHECKLIST.length + ' adım tamam' + (r.pnr ? ' · PNR: ' + r.pnr : ''), btn: '▶ Devam et', fn: "openWizard('" + f.id + "')" });
+  else out.push({ k: 'done', t: 'Teyit — ' + baseCity(f) + ' rezervasyonu tamam', d: 'PNR ' + (r.pnr || '—') + (r.fdate ? ' · uçuş ' + r.fdate : '') + ' · kimlik ve otel teyidini kontrol et', btn: '✓ Teyit et', fn: "taskDone('done')" });
+  out.push({ k: 'tip', t: 'Günün önerisini oku', d: 'Asistan notunu not al — yarın yenisini getireceğim', btn: 'Okudum ✓', fn: "taskDone('tip')" });
+  return out;
+}
+function allDone() { return tasksFor().every((t) => gunluk && gunluk.tasks[t.k]); }
+function doneCount() { return tasksFor().filter((t) => gunluk && gunluk.tasks[t.k]).length; }
+function taskDone(k) {
+  if (!gunluk) return;
+  if (gunluk.tasks[k]) return;
+  gunluk.tasks[k] = 1;
+  saveGunluk();
+  renderDaily();
+  const t = tasksFor().find((x) => x.k === k);
+  toast('✅ Görev tamam: ' + (t ? t.t : k));
+  if (allDone()) setTimeout(() => toast('🎉 Günlük kontrol tamam — yarın yeni görevlerle dönerim!'), 2600);
+}
+function renderDaily() {
+  if (!gunluk) return;
+  const el = (id) => document.getElementById(id);
+  if (!el('taskList')) return;
+  const tip = TIPS[dayOfYear() % TIPS.length];
+  const f = focusRoute();
+  const list = D.filter((d) => approved.has(d.id));
+  const rezDone = list.filter((d) => isDone(d.id)).length;
+  el('todayDate').textContent = new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' });
+  el('focusLine').innerHTML = 'Bugünün odağı: <b>' + f.flag + ' ' + esc(baseCity(f)) + '</b> · onaylı ' + list.length + ' rotan var, ' + rezDone + ' tanesi rezervasyon tamam.';
+  el('tipTitle').textContent = tip.t;
+  el('tipText').textContent = tip.x;
+  el('streakBox').textContent = '🔥 Kontrol serisi: ' + gunluk.streak + ' gün';
+  el('lastCheck').textContent = gunluk.ago || '—';
+  el('dAppr').textContent = list.length + ' rota';
+  el('dRez').textContent = rezDone + '/' + list.length + ' tamam';
+  el('dNext').textContent = nextSeason(list);
+  const tasks = tasksFor();
+  el('taskList').innerHTML = tasks.map((t) => {
+    const done = !!(gunluk && gunluk.tasks[t.k]);
+    const action = done ? '' : (t.href
+      ? `<button class="tbtn" onclick="taskDone('${t.k}');window.open('${t.href}','_blank')">${t.btn}</button>`
+      : `<button class="tbtn" onclick="${t.fn || `taskDone('${t.k}')`}">${t.btn}</button>`);
+    return `<div class="task${done ? ' done' : ''}"><div class="tck">${done ? '✓' : ''}</div><div class="tbody"><div class="tt2">${t.t}</div><div class="tdesc">${t.d}</div></div>${action}</div>`;
+  }).join('');
+  el('taskSub').textContent = allDone() ? '✅ Bugünkü kontrol tamam — yarın yeni görevlerle dönerim.' : 'Görevler her gün yenilenir · ' + doneCount() + '/' + tasks.length + ' tamam';
+  const dot = el('fabDot');
+  if (dot) dot.style.display = allDone() ? 'none' : 'block';
+  renderAssistant();
+}
+
+/* ================= ASİSTAN: KABUK ================= */
+function toggleAssistant() {
+  const p = document.getElementById('aPanel');
+  p.classList.toggle('open');
+  if (p.classList.contains('open')) renderAssistant();
+}
+function renderAssistant() {
+  const p = document.getElementById('aPanel');
+  if (!p || !gunluk) return;
+  const f = focusRoute();
+  const list = D.filter((d) => approved.has(d.id));
+  const pending = list.filter((d) => !isDone(d.id));
+  const tip = TIPS[dayOfYear() % TIPS.length];
+  document.getElementById('aDate').textContent = new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' });
+  const msgs = [
+    'Merhaba Ömer 👋 Bugün <b>' + new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }) + '</b> — kontrol serisi <b>' + gunluk.streak + ' gün</b>.',
+    '💡 <b>' + tip.t + ':</b> ' + tip.x,
+    '<b>' + f.flag + ' ' + esc(baseCity(f)) + '</b> bugünün odağı: ' + f.months.slice(0, 2).map(monthName).join('/') + ' en uygun ay, hedef ' + fmt(f.price * 4) + ' / 4 kişi.',
+    pending.length
+      ? '⏳ ' + pending.length + ' rotada rezervasyon açık: ' + pending.slice(0, 3).map((d) => baseCity(d)).join(', ') + (pending.length > 3 ? '…' : '') + ' — Rezervasyon Merkezi\u2019nde devam edebilirsin.'
+      : '🎫 Tüm onaylı rotaların rezervasyonu tamam!'
+  ];
+  document.getElementById('aBody').innerHTML = msgs.map((m) => '<div class="a-msg">' + m + '</div>').join('');
 }
 
 /* ================= TOAST ================= */
@@ -848,9 +1353,11 @@ function toast(msg) {
       renderGrid();
     });
   });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeModal(); closeWizard(); } });
 
+  loadRez();
   loadState();
+  loadGunluk();
   refresh();
 })();
 </script>
