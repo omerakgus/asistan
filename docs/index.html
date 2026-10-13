@@ -3,247 +3,196 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Asistan — Seyahat ve Rezervasyon Asistanın</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<title>Asistan</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg: #0b0e14; --bg2: #0f131c; --card: #151a24; --card2: #1a2130;
-    --ink: #e8ecf5; --muted: #8b93a7; --line: #232a37;
-    --primary: #7c88ff; --primary-d: #5a67ea; --primary-soft: rgba(124,136,255,.12);
-    --price: #ff9166; --green: #35d6a0; --green-soft: rgba(53,214,160,.12);
-    --amber: #f5b544; --amber-soft: rgba(245,181,68,.10);
-    --red: #ff6b74; --red-soft: rgba(255,107,116,.12);
-    --blue-soft: rgba(97,150,255,.14);
-    --r: 14px; --shadow: 0 8px 28px rgba(0,0,0,.35);
+    --bg: #f8f8f6; --panel: #ffffff; --ink: #2c2c2a; --muted: #a2a29c; --line: #e9e9e4;
+    --accent: #616bb0; --user-bg: #edede8;
+    --soft: #f1f1ed;
+    --ok: #6a9c7e;
   }
   * { box-sizing: border-box; }
   html, body { height: 100%; }
-  body { margin: 0; font-family: 'Poppins', 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; }
-  a { color: var(--primary); text-decoration: none; }
-  button { font-family: inherit; }
+  body { margin: 0; font-family: 'Urbanist', 'Segoe UI', sans-serif; font-weight: 300; background: var(--bg); color: var(--ink); line-height: 1.7; letter-spacing: .1px; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(97,107,176,.3); }
+  a:hover { border-bottom-color: var(--accent); }
+  button { font-family: inherit; font-weight: 400; }
 
-  /* ---------- HEADER ---------- */
-  header { position: fixed; top: 0; left: 0; right: 0; z-index: 40; background: rgba(11,14,20,.82); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-  .hbar { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 10px; padding: 9px 16px; }
-  .logo { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 15px; color: var(--ink); }
-  .logo .ic { width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(135deg, #4a5be8, #8b93ff); display: grid; place-items: center; font-size: 15px; }
-  .logo small { display: block; font-size: 9.5px; font-weight: 600; color: var(--muted); letter-spacing: .5px; }
+  /* header */
+  header { position: fixed; top: 0; left: 0; right: 0; z-index: 40; background: rgba(248,248,246,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .hbar { max-width: 920px; margin: 0 auto; display: flex; align-items: center; gap: 18px; padding: 13px 20px; }
+  .wordmark { font-size: 15px; font-weight: 300; letter-spacing: .6px; color: var(--ink); border: 0; }
   .hspacer { flex: 1; }
-  .hbtn { border: 1px solid var(--line); background: var(--card); color: var(--ink); font-size: 12px; font-weight: 700; padding: 7px 12px; border-radius: 10px; cursor: pointer; }
-  .hbtn:hover { border-color: var(--primary); color: var(--primary); }
-  .approve-pill { display: flex; align-items: center; gap: 6px; background: var(--green-soft); color: var(--green); border: 1px solid rgba(53,214,160,.3); padding: 7px 11px; border-radius: 999px; font-size: 11.5px; font-weight: 700; cursor: pointer; }
+  .hlink { background: none; border: 0; color: var(--muted); font-size: 12.5px; font-weight: 400; cursor: pointer; letter-spacing: .3px; padding: 0; }
+  .hlink:hover { color: var(--ink); }
+  .hsep { color: var(--line); font-weight: 200; }
 
-  /* ---------- KABUK ---------- */
-  .chatwrap { max-width: 820px; margin: 0 auto; height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 55px 16px 0; }
+  /* kabuk */
+  .chatwrap { max-width: 780px; margin: 0 auto; height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 52px 20px 0; }
   .chatwrap.started { justify-content: flex-start; }
 
-  /* ---------- AÇILIŞ (DeepSeek tarzı) ---------- */
-  .landing { text-align: center; padding: 20px 0 26px; animation: pop .3s ease; }
-  @keyframes pop { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
-  .lav { width: 62px; height: 62px; border-radius: 50%; background: linear-gradient(135deg, #4a5be8, #8b93ff); display: grid; place-items: center; font-size: 29px; margin: 0 auto 20px; box-shadow: 0 10px 40px rgba(90,103,234,.45); }
-  .landing h1 { margin: 0 0 6px; font-size: 27px; font-weight: 700; letter-spacing: -.4px; }
-  .landing p { margin: 0 auto; max-width: 460px; color: var(--muted); font-size: 13.5px; line-height: 1.7; }
+  /* açılış */
+  .landing { text-align: center; padding: 24px 0 30px; }
+  .landing h1 { margin: 0 0 8px; font-size: 26px; font-weight: 200; letter-spacing: -.2px; }
+  .landing p { margin: 0; color: var(--muted); font-size: 14px; font-weight: 300; }
 
-  /* ---------- GİRDİ ---------- */
-  .input-zone { padding-bottom: 18px; }
-  .input-box { background: var(--card); border: 1px solid var(--line); border-radius: 26px; display: flex; align-items: center; padding: 6px 6px 6px 20px; box-shadow: 0 10px 40px rgba(0,0,0,.4); transition: .2s; }
-  .input-box:focus-within { border-color: var(--primary); box-shadow: 0 10px 40px rgba(90,103,234,.25); }
-  .input-box input { flex: 1; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 14.5px; font-family: inherit; padding: 12px 0; }
-  .input-box input::placeholder { color: #5d6579; }
-  .send { width: 40px; height: 40px; border-radius: 50%; border: 0; background: linear-gradient(135deg, #4a5be8, #7c88ff); color: #fff; font-size: 16px; cursor: pointer; flex: 0 0 auto; }
-  .send:hover { filter: brightness(1.1); }
-  .mini-chips { display: flex; gap: 7px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
-  .mini-chip { border: 1px solid var(--line); background: var(--card); color: var(--muted); font-size: 11.5px; font-weight: 600; padding: 7px 13px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
-  .mini-chip:hover { color: var(--ink); border-color: var(--primary); }
+  /* girdi */
+  .input-zone { padding-bottom: 20px; }
+  .input-box { display: flex; align-items: center; border-bottom: 1px solid var(--line); padding: 10px 2px; transition: border-color .2s; }
+  .input-box:focus-within { border-bottom-color: var(--ink); }
+  .input-box input { flex: 1; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 15.5px; font-family: inherit; font-weight: 300; padding: 6px 0; }
+  .input-box input::placeholder { color: #c4c4be; font-weight: 200; }
+  .send { border: 0; background: none; color: var(--muted); font-size: 17px; cursor: pointer; padding: 4px 8px; font-weight: 200; }
+  .send:hover { color: var(--ink); }
+  .daily-note { text-align: center; margin-top: 12px; }
+  .daily-note button { background: none; border: 0; color: var(--muted); font-size: 11.5px; font-weight: 300; letter-spacing: .4px; cursor: pointer; border-bottom: 1px dotted var(--line); padding-bottom: 1px; }
+  .daily-note button:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
-  /* ---------- SOHBET ---------- */
+  /* sohbet */
   .chat-area { display: none; flex: 1; min-height: 0; flex-direction: column; }
-  .chat-log { flex: 1; overflow-y: auto; padding: 18px 2px 8px; scroll-behavior: smooth; }
-  .bub { max-width: 80%; padding: 12px 15px; border-radius: 16px; font-size: 13.8px; margin-bottom: 10px; animation: pop .2s ease; }
-  .bub.bot { background: var(--card); border: 1px solid var(--line); border-bottom-left-radius: 5px; }
-  .bub.bot b { color: var(--primary); }
-  .bub.me { background: linear-gradient(135deg, #4a5be8, #6b78f0); color: #fff; margin-left: auto; border-bottom-right-radius: 5px; }
-  .bub.wide { max-width: 100%; background: transparent; border: 0; padding: 0 0 10px; }
-  .typing { display: inline-flex; gap: 5px; align-items: center; }
-  .typing span { width: 8px; height: 8px; background: #3c465c; border-radius: 50%; animation: tp 1s infinite; }
-  .typing span:nth-child(2) { animation-delay: .15s; }
-  .typing span:nth-child(3) { animation-delay: .3s; }
-  @keyframes tp { 0%, 60%, 100% { transform: none; opacity: .5; } 30% { transform: translateY(-5px); opacity: 1; } }
+  .chat-log { flex: 1; overflow-y: auto; padding: 26px 2px 10px; scroll-behavior: smooth; }
+  .msg { max-width: 88%; font-size: 14.5px; font-weight: 300; margin-bottom: 16px; }
+  .msg.bot { color: var(--ink); }
+  .msg.bot b, .msg.bot strong { font-weight: 500; }
+  .msg.bot .src { display: block; margin-top: 6px; font-size: 12px; color: var(--muted); }
+  .msg.me { margin-left: auto; background: var(--soft); border-radius: 14px 14px 4px 14px; padding: 10px 16px; color: #4a4a46; }
+  .typing { display: inline-flex; gap: 4px; align-items: center; padding: 6px 0; }
+  .typing i { width: 5px; height: 5px; background: #cfcfc8; border-radius: 50%; animation: tp 1.1s infinite; font-style: normal; }
+  .typing i:nth-child(2) { animation-delay: .18s; }
+  .typing i:nth-child(3) { animation-delay: .36s; }
+  @keyframes tp { 0%, 60%, 100% { transform: none; opacity: .45; } 30% { transform: translateY(-4px); opacity: 1; } }
 
-  .chips-bar { display: flex; gap: 7px; overflow-x: auto; padding: 4px 2px 10px; scrollbar-width: none; }
-  .chips-bar::-webkit-scrollbar { display: none; }
-  .chip { flex: 0 0 auto; border: 1px solid var(--line); background: var(--card); color: var(--primary); font-size: 11.5px; font-weight: 700; padding: 7px 13px; border-radius: 999px; cursor: pointer; }
-  .chip:hover { background: var(--primary); color: #0b0e14; border-color: var(--primary); }
+  /* kartlar */
+  .cards { display: grid; gap: 10px; margin-top: 4px; }
+  .ccard { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .cc-title { font-size: 15px; font-weight: 400; }
+  .cc-sub { font-size: 12px; color: var(--muted); font-weight: 300; }
+  .cc-badge { float: right; font-size: 10.5px; font-weight: 400; color: var(--muted); letter-spacing: .4px; }
+  .cc-price { display: flex; align-items: baseline; justify-content: space-between; margin-top: 10px; }
+  .cc-price .big { font-size: 19px; font-weight: 300; }
+  .cc-price .small { font-size: 12px; color: var(--muted); }
+  .months-row { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
+  .mchip { font-size: 10.5px; font-weight: 400; color: var(--muted); }
+  .mchip:not(:last-child)::after { content: '·'; margin-left: 5px; color: var(--line); }
+  .cc-acts { display: flex; gap: 14px; margin-top: 12px; flex-wrap: wrap; }
+  .cbtn { border: 0; background: none; color: var(--accent); font-size: 12.5px; font-weight: 400; cursor: pointer; padding: 0; border-bottom: 1px solid rgba(97,107,176,.25); }
+  .cbtn:hover { border-bottom-color: var(--accent); }
+  .cbtn.muted { color: var(--muted); border-bottom-color: transparent; }
+  .cbtn.muted:hover { color: var(--ink); }
+  .cbtn.ok { color: var(--ok); border-bottom-color: rgba(106,156,126,.3); }
 
-  /* ---------- SOHBET KARTLARI ---------- */
-  .cards { display: grid; gap: 10px; }
-  .ccard { background: var(--card); border: 1px solid var(--line); border-radius: 13px; padding: 12px 14px; }
-  .cc-top { display: flex; align-items: center; gap: 9px; }
-  .cc-flag { font-size: 23px; }
-  .cc-top b { font-size: 14.5px; display: block; line-height: 1.2; }
-  .cc-top span.sub { font-size: 11px; color: var(--muted); font-weight: 600; }
-  .vbadge { margin-left: auto; font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 999px; text-transform: uppercase; white-space: nowrap; }
-  .vb-free { background: var(--green-soft); color: var(--green); }
-  .vb-id { background: var(--blue-soft); color: #7fa8ff; }
-  .vb-door { background: var(--amber-soft); color: var(--amber); }
-  .vb-visa { background: var(--red-soft); color: var(--red); }
-  .cc-price { display: flex; align-items: flex-end; justify-content: space-between; margin-top: 8px; }
-  .cc-price .lbl { font-size: 9.5px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); font-weight: 700; display: block; }
-  .cc-price b.big { font-size: 19px; color: var(--price); }
-  .cc-price .cc-4 { text-align: right; font-size: 11px; color: var(--muted); font-weight: 600; }
-  .cc-price .cc-4 b { display: block; font-size: 13.5px; color: var(--ink); }
-  .months-row { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
-  .mchip { font-size: 10px; font-weight: 700; background: var(--green-soft); color: var(--green); border-radius: 6px; padding: 3px 7px; }
-  .cc-acts { display: flex; gap: 7px; margin-top: 10px; flex-wrap: wrap; }
-  .cbtn { border: 1px solid var(--line); background: var(--bg2); color: var(--ink); font-size: 11.5px; font-weight: 700; padding: 7px 11px; border-radius: 9px; cursor: pointer; }
-  .cbtn:hover { border-color: var(--primary); color: var(--primary); }
-  .cbtn.green { background: rgba(53,214,160,.15); border-color: rgba(53,214,160,.4); color: var(--green); }
-  .cbtn.blue { background: var(--primary-d); border-color: var(--primary-d); color: #fff; }
-  .cbtn.blue:hover { color: #fff; filter: brightness(1.1); }
-
-  /* ---------- PANEL (SHEET) ---------- */
+  /* panel */
   .sheet { position: fixed; inset: 0; z-index: 95; background: var(--bg); display: none; flex-direction: column; }
   .sheet.open { display: flex; }
-  .sheet-head { display: flex; align-items: center; gap: 12px; background: var(--bg2); border-bottom: 1px solid var(--line); padding: 12px 18px; }
-  .sheet-head h2 { margin: 0; font-size: 15.5px; }
-  .sheet-head .sh-sub { font-size: 11px; color: var(--muted); font-weight: 600; }
-  .sheet-close { margin-left: auto; border: 1px solid var(--line); background: var(--card); color: var(--ink); width: 34px; height: 34px; border-radius: 10px; font-size: 15px; cursor: pointer; }
-  .sheet-close:hover { background: var(--red-soft); color: var(--red); }
-  .sheet-body { flex: 1; overflow-y: auto; padding: 16px; }
-  .sheet-in { max-width: 1080px; margin: 0 auto; }
+  .sheet-head { display: flex; align-items: baseline; gap: 14px; border-bottom: 1px solid var(--line); padding: 18px 22px 14px; }
+  .sheet-head h2 { margin: 0; font-size: 17px; font-weight: 200; letter-spacing: .3px; }
+  .sheet-head .sh-sub { font-size: 11.5px; color: var(--muted); font-weight: 300; }
+  .sheet-close { margin-left: auto; border: 0; background: none; color: var(--muted); font-size: 13px; cursor: pointer; }
+  .sheet-close:hover { color: var(--ink); }
+  .sheet-body { flex: 1; overflow-y: auto; padding: 20px; }
+  .sheet-in { max-width: 1040px; margin: 0 auto; }
 
-  .filters { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 13px 15px; }
-  .frow { display: flex; gap: 9px; flex-wrap: wrap; align-items: center; }
-  .frow + .frow { margin-top: 9px; }
-  .fsearch { flex: 1; min-width: 180px; display: flex; align-items: center; gap: 8px; background: var(--bg2); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
-  .fsearch input { border: 0; outline: 0; background: transparent; font-family: inherit; font-size: 13px; flex: 1; color: var(--ink); }
-  select.sel { border: 1px solid var(--line); background: var(--bg2); border-radius: 10px; padding: 8px 11px; font-family: inherit; font-size: 12.5px; font-weight: 600; color: var(--ink); cursor: pointer; outline: 0; }
-  .fchip { border: 1px solid var(--line); background: var(--bg2); color: var(--muted); font-size: 12px; font-weight: 600; padding: 7px 13px; border-radius: 999px; cursor: pointer; }
-  .fchip:hover { border-color: var(--primary); color: var(--primary); }
-  .fchip.on { background: var(--primary); border-color: var(--primary); color: #0b0e14; }
-  .freset { margin-left: auto; border: 0; background: transparent; color: var(--red); font-size: 12px; font-weight: 700; cursor: pointer; }
-  .fcount { font-size: 12px; color: var(--muted); font-weight: 600; }
-  .fcount b { color: var(--primary); }
+  .filters { border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 4px; }
+  .frow { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .frow + .frow { margin-top: 10px; }
+  .fsearch { flex: 1; min-width: 170px; }
+  .fsearch input { width: 100%; border: 0; border-bottom: 1px solid var(--line); background: transparent; font-family: inherit; font-size: 13px; font-weight: 300; color: var(--ink); padding: 5px 0; outline: 0; }
+  .fsearch input:focus { border-bottom-color: var(--ink); }
+  select.sel { border: 0; border-bottom: 1px solid var(--line); background: transparent; border-radius: 0; padding: 5px 2px; font-family: inherit; font-size: 12.5px; font-weight: 300; color: var(--muted); cursor: pointer; outline: 0; }
+  .fchip { border: 0; border-bottom: 1px solid transparent; background: none; color: var(--muted); font-size: 12px; font-weight: 300; padding: 3px 0; cursor: pointer; }
+  .fchip:hover { color: var(--ink); }
+  .fchip.on { color: var(--ink); border-bottom-color: var(--ink); }
+  .freset { margin-left: auto; border: 0; background: none; color: var(--muted); font-size: 12px; cursor: pointer; }
+  .fcount { font-size: 11.5px; color: var(--muted); font-weight: 300; }
 
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; margin-top: 15px; }
-  .dcard { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; transition: .18s; }
-  .dcard:hover { transform: translateY(-3px); border-color: #2e3748; }
-  .dcard.approved { border-color: rgba(53,214,160,.45); }
-  .dc-top { padding: 14px 15px 9px; }
-  .dc-head { display: flex; align-items: center; gap: 10px; }
-  .dc-flag { font-size: 25px; }
-  .dc-title { font-size: 15px; font-weight: 800; line-height: 1.2; }
-  .dc-country { font-size: 10.5px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
-  .dc-route { display: flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; margin-top: 10px; }
-  .dc-route .plane { color: var(--primary); }
-  .dc-route .dur { color: var(--muted); font-weight: 600; font-size: 11.5px; }
-  .dc-meta { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
-  .mtag { font-size: 10.5px; font-weight: 700; background: var(--bg2); border: 1px solid var(--line); color: var(--muted); padding: 3px 7px; border-radius: 6px; }
-  .mtag.air { color: var(--primary); background: var(--primary-soft); border-color: rgba(124,136,255,.3); }
-  .dc-price { display: flex; align-items: flex-end; justify-content: space-between; padding: 9px 15px 2px; margin-top: auto; }
-  .price .lbl { font-size: 10px; color: var(--muted); font-weight: 700; text-transform: uppercase; }
-  .price .val { font-size: 20px; font-weight: 800; color: var(--price); }
-  .price .val small { font-size: 12px; }
-  .total4 { text-align: right; font-size: 11px; color: var(--muted); font-weight: 600; }
-  .total4 b { display: block; font-size: 13.5px; color: var(--ink); }
-  .dc-actions { display: flex; gap: 7px; padding: 11px 15px 14px; }
-  .btn { border: 1px solid var(--line); background: var(--bg2); color: var(--ink); font-size: 12px; font-weight: 700; padding: 9px 12px; border-radius: 10px; cursor: pointer; flex: 1; }
-  .btn:hover { border-color: var(--primary); color: var(--primary); }
-  .btn.plan { background: var(--primary-soft); border-color: rgba(124,136,255,.35); color: var(--primary); }
-  .btn.appr { background: rgba(53,214,160,.15); border-color: rgba(53,214,160,.4); color: var(--green); }
-  .nocard { text-align: center; color: var(--muted); font-size: 13.5px; background: var(--card); border: 1px dashed var(--line); border-radius: var(--r); padding: 34px; grid-column: 1/-1; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 18px; }
+  .dcard { background: var(--panel); padding: 18px; display: flex; flex-direction: column; }
+  .dc-title { font-size: 15px; font-weight: 400; }
+  .dc-country { font-size: 11px; color: var(--muted); letter-spacing: .5px; }
+  .dc-badge { float: right; font-size: 10.5px; color: var(--muted); }
+  .dc-route { font-size: 12.5px; color: var(--muted); margin-top: 8px; font-weight: 300; }
+  .dc-meta { font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+  .dc-price { margin-top: 12px; display: flex; justify-content: space-between; align-items: baseline; }
+  .dc-price .val { font-size: 18px; font-weight: 300; }
+  .dc-price .total4 { font-size: 11.5px; color: var(--muted); }
+  .dc-actions { display: flex; gap: 14px; margin-top: 12px; }
 
-  .appr-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; background: var(--green-soft); border: 1px solid rgba(53,214,160,.3); border-radius: var(--r); padding: 12px 16px; margin-bottom: 14px; }
-  .appr-head .st { font-weight: 800; color: var(--green); font-size: 13px; }
-  .appr-head .tot { font-weight: 800; font-size: 13.5px; }
-  .appr-head .tot span { color: var(--price); }
-  .appr-actions { display: flex; gap: 8px; }
-  .appr-actions .btn { flex: 0 0 auto; padding: 7px 12px; font-size: 11.5px; }
-  .rez-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 14px; }
-  .rez-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; }
-  .rez-card.done { border-color: rgba(53,214,160,.45); }
-  .rez-card .rh { display: flex; align-items: center; gap: 9px; }
-  .rez-card .rf { font-size: 21px; }
-  .rez-card .rt { font-weight: 800; font-size: 14px; }
-  .rez-card .rs { font-size: 11px; color: var(--muted); font-weight: 600; }
-  .rez-badge { margin-left: auto; font-size: 10px; font-weight: 800; padding: 4px 9px; border-radius: 999px; background: var(--blue-soft); color: #7fa8ff; white-space: nowrap; }
-  .rez-badge.done { background: var(--green-soft); color: var(--green); }
-  .bar { height: 8px; background: var(--bg2); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; margin: 11px 0 6px; }
-  .bar > span { display: block; height: 100%; background: linear-gradient(90deg, #4a5be8, #8b93ff); transition: width .3s; }
-  .bar > span.done { background: linear-gradient(90deg, #1fa87a, var(--green)); }
-  .rez-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
-  .rez-btn { width: 100%; border: 0; background: var(--primary-d); color: #fff; font-weight: 700; font-size: 12.5px; padding: 10px; border-radius: 10px; cursor: pointer; }
-  .rez-btn:hover { filter: brightness(1.12); }
-  .rez-btn.done { background: rgba(53,214,160,.2); color: var(--green); }
-  .rez-empty { text-align: center; padding: 26px; color: var(--muted); font-size: 13px; background: var(--card); border: 1px dashed var(--line); border-radius: var(--r); }
+  .appr-line { font-size: 12.5px; color: var(--muted); padding: 10px 2px 16px; display: flex; gap: 16px; flex-wrap: wrap; align-items: baseline; }
+  .appr-line b { color: var(--ink); font-weight: 400; }
+  .appr-line .lnk { color: var(--accent); cursor: pointer; background: none; border: 0; font-size: 12.5px; padding: 0; font-family: inherit; }
+  .rez-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .rez-card { background: var(--panel); padding: 16px 18px; }
+  .rez-card .rt { font-size: 14.5px; font-weight: 400; }
+  .rez-card .rs { font-size: 11.5px; color: var(--muted); }
+  .rez-badge { float: right; font-size: 10.5px; color: var(--muted); }
+  .bar { height: 1px; background: var(--line); position: relative; margin: 12px 0 8px; }
+  .bar > span { position: absolute; left: 0; top: 0; height: 1px; background: var(--accent); transition: width .3s; }
+  .rez-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 11.5px; color: var(--muted); }
+  .rez-btn { margin-top: 10px; border: 0; background: none; color: var(--accent); font-size: 12.5px; cursor: pointer; padding: 0; font-family: inherit; border-bottom: 1px solid rgba(97,107,176,.25); }
+  .rez-btn.done { color: var(--ok); border-bottom-color: rgba(106,156,126,.3); }
 
-  /* ---------- MODAL ---------- */
-  .overlay { position: fixed; inset: 0; background: rgba(4,6,10,.72); backdrop-filter: blur(4px); z-index: 100; display: none; align-items: flex-start; justify-content: center; padding: 26px 14px; overflow-y: auto; }
+  /* modal */
+  .overlay { position: fixed; inset: 0; background: rgba(248,248,246,.86); backdrop-filter: blur(6px); z-index: 100; display: none; align-items: flex-start; justify-content: center; padding: 40px 16px; overflow-y: auto; }
   .overlay.open { display: flex; }
-  .modal { background: var(--card); border: 1px solid var(--line); border-radius: 18px; width: min(700px, 100%); overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.6); animation: pop .2s ease; }
-  .m-head { display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: linear-gradient(135deg, #232a55, #31397a); color: #fff; }
-  .m-head .mf { font-size: 27px; }
-  .m-head h3 { margin: 0; font-size: 17px; }
-  .m-head .ms { font-size: 11px; opacity: .8; font-weight: 600; }
-  .m-close { margin-left: auto; background: rgba(255,255,255,.14); border: 0; color: #fff; width: 32px; height: 32px; border-radius: 9px; font-size: 15px; cursor: pointer; }
-  .m-body { padding: 18px 20px 22px; }
-  .m-tabs { display: flex; gap: 6px; margin-bottom: 14px; background: var(--bg2); border: 1px solid var(--line); border-radius: 11px; padding: 5px; }
-  .m-tab { flex: 1; border: 0; background: transparent; font-weight: 700; font-size: 11.5px; padding: 9px; border-radius: 8px; cursor: pointer; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
-  .m-tab.on { background: var(--primary-d); color: #fff; }
+  .modal { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; width: min(680px, 100%); overflow: hidden; }
+  .m-head { display: flex; align-items: baseline; gap: 12px; padding: 20px 24px 6px; }
+  .m-head h3 { margin: 0; font-size: 18px; font-weight: 200; }
+  .m-head .ms { font-size: 11.5px; color: var(--muted); font-weight: 300; }
+  .m-close { margin-left: auto; border: 0; background: none; color: var(--muted); font-size: 14px; cursor: pointer; }
+  .m-close:hover { color: var(--ink); }
+  .m-body { padding: 10px 24px 24px; }
+  .m-tabs { display: flex; gap: 20px; margin-bottom: 16px; border-bottom: 1px solid var(--line); }
+  .m-tab { border: 0; border-bottom: 1px solid transparent; background: none; font-weight: 300; font-size: 12.5px; padding: 6px 0; cursor: pointer; color: var(--muted); }
+  .m-tab.on { color: var(--ink); border-bottom-color: var(--ink); }
   .m-pane { display: none; }
   .m-pane.on { display: block; }
-  .day { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 13px; }
+  .day { display: flex; gap: 14px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; font-weight: 300; }
   .day:last-child { border-bottom: 0; }
-  .day b { flex: 0 0 58px; color: var(--price); font-size: 11.5px; padding-top: 2px; }
+  .day b { flex: 0 0 54px; color: var(--muted); font-weight: 400; font-size: 12px; }
   .steps { counter-reset: s; list-style: none; margin: 0; padding: 0; }
-  .steps li { counter-increment: s; position: relative; padding: 9px 0 9px 38px; border-bottom: 1px dashed var(--line); font-size: 13px; }
+  .steps li { counter-increment: s; position: relative; padding: 9px 0 9px 34px; border-bottom: 1px solid var(--line); font-size: 13.5px; font-weight: 300; }
   .steps li:last-child { border-bottom: 0; }
-  .steps li::before { content: counter(s); position: absolute; left: 0; top: 8px; width: 25px; height: 25px; border-radius: 50%; background: var(--primary-soft); color: var(--primary); font-weight: 800; font-size: 12px; display: grid; place-items: center; }
-  .m-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
-  .m-info .i { background: var(--bg2); border: 1px solid var(--line); border-radius: 10px; padding: 8px 11px; text-align: center; }
-  .m-info .i .k { font-size: 9.5px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); font-weight: 700; }
-  .m-info .i .v { font-size: 12.5px; font-weight: 800; margin-top: 2px; }
-  .wiz-steps { display: flex; gap: 6px; margin-bottom: 14px; }
-  .wiz-step { flex: 1; text-align: center; font-size: 10.5px; font-weight: 800; color: var(--muted); background: var(--bg2); border: 1px solid var(--line); border-radius: 9px; padding: 8px 3px; cursor: pointer; text-transform: uppercase; }
-  .wiz-step.on { background: var(--primary-d); border-color: var(--primary-d); color: #fff; }
-  .wiz-step.past { background: var(--green-soft); border-color: rgba(53,214,160,.35); color: var(--green); }
-  .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 9px; margin: 12px 0; }
-  .llink { display: flex; flex-direction: column; gap: 2px; background: var(--bg2); border: 1px solid var(--line); border-radius: 11px; padding: 11px 13px; color: var(--ink); transition: .15s; }
-  .llink:hover { border-color: var(--primary); transform: translateY(-2px); }
-  .llink .lk { font-size: 12.5px; font-weight: 800; }
-  .llink .ld { font-size: 10.5px; color: var(--muted); }
-  .llink.primary { background: var(--primary-d); border-color: var(--primary-d); color: #fff; }
-  .llink.primary .ld { color: #dfe3ff; }
-  .opt-row { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 12px; }
-  .opt { border: 1px solid var(--line); background: var(--bg2); color: var(--ink); border-radius: 12px; padding: 13px; font-size: 12.5px; font-weight: 700; cursor: pointer; text-align: left; line-height: 1.5; }
-  .opt small { display: block; font-weight: 600; color: var(--muted); font-size: 11px; margin-top: 2px; }
-  .opt.on { border-color: var(--primary); background: var(--primary-soft); color: var(--primary); }
-  .opt.on small { color: var(--primary); opacity: .8; }
-  .note { background: var(--amber-soft); border: 1px solid rgba(245,181,68,.35); color: var(--amber); border-radius: 10px; padding: 10px 12px; font-size: 12px; margin-top: 10px; }
-  .note.ok { background: var(--green-soft); border-color: rgba(53,214,160,.35); color: var(--green); }
-  .chk { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 13px; cursor: pointer; }
+  .steps li::before { content: counter(s) '.'; position: absolute; left: 0; top: 9px; color: var(--muted); font-size: 12px; font-weight: 400; }
+  .m-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 14px; }
+  .m-info .k { font-size: 10px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); }
+  .m-info .v { font-size: 14px; font-weight: 300; }
+  .wiz-steps { display: flex; gap: 18px; margin-bottom: 16px; border-bottom: 1px solid var(--line); }
+  .wiz-step { border: 0; border-bottom: 1px solid transparent; background: none; font-size: 12px; font-weight: 300; color: var(--muted); padding: 6px 0; cursor: pointer; }
+  .wiz-step.on { color: var(--ink); border-bottom-color: var(--ink); }
+  .wiz-step.past { color: var(--ok); }
+  .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 14px 0; }
+  .llink { background: var(--soft); border-radius: 10px; padding: 12px 14px; color: var(--ink); transition: .15s; border: 0; }
+  .llink:hover { background: #e9e9e3; }
+  .llink .lk { font-size: 12.5px; font-weight: 400; display: block; }
+  .llink .ld { font-size: 11px; color: var(--muted); font-weight: 300; }
+  .opt-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+  .opt { border: 1px solid var(--line); background: none; color: var(--ink); border-radius: 10px; padding: 13px 15px; font-size: 12.5px; font-weight: 300; cursor: pointer; text-align: left; font-family: inherit; }
+  .opt small { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
+  .opt.on { border-color: var(--ink); }
+  .note { background: var(--soft); border-radius: 10px; padding: 11px 14px; font-size: 12.5px; color: #6b6b66; margin-top: 12px; font-weight: 300; }
+  .chk { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; font-weight: 300; cursor: pointer; }
   .chk:last-child { border-bottom: 0; }
-  .chk input { margin-top: 3px; accent-color: var(--green); width: 16px; height: 16px; cursor: pointer; flex: 0 0 auto; }
+  .chk input { margin-top: 5px; accent-color: var(--accent); width: 14px; height: 14px; cursor: pointer; flex: 0 0 auto; }
   .chk.done span { color: var(--muted); text-decoration: line-through; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 10px; }
-  .form-row input { border: 1px solid var(--line); background: var(--bg2); border-radius: 10px; padding: 11px 13px; font-family: inherit; font-size: 13px; outline: 0; width: 100%; color: var(--ink); }
-  .form-row input:focus { border-color: var(--primary); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .form-row input { border: 0; border-bottom: 1px solid var(--line); background: transparent; border-radius: 0; padding: 8px 2px; font-family: inherit; font-size: 13.5px; font-weight: 300; outline: 0; width: 100%; color: var(--ink); }
+  .form-row input:focus { border-bottom-color: var(--ink); }
   .form-row .full { grid-column: 1/-1; }
-  .wiz-actions { display: flex; gap: 9px; margin-top: 14px; }
-  .wiz-actions .btn { flex: 1; padding: 11px; font-size: 12.5px; }
-  .btn.primary { background: var(--primary-d); border-color: var(--primary-d); color: #fff; }
-  .btn.success { background: rgba(53,214,160,.2); border-color: rgba(53,214,160,.5); color: var(--green); }
-  .sum-box { background: var(--bg2); border: 1px solid var(--line); border-radius: 10px; padding: 12px; font-size: 12px; white-space: pre-wrap; font-family: Consolas, monospace; max-height: 200px; overflow-y: auto; margin-top: 12px; color: var(--muted); user-select: all; }
+  .wiz-actions { display: flex; gap: 20px; margin-top: 18px; }
+  .wbtn { border: 0; background: none; font-size: 12.5px; font-weight: 400; cursor: pointer; padding: 0 0 2px; color: var(--accent); font-family: inherit; border-bottom: 1px solid rgba(97,107,176,.3); }
+  .wbtn.plain { color: var(--muted); border-bottom-color: transparent; }
+  .wbtn.ok { color: var(--ok); border-bottom-color: rgba(106,156,126,.3); }
+  .sum-box { background: var(--soft); border-radius: 10px; padding: 14px; font-size: 12px; white-space: pre-wrap; font-weight: 300; max-height: 200px; overflow-y: auto; margin-top: 14px; color: #6b6b66; user-select: all; line-height: 1.8; }
 
-  .toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(80px); background: #232a37; color: var(--ink); border: 1px solid var(--line); font-size: 13px; font-weight: 600; padding: 11px 20px; border-radius: 999px; z-index: 130; opacity: 0; transition: .25s; pointer-events: none; }
-  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+  .toast { position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%) translateY(70px); background: var(--ink); color: var(--bg); font-size: 12.5px; font-weight: 300; letter-spacing: .3px; padding: 10px 20px; border-radius: 999px; z-index: 130; opacity: 0; transition: .25s; pointer-events: none; }
+  .toast.show { transform: translateX(-50%) translateY(0); }
 
   @media (max-width: 720px) {
-    .hbtn span.t { display: none; }
-    .bub { max-width: 92%; font-size: 13.2px; }
-    .m-info, .opt-row { grid-template-columns: 1fr; }
+    .m-info, .opt-row { grid-template-columns: 1fr; gap: 10px; }
     .form-row { grid-template-columns: 1fr; }
-    .landing h1 { font-size: 23px; }
+    .landing h1 { font-size: 22px; }
+    .msg { max-width: 96%; }
   }
 </style>
 </head>
@@ -251,23 +200,23 @@
 
 <header>
   <div class="hbar">
-    <div class="logo">
-      <div class="ic">🤖</div>
-      <div>Asistan<small>SEYAHAT &amp; REZERVASYON ASİSTANIN</small></div>
-    </div>
+    <div class="wordmark">asistan</div>
     <div class="hspacer"></div>
-    <button class="hbtn" onclick="openSheet('destSheet')">🗺 <span class="t">Rotalar</span></button>
-    <button class="hbtn" onclick="openSheet('rezSheet')">🎟 <span class="t">Rezervasyonlarım</span></button>
-    <button class="approve-pill" onclick="openSheet('rezSheet')">✅ <span id="pillCount">0</span> onaylı</button>
+    <button class="hlink" onclick="openSheet('destSheet')">Rotalar</button>
+    <span class="hsep">·</span>
+    <button class="hlink" onclick="openSheet('rezSheet')">Rezervasyonlar</button>
+    <span class="hsep">·</span>
+    <button class="hlink" id="pillCount" onclick="openSheet('rezSheet')">0 onaylı</button>
+    <span class="hsep">·</span>
+    <button class="hlink" onclick="askNotify()">bildirim</button>
   </div>
 </header>
 
 <main class="chatwrap" id="chatwrap">
 
   <div class="landing" id="landing">
-    <div class="lav">🤖</div>
-    <h1>Merhaba Ömer 👋</h1>
-    <p>Ben Asistan — uçuş, fiyat ve rezervasyon işlerini senin için yaparım.<br>Bugün sana özel önerilerim var. Nereden başlayalım?</p>
+    <h1>Merhaba Ömer.</h1>
+    <p>Size nasıl yardımcı olabilirim?</p>
   </div>
 
   <div class="chat-area" id="chatArea">
@@ -275,101 +224,95 @@
   </div>
 
   <div class="input-zone">
-    <div class="chips-bar" id="chipsBar" style="display:none"></div>
     <form class="input-box" id="chatForm" autocomplete="off">
-      <input id="chatInput" type="text" placeholder="Asistan'a yaz — nereyi, hangi ayı, bütçeni sor..." />
-      <button class="send" type="submit" title="Gönder">➤</button>
+      <input id="chatInput" type="text" placeholder="Bir şey sorun..." />
+      <button class="send" type="submit" title="Gönder">↑</button>
     </form>
-    <div class="mini-chips" id="landingChips">
-      <button class="mini-chip" onclick="startAsk('Bugün ne öneriyorsun?')">✨ Öneri ver</button>
-      <button class="mini-chip" onclick="startAsk('En ucuz 3 rota')">💸 En ucuz rotalar</button>
-      <button class="mini-chip" onclick="startAsk('Vizesiz rotalar')">🛂 Vizesiz neresi?</button>
-      <button class="mini-chip" onclick="startAsk('Rezervasyon yapmak istiyorum')">🎟 Rezervasyon yap</button>
-      <button class="mini-chip" onclick="askNotify()">🔔 Günlük bildirim</button>
+    <div class="daily-note" id="dailyNote">
+      <button onclick="askDaily()">bugün için bir önerim var</button>
     </div>
   </div>
 
 </main>
 
-<!-- ROTALAR SAYFASI -->
+<!-- ROTALAR -->
 <div class="sheet" id="destSheet">
   <div class="sheet-head">
-    <div><h2>🗺 Rotalar</h2><div class="sh-sub">Ankara (ESB) kalkışlı · 3 yetişkin + 1 çocuk (15) · fiyatlar tahmini</div></div>
-    <button class="sheet-close" onclick="closeSheet('destSheet')">✕</button>
+    <div><h2>Rotalar</h2><div class="sh-sub">Ankara (ESB) kalkışlı · 3 yetişkin + 1 çocuk (15) · fiyatlar tahmini</div></div>
+    <button class="sheet-close" onclick="closeSheet('destSheet')">kapat</button>
   </div>
   <div class="sheet-body"><div class="sheet-in">
     <div class="filters">
       <div class="frow">
-        <div class="fsearch">🔍 <input id="q" type="text" placeholder="Ülke veya şehir ara..." /></div>
+        <div class="fsearch"><input id="q" type="text" placeholder="ülke veya şehir ara" /></div>
         <select class="sel" id="fVisa">
-          <option value="">🛂 Vize durumu</option>
-          <option value="vizesiz">Vizesiz</option>
-          <option value="kimlik">Kimlikle giriş</option>
-          <option value="kapi">Kapı vizesi</option>
-          <option value="schengen">Schengen / vize gerekli</option>
+          <option value="">vize durumu</option>
+          <option value="vizesiz">vizesiz</option>
+          <option value="kimlik">kimlikle giriş</option>
+          <option value="kapi">kapı vizesi</option>
+          <option value="schengen">schengen / vize gerekli</option>
         </select>
-        <select class="sel" id="fMonth"><option value="">📅 Ay</option></select>
+        <select class="sel" id="fMonth"><option value="">ay</option></select>
         <select class="sel" id="fBudget">
-          <option value="">💰 Bütçe (4 kişi)</option>
-          <option value="low">Düşük — 20.000 ₺ altı</option>
-          <option value="mid">Orta — 20.000-50.000 ₺</option>
-          <option value="high">Rahat — 50.000 ₺ üzeri</option>
+          <option value="">bütçe (4 kişi)</option>
+          <option value="low">20.000 ₺ altı</option>
+          <option value="mid">20.000-50.000 ₺</option>
+          <option value="high">50.000 ₺ üzeri</option>
         </select>
         <select class="sel" id="fSort">
-          <option value="rec">⭐ Öneri sırası</option>
-          <option value="priceAsc">💸 Fiyat (artan)</option>
-          <option value="durAsc">⏱ Uçuş süresi (artan)</option>
-          <option value="freqAsc">🛫 Uçuş sıklığı (artan)</option>
+          <option value="rec">öneri sırası</option>
+          <option value="priceAsc">fiyat (artan)</option>
+          <option value="durAsc">uçuş süresi (artan)</option>
+          <option value="freqAsc">uçuş sıklığı (artan)</option>
         </select>
-        <button class="freset" onclick="resetFilters()">Sıfırla ✕</button>
+        <button class="freset" onclick="resetFilters()">sıfırla</button>
       </div>
       <div class="frow" id="regionChips">
-        <button class="fchip on" data-r="">Tümü</button>
-        <button class="fchip" data-r="balkan">Balkanlar</button>
-        <button class="fchip" data-r="kafkasya">Kafkasya</button>
-        <button class="fchip" data-r="korfez">Körfez</button>
-        <button class="fchip" data-r="ortaasya">Orta Asya</button>
-        <button class="fchip" data-r="akdeniz">Akdeniz &amp; Orta Doğu</button>
-        <button class="fchip" data-r="avrupa">Avrupa (Schengen)</button>
-        <button class="fchip" data-r="uzak">Uzak Coğrafya</button>
-        <span class="fcount"><b id="cCount">0</b> rota</span>
+        <button class="fchip on" data-r="">tümü</button>
+        <button class="fchip" data-r="balkan">balkanlar</button>
+        <button class="fchip" data-r="kafkasya">kafkasya</button>
+        <button class="fchip" data-r="korfez">körfez</button>
+        <button class="fchip" data-r="ortaasya">orta asya</button>
+        <button class="fchip" data-r="akdeniz">akdeniz &amp; orta doğu</button>
+        <button class="fchip" data-r="avrupa">avrupa</button>
+        <button class="fchip" data-r="uzak">uzak coğrafya</button>
+        <span class="fcount" id="cCount">0 rota</span>
       </div>
     </div>
     <div class="grid" id="grid"></div>
   </div></div>
 </div>
 
-<!-- REZERVASYONLAR SAYFASI -->
+<!-- REZERVASYONLAR -->
 <div class="sheet" id="rezSheet">
   <div class="sheet-head">
-    <div><h2>🎟 Rezervasyonlarım</h2><div class="sh-sub">Onaylanan rotalar ve adım adım sihirbaz</div></div>
-    <button class="sheet-close" onclick="closeSheet('rezSheet')">✕</button>
+    <div><h2>Rezervasyonlar</h2><div class="sh-sub">onaylanan rotalar ve adım adım sihirbaz</div></div>
+    <button class="sheet-close" onclick="closeSheet('rezSheet')">kapat</button>
   </div>
   <div class="sheet-body"><div class="sheet-in">
-    <div class="appr-head">
-      <div class="st">✅ <span id="apprCount">0</span> program onaylı · <span id="apprDone">0</span> rezervasyon tamam</div>
-      <div class="tot">4 kişi toplam (uçak): <span id="apprTotal">0 ₺</span></div>
-      <div class="appr-actions">
-        <button class="btn" onclick="approveAll()">Tümünü Onayla</button>
-        <button class="btn" onclick="clearAll()" style="color:var(--red)">Tümünü Geri Al</button>
-      </div>
+    <div class="appr-line">
+      <span><b id="apprCount">0</b> program onaylı</span>
+      <span><b id="apprDone">0</b> rezervasyon tamam</span>
+      <span>topplam <b id="apprTotal">0 ₺</b></span>
+      <button class="lnk" onclick="approveAll()">tümünü onayla</button>
+      <button class="lnk" onclick="clearAll()">tümünü geri al</button>
     </div>
     <div class="rez-grid" id="rezGrid"></div>
   </div></div>
 </div>
 
-<!-- PROGRAM MODALI -->
+<!-- PROGRAM -->
 <div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
   <div class="modal">
     <div class="m-head">
-      <div class="mf" id="mFlag">🇹🇷</div>
-      <div><h3 id="mTitle">—</h3><div class="ms" id="mSub">—</div></div>
-      <button class="m-close" onclick="closeModal()">✕</button>
+      <h3 id="mTitle">—</h3>
+      <div class="ms" id="mSub">—</div>
+      <button class="m-close" onclick="closeModal()">kapat</button>
     </div>
     <div class="m-body">
       <div class="m-tabs">
-        <button class="m-tab on" data-pane="p1" onclick="switchTab(this)">🗺 Gezi Programı</button>
-        <button class="m-tab" data-pane="p2" onclick="switchTab(this)">🎟 Rezervasyon Adımları</button>
+        <button class="m-tab on" data-pane="p1" onclick="switchTab(this)">gezi programı</button>
+        <button class="m-tab" data-pane="p2" onclick="switchTab(this)">rezervasyon adımları</button>
       </div>
       <div class="m-pane on" id="pane-p1"></div>
       <div class="m-pane" id="pane-p2"></div>
@@ -377,20 +320,20 @@
   </div>
 </div>
 
-<!-- REZERVASYON SİHİRBAZI -->
+<!-- SİHİRBAZ -->
 <div class="overlay" id="wizOverlay" onclick="if(event.target===this)closeWizard()">
   <div class="modal">
     <div class="m-head">
-      <div class="mf" id="wFlag">✈️</div>
-      <div><h3 id="wTitle">—</h3><div class="ms" id="wSub">—</div></div>
-      <button class="m-close" onclick="closeWizard()">✕</button>
+      <h3 id="wTitle">—</h3>
+      <div class="ms" id="wSub">—</div>
+      <button class="m-close" onclick="closeWizard()">kapat</button>
     </div>
     <div class="m-body">
       <div class="wiz-steps">
-        <button class="wiz-step on" onclick="wizNav(1)">1 · Uçuş Ara</button>
-        <button class="wiz-step" onclick="wizNav(2)">2 · Tarih &amp; Otel</button>
-        <button class="wiz-step" onclick="wizNav(3)">3 · Kontrol</button>
-        <button class="wiz-step" onclick="wizNav(4)">4 · Kayıt &amp; Bitir</button>
+        <button class="wiz-step on" onclick="wizNav(1)">1 · uçuş ara</button>
+        <button class="wiz-step" onclick="wizNav(2)">2 · tarih &amp; otel</button>
+        <button class="wiz-step" onclick="wizNav(3)">3 · kontrol</button>
+        <button class="wiz-step" onclick="wizNav(4)">4 · kayıt</button>
       </div>
       <div class="m-pane on" id="wpane-1"></div>
       <div class="m-pane" id="wpane-2"></div>
@@ -408,7 +351,7 @@
 const MONTHS = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
 
 const D = [
-  { id:'belgrad', flag:'🇷🇸', country:'Sırbistan', city:'Belgrad', code:'BEG', region:'balkan',
+  { id:'belgrad', country:'Sırbistan', city:'Belgrad', code:'BEG', region:'balkan',
     visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet', dur:'2 sa 10 dk', durMin:130, freq:18,
     price:10500, months:[5,6,9,10], pop:1,
     tags:['Kale & bohem sokak','Novi Sad günübirlik','Uygun fiyat'],
@@ -420,7 +363,7 @@ const D = [
           ['6. Gün','Sremski Karlovci şarap kasabası + Fruška Gora manastırları (yarım günlük tur).'],
           ['7. Gün','Sabah serbest — hediyelik, dönüş uçuşu → Ankara.'] ] },
 
-  { id:'tiflis', flag:'🇬🇪', country:'Gürcistan', city:'Tiflis + Batumi', code:'TBS', region:'kafkasya',
+  { id:'tiflis', country:'Gürcistan', city:'Tiflis + Batumi', code:'TBS', region:'kafkasya',
     visa:'kimlik', visaTxt:'Kimlikle 1 yıl', airline:'AJet', dur:'2 sa 30 dk', durMin:150, freq:12,
     price:9500, months:[4,5,6,7,8,9,10], pop:2,
     tags:['Kaplıca şehri','Şarap bölgesi','Karadeniz — Batumi'],
@@ -432,7 +375,7 @@ const D = [
           ['6. Gün','Mziuri Park, teleferik + macera parkı (15 yaş için), serbest zaman.'],
           ['7. Gün','Batumi → Tiflis sabah transfer → akşam ESB uçuşu.'] ] },
 
-  { id:'baku', flag:'🇦🇿', country:'Azerbaycan', city:'Bakü + Şeki', code:'GYD', region:'kafkasya',
+  { id:'baku', country:'Azerbaycan', city:'Bakü + Şeki', code:'GYD', region:'kafkasya',
     visa:'kimlik', visaTxt:'Kimlikle 90 gün', airline:'AJet / Pegasus', dur:'2 sa 45 dk', durMin:165, freq:72,
     price:8000, months:[4,5,6,9,10], pop:3,
     tags:['En yoğun hat (72 uçuş/ay)','İçerişehir — UNESCO','Çöl & deniz'],
@@ -443,7 +386,7 @@ const D = [
           ['5. Gün','Abşeron: Ateş Tapınağı + Yanardağ, akşam kule manzarası.'],
           ['6. Gün','Göygöl Milli Parkı (yarım gün) → hediyelik (nar, safran, bakır) → dönüş.'] ] },
 
-  { id:'podgorica', flag:'🇲🇪', country:'Karadağ', city:'Podgorica / Kotor', code:'TGD', region:'balkan',
+  { id:'podgorica', country:'Karadağ', city:'Podgorica / Kotor', code:'TGD', region:'balkan',
     visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet', dur:'2 sa 15 dk', durMin:135, freq:9,
     price:12500, months:[6,7,8,9], pop:4,
     tags:['Adriyatik denizi','Kotor Körfezi','Doğa'],
@@ -454,7 +397,7 @@ const D = [
           ['5. Gün','Sveti Stefan + King\'s Beach, akşam Kotor\'da deniz mahsulü.'],
           ['6. Gün','Serbest deniz günü (Becici/Kalamari), dönüş uçuşu.'] ] },
 
-  { id:'sarajevo', flag:'🇧🇦', country:'Bosna Hersek', city:'Saraybosna + Mostar', code:'SJJ', region:'balkan',
+  { id:'sarajevo', country:'Bosna Hersek', city:'Saraybosna + Mostar', code:'SJJ', region:'balkan',
     visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet', dur:'2 sa', durMin:120, freq:7,
     price:11000, months:[4,5,6,9,10], pop:5,
     tags:['Başçarşı','Mostar köprüsü','Kışın kayak'],
@@ -466,7 +409,7 @@ const D = [
           ['6. Gün','Vrelo Bosne (Bosna\'nın kaynağı), serbest zaman.'],
           ['7. Gün','Hediyelik (kahve, dantel, rakija) → dönüş uçuşu.'] ] },
 
-  { id:'tiran', flag:'🇦🇱', country:'Arnavutluk', city:'Tiran + Riviera', code:'TIA', region:'balkan',
+  { id:'tiran', country:'Arnavutluk', city:'Tiran + Riviera', code:'TIA', region:'balkan',
     visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet', dur:'2 sa 15 dk', durMin:135, freq:2,
     price:13500, months:[6,7,8,9], pop:6,
     tags:['Akdeniz rivierası','Berat — bin pencere','Ohri Gölü'],
@@ -477,7 +420,7 @@ const D = [
           ['5. Gün','Ohri Gölü günübirlik (Kuzey Makedonya sınırı) — tekne + kale.'],
           ['6. Gün','Serbest, hediyelik, dönüş.'] ] },
 
-  { id:'doha', flag:'🇶🇦', country:'Katar', city:'Doha', code:'DOH', region:'korfez',
+  { id:'doha', country:'Katar', city:'Doha', code:'DOH', region:'korfez',
     visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet / THY', dur:'4 sa 30 dk', durMin:270, freq:18,
     price:15000, months:[11,12,1,2,3], pop:7,
     tags:['Kış kaçamağı','Çöl safarisi','Müzeler & souq'],
@@ -487,7 +430,7 @@ const D = [
           ['4. Gün','Pearl Adası, Villagio (Venedik kanalları), Katara Kültür Köyü.'],
           ['5. Gün','Mshreib Kahve Köyü, son alışveriş → dönüş.'] ] },
 
-  { id:'amman', flag:'🇯🇴', country:'Ürdün', city:'Amman + Petra', code:'AMM', region:'akdeniz',
+  { id:'amman', country:'Ürdün', city:'Amman + Petra', code:'AMM', region:'akdeniz',
     visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet / Royal Jordanian', dur:'2 sa 45 dk', durMin:165, freq:22,
     price:12500, months:[3,4,5,10,11], pop:8,
     tags:['Petra — dünya harikası','Ölü Deniz','Wadi Rum'],
@@ -498,7 +441,7 @@ const D = [
           ['5. Gün','Jerash antik kenti (Roma harabeleri), Ajloun Kalesi.'],
           ['6. Gün','Amman serbest: Rainbow Caddesi, hediyelik, dönüş.'] ] },
 
-  { id:'taskent', flag:'🇺🇿', country:'Özbekistan', city:'Taşkent', code:'TAS', region:'ortaasya',
+  { id:'taskent', country:'Özbekistan', city:'Taşkent', code:'TAS', region:'ortaasya',
     visa:'vizesiz', visaTxt:'Vizesiz 30 gün', airline:'AJet', dur:'4 sa', durMin:240, freq:48,
     price:11500, months:[4,5,9,10], pop:9,
     tags:['Çin Yolu başkenti','Semerkant iç hat','Pazarlar'],
@@ -506,9 +449,9 @@ const D = [
           ['2. Gün','Chorsu Çarşısı, Eski Şehir, Barak Han Medresesi.'],
           ['3. Gün','Semerkant günübirlik (yüksek hızlı tren Registan, Bibi Hanım).'],
           ['4. Gün','Buhara veya Hive (tren/uçuş) — kadim medreseler.'],
-          ['5. Gün','Serbest: pilav, somun, ketçap tatları — hediyelik, dönüş.'] ] },
+          ['5. Gün','Serbest: pilav, somun tatları — hediyelik, dönüş.'] ] },
 
-  { id:'bishkek', flag:'🇰🇬', country:'Kırgızistan', city:'Bişkek + Issık Göl', code:'BSZ', region:'ortaasya',
+  { id:'bishkek', country:'Kırgızistan', city:'Bişkek + Issık Göl', code:'BSZ', region:'ortaasya',
     visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet', dur:'4 sa 50 dk', durMin:290, freq:28,
     price:12500, months:[6,7,8,9], pop:10,
     tags:['Issık Göl','Dağ doğası','At binme'],
@@ -518,7 +461,7 @@ const D = [
           ['4. Gün','Ala Archa Milli Parkı — dağ yürüyüşü, piknik.'],
           ['5. Gün','Dordoy pazarı, manzaralı tepeler, dönüş.'] ] },
 
-  { id:'sharm', flag:'🇪🇬', country:'Mısır', city:'Şarm El-Şeyh', code:'SSH', region:'akdeniz',
+  { id:'sharm', country:'Mısır', city:'Şarm El-Şeyh', code:'SSH', region:'akdeniz',
     visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet', dur:'3 sa 15 dk', durMin:195, freq:10,
     price:13500, months:[10,11,12,1,2,3,4], pop:11,
     tags:['Kızıldeniz resifleri','Dalış','Kış güneşi'],
@@ -528,7 +471,7 @@ const D = [
           ['4. Gün','Sinai yarımadası: Musa Dağı manzarası, St. Catherine.'],
           ['5. Gün','Old Market, şnorkel + serbest deniz, dönüş.'] ] },
 
-  { id:'beyrut', flag:'🇱🇧', country:'Lübnan', city:'Beyrut', code:'BEY', region:'akdeniz',
+  { id:'beyrut', country:'Lübnan', city:'Beyrut', code:'BEY', region:'akdeniz',
     visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'AJet', dur:'2 sa 30 dk', durMin:150, freq:3,
     price:13000, months:[5,6,9,10], pop:12,
     tags:['Baalbek harabeleri','Deniz & dağ','Uygun fiyat'],
@@ -538,7 +481,7 @@ const D = [
           ['4. Gün','Harissa teleferik + Beyrut müzeleri.'],
           ['5. Gün','Serbest: Deniz kenarında kahve, hediyelik, dönüş.'] ] },
 
-  { id:'adalar', flag:'🇬🇷', country:'Yunanistan', city:'Kapı Vizesi Adaları', code:'ADE', region:'akdeniz',
+  { id:'adalar', country:'Yunanistan', city:'Kapı Vizesi Adaları', code:'ADE', region:'akdeniz',
     visa:'kapi', visaTxt:'Kapı vizesi 1-7 gün', airline:'Feribot (Çeşme/İzmir)', dur:'Feribot ~1-2 sa', durMin:120, freq:0,
     price:3500, months:[5,6,7,8,9,10], pop:13,
     tags:['Kimlikle','10-12 ada','Sakız, Midilli, Rodos'],
@@ -547,9 +490,9 @@ const D = [
           ['3. Gün','Köy turu + deniz (Sakız için: Mesta, Pyrgi köyleri).'],
           ['4. Gün','Tekne turu (koylar), akşam sahil.'],
           ['5. Gün','Plaj günü — sakin aile plajları.'],
-          ['6. Gün','Son geze, hediyelik (zeytinyağı, sakız), feribot + dönüş.'] ] },
+          ['6. Gün','Son gezi, hediyelik (zeytinyağı, sakız), feribot + dönüş.'] ] },
 
-  { id:'budapest', flag:'🇭🇺', country:'Macaristan', city:'Budapeşte', code:'BUD', region:'avrupa',
+  { id:'budapest', country:'Macaristan', city:'Budapeşte', code:'BUD', region:'avrupa',
     visa:'schengen', visaTxt:'Schengen vizesi gerekir', airline:'AJet', dur:'3 sa', durMin:180, freq:12,
     price:4700, months:[1,2,3,4,5,6,7,8,9,10,11,12], pop:14,
     tags:['ESB\'den direkt','Termal hamamlar','Kampanya: 3.617 TL\'den!'],
@@ -560,7 +503,7 @@ const D = [
           ['5. Gün','Vaci Caddesi pazarı, Rudas Hamam, gece tekne turu.'],
           ['6. Gün','Hediyelik (paprika, gulaş), dönüş.'] ] },
 
-  { id:'berlin', flag:'🇩🇪', country:'Almanya', city:'Berlin', code:'BER', region:'avrupa',
+  { id:'berlin', country:'Almanya', city:'Berlin', code:'BER', region:'avrupa',
     visa:'schengen', visaTxt:'Schengen vizesi gerekir', airline:'AJet', dur:'3 sa 30 dk', durMin:210, freq:23,
     price:5500, months:[4,5,6,7,8,9], pop:15,
     tags:['ESB\'den direkt','Tarih & kültür','Aile müzeleri'],
@@ -570,7 +513,7 @@ const D = [
           ['4. Gün','Hayvanat Bahçesi + Botanik Bahçesi (çocuklar için).'],
           ['5. Gün','East Side Gallery, Tempelhof parkı, hediyelik, dönüş.'] ] },
 
-  { id:'tokyo', flag:'🇯🇵', country:'Japonya', city:'Tokyo + Osaka', code:'HND', region:'uzak',
+  { id:'tokyo', country:'Japonya', city:'Tokyo + Osaka', code:'HND', region:'uzak',
     visa:'vizesiz', visaTxt:'Vizesiz 90 gün', airline:'THY (İstanbul aktarmalı)', dur:'13 sa + aktarma', durMin:780, freq:0,
     price:32000, months:[4,10,11,3], pop:16,
     tags:['Vizesiz 90 gün','İstanbul aktarmalı','Anime & teknoloji'],
@@ -578,11 +521,11 @@ const D = [
           ['2. Gün','Senso-ji Tapınağı, Akihabara, Shibuya geçidi.'],
           ['3. Gün','Mt. Fuji günübirlik (Hakone) — teleferik & göl.'],
           ['4. Gün','Tokyo → Osaka (Shinkansen hızlı tren ~2.5 sa).'],
-          ['5. Gün','Osaka Kalesi, Dotonbori gece hayatı (aile dostu).'],
+          ['5. Gün','Osaka Kalesi, Dotonbori (aile dostu).'],
           ['6. Gün','Kyoto: Fushimi Inari, bambu ormanı, tapınaklar.'],
           ['7. Gün','Nara geyik parkı → dönüş uçuşu.'] ] },
 
-  { id:'bangkok', flag:'🇹🇭', country:'Tayland', city:'Bangkok + Phuket', code:'BKK', region:'uzak',
+  { id:'bangkok', country:'Tayland', city:'Bangkok + Phuket', code:'BKK', region:'uzak',
     visa:'vizesiz', visaTxt:'Vizesiz 30 gün', airline:'THY (İstanbul aktarmalı)', dur:'11 sa + aktarma', durMin:660, freq:0,
     price:24000, months:[11,12,1,2,3], pop:17,
     tags:['Vizesiz 30 gün','Tropik deniz','Uygun yaşam maliyeti'],
@@ -596,7 +539,6 @@ const D = [
 ];
 
 const REGION_LABEL = { balkan:'Balkanlar', kafkasya:'Kafkasya', korfez:'Körfez', ortaasya:'Orta Asya', akdeniz:'Akdeniz & Orta Doğu', avrupa:'Avrupa', uzak:'Uzak Coğrafya' };
-const VISA_CLASS = { vizesiz:'vb-free', kimlik:'vb-id', kapi:'vb-door', schengen:'vb-visa' };
 const ALIAS = {
   belgrad:['belgrad','sırps'], tiflis:['tiflis','tbilisi','batumi'], baku:['bakü','baku','şeki'],
   podgorica:['podgorica','kotor','karadağ','monte'], sarajevo:['saraybosna','mostar','bosna'],
@@ -609,7 +551,7 @@ const ALIAS = {
 const SEASON_MAP = {
   deniz:['adalar','podgorica','sharm','bangkok','tiran','baku','tiflis'], plaj:['adalar','podgorica','sharm','bangkok','tiran'],
   kayak:['sarajevo'], dag:['bishkek','podgorica','taskent'], doga:['bishkek','podgorica','taskent','amman'],
-  kultur:['belgrad','sarajevo','budapest','berlin','amman','baku','taskent','tokyo'], tarih:['belgrad','sarajevo','budapest','amman','baku','taskent'],
+  kultur:['belgrad','sarajevo','budapest','berlin','amman','baku','taskent','tokyo'],
   aile:['belgrad','baku','doha','budapest','tokyo','sharm'], col:['doha','amman','baku'], uzak:['tokyo','bangkok'],
   bahar:['belgrad','tiflis','baku','sarajevo'], kis:['doha','sharm','sarajevo']
 };
@@ -629,21 +571,6 @@ const CHECKLIST = [
   'Seyahat sigortası yapıldı (Schengen\u2019de zorunlu)'
 ];
 const HOTEL_IDX = [5, 6];
-const TIPS = [
-  { t:'Salı-Çarşamba kalkışı', x:'AJet ve Pegasus\u2019ta salı/çarşamba kalkışları hafta sonuna göre daha uygun oluyor. Tarih esnekse önce o günleri dene.' },
-  { t:'Bakü en yoğun hat', x:'Ankara-Bakü ayda 72 direkt uçuş — hafta içi talep düşerken fiyatlar da düşüyor. Kasım-Nisan arası ekstra bak.' },
-  { t:'Budapeşte kampanyası', x:'Ankara-Budapeşte gidiş-dönüş ~3.617 ₺\u2019den görüldü (AJet direkt). Schengen vizesi gerekiyor — 45 gün önce başvur.' },
-  { t:'Kapı vizesi zamanlaması', x:'Yunan adaları kapı vizesinde seyahat planı en az 10 gün önce yapılmalı; kimlik + feribot bileti yeterli.' },
-  { t:'15 yaş kuralı', x:'Çocuğun 15 — çoğu havayolunda yetişkin tarifesi geçerli. Bilet aramada \u201C4 yetişkin\u201D seçmek en doğru fiyatı verir.' },
-  { t:'20 kg bagaj', x:'Ailede 2. bagaj genelde 1. bagajdan daha hesaplıdır; dönüş için 20 kg\u2019ı baştan ekle, sonradan pahalıya gelir.' },
-  { t:'Otel opsinyonel', x:'Otel rezervasyonunu erteleyebilirsin — birçok otel ücretsiz iptal sunar, gittiğinde yerinde bakmak daha mantıklı olabilir.' },
-  { t:'Schengen vizesi', x:'Schengen başvurusu uçuştan 15-45 gün önce yapılır. Onaylı bir Schengen rotan varsa evrakları bugün hazırla.' },
-  { t:'En uygun ay', x:'Balkanlar mayıs-haziran ve eylül, körfez kasım-mart, Kafkasya nisan-ekimde en iyi. Tarih esnekse aya göre bilet kes.' },
-  { t:'Fiyat takibi', x:'Google Flights\u2019ta \u201CFiyat takibi\u201D aç — rota düşerse haber verir. Sohbette \u201Canlı fiyat\u201D dediğin an linki veririm.' },
-  { t:'Seyahat sigortası', x:'Schengen\u2019de zorunlu, vizesiz rotalarda da ~20-30 €. Ailenin tamamını tek poliçede almak daha ucuz.' },
-  { t:'Sabah uçuşu', x:'İlk gün uzun olmasın: 08:00-11:00 arası kalkış seç; gecikme riski düşük, akşama şehir turu sığar.' },
-  { t:'Check-in ilk dakika', x:'Online check-in açılır açılmaz gir: yan yana 4 koltuk ve daha geniş bagaj hakkı için kritik.' }
-];
 
 let approved = new Set();
 let filters = { q:'', visa:'', month:'', budget:'', region:'', sort:'rec' };
@@ -666,7 +593,6 @@ function isDone(id) { return !!(rez[id] && rez[id].done); }
 function chkCount(id) { const r = rez[id]; return r ? r.chk.filter(Boolean).length : 0; }
 function todayStr() { const t = new Date(); return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0'); }
 function yesterdayStr() { const t = new Date(Date.now() - 86400000); return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0'); }
-function dayOfYear() { const t = new Date(); return Math.floor((t - new Date(t.getFullYear(), 0, 0)) / 86400000); }
 
 function flightsLink(d) { return 'https://www.google.com/travel/flights?q=' + encodeURIComponent('Flights from Ankara to ' + baseCity(d) + ' for 4 adults') + '&curr=TRY'; }
 function skyLink(d) { if (d.code === 'ADE') return 'https://www.google.com/search?q=' + encodeURIComponent('Çeşme Sakız adası feribot saatleri'); return 'https://www.skyscanner.net/transport/flights/esb/' + d.code.toLowerCase() + '/?adultsv2=4&cabinclass=economy&rtn=1'; }
@@ -686,21 +612,19 @@ function loadGunluk() {
   try { g = JSON.parse(localStorage.getItem(GUN_KEY)); } catch (e) {}
   const today = todayStr();
   if (!g || g.date !== today) {
-    const streak = (g && g.date === yesterdayStr()) ? (g.streak || 0) + 1 : 1;
-    gunluk = { date: today, streak: streak };
+    gunluk = { date: today, streak: (g && g.date === yesterdayStr()) ? (g.streak || 0) + 1 : 1 };
     saveGunluk();
-    if (streak > 1) notifyDaily();
+    if (gunluk.streak > 1) notifyDaily();
   } else gunluk = g;
 }
 function notifyDaily() {
   if (!('Notification' in window) || Notification.permission !== 'granted') return;
-  const list = D.filter((d) => approved.has(d.id));
-  try { new Notification('🤖 Asistan günlük kontrolü', { body: list.length + ' onaylı rota takibimde — bugünün önerileri hazır.' }); } catch (e) {}
+  try { new Notification('Asistan', { body: 'Bugün için bir öneriniz var.' }); } catch (e) {}
 }
 function askNotify() {
   if (!('Notification' in window)) { toast('Tarayıcın bildirimleri desteklemiyor'); return; }
   Notification.requestPermission().then((p) => {
-    if (p === 'granted') { toast('🔔 Günlük asistan bildirimi açıldı'); try { new Notification('🤖 Asistan hazır', { body: 'Her gün kontrol edip öneri göndereceğim.' }); } catch (e) {} }
+    if (p === 'granted') { toast('Günlük bildirim açıldı'); try { new Notification('Asistan', { body: 'Hazırım — gün içinde bir öneriniz olursa haber vereceğim.' }); } catch (e) {} }
     else toast('Bildirim izni verilmedi');
   }).catch(() => toast('Bildirim izni verilemedi'));
 }
@@ -719,17 +643,17 @@ function toast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg; t.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
 }
 
 /* ================= ONAYLAR / ROTALAR ================= */
 function toggle(id) {
   const d = D.find((x) => x.id === id);
-  if (approved.has(id)) { approved.delete(id); toast('❌ ' + baseCity(d) + ' onayı geri alındı'); }
-  else { approved.add(id); toast('✅ ' + baseCity(d) + ' onaylandı'); }
+  if (approved.has(id)) { approved.delete(id); toast(baseCity(d) + ' onayı geri alındı'); }
+  else { approved.add(id); toast(baseCity(d) + ' onaylandı'); }
   refreshAll();
 }
-function approveAll() { D.forEach((d) => approved.add(d.id)); refreshAll(); toast('✅ Tüm programlar onaylandı'); }
+function approveAll() { D.forEach((d) => approved.add(d.id)); refreshAll(); toast('Tüm programlar onaylandı'); }
 function clearAll() { approved.clear(); refreshAll(); toast('Tüm onaylar geri alındı'); }
 function refreshAll() { saveState(); renderGrid(); renderRezCenter(); renderApprovalHeader(); }
 
@@ -759,35 +683,26 @@ function getFiltered() {
 function renderGrid() {
   const list = getFiltered();
   const cc = document.getElementById('cCount');
-  if (cc) cc.textContent = list.length;
+  if (cc) cc.textContent = list.length + ' rota';
   const grid = document.getElementById('grid');
   if (!grid) return;
-  if (!list.length) { grid.innerHTML = '<div class="nocard">🔍 Kriterlere uyan rota bulunamadı — filtreleri sıfırlayın.</div>'; return; }
+  if (!list.length) { grid.innerHTML = '<div class="dcard">Kritere uyan rota bulunamadı — filtreleri sıfırlayın.</div>'; return; }
   grid.innerHTML = list.map((d) => `
-    <div class="dcard${approved.has(d.id) ? ' approved' : ''}">
-      <div class="dc-top">
-        <div class="dc-head">
-          <div class="dc-flag">${d.flag}</div>
-          <div><div class="dc-title">${d.city}</div><div class="dc-country">${d.country} · ${REGION_LABEL[d.region] || ''}</div></div>
-          <span class="vbadge ${VISA_CLASS[d.visa]}">${d.visaTxt}</span>
-        </div>
-        <div class="dc-route">ESB <span class="plane">✈</span> ${d.code} <span class="dur">· ${d.dur}</span></div>
-        <div class="dc-meta">
-          <span class="mtag air">${d.airline}</span>
-          <span class="mtag">${d.freq ? d.freq + ' uçuş/ay' : 'sefer değişken'}</span>
-          ${d.tags.map((t) => `<span class="mtag">${t}</span>`).join('')}
-        </div>
-        <div class="months-row">${d.months.slice(0, 8).map((m) => `<span class="mchip">${monthName(m)}</span>`).join('')}</div>
-      </div>
+    <div class="dcard">
+      <div class="dc-badge">${d.visaTxt}</div>
+      <div class="dc-title">${d.city}</div>
+      <div class="dc-country">${d.country} · ${REGION_LABEL[d.region] || ''}</div>
+      <div class="dc-route">ESB — ${d.code} · ${d.dur}</div>
+      <div class="dc-meta">${d.airline}${d.freq ? ' · ' + d.freq + ' uçuş/ay' : ''} · ${d.months.slice(0, 6).map(monthName).join(', ')}</div>
       <div class="dc-price">
-        <div class="price"><div class="lbl">Gidiş-Dönüş / kişi</div><div class="val">${d.price.toLocaleString('tr-TR')} <small>₺</small></div></div>
-        <div class="total4">4 kişi toplam<b>${(d.price * 4).toLocaleString('tr-TR')} ₺</b></div>
+        <div class="val">${fmt(d.price)} <span style="font-size:11px;color:var(--muted)">kişi başı gidiş-dönüş</span></div>
+        <div class="total4">4 kişi ${fmt(d.price * 4)}</div>
       </div>
       <div class="dc-actions">
-        <button class="btn plan" onclick="openModal('${d.id}')">📋 Program</button>
+        <button class="cbtn" onclick="openModal('${d.id}')">program</button>
         ${approved.has(d.id)
-          ? `<button class="btn appr" onclick="toggle('${d.id}')">✓ Onaylı</button>`
-          : `<button class="btn" onclick="toggle('${d.id}')">＋ Onaya Ekle</button>`}
+          ? `<button class="cbtn ok" onclick="toggle('${d.id}')">onaylı</button>`
+          : `<button class="cbtn muted" onclick="toggle('${d.id}')">onayla</button>`}
       </div>
     </div>`).join('');
 }
@@ -796,27 +711,25 @@ function renderApprovalHeader() {
   const total = list.reduce((s, d) => s + d.price * 4, 0);
   const done = list.filter((d) => isDone(d.id)).length;
   const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
-  set('pillCount', list.length); set('apprCount', list.length); set('apprDone', done); set('apprTotal', fmt(total));
+  set('pillCount', list.length + ' onaylı'); set('apprCount', list.length); set('apprDone', done); set('apprTotal', fmt(total));
 }
 function renderRezCenter() {
   const g = document.getElementById('rezGrid');
   if (!g) return;
   const list = D.filter((d) => approved.has(d.id));
-  if (!list.length) { g.innerHTML = '<div class="rez-empty">Onaylı rota yok — sohbette "onayla" diyebilir veya Rotalar sayfasından ekleyebilirsin.</div>'; return; }
+  if (!list.length) { g.innerHTML = '<div class="rez-card">Onaylı rota yok — sohbette "onayla" diyebilir veya Rotalar sayfasından ekleyebilirsin.</div>'; return; }
   g.innerHTML = list.map((d) => {
     const r = rezOf(d.id);
     const c = chkCount(d.id);
     const pct = Math.round((c / CHECKLIST.length) * 100);
     return `
-    <div class="rez-card${r.done ? ' done' : ''}">
-      <div class="rh">
-        <div class="rf">${d.flag}</div>
-        <div><div class="rt">${d.city}</div><div class="rs">ESB ✈ ${d.code} · ${d.months.slice(0, 3).map(monthName).join(', ')}</div></div>
-        <span class="rez-badge${r.done ? ' done' : ''}">${r.done ? '🎫 TAMAM' : 'ADIM ' + c + '/' + CHECKLIST.length}</span>
-      </div>
-      <div class="bar"><span class="${r.done ? 'done' : ''}" style="width:${r.done ? 100 : pct}%"></span></div>
-      <div class="rez-meta"><span>${r.done ? ('PNR: ' + esc(r.pnr) || '—') : (r.skipHotel ? 'bilet → PNR (otel sonra)' : 'bilet → otel → PNR adımları')}</span><span>${fmt(d.price * 4)}</span></div>
-      <button class="rez-btn${r.done ? ' done' : ''}" onclick="openWizard('${d.id}')">${r.done ? 'Ticket, özet ve kaydı gör' : '🎟 Rezervasyona Devam Et →'}</button>
+    <div class="rez-card">
+      <div class="rez-badge">${r.done ? 'tamam' : c + '/' + CHECKLIST.length + ' adım'}</div>
+      <div class="rt">${d.city}</div>
+      <div class="rs">ESB — ${d.code} · ${d.months.slice(0, 3).map(monthName).join(', ')}</div>
+      <div class="bar"><span style="width:${r.done ? 100 : pct}%"></span></div>
+      <div class="rez-meta"><span>${r.done ? ('PNR: ' + esc(r.pnr) || '—') : (r.skipHotel ? 'bilet → PNR (otel sonra)' : 'bilet → otel → PNR')}</span><span>${fmt(d.price * 4)}</span></div>
+      <button class="rez-btn${r.done ? ' done' : ''}" onclick="openWizard('${d.id}')">${r.done ? 'kaydı gör' : 'devam et'}</button>
     </div>`;
   }).join('');
 }
@@ -833,7 +746,7 @@ function resetFilters() {
 function openSheet(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
 function closeSheet(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
 
-/* ================= PROGRAM MODALI ================= */
+/* ================= PROGRAM ================= */
 function bookingSteps(d) {
   const visaNote = {
     vizesiz: 'Vize gerekmiyor — pasaport yeterli. Sınırda dönüş bileti + konaklama kanıtı hazır olsun.',
@@ -842,9 +755,9 @@ function bookingSteps(d) {
     schengen: 'Schengen: 15-45 gün önce vize başvurusu yap (banka dökümü, otel, uçuş). Uçuş tarihini vize onayına göre kes.',
   }[d.visa];
   return [
-    '<b>ajet.com</b> (veya ' + d.airline.split(' / ')[0] + ' sitesi) → "Bilet Al" → Kalkış: <b>Ankara (ESB)</b>, Varış: <b>' + d.code + '</b>.',
+    '<b>ajet.com</b> (veya ' + d.airline.split(' / ')[0] + ' sitesi) → Bilet Al → Kalkış: <b>Ankara (ESB)</b>, Varış: <b>' + d.code + '</b>.',
     'Tarih: uygun aylardan <b>Salı/Çarşamba kalkışlı</b> en ucuz haftayı seç (' + d.months.slice(0, 4).map(monthName).join(', ') + ' öncelikli).',
-    '<b>4 yolcu</b> seç: 3 yetişkin + 1 (15 yaş → çoğu havayolunda <b>yetişkin tarifesi</b>).',
+    '<b>4 yolcu</b> seç: 3 yetişkin + 1 (15 yaş → çoğu havayolunda yetişkin tarifesi).',
     'Bagaj: dönüş için en az <b>20 kg</b> — aile için 2 bagaj daha hesaplı olabilir.',
     'Koltuk: PNR alınca <b>4 kişilik yan yana</b> koltuk seç; check-in açılır açılmaz onayla.',
     '<b>Otel istersen şimdi ara, istersen gittiğinde bak</b> — birçok otel ücretsiz iptal sunar.',
@@ -854,24 +767,23 @@ function bookingSteps(d) {
 }
 function openModal(id) {
   const d = D.find((x) => x.id === id);
-  document.getElementById('mFlag').textContent = d.flag;
   document.getElementById('mTitle').textContent = d.city;
-  document.getElementById('mSub').textContent = d.country + ' · ESB ✈ ' + d.code + ' · ' + d.visaTxt + ' · ' + d.airline;
+  document.getElementById('mSub').textContent = d.country + ' · ESB — ' + d.code + ' · ' + d.visaTxt + ' · ' + d.airline;
   document.getElementById('pane-p1').innerHTML = `
     ${d.plan.map((p) => `<div class="day"><b>${p[0]}</b><span>${p[1]}</span></div>`).join('')}
     <div class="m-info">
-      <div class="i"><div class="k">Uçuş</div><div class="v">${d.dur}</div></div>
-      <div class="i"><div class="k">4 kişi uçak</div><div class="v" style="color:var(--price)">${fmt(d.price * 4)}</div></div>
-      <div class="i"><div class="k">En uygun aylar</div><div class="v">${d.months.slice(0, 5).map(monthName).join(', ')}</div></div>
+      <div><div class="k">Uçuş</div><div class="v">${d.dur}</div></div>
+      <div><div class="k">4 kişi uçak</div><div class="v">${fmt(d.price * 4)}</div></div>
+      <div><div class="k">En uygun aylar</div><div class="v">${d.months.slice(0, 5).map(monthName).join(', ')}</div></div>
     </div>`;
   document.getElementById('pane-p2').innerHTML = `
     <ol class="steps">${bookingSteps(d).map((s) => `<li>${s}</li>`).join('')}</ol>
     <div class="m-info">
-      <div class="i"><div class="k">Kişi başı (G-D)</div><div class="v" style="color:var(--price)">${fmt(d.price)}</div></div>
-      <div class="i"><div class="k">4 kişi toplam</div><div class="v" style="color:var(--price)">${fmt(d.price * 4)}</div></div>
-      <div class="i"><div class="k">Durum</div><div class="v" style="color:var(--green)">${approved.has(d.id) ? (isDone(d.id) ? '🎫 TAMAM' : '✅ ONAYLI') : '— onay bekliyor'}</div></div>
+      <div><div class="k">Kişi başı (G-D)</div><div class="v">${fmt(d.price)}</div></div>
+      <div><div class="k">4 kişi toplam</div><div class="v">${fmt(d.price * 4)}</div></div>
+      <div><div class="k">Durum</div><div class="v">${approved.has(d.id) ? (isDone(d.id) ? 'tamam' : 'onaylı') : 'onay bekliyor'}</div></div>
     </div>
-    <button class="btn primary" style="width:100%;margin-top:14px" onclick="closeModal();openWizard('${d.id}')">▶ Rezervasyon Sihirbazına Geç</button>`;
+    <div style="margin-top:16px"><button class="wbtn" onclick="closeModal();openWizard('${d.id}')">rezervasyon sihirbazına geç →</button></div>`;
   document.querySelectorAll('.m-tab').forEach((t, i) => t.classList.toggle('on', i === 0));
   document.getElementById('pane-p1').classList.add('on');
   document.getElementById('pane-p2').classList.remove('on');
@@ -886,86 +798,83 @@ function switchTab(btn) {
   document.getElementById('pane-' + btn.dataset.pane).classList.add('on');
 }
 
-/* ================= REZERVASYON SİHİRBAZI ================= */
+/* ================= SİHİRBAZ ================= */
 function openWizard(id) { wizId = id; wizStepNo = 1; renderWizard(); document.getElementById('wizOverlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
 function closeWizard() { document.getElementById('wizOverlay').classList.remove('open'); document.body.style.overflow = ''; wizId = null; }
 function wizNav(n) { wizStepNo = n; renderWizard(); }
 function setHotelMode(id, skip) {
   const r = rezOf(id);
-  const d = D.find((x) => x.id === id);
   r.skipHotel = skip;
   HOTEL_IDX.forEach((i) => { r.chk[i] = skip; });
   saveRez();
   renderWizard(); renderRezCenter(); renderApprovalHeader();
-  toast(skip ? '🚶 Otel adımı atlandı — gittiğinde bakarsın' : '🏨 Otel adımı tekrar açık');
+  toast(skip ? 'Otel adımı atlandı — gittiğinde bakarsın' : 'Otel adımı tekrar açık');
 }
 function renderWizard() {
   const d = D.find((x) => x.id === wizId);
   if (!d) return;
   const r = rezOf(d.id);
-  document.getElementById('wFlag').textContent = d.flag;
   document.getElementById('wTitle').textContent = d.city;
-  document.getElementById('wSub').textContent = 'ESB ✈ ' + d.code + ' · ' + d.airline + ' · ' + d.visaTxt + ' · 4 kişi ≈ ' + fmt(d.price * 4);
+  document.getElementById('wSub').textContent = 'ESB — ' + d.code + ' · ' + d.airline + ' · ' + d.visaTxt + ' · 4 kişi ≈ ' + fmt(d.price * 4);
   document.querySelectorAll('.wiz-step').forEach((b, i) => { b.classList.toggle('on', i + 1 === wizStepNo); b.classList.toggle('past', i + 1 < wizStepNo); });
   for (let i = 1; i <= 4; i++) document.getElementById('wpane-' + i).classList.toggle('on', i === wizStepNo);
 
   if (wizStepNo === 1) {
     document.getElementById('wpane-1').innerHTML = `
-      <div class="note">💡 Aynı rotada en ucuz bileti bulmak için 3 sitede karşılaştırma yap. ${d.months.slice(0, 3).map(monthName).join('/')} aylarında <b>Salı-Çarşamba</b> kalkışlarını dene.</div>
+      <div class="note">Aynı rotada en ucuz bileti bulmak için birkaç sitede karşılaştırma yap. ${d.months.slice(0, 3).map(monthName).join('/')} aylarında <b>Salı-Çarşamba</b> kalkışlarını dene.</div>
       <div class="link-grid">
-        <a class="llink primary" target="_blank" rel="noopener" href="${flightsLink(d)}"><span class="lk">🔎 Google Flights</span><span class="ld">4 yetişkin · ESB → ${d.code}</span></a>
-        <a class="llink" target="_blank" rel="noopener" href="${skyLink(d)}"><span class="lk">🔎 Skyscanner</span><span class="ld">tarih esnek arama</span></a>
+        <a class="llink" target="_blank" rel="noopener" href="${flightsLink(d)}"><span class="lk">Google Flights</span><span class="ld">4 yetişkin · ESB — ${d.code}</span></a>
+        <a class="llink" target="_blank" rel="noopener" href="${skyLink(d)}"><span class="lk">Skyscanner</span><span class="ld">tarih esnek arama</span></a>
         ${airlineLinks(d).map((l) => `<a class="llink" target="_blank" rel="noopener" href="${l[2]}"><span class="lk">${l[0]}</span><span class="ld">${l[1]}</span></a>`).join('')}
       </div>
-      <div class="note">⚠️ Arama sonuçlarında <b>4 yetişkin</b> seç (15 yaş child değil, yetişkin tarifesi). Bagaj dahil mi kontrol et.</div>
+      <div class="note">Aramada <b>4 yetişkin</b> seç (15 yaş child değil, yetişkin tarifesi). Bagaj dahil mi kontrol et.</div>
       <div class="m-info">
-        <div class="i"><div class="k">Kişi başı hedef</div><div class="v" style="color:var(--price)">${fmt(d.price)}</div></div>
-        <div class="i"><div class="k">4 kişi hedef</div><div class="v" style="color:var(--price)">${fmt(d.price * 4)}</div></div>
-        <div class="i"><div class="k">Uçuş süresi</div><div class="v">${d.dur}</div></div>
+        <div><div class="k">Kişi başı hedef</div><div class="v">${fmt(d.price)}</div></div>
+        <div><div class="k">4 kişi hedef</div><div class="v">${fmt(d.price * 4)}</div></div>
+        <div><div class="k">Uçuş süresi</div><div class="v">${d.dur}</div></div>
       </div>`;
   } else if (wizStepNo === 2) {
     document.getElementById('wpane-2').innerHTML = `
-      <div class="note">📅 Uygun aylar: <b>${d.months.slice(0, 6).map(monthName).join(', ')}</b> — esnek tarihsen bu aylardaki en ucuz haftayı seç.</div>
+      <div class="note">Uygun aylar: <b>${d.months.slice(0, 6).map(monthName).join(', ')}</b> — esnek tarihsen bu aylardaki en ucuz haftayı seç.</div>
       ${r.skipHotel
-        ? `<div class="note ok">🚶 <b>Otel adımın atlandı</b> — gittiğinde kendin bakacaksın (bu adımlar \u201Catlandı\u201D işaretlendi). İstersen aşağıdaki düğmeden geri açabilirsin.</div>
+        ? `<div class="note">Otel adımın <b>atlandı</b> — gittiğinde kendin bakacaksın. İstersen aşağıdaki düğmeden geri açabilirsin.</div>
            <div class="opt-row">
-             <button class="opt" onclick="setHotelMode('${d.id}', false)">🏨 Otel seçeneğine dön<small>Rezervasyon adımlarına oteli de ekle</small></button>
-             <button class="opt on" onclick="setHotelMode('${d.id}', true)">🚶 Otel ben hallederim (atlandı)<small>Şimdilik öyle kalsın</small></button>
+             <button class="opt" onclick="setHotelMode('${d.id}', false)">Otel seçeneğine dön<small>rezervasyon adımlarına oteli de ekle</small></button>
+             <button class="opt on" onclick="setHotelMode('${d.id}', true)">Otel ben hallederim (atlandı)<small>şimdilik öyle kalsın</small></button>
            </div>`
         : `<div class="link-grid">
-             <a class="llink primary" target="_blank" rel="noopener" href="${bookingLink(d)}"><span class="lk">🏨 Booking.com</span><span class="ld">3 yetişkin + 1 (15) · 2 oda</span></a>
-             <a class="llink" target="_blank" rel="noopener" href="https://www.google.com/search?q=${encodeURIComponent(baseCity(d) + ' nerede kalınır aile')}"><span class="lk">🔎 "Nerede kalınır"</span><span class="ld">mahalle karşılaştırması</span></a>
+             <a class="llink" target="_blank" rel="noopener" href="${bookingLink(d)}"><span class="lk">Booking.com</span><span class="ld">3 yetişkin + 1 (15) · 2 oda</span></a>
+             <a class="llink" target="_blank" rel="noopener" href="https://www.google.com/search?q=${encodeURIComponent(baseCity(d) + ' nerede kalınır aile')}"><span class="lk">"Nerede kalınır"</span><span class="ld">mahalle karşılaştırması</span></a>
            </div>
-           <div class="note">🏨 15 yaş otellerde yetişkin sayılır: tek oda limiti aşabilir → 2 oda veya "3 yetişkin + ek yatak" ara. <b>İstersen bu adımı atlayabilirsin:</b> birçok otel ücretsiz iptal sunar, gittiğinde yerinde bakmak daha mantıklı olabilir.</div>
+           <div class="note">15 yaş otellerde yetişkin sayılır: tek oda limiti aşabilir → 2 oda veya "3 yetişkin + ek yatak" ara. <b>İstersen bu adımı atlayabilirsin:</b> birçok otel ücretsiz iptal sunar, gittiğinde yerinde bakmak daha mantıklı olabilir.</div>
            <div class="opt-row">
-             <button class="opt on" onclick="setHotelMode('${d.id}', false)">🏨 Otel rezervasyonunu da yap<small>Linkler burada, kontrol listesine eklenir</small></button>
-             <button class="opt" onclick="setHotelMode('${d.id}', true)">🚶 Otel ben hallederim<small>Belki gittiğinde bakarım — adımı atla</small></button>
+             <button class="opt on" onclick="setHotelMode('${d.id}', false)">Otel rezervasyonunu da yap<small>linkler burada, kontrol listesine eklenir</small></button>
+             <button class="opt" onclick="setHotelMode('${d.id}', true)">Otel ben hallederim<small>belki gittiğinde bakarım — adımı atla</small></button>
            </div>`}`;
   } else if (wizStepNo === 3) {
     document.getElementById('wpane-3').innerHTML =
       CHECKLIST.map((c, i) => {
-        const isHotel = HOTEL_IDX.indexOf(i) >= 0;
-        const skipped = isHotel && r.skipHotel;
+        const skipped = HOTEL_IDX.indexOf(i) >= 0 && r.skipHotel;
         return `<label class="chk ${r.chk[i] ? 'done' : ''}"><input type="checkbox" ${r.chk[i] ? 'checked' : ''} onchange="toggleChk('${d.id}',${i})" /><span>${c}${skipped ? ' <i style="color:var(--muted)">(atlandı)</i>' : ''}</span></label>`;
       }).join('') +
       `<div class="note">İlerlemen tarayıcıda saklanır — sayfayı kapatsan da kaldığın yerden devam edersin.${r.skipHotel ? ' Otel adımlarını atladın, tamamlama için engel değil.' : ''}</div>`;
   } else {
     document.getElementById('wpane-4').innerHTML = `
-      ${r.done ? `<div class="note ok">🎫 <b>REZERVASYON TAMAMLANDI</b> — ${r.doneAt} tarihinde kaydedildi. PNR: <b>${esc(r.pnr) || '—'}</b>${r.paid ? ' · ödenen: ' + esc(r.paid) : ''}</div>` : `
+      ${r.done ? `<div class="note">Rezervasyon <b>tamamlandı</b> — ${r.doneAt} tarihinde kaydedildi. PNR: <b>${esc(r.pnr) || '—'}</b>${r.paid ? ' · ödenen: ' + esc(r.paid) : ''}</div>` : `
       <div class="form-row">
         <input id="wPnr" placeholder="PNR / rezervasyon kodu (örn. AB12XY)" value="${esc(r.pnr)}" oninput="saveField('pnr', this.value)" />
-        <input id="wPaid" placeholder="Ödenen tutar (örn. 41.500 ₺)" value="${esc(r.paid)}" oninput="saveField('paid', this.value)" />
+        <input id="wPaid" placeholder="ödenen tutar (örn. 41.500 ₺)" value="${esc(r.paid)}" oninput="saveField('paid', this.value)" />
         <input id="wDate" class="full" type="date" value="${esc(r.fdate)}" onchange="saveField('fdate', this.value)" />
       </div>
-      <div class="note">Ödeme yaptıktan sonra PNR\u2019ı buraya yaz → rota \u201Ctamamlandı\u201D işaretlensin; ben günlük kontrolde bu rotayı kapatırım.</div>`}
+      <div class="note">Ödeme yaptıktan sonra PNR'ı buraya yaz — rota "tamamlandı" işaretlensin.</div>`}
       <div class="sum-box">${esc(summaryText(d))}</div>`;
   }
   document.getElementById('wizActions').innerHTML = `
-    ${wizStepNo > 1 ? `<button class="btn" onclick="wizNav(${wizStepNo - 1})">← Geri</button>` : ''}
+    ${wizStepNo > 1 ? `<button class="wbtn plain" onclick="wizNav(${wizStepNo - 1})">← geri</button>` : ''}
     ${wizStepNo < 4
-      ? `<button class="btn primary" onclick="wizNav(${wizStepNo + 1})">İleri →</button>`
-      : `<button class="btn success" onclick="finishRez('${d.id}')">${r.done ? '✓ Kaydı güncelle' : '✅ Rezervasyonu Tamamla'}</button>`}
-    <button class="btn" onclick="copySummary('${d.id}')">📋 Özeti Kopyala</button>`;
+      ? `<button class="wbtn" onclick="wizNav(${wizStepNo + 1})">ileri →</button>`
+      : `<button class="wbtn ok" onclick="finishRez('${d.id}')">${r.done ? 'kaydı güncelle' : 'rezervasyonu tamamla'}</button>`}
+    <button class="wbtn plain" onclick="copySummary('${d.id}')">özeti kopyala</button>`;
 }
 function toggleChk(id, i) { const r = rezOf(id); r.chk[i] = !r.chk[i]; saveRez(); renderWizard(); renderRezCenter(); renderApprovalHeader(); }
 function saveField(k, v) { if (!wizId) return; const r = rezOf(wizId); r[k] = v; saveRez(); }
@@ -979,21 +888,21 @@ function finishRez(id) {
   saveRez();
   renderRezCenter(); renderApprovalHeader();
   renderWizard();
-  toast('🎫 Rezervasyon tamamlandı: ' + baseCity(d));
-  botSay('🎉 <b>' + baseCity(d) + '</b> rezervasyonu tamam! PNR: <b>' + esc(r.pnr) + '</b>. ' + (r.skipHotel ? 'Otelini gittiğinde bakarsın — istersen yakında otel önerileri de sorarım.' : 'Uçuş tarihin yaklaştıkça check-in için yine yaz.'));
+  toast('Rezervasyon tamamlandı: ' + baseCity(d));
+  botSay('<b>' + baseCity(d) + '</b> rezervasyonu tamam. PNR: <b>' + esc(r.pnr) + '</b>. ' + (r.skipHotel ? 'Otelini gittiğinde bakarsın — istersen otel önerileri de sorarım.' : 'Uçuş tarihi yaklaştıkça check-in için yaz, hatırlatayım.'));
 }
 function summaryText(d) {
   const r = rezOf(d.id);
   return [
-    '🗺 ' + d.flag + ' ' + d.city + ' (' + d.country + ') — ESB ✈ ' + d.code,
-    '👥 4 kişi (3 yetişkin + 1 çocuk/15) · ' + d.airline + ' · uçuş ' + d.dur,
-    '🛂 ' + d.visaTxt,
-    '💰 Tahmini uçak: ' + fmt(d.price * 4) + ' (kişi başı ' + fmt(d.price) + ', gidiş-dönüş)',
-    '📅 Uygun aylar: ' + d.months.slice(0, 6).map(monthName).join(', '),
-    '🏨 Otel: ' + (r.skipHotel ? 'sen bakacaksın (atlandı)' : bookingLink(d)),
-    '🎟 Rezervasyon: ' + (r.done ? ('TAMAM ✓ PNR ' + (r.pnr || '-') + (r.paid ? ' · ' + r.paid : '') + ' · ' + (r.doneAt || '')) : ('yapılıyor — ' + chkCount(d.id) + '/' + CHECKLIST.length + ' adım')),
-    '✅ Program onaylı: ' + (approved.has(d.id) ? 'evet' : 'hayır'),
-    '🔗 Bilet: ' + flightsLink(d),
+    d.city + ' (' + d.country + ') — ESB — ' + d.code,
+    '4 kişi (3 yetişkin + 1 çocuk/15) · ' + d.airline + ' · uçuş ' + d.dur,
+    d.visaTxt,
+    'Tahmini uçak: ' + fmt(d.price * 4) + ' (kişi başı ' + fmt(d.price) + ', gidiş-dönüş)',
+    'Uygun aylar: ' + d.months.slice(0, 6).map(monthName).join(', '),
+    'Otel: ' + (r.skipHotel ? 'sen bakacaksın (atlandı)' : bookingLink(d)),
+    'Rezervasyon: ' + (r.done ? ('tamam · PNR ' + (r.pnr || '-') + (r.paid ? ' · ' + r.paid : '') + ' · ' + (r.doneAt || '')) : ('yapılıyor — ' + chkCount(d.id) + '/' + CHECKLIST.length + ' adım')),
+    'Program onaylı: ' + (approved.has(d.id) ? 'evet' : 'hayır'),
+    'Bilet: ' + flightsLink(d),
     '— Asistan planı'
   ].join('\n');
 }
@@ -1009,48 +918,49 @@ function copySummary(id) {
     document.body.removeChild(ta);
   } catch (e) { ok = false; }
   if (!ok && navigator.clipboard) {
-    navigator.clipboard.writeText(txt).then(() => toast('📋 Kopyalandı')).catch(() => toast('Kopyalanamadı — aşağıdaki metni elle seç'));
+    navigator.clipboard.writeText(txt).then(() => toast('Kopyalandı')).catch(() => toast('Kopyalanamadı — aşağıdaki metni elle seç'));
     return;
   }
-  toast(ok ? '📋 Kopyalandı — WhatsApp/e-postaya yapıştırabilirsin' : 'Kopyalanamadı — aşağıdaki metni elle seç');
+  toast(ok ? 'Kopyalandı' : 'Kopyalanamadı — aşağıdaki metni elle seç');
 }
 
-/* ================= SOHBET ================= */
+/* ================= SOHBET ALTYAPISI ================= */
 const chatLog = () => document.getElementById('chatLog');
 function scrollChat() { const c = chatLog(); c.scrollTop = c.scrollHeight; }
 function startChat() {
   if (started) return;
   started = true;
   document.getElementById('landing').style.display = 'none';
-  document.getElementById('landingChips').style.display = 'none';
+  document.getElementById('dailyNote').style.display = 'none';
   document.getElementById('chatArea').style.display = 'flex';
   document.getElementById('chatwrap').classList.add('started');
-  document.getElementById('chipsBar').style.display = 'flex';
-  const tip = TIPS[dayOfYear() % TIPS.length];
+}
+function askDaily() {
+  startChat();
+  userSay('Bugün için ne öneriyorsun?');
+  const ns = nextSeasonDest(D);
   botSeq([
-    'Merhaba Ömer 👋 Ben <b>Asistan</b>. Bugün <b>' + new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' }) + '</b>' + (gunluk && gunluk.streak > 1 ? ' — kontrol serimiz <b>' + gunluk.streak + ' gün</b> 🔥' : '') + '.',
-    '💡 Günün ipucu: <b>' + tip.t + '</b> — ' + tip.x,
-    'Sor bakalım: nereyi, hangi ayı veya bütçeni yaz — rota bulur, canlı fiyat linki verir, <b>rezervasyonu adım adım ben yaparım</b>.'
+    { cards: destCard(ns.d) },
+    'Tek öneri: <b>' + baseCity(ns.d) + '</b> — ' + MONTHS[ns.m - 1] + ' ayı en uygun dönem' + (ns.gap === 0 ? ' (bu ay)' : ns.gap === 1 ? ' (önümüzdeki ay)' : ' (' + ns.gap + ' ay sonra)') + '. Kişi başı ' + fmt(ns.d.price) + ', ' + ns.d.visaTxt.toLowerCase() + '. İstersen detaylı programına bakalım ya da rezervasyonunu başlatalım.'
   ]);
 }
-function startAsk(q) { startChat(); userSay(q); respond(q); }
 function userSay(text) {
   const div = document.createElement('div');
-  div.className = 'bub me';
+  div.className = 'msg me';
   div.textContent = text;
   chatLog().appendChild(div);
   scrollChat();
 }
 function botSay(html) {
   const div = document.createElement('div');
-  div.className = 'bub bot';
+  div.className = 'msg bot';
   div.innerHTML = html;
   chatLog().appendChild(div);
   scrollChat();
 }
 function botCards(listHtml) {
   const div = document.createElement('div');
-  div.className = 'bub bot wide';
+  div.className = 'msg bot';
   div.innerHTML = '<div class="cards">' + listHtml + '</div>';
   chatLog().appendChild(div);
   scrollChat();
@@ -1059,8 +969,8 @@ let typingEl = null;
 function typing() {
   untyping();
   typingEl = document.createElement('div');
-  typingEl.className = 'bub bot';
-  typingEl.innerHTML = '<span class="typing"><span></span><span></span><span></span></span>';
+  typingEl.className = 'msg bot';
+  typingEl.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>';
   chatLog().appendChild(typingEl);
   scrollChat();
 }
@@ -1080,38 +990,86 @@ function pumpChat() {
     untyping();
     if (p && p.cards) botCards(p.cards); else botSay(p);
     pumpChat();
-  }, 440 + Math.random() * 360);
+  }, 400 + Math.random() * 340);
 }
-function setChips(items) {
-  document.getElementById('chipsBar').innerHTML = items.map((it) =>
-    it.a
-      ? `<button class="chip" onclick="${it.a}">${it.t}</button>`
-      : `<button class="chip" onclick="askChip(this.textContent)">${it.t}</button>`
-  ).join('');
-}
-function askChip(q) { userSay(q); respond(q); }
 
+/* ================= CANLI YETENEKLER ================= */
+function calc(expr) {
+  const s = expr.replace(/\s+/g, '').replace(/,/g, '.');
+  let i = 0;
+  function parseExpr() {
+    let v = parseTerm();
+    while (s[i] === '+' || s[i] === '-') { const op = s[i++]; const r = parseTerm(); v = op === '+' ? v + r : v - r; }
+    return v;
+  }
+  function parseTerm() {
+    let v = parseFactor();
+    while (s[i] === '*' || s[i] === '/' || s[i] === '%') { const op = s[i++]; const r = parseFactor(); v = op === '*' ? v * r : op === '/' ? v / r : v % r; }
+    return v;
+  }
+  function parseFactor() {
+    if (s[i] === '(') { i++; const v = parseExpr(); if (s[i] === ')') i++; return v; }
+    if (s[i] === '-') { i++; return -parseFactor(); }
+    if (s[i] === '+') { i++; return parseFactor(); }
+    const m = /^\d+\.?\d*/.exec(s.slice(i));
+    if (!m) throw new Error('parse');
+    i += m[0].length;
+    return parseFloat(m[0]);
+  }
+  const v = parseExpr();
+  if (i !== s.length || !isFinite(v)) throw new Error('parse');
+  return v;
+}
+async function askWeather(city) {
+  typing();
+  try {
+    const j = await (await fetch('https://wttr.in/' + encodeURIComponent(city) + '?format=j1')).json();
+    const c = j.current_condition[0];
+    const w = j.weather[0];
+    untyping();
+    botSay('<b>' + esc(city) + '</b> için şu an <b>' + c.temp_C + '°</b>, ' + esc(c.weatherDesc[0].value) + '. Gün içi en yüksek ' + w.maxtempC + '°, en düşük ' + w.mintempC + '.<span class="src">Kaynak: wttr.in · <a href="https://wttr.in/' + encodeURIComponent(city) + '" target="_blank">3 günlük tahmin</a></span>');
+  } catch (e) {
+    untyping();
+    botSay('Hava verisine şu an ulaşamadım. <a href="https://www.google.com/search?q=' + encodeURIComponent(city + ' hava durumu') + '" target="_blank">Google\u2019da gör</a>.');
+  }
+}
+async function askWiki(q) {
+  typing();
+  try {
+    const clean = q.replace(/(nedir|kimdir|nasıldır|nasıl olur|ne demek|ne zaman|neden|hakkında|bilgi ver|anlat|özetle)/g, '').trim() || q;
+    const s = await (await fetch('https://tr.wikipedia.org/w/api.php?action=query&list=search&srsearch=' + encodeURIComponent(clean) + '&format=json&utf8=1&srlimit=1&origin=*')).json();
+    const hit = s.query && s.query.search && s.query.search[0];
+    if (!hit) throw new Error('yok');
+    const sum = await (await fetch('https://tr.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(hit.title))).json();
+    untyping();
+    const page = sum.content_urls && sum.content_urls.desktop ? sum.content_urls.desktop.page : '#';
+    botSay('<b>' + esc(hit.title) + '</b> — ' + esc((sum.extract || '').slice(0, 430)) + ((sum.extract || '').length > 430 ? '…' : '') + '<span class="src"><a href="' + page + '" target="_blank">Wikipedia\u2019da aç</a> · <a href="https://www.google.com/search?q=' + encodeURIComponent(clean) + '" target="_blank">Google\u2019da ara</a></span>');
+  } catch (e) {
+    untyping();
+    botSay('Bunu bulamadım. <a href="https://www.google.com/search?q=' + encodeURIComponent(q) + '" target="_blank">Google\u2019da ara</a> ile devam edebilirsin.');
+  }
+}
+
+/* ================= SOHBET MOTORU ================= */
 function destCard(d) {
   return `
   <div class="ccard">
-    <div class="cc-top">
-      <span class="cc-flag">${d.flag}</span>
-      <div><b>${d.city}</b><span class="sub">${d.country} · ESB ✈ ${d.code} · ${d.dur}</span></div>
-      <span class="vbadge ${VISA_CLASS[d.visa]}">${d.visaTxt}</span>
-    </div>
+    <div class="cc-badge">${d.visaTxt}</div>
+    <div class="cc-title">${d.city}</div>
+    <div class="cc-sub">${d.country} · ESB — ${d.code} · ${d.dur} · ${d.airline}</div>
     <div class="cc-price">
-      <div><span class="lbl">Gidiş-Dönüş / kişi</span><b class="big">${fmt(d.price)}</b></div>
-      <div class="cc-4">4 kişi toplam<b>${fmt(d.price * 4)}</b></div>
+      <div class="big">${fmt(d.price)} <span class="small">kişi başı gidiş-dönüş</span></div>
+      <div class="small">4 kişi ${fmt(d.price * 4)}</div>
     </div>
     <div class="months-row">${d.months.slice(0, 6).map((m) => `<span class="mchip">${monthName(m)}</span>`).join('')}</div>
     <div class="cc-acts">
-      <button class="cbtn" onclick="openModal('${d.id}')">📋 Program</button>
-      <button class="cbtn blue" onclick="chatLive('${d.id}')">🔍 Canlı fiyat</button>
+      <button class="cbtn" onclick="openModal('${d.id}')">program</button>
+      <button class="cbtn" onclick="chatLive('${d.id}')">canlı fiyat</button>
       ${approved.has(d.id)
         ? (isDone(d.id)
-          ? `<button class="cbtn green" onclick="openWizard('${d.id}')">🎫 Tamam — gör</button>`
-          : `<button class="cbtn green" onclick="chatReserve('${d.id}')">🎟 Rezervasyon yap</button>`)
-        : `<button class="cbtn" onclick="chatApprove('${d.id}')">＋ Onayla</button>`}
+          ? `<button class="cbtn ok" onclick="openWizard('${d.id}')">rezervasyon tamam</button>`
+          : `<button class="cbtn" onclick="chatReserve('${d.id}')">rezervasyon yap</button>`)
+        : `<button class="cbtn muted" onclick="chatApprove('${d.id}')">onayla</button>`}
     </div>
   </div>`;
 }
@@ -1119,27 +1077,23 @@ const cardsOf = (list) => list.map(destCard).join('');
 
 function chatLive(id) {
   const d = D.find((x) => x.id === id);
-  botSeq(['🔍 <b>' + baseCity(d) + '</b> için anlık fiyat aramasını hazırladım — aşağıdaki düğmeden Google Flights\u2019ta <b>4 yetişkin</b> olarak açılır. ' + d.months.slice(0, 2).map(monthName).join('/') + ' aylarına ve Salı-Çarşamba kalkışlarına bak, genelde onlar daha ucuz.']);
-  setChips([{ t: '🏨 Otel de bak', a: "window.open('" + bookingLink(d) + "','_blank')" }, { t: '🎟 Rezervasyon yap', a: "chatReserve('" + d.id + "')" }, { t: 'En ucuz 3 rota' }]);
+  botSeq(['<b>' + baseCity(d) + '</b> için anlık fiyat araması hazır — <a href="' + flightsLink(d) + '" target="_blank">Google Flights\u2019ta 4 yetişkin olarak aç</a> ya da <a href="' + skyLink(d) + '" target="_blank">Skyscanner\u2019da esnek tarihli bak</a>. ' + d.months.slice(0, 2).map(monthName).join('/') + ' aylarında Salı-Çarşamba kalkışları genelde daha ucuz.']);
 }
 function chatApprove(id) {
   const d = D.find((x) => x.id === id);
   if (!approved.has(id)) { approved.add(id); saveState(); refreshAll(); }
-  botSeq(['✅ <b>' + baseCity(d) + '</b> onaylandı — takip listeme eklendi. Fiyat kontrolü ve rezervasyon adımlarını senin için yürütebilirim.']);
-  setChips([{ t: '🔍 Canlı fiyat', a: "chatLive('" + id + "')" }, { t: '🎟 Rezervasyon yap', a: "chatReserve('" + id + "')" }, { t: 'Rezervasyonlarım' }]);
+  botSeq(['<b>' + baseCity(d) + '</b> onaylandı — takip listeme eklendi. Fiyat kontrolü ve rezervasyon adımlarını yürütebilirim.']);
 }
 function chatReserve(id) {
   const d = D.find((x) => x.id === id);
   const r = rezOf(id);
   if (!approved.has(id)) { approved.add(id); saveState(); refreshAll(); }
   botSeq([
-    '🎟 <b>' + baseCity(d) + '</b> rezervasyonunu başlatıyorum. Hedef: <b>' + fmt(d.price * 4) + '</b> / 4 kişi (kişi başı ' + fmt(d.price) + '), ' + d.airline + '.',
+    '<b>' + baseCity(d) + '</b> rezervasyonunu başlatıyorum. Hedef: <b>' + fmt(d.price * 4) + '</b> / 4 kişi (kişi başı ' + fmt(d.price) + '), ' + d.airline + '.',
     { cards: destCard(d) },
-    'Sihirbazda adım adım ilerliyoruz: 1) <b>canlı arama linkleri</b> → 2) tarih &amp; otel → 3) kontrol listesi → 4) <b>PNR kaydı</b>. Otel istersen bu adımı <b>atlayabilirsin</b>, gittiğinde kendin bakarsın.' + (r.done ? ' Bu rotanın kaydı zaten tamam 🎫' : chkCount(id) > 0 ? ' — ' + chkCount(id) + '/9 adımın zaten işaretli.' : ' Hazır olduğunda \u201CSihirbazı aç\u201D de.')
+    'Sihirbazda adım adım ilerliyoruz: 1) canlı arama linkleri → 2) tarih &amp; otel → 3) kontrol listesi → 4) PNR kaydı. Otel istersen bu adımı <b>atlayabilirsin</b>, gittiğinde kendin bakarsın.' + (r.done ? ' Bu rotanın kaydı zaten tamam.' : chkCount(id) > 0 ? ' — ' + chkCount(id) + '/9 adımın zaten işaretli.' : ' Hazırsan sihirbazı açman yeterli.')
   ]);
-  setChips([{ t: '▶ Sihirbazı aç', a: "openWizard('" + id + "')" }, { t: '🔍 Önce canlı fiyat', a: "chatLive('" + id + "')" }, { t: 'Rezervasyonlarım' }]);
 }
-
 function findDests(text) {
   const t = normalize(text);
   const words = t.split(' ').filter((w) => w.length >= 3);
@@ -1169,71 +1123,70 @@ function detectMonth(t) {
   return 0;
 }
 function helpParts() {
-  return { parts: [
-    'Şunları yapabilirim 💪',
-    '• <b>Rota bulma:</b> "Kasım\'da vizesiz nereye gideyim?", "en ucuz 3 rota", "deniz tatili öner"\n• <b>Bilgi:</b> fiyat, uçuş süresi, uygun aylar, vize durumu (17 rota)\n• <b>Anlık kontrol:</b> seçtiğin rota için Google Flights / Skyscanner linkini anında açarım\n• <b>Rezervasyon:</b> onaydan PNR kaydına kadar adım adım sihirbazı yürütürüm — <b>otel opsiyonel</b>, istersen gittiğinde bakarsın\n• <b>Program:</b> günlük gezi planı gösteririm ("Belgrad programı")\n• <b>Takip:</b> onaylı rotalarını ve rezervasyon durumunu hatırlarım',
-    'Yazman yeterli — doğal yaz, ben anlarım 😊'
-  ], chips: [{ t: 'En ucuz 3 rota' }, { t: 'Vizesiz rotalar' }, { t: 'Rezervasyonlarım', a: "openSheet('rezSheet')" }] };
+  return [
+    'Şunlarda yardımcı olabilirim:',
+    '• <b>Seyahat:</b> rota bulma, fiyat karşılaştırma, canlı uçuş linkleri, günlük gezi programı, adım adım rezervasyon (otel opsiyonel)\n• <b>Bilgi:</b> Wikipedia\u2019dan istediğiniz konu hakkında özet — "Arnavutluk nasıl bir ülke?", "Kara Delik nedir?"\n• <b>Hava:</b> "Bakü\u2019de hava nasıl" — anlık veriyle yanıtlarım\n• <b>Hesap:</b> "1250*4 + 300" gibi işlemleri yaparım\n• <b>Zaman:</b> saat, tarih, gün bilgisi\n• <b>Takip:</b> onaylı rotaların ve rezervasyon durumun bende saklı',
+    'Doğal yazmanız yeterli — konuyu anlayıp aksiyon alırım.'
+  ];
 }
 function destParts(dests) {
   const d = dests[0];
-  return { parts: [
-    '<b>' + d.flag + ' ' + d.city + '</b> — güzel seçim! İşte özet ve seçenekler:',
+  return [
+    '<b>' + d.city + '</b> için bilgiler:',
     { cards: cardsOf(dests) },
     baseCity(d) + ' için en uygun aylar <b>' + d.months.slice(0, 6).map(monthName).join(', ') + '</b>; ' + d.airline + ' ile haftada ' + (d.freq ? Math.round(d.freq / 4) : 'birkaç') + ' sefer var. ' + (d.visa === 'vizesiz' ? 'Vize yok, pasaport yeterli.' : d.visa === 'kimlik' ? '<b>T.C. kimlik kartı</b> yeterli, pasaport gerekmez.' : d.visa === 'kapi' ? 'Kapı vizesi: kimlik + feribot bileti yeterli.' : 'Dikkat: Schengen vizesi gerekiyor — 45 gün önce başvur.')
-  ], chips: [{ t: '🔍 Canlı fiyat', a: "chatLive('" + d.id + "')" }, { t: '📋 Programı gör', a: "openModal('" + d.id + "')" }, { t: '🎟 Rezervasyon yap', a: "chatReserve('" + d.id + "')" }, { t: 'Rezervasyonlarım', a: "openSheet('rezSheet')" }] };
+  ];
 }
 function suggestParts() {
   const ns = nextSeasonDest(D);
   const cheap3 = D.slice().sort((a, b) => a.price - b.price).slice(0, 3);
-  const tip = TIPS[dayOfYear() % TIPS.length];
-  return { parts: [
-    'Bugün sana 3 öneri hazırladım 👇',
+  return [
+    'Üç öneri:',
     { cards: destCard(ns.d) + cardsOf(cheap3.slice(0, 2)) },
-    '1️⃣ Sezon gereği: <b>' + baseCity(ns.d) + '</b> — ' + MONTHS[ns.m - 1] + ' ayı en uygun dönemi.\n2️⃣ Bütçe dostu: <b>' + cheap3.map((d) => baseCity(d)).join(', ') + '</b> en ucuz uçuşlar.\n3️⃣ Günün ipucu: <b>' + tip.t + '</b> — ' + tip.x
-  ], chips: [{ t: 'Vizesiz rotalar' }, { t: 'Deniz tatili öner' }, { t: '🎟 Rezervasyon yapmak istiyorum' }] };
+    '1) Sezon gereği: <b>' + baseCity(ns.d) + '</b> — ' + MONTHS[ns.m - 1] + ' ayı en uygun dönemi.\n2) Bütçe dostu: <b>' + cheap3.map((d) => baseCity(d)).join(', ') + '</b> en ucuz uçuşlar.'
+  ];
 }
 function resvParts(dests) {
   if (dests.length) {
     const d = dests[0];
-    return { parts: [
-      'Tabii! <b>' + baseCity(d) + '</b> rezervasyonunu senin için yürütelim:',
+    return [
+      '<b>' + baseCity(d) + '</b> rezervasyonunu yürütebilirim:',
       { cards: destCard(d) },
-      'Canlı fiyat linkiyle başlayalım, sonra sihirbazda PNR adımlarına geçeriz — <b>otel istersen atlarız</b>, gittiğinde bakarsın.'
-    ], chips: [{ t: '▶ Rezervasyon yap', a: "chatReserve('" + d.id + "')" }, { t: '🔍 Canlı fiyat', a: "chatLive('" + d.id + "')" }, { t: 'Başka rota öner' }] };
+      'Canlı fiyat linkiyle başlayalım, sonra sihirbazda PNR adımlarına geçeriz — otel istersen atlarız.'
+    ];
   }
   const list = D.slice().sort((a, b) => a.price - b.price).slice(0, 3);
-  return { parts: [
-    'Tabii, rezervasyonu ben yürütürüm 🎫 Hangi rota? İşte en uygun 3 başlangıç:',
+  return [
+    'Hangi rota? En uygun üç başlangıç:',
     { cards: cardsOf(list) },
-    'Bir rota seç — onaylar, canlı fiyatı kontrol eder, sihirbazla PNR\'a kadar götürürüm.'
-  ], chips: [{ t: '▶ Bakü rezervasyonu', a: "chatReserve('baku')" }, { t: '▶ Tiflis rezervasyonu', a: "chatReserve('tiflis')" }, { t: '▶ Belgrad rezervasyonu', a: "chatReserve('belgrad')" }] };
+    'Bir rota seç — onaylar, canlı fiyatı kontrol eder, sihirbazla PNR\u2019a kadar götürürüm.'
+  ];
 }
 function monthParts(m) {
   const list = D.filter((d) => d.months.includes(m)).sort((a, b) => a.price - b.price);
   const full = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'][m - 1];
-  if (!list.length) return { parts: [full + ' için takibimde uygun rota yok — başka ay deneyebilir ya da esnek tarihli kampanyaları takip edebilirim.'], chips: [{ t: 'En ucuz 3 rota' }, { t: 'Vizesiz rotalar' }] };
-  return { parts: [
-    '<b>' + full + '</b> için uçulabilecek ' + list.length + ' rota var — en uygunları:',
+  if (!list.length) return [full + ' için takibimde uygun rota yok — başka ay deneyebilir ya da esnek tarihli kampanyaları takip edebilirim.'];
+  return [
+    '<b>' + full + '</b> için uçulabilecek ' + list.length + ' rota — en uygunları:',
     { cards: cardsOf(list.slice(0, 3)) },
-    list.length > 3 ? 'Toplam ' + list.length + ' seçenek; fiyat artan sıraya göre ilk 3\u2019ü gösterdim. Detay istersen yaz.' : 'Hepsi bu kadar — birine basıp program ve rezervasyon adımlarına geçebilirsin.'
-  ], chips: [{ t: '🔍 Canlı fiyat', a: "chatLive('" + list[0].id + "')" }, { t: 'Vizesiz rotalar' }, { t: 'Rezervasyon yapmak istiyorum' }] };
+    list.length > 3 ? 'Toplam ' + list.length + ' seçenek; fiyat artan sıraya göre ilk 3\u2019ü gösterdim.' : 'Detay istediğin rota için yaz.'
+  ];
 }
 function visaParts(t) {
   if (t.includes('kimlik')) {
     const list = D.filter((d) => d.visa === 'kimlik');
-    return { parts: ['<b>Kimlikle giriş</b> — pasaport bile gerekmez, T.C. kimlik kartın yeterli:', { cards: cardsOf(list) }, 'Gürcistan 1 yıl, Azerbaycan 90 gün kalış hakkı var. Çocuğun kimliği de yanındaysa yeterli.'], chips: [{ t: '🔍 Canlı fiyat', a: "chatLive('tiflis')" }, { t: 'Vizesiz rotalar' }] };
+    return ['<b>Kimlikle giriş</b> — pasaport gerekmez, T.C. kimlik kartı yeterli:', { cards: cardsOf(list) }, 'Gürcistan 1 yıl, Azerbaycan 90 gün kalış hakkı var.'];
   }
   if (t.includes('kapı')) {
     const d = D.find((x) => x.visa === 'kapi');
-    return { parts: ['<b>Kapı vizesi</b> — Yunan adaları: kimlik + feribot bileti yeterli, 1-7 gün kalış:', { cards: destCard(d) }, 'Seyahat planı en az 10 gün önce yapılmalı; yaz sezonunda feribotlar erken doluyor.'], chips: [{ t: '📋 Program', a: "openModal('adalar')" }, { t: 'Vizesiz rotalar' }] };
+    return ['<b>Kapı vizesi</b> — Yunan adaları: kimlik + feribot bileti yeterli, 1-7 gün kalış:', { cards: destCard(d) }, 'Seyahat planı en az 10 gün önce yapılmalı; yaz sezonunda feribotlar erken doluyor.'];
   }
   const list = D.filter((d) => d.visa === 'vizesiz').sort((a, b) => a.price - b.price);
-  return { parts: [
-    '<b>Vizesiz rotalar</b> — pasaportla girilebilen, en uygun fiyatlılardan başlayarak:',
+  return [
+    '<b>Vizesiz rotalar</b> — pasaportla girilebilenler, en uygun fiyatla başlayarak:',
     { cards: cardsOf(list.slice(0, 3)) },
-    'Toplam ' + list.length + ' vizesiz rotan var; kimlikle girilen Tiflis ve Bakü de ayrıcalıklı, onlar da kimlik yeterli 👍'
-  ], chips: [{ t: '🔍 Canlı fiyat', a: "chatLive('" + list[0].id + "')" }, { t: 'Kimlikle neresi?' }, { t: 'Rezervasyon yapmak istiyorum' }] };
+    'Toplam ' + list.length + ' vizesiz rotan var.'
+  ];
 }
 function seasonParts(t) {
   let ids = [];
@@ -1242,63 +1195,82 @@ function seasonParts(t) {
   const list = ids.map((id) => D.find((x) => x.id === id)).filter(Boolean).sort((a, b) => a.price - b.price);
   if (!list.length) return suggestParts();
   const word = (Object.keys(SEASON_MAP).find((k) => t.includes(k)) || 'öneri');
-  return { parts: [
-    '<b>' + word.toLocaleUpperCase('tr') + '</b> için en iyi rotalarım:',
+  return [
+    '<b>' + word.toLocaleUpperCase('tr') + '</b> için en uygun rotalar:',
     { cards: cardsOf(list.slice(0, 3)) },
-    list[0].tags.join(' · ') + ' — 4 kişi toplam ' + fmt(list[0].price * 4) + '. Detay ister misin?'
-  ], chips: [{ t: '📋 Program', a: "openModal('" + list[0].id + "')" }, { t: '🔍 Canlı fiyat', a: "chatLive('" + list[0].id + "')" }, { t: '🎟 Rezervasyon yap', a: "chatReserve('" + list[0].id + "')" }] };
+    list[0].tags.join(' · ') + ' — 4 kişi toplam ' + fmt(list[0].price * 4) + '.'
+  ];
 }
 function cheapParts(dests) {
   if (dests.length && dests.length < 3) {
     const d = dests[0];
-    return { parts: ['<b>' + baseCity(d) + '</b> fiyat özeti:', { cards: destCard(d) }, 'Kişi başı ' + fmt(d.price) + ' (gidiş-dönüş), 4 kişi <b>' + fmt(d.price * 4) + '</b>. Canlı fiyat için link vereyim mi?'], chips: [{ t: '🔍 Canlı fiyat', a: "chatLive('" + d.id + "')" }, { t: 'En ucuz 3 rota', q: 'En ucuz 3 rota' }] };
+    return ['<b>' + baseCity(d) + '</b> fiyat özeti:', { cards: destCard(d) }, 'Kişi başı ' + fmt(d.price) + ' (gidiş-dönüş), 4 kişi <b>' + fmt(d.price * 4) + '</b>.'];
   }
   const list = D.slice().sort((a, b) => a.price - b.price).slice(0, 3);
-  return { parts: [
-    'Bütçeyi zorlamayalım 💸 Listemin en ucuz 3 rotası:',
+  return [
+    'En ucuz 3 rota:',
     { cards: cardsOf(list) },
-    'Üçü de vizesiz/kimlikle girişli ve doğrudan uçuşlu. 4 kişi toplam: ' + list.map((d) => baseCity(d) + ' ' + fmt(d.price * 4)).join(' · ')
-  ], chips: [{ t: '▶ Bakü rezervasyonu', a: "chatReserve('baku')" }, { t: 'Vizesiz rotalar' }, { t: 'Kasım önerileri', q: 'Kasım da nereye gideyim' }] };
+    '4 kişi toplam: ' + list.map((d) => baseCity(d) + ' ' + fmt(d.price * 4)).join(' · ')
+  ];
 }
 function statusParts() {
   const list = D.filter((d) => approved.has(d.id));
   const done = list.filter((d) => isDone(d.id));
   const pending = list.filter((d) => !isDone(d.id));
-  if (!list.length) return { parts: ['Henüz onaylı rotan yok. Bir rota seçince \u201Conayla\u201D demen yeterli — gerisini ben hallederim.'], chips: [{ t: 'En ucuz 3 rota' }, { t: 'Vizesiz rotalar' }] };
-  return { parts: [
-    '📋 Durumun: <b>' + list.length + ' rota onaylı</b>, <b>' + done.length + ' tanesi rezervasyon tamam</b> 🎫' + (done.length ? ' (' + done.map((d) => baseCity(d)).join(', ') + ')' : ''),
-    pending.length ? '⏳ Açık rezervasyonlar: <b>' + pending.slice(0, 4).map((d) => baseCity(d)).join(', ') + '</b>' + (pending.length > 4 ? '…' : '') + ' — istediğin için sihirbaza devam edebilirim.' : 'Tebrikler, açık rezervasyonun yok 👏',
+  if (!list.length) return ['Henüz onaylı rotan yok. Bir rota seçince "onayla" demen yeterli — gerisini ben hallederim.'];
+  return [
+    'Durum: <b>' + list.length + ' rota onaylı</b>, <b>' + done.length + ' tanesi rezervasyon tamam</b>' + (done.length ? ' (' + done.map((d) => baseCity(d)).join(', ') + ')' : '') + '.',
+    pending.length ? 'Açık rezervasyonlar: <b>' + pending.slice(0, 4).map((d) => baseCity(d)).join(', ') + '</b>' + (pending.length > 4 ? '…' : '') + ' — istediğin için sihirbaza devam edebilirim.' : 'Açık rezervasyonun yok.',
     '4 kişi toplam (uçak, tahmini): <b>' + fmt(list.reduce((s, d) => s + d.price * 4, 0)) + '</b>'
-  ], chips: [{ t: '🎟 Rezervasyonlarım', a: "openSheet('rezSheet')" }, pending.length ? { t: '▶ Devam et', a: "chatReserve('" + pending[0].id + "')" } : { t: 'Yeni rota öner' }] };
+  ];
 }
 function programParts(d) {
-  return { parts: [
-    '<b>' + d.flag + ' ' + baseCity(d) + '</b> günlük programı hazır — açıp detaylı okuyabilirsin:',
+  return [
+    '<b>' + baseCity(d) + '</b> günlük programı hazır:',
     { cards: destCard(d) },
-    'Program kartların \u201C📋 Program\u201D düğmesinde: ' + d.plan.length + ' günlük, adım adım.'
-  ], chips: [{ t: '🔍 Canlı fiyat', a: "chatLive('" + d.id + "')" }, { t: '🎟 Rezervasyon yap', a: "chatReserve('" + d.id + "')" }] };
+    'Programın tamamı kartdaki "program" bağlantısında: ' + d.plan.length + ' günlük, adım adım.'
+  ];
 }
 function fallbackParts() {
-  return { parts: [
-    'Tam anlayamadım 🤔 ama merak etme, şöyle deneyebilirsin:',
-    '• "Kasım\'da nereye gideyim?"\n• "En ucuz 3 rota"\n• "Vizesiz rotalar" / "Kimlikle neresi?"\n• "Deniz tatili öner" / "Kışın kayak"\n• "Belgrad programı" / "Bakü fiyat"\n• "Rezervasyon yapmak istiyorum"',
-    'Ya da doğrudan yaz: nereyi merak ediyorsan — city, ülke, ay, bütçe... ben anlarım 😊'
-  ], chips: [{ t: '✨ Öneri ver', q: 'Bugün ne öneriyorsun?' }, { t: 'En ucuz 3 rota' }, { t: 'Ne yapabilirsin?' }] };
+  return ['Bunu seyahat kapsamımın dışında buldum — konu hakkında Wikipedia\u2019da aratıyorum.'];
 }
 function respond(text) {
   const t = normalize(text);
   const dests = findDests(text);
-  if (t.includes('yardım') || t.includes('yardim') || t.includes('ne yapabilirsin') || t.includes('neler yapabilirsin')) { const h = helpParts(); botSeq(h.parts); setChips(h.chips); return; }
-  if (t.includes('rezervasyon') || t.includes('bilet') || t.includes('uçuş') || t.includes('ucus') || t.includes('uçak') || t.includes('ayırt') || t.includes('ayrıt')) { const r = resvParts(dests); botSeq(r.parts); setChips(r.chips); return; }
+
+  if (/teşekkür|tesekkür|sağol|sagol|eyvallah|eyvallah/.test(t)) { botSeq(['Rica ederim. Başka bir şey lazımsa buradayım.']); return; }
+  if (/kimsin|sen kim|nesin|kendini tanıt/.test(t)) { botSeq(['Ben <b>asistan</b> — bu sayfada çalışan kişisel yardımcın. Seyahat planlama, rezervasyon, bilgi arama, hava durumu, hesap ve zaman sorularında yardımcı olurum. Yazman yeterli.']); return; }
+  if (/nasılsın|naber|ne haber/.test(t)) { botSeq(['İyiyim, hazırım. Sen ne yapmak istersin — bir rota mı bakalım, yoksa başka bir soru mu var?']); return; }
+  if (/saat kaç|saat ne|hangi gün|bugün günlerden|tarih (ne|kaç)|hangi aydayız|yıl kaç/.test(t)) {
+    const now = new Date();
+    botSeq(['Şu an <b>' + now.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }) + '</b>, ' + now.toLocaleDateString('tr-TR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) + '.']);
+    return;
+  }
+  if (t.includes('hava') && (t.includes('durum') || t.includes('nasıl') || t.includes('kaç') || t.includes('sıcak') || t.includes('yağmur') || t.includes('yagmur'))) {
+    const city = dests.length ? baseCity(dests[0]) : (t.split(' ').filter((w) => w.length >= 3 && !['hava', 'durum', 'nasıl', 'bugün', 'sıcak', 'yağmur'].includes(w))[0] || 'Ankara');
+    askWeather(city.charAt(0).toLocaleUpperCase('tr') + city.slice(1));
+    return;
+  }
+  const cleaned = text.replace(/[^0-9+\-*/().,%\s]/g, '');
+  if (/[+\-*/]/.test(cleaned) && /\d/.test(cleaned) && /^[\d\s+\-*/().,%]+$/.test(cleaned)) {
+    try {
+      const v = calc(cleaned);
+      botSeq(['<b>' + cleaned.trim() + ' = ' + (Math.round(v * 1e10) / 1e10).toLocaleString('tr-TR') + '</b>']);
+      return;
+    } catch (e) { /* wiki'ye düş */ }
+  }
+  if (t.includes('yardım') || t.includes('yardim') || t.includes('ne yapabilirsin') || t.includes('neler yapabilirsin')) { botSeq(helpParts()); return; }
+  if (t.includes('rezervasyon') || t.includes('bilet') || t.includes('uçuş') || t.includes('ucus') || t.includes('uçak') || t.includes('ayırt') || t.includes('ayrıt')) { botSeq(resvParts(dests)); return; }
   const m = detectMonth(t);
-  if (m) { const mm = monthParts(m); botSeq(mm.parts); setChips(mm.chips); return; }
-  if (t.includes('vize') || t.includes('kimlik') || t.includes('pasaport')) { const v = visaParts(t); botSeq(v.parts); setChips(v.chips); return; }
-  if (['deniz', 'plaj', 'kayak', 'dağ', 'doga', 'doğa', 'kültür', 'kultur', 'tarih', 'aile', 'çocuk', 'cöl', 'çöl', 'bahar', 'kış', 'uzak', 'ada'].some((k) => t.includes(k))) { const s = seasonParts(t); botSeq(s.parts); setChips(s.chips); return; }
-  if (t.includes('ucuz') || t.includes('ekonomik') || t.includes('hesaplı') || t.includes('bütçe') || t.includes('butce') || t.includes('fiyat') || t.includes('kaça') || t.includes('ne kadar')) { const c = cheapParts(dests); botSeq(c.parts); setChips(c.chips); return; }
-  if (t.includes('öner') || t.includes('oner') || t.includes('nereye') || t.includes('neresi') || t.includes('tavsiye') || t.includes('karar ver')) { const s = suggestParts(); botSeq(s.parts); setChips(s.chips); return; }
-  if (t.includes('onay') || t.includes('durum') || t.includes('liste') || t.includes('özet') || t.includes('ozet') || t.includes('toplam')) { const s = statusParts(); botSeq(s.parts); setChips(s.chips); return; }
-  if (dests.length) { const p = programParts(dests[0]); botSeq(p.parts); setChips(p.chips); return; }
-  const f = fallbackParts(); botSeq(f.parts); setChips(f.chips);
+  if (m) { botSeq(monthParts(m)); return; }
+  if (t.includes('vize') || t.includes('kimlik') || t.includes('pasaport')) { botSeq(visaParts(t)); return; }
+  if (['deniz', 'plaj', 'kayak', 'dağ', 'doga', 'doğa', 'kültür', 'kultur', 'aile', 'çocuk', 'cöl', 'çöl', 'bahar', 'kış', 'uzak', 'ada'].some((k) => t.includes(k))) { botSeq(seasonParts(t)); return; }
+  if (t.includes('ucuz') || t.includes('ekonomik') || t.includes('hesaplı') || t.includes('bütçe') || t.includes('butce') || t.includes('fiyat') || t.includes('kaça') || t.includes('ne kadar')) { botSeq(cheapParts(dests)); return; }
+  if (t.includes('öner') || t.includes('oner') || t.includes('nereye') || t.includes('neresi') || t.includes('tavsiye') || t.includes('karar ver')) { botSeq(suggestParts()); return; }
+  if (t.includes('onay') || t.includes('durum') || t.includes('liste') || t.includes('özet') || t.includes('ozet') || t.includes('toplam')) { botSeq(statusParts()); return; }
+  if (dests.length) { botSeq(programParts(dests[0])); return; }
+  botSeq(fallbackParts());
+  askWiki(text);
 }
 
 /* ================= BAŞLAT ================= */
