@@ -7,10 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg: #f8f8f6; --panel: #ffffff; --ink: #2c2c2a; --muted: #a2a29c; --line: #e9e9e4;
-    --accent: #616bb0; --user-bg: #edede8;
-    --soft: #f1f1ed;
-    --ok: #6a9c7e;
+    --bg: #161615; --panel: #1e1e1c; --ink: #e9e9e5; --muted: #8f8f89; --line: #2c2c29;
+    --accent: #8b94dc; --user-bg: #262624;
+    --soft: #232321;
+    --ok: #7fb092;
   }
   * { box-sizing: border-box; }
   html, body { height: 100%; }
@@ -20,7 +20,7 @@
   button { font-family: inherit; font-weight: 400; }
 
   /* header */
-  header { position: fixed; top: 0; left: 0; right: 0; z-index: 40; background: rgba(248,248,246,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  header { position: fixed; top: 0; left: 0; right: 0; z-index: 40; background: rgba(22,22,21,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   .hbar { max-width: 920px; margin: 0 auto; display: flex; align-items: center; gap: 18px; padding: 13px 20px; }
   .wordmark { font-size: 15px; font-weight: 300; letter-spacing: .6px; color: var(--ink); border: 0; }
   .hspacer { flex: 1; }
@@ -42,7 +42,7 @@
   .input-box { display: flex; align-items: center; border-bottom: 1px solid var(--line); padding: 10px 2px; transition: border-color .2s; }
   .input-box:focus-within { border-bottom-color: var(--ink); }
   .input-box input { flex: 1; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 15.5px; font-family: inherit; font-weight: 300; padding: 6px 0; }
-  .input-box input::placeholder { color: #c4c4be; font-weight: 200; }
+  .input-box input::placeholder { color: #565651; font-weight: 200; }
   .send { border: 0; background: none; color: var(--muted); font-size: 17px; cursor: pointer; padding: 4px 8px; font-weight: 200; }
   .send:hover { color: var(--ink); }
   .daily-note { text-align: center; margin-top: 12px; }
@@ -56,9 +56,9 @@
   .msg.bot { color: var(--ink); }
   .msg.bot b, .msg.bot strong { font-weight: 500; }
   .msg.bot .src { display: block; margin-top: 6px; font-size: 12px; color: var(--muted); }
-  .msg.me { margin-left: auto; background: var(--soft); border-radius: 14px 14px 4px 14px; padding: 10px 16px; color: #4a4a46; }
+  .msg.me { margin-left: auto; background: var(--soft); border-radius: 14px 14px 4px 14px; padding: 10px 16px; color: #d6d6d0; }
   .typing { display: inline-flex; gap: 4px; align-items: center; padding: 6px 0; }
-  .typing i { width: 5px; height: 5px; background: #cfcfc8; border-radius: 50%; animation: tp 1.1s infinite; font-style: normal; }
+  .typing i { width: 5px; height: 5px; background: #55554f; border-radius: 50%; animation: tp 1.1s infinite; font-style: normal; }
   .typing i:nth-child(2) { animation-delay: .18s; }
   .typing i:nth-child(3) { animation-delay: .36s; }
   @keyframes tp { 0%, 60%, 100% { transform: none; opacity: .45; } 30% { transform: translateY(-4px); opacity: 1; } }
@@ -133,7 +133,7 @@
   .rez-btn.done { color: var(--ok); border-bottom-color: rgba(106,156,126,.3); }
 
   /* modal */
-  .overlay { position: fixed; inset: 0; background: rgba(248,248,246,.86); backdrop-filter: blur(6px); z-index: 100; display: none; align-items: flex-start; justify-content: center; padding: 40px 16px; overflow-y: auto; }
+  .overlay { position: fixed; inset: 0; background: rgba(14,14,13,.88); backdrop-filter: blur(6px); z-index: 100; display: none; align-items: flex-start; justify-content: center; padding: 40px 16px; overflow-y: auto; }
   .overlay.open { display: flex; }
   .modal { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; width: min(680px, 100%); overflow: hidden; }
   .m-head { display: flex; align-items: baseline; gap: 12px; padding: 20px 24px 6px; }
@@ -163,14 +163,14 @@
   .wiz-step.past { color: var(--ok); }
   .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 14px 0; }
   .llink { background: var(--soft); border-radius: 10px; padding: 12px 14px; color: var(--ink); transition: .15s; border: 0; }
-  .llink:hover { background: #e9e9e3; }
+  .llink:hover { background: #2b2b28; }
   .llink .lk { font-size: 12.5px; font-weight: 400; display: block; }
   .llink .ld { font-size: 11px; color: var(--muted); font-weight: 300; }
   .opt-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
   .opt { border: 1px solid var(--line); background: none; color: var(--ink); border-radius: 10px; padding: 13px 15px; font-size: 12.5px; font-weight: 300; cursor: pointer; text-align: left; font-family: inherit; }
   .opt small { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
   .opt.on { border-color: var(--ink); }
-  .note { background: var(--soft); border-radius: 10px; padding: 11px 14px; font-size: 12.5px; color: #6b6b66; margin-top: 12px; font-weight: 300; }
+  .note { background: var(--soft); border-radius: 10px; padding: 11px 14px; font-size: 12.5px; color: #9d9d96; margin-top: 12px; font-weight: 300; }
   .chk { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; font-weight: 300; cursor: pointer; }
   .chk:last-child { border-bottom: 0; }
   .chk input { margin-top: 5px; accent-color: var(--accent); width: 14px; height: 14px; cursor: pointer; flex: 0 0 auto; }
@@ -183,7 +183,7 @@
   .wbtn { border: 0; background: none; font-size: 12.5px; font-weight: 400; cursor: pointer; padding: 0 0 2px; color: var(--accent); font-family: inherit; border-bottom: 1px solid rgba(97,107,176,.3); }
   .wbtn.plain { color: var(--muted); border-bottom-color: transparent; }
   .wbtn.ok { color: var(--ok); border-bottom-color: rgba(106,156,126,.3); }
-  .sum-box { background: var(--soft); border-radius: 10px; padding: 14px; font-size: 12px; white-space: pre-wrap; font-weight: 300; max-height: 200px; overflow-y: auto; margin-top: 14px; color: #6b6b66; user-select: all; line-height: 1.8; }
+  .sum-box { background: var(--soft); border-radius: 10px; padding: 14px; font-size: 12px; white-space: pre-wrap; font-weight: 300; max-height: 200px; overflow-y: auto; margin-top: 14px; color: #9d9d96; user-select: all; line-height: 1.8; }
 
   .toast { position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%) translateY(70px); background: var(--ink); color: var(--bg); font-size: 12.5px; font-weight: 300; letter-spacing: .3px; padding: 10px 20px; border-radius: 999px; z-index: 130; opacity: 0; transition: .25s; pointer-events: none; }
   .toast.show { transform: translateX(-50%) translateY(0); }
