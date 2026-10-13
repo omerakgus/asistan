@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Asistan Seyahat — Ankara Kalkışlı Yurt Dışı Fırsatları</title>
+<title>Asistan — Seyahat ve Rezervasyon Asistanın</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg: #f4f6fb; --card: #ffffff; --ink: #171d2e; --muted: #67718a; --line: #e4e8f2;
+    --bg: #f3f5fb; --card: #ffffff; --ink: #171d2e; --muted: #67718a; --line: #e4e8f2;
     --primary: #3f51d4; --primary-d: #3040b0; --primary-soft: #eef0ff;
     --price: #ef5a24; --green: #0eaa6e; --green-soft: #e6f7f1;
     --amber: #f59e0b; --amber-soft: #fef4e2; --red: #e5484d; --red-soft: #fdecec;
@@ -15,272 +15,225 @@
     --r: 14px; --shadow: 0 6px 24px rgba(23, 29, 46, .08);
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: 'Poppins', 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; }
+  html, body { height: 100%; }
+  body { margin: 0; font-family: 'Poppins', 'Segoe UI', sans-serif; background: linear-gradient(180deg, #eef1fb 0%, var(--bg) 220px); color: var(--ink); line-height: 1.55; }
   a { color: var(--primary); text-decoration: none; }
   button { font-family: inherit; }
 
   /* ---------- HEADER ---------- */
-  header { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid var(--line); }
-  .hbar { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; gap: 18px; padding: 12px 18px; }
-  .logo { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 17px; color: var(--ink); }
-  .logo .ic { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--primary), #7b86ff); color: #fff; display: grid; place-items: center; font-size: 17px; }
-  .logo small { display: block; font-size: 10.5px; font-weight: 600; color: var(--muted); letter-spacing: .4px; }
-  nav.menu { display: flex; gap: 4px; margin-left: 8px; }
-  nav.menu a { padding: 8px 12px; border-radius: 9px; font-size: 13px; font-weight: 600; color: var(--muted); }
-  nav.menu a:hover { background: var(--primary-soft); color: var(--primary); }
+  header { position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .hbar { max-width: 980px; margin: 0 auto; display: flex; align-items: center; gap: 12px; padding: 10px 16px; }
+  .logo { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 16px; color: var(--ink); }
+  .logo .ic { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, var(--primary), #7b86ff); color: #fff; display: grid; place-items: center; font-size: 16px; }
+  .logo small { display: block; font-size: 10px; font-weight: 600; color: var(--muted); letter-spacing: .4px; }
   .hspacer { flex: 1; }
-  .approve-pill { display: flex; align-items: center; gap: 7px; background: var(--green-soft); color: var(--green); border: 1px solid #bfe9db; padding: 8px 14px; border-radius: 999px; font-size: 12.5px; font-weight: 700; cursor: pointer; }
-  .approve-pill:hover { filter: brightness(.97); }
+  .hbtn { border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 12.5px; font-weight: 700; padding: 8px 13px; border-radius: 10px; cursor: pointer; }
+  .hbtn:hover { border-color: var(--primary); color: var(--primary); }
+  .approve-pill { display: flex; align-items: center; gap: 6px; background: var(--green-soft); color: var(--green); border: 1px solid #bfe9db; padding: 8px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; cursor: pointer; }
 
-  /* ---------- HERO ---------- */
-  .hero { background: linear-gradient(140deg, #2c3bb8 0%, #3f51d4 45%, #6b78f0 100%); color: #fff; padding: 44px 18px 54px; }
-  .hero-in { max-width: 1120px; margin: 0 auto; }
-  .hero h1 { margin: 0 0 6px; font-size: 32px; letter-spacing: -.5px; }
-  .hero p { margin: 0 0 20px; opacity: .92; font-size: 15px; }
-  .hero .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
-  .hero .chips span { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28); padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; }
-  .searchbar { display: flex; gap: 8px; background: #fff; border-radius: 16px; padding: 8px; box-shadow: 0 14px 40px rgba(11, 16, 60, .28); max-width: 720px; }
-  .searchbar input { flex: 1; border: 0; outline: 0; padding: 13px 16px; font-size: 15px; font-family: inherit; color: var(--ink); background: transparent; }
-  .searchbar button { border: 0; background: var(--price); color: #fff; font-weight: 700; font-size: 14px; padding: 0 26px; border-radius: 11px; cursor: pointer; }
-  .searchbar button:hover { filter: brightness(1.06); }
+  /* ---------- SOHBET ---------- */
+  .chatwrap { max-width: 860px; margin: 0 auto; height: calc(100vh - 55px); display: flex; flex-direction: column; padding: 0 14px; }
+  .chat-head { display: flex; align-items: center; gap: 11px; padding: 14px 4px 10px; }
+  .chat-head .av { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), #7b86ff); display: grid; place-items: center; font-size: 21px; box-shadow: 0 6px 18px rgba(63,81,212,.35); }
+  .chat-head .nm { font-weight: 800; font-size: 15.5px; }
+  .chat-head .stt { font-size: 11.5px; color: var(--green); font-weight: 700; }
+  .chat-head .stt .dot { display: inline-block; width: 7px; height: 7px; background: var(--green); border-radius: 50%; margin-right: 4px; }
+  .chat-head .bell { margin-left: auto; border: 1px solid var(--line); background: #fff; border-radius: 10px; padding: 7px 11px; font-size: 12px; font-weight: 700; cursor: pointer; color: var(--muted); }
+  .chat-head .bell:hover { color: var(--primary); border-color: var(--primary); }
 
-  /* ---------- LAYOUT ---------- */
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 22px 18px 90px; }
+  .chat-log { flex: 1; overflow-y: auto; padding: 10px 4px 6px; scroll-behavior: smooth; }
+  .bub { max-width: 82%; padding: 12px 15px; border-radius: 16px; font-size: 13.8px; margin-bottom: 10px; animation: pop .18s ease; }
+  @keyframes pop { from { transform: translateY(6px); opacity: 0; } to { transform: none; opacity: 1; } }
+  .bub.bot { background: #fff; border: 1px solid var(--line); border-bottom-left-radius: 5px; box-shadow: var(--shadow); }
+  .bub.bot b { color: var(--primary); }
+  .bub.me { background: linear-gradient(135deg, var(--primary), #6b78f0); color: #fff; margin-left: auto; border-bottom-right-radius: 5px; }
+  .bub.wide { max-width: 100%; background: transparent; border: 0; box-shadow: none; padding: 0 0 10px; }
+  .bub .mini { font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .typing { display: inline-flex; gap: 5px; align-items: center; }
+  .typing span { width: 8px; height: 8px; background: #b9c0d8; border-radius: 50%; animation: tp 1s infinite; }
+  .typing span:nth-child(2) { animation-delay: .15s; }
+  .typing span:nth-child(3) { animation-delay: .3s; }
+  @keyframes tp { 0%, 60%, 100% { transform: none; opacity: .5; } 30% { transform: translateY(-5px); opacity: 1; } }
 
-  .banner { display: flex; gap: 12px; align-items: flex-start; background: var(--green-soft); border: 1px solid #bfe9db; border-radius: var(--r); padding: 14px 16px; margin-bottom: 18px; }
-  .banner .bi { font-size: 20px; }
-  .banner b { color: var(--green); }
-  .banner p { margin: 2px 0 0; font-size: 13px; color: #35695a; }
-
-  /* ---------- FİLTRELER ---------- */
-  .filters { background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; box-shadow: var(--shadow); position: sticky; top: 61px; z-index: 30; }
-  .frow { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-  .frow + .frow { margin-top: 10px; }
-  .fsearch { flex: 1; min-width: 190px; display: flex; align-items: center; gap: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
-  .fsearch input { border: 0; outline: 0; background: transparent; font-family: inherit; font-size: 13.5px; flex: 1; color: var(--ink); }
-  select.sel { border: 1px solid var(--line); background: var(--bg); border-radius: 10px; padding: 9px 12px; font-family: inherit; font-size: 13px; font-weight: 600; color: var(--ink); cursor: pointer; outline: 0; }
-  select.sel:focus { border-color: var(--primary); }
-  .fchip { border: 1px solid var(--line); background: #fff; color: var(--muted); font-size: 12.5px; font-weight: 600; padding: 8px 14px; border-radius: 999px; cursor: pointer; transition: .15s; }
-  .fchip:hover { border-color: var(--primary); color: var(--primary); }
-  .fchip.on { background: var(--primary); border-color: var(--primary); color: #fff; }
-  .freset { margin-left: auto; border: 0; background: transparent; color: var(--red); font-size: 12.5px; font-weight: 700; cursor: pointer; }
-  .fcount { font-size: 12.5px; color: var(--muted); font-weight: 600; }
-  .fcount b { color: var(--primary); }
-
-  /* ---------- KARTLAR ---------- */
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-top: 18px; }
-  .dcard { background: #fff; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: .18s; position: relative; }
-  .dcard:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(23,29,46,.13); }
-  .dcard.approved { border-color: #9fe0cb; box-shadow: 0 6px 24px rgba(14,170,110,.12); }
-  .dc-top { padding: 15px 16px 10px; }
-  .dc-head { display: flex; align-items: center; gap: 10px; }
-  .dc-flag { font-size: 26px; }
-  .dc-title { font-size: 16.5px; font-weight: 800; line-height: 1.2; }
-  .dc-country { font-size: 11.5px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
-  .vbadge { margin-left: auto; font-size: 10.5px; font-weight: 800; padding: 5px 9px; border-radius: 999px; text-transform: uppercase; letter-spacing: .3px; white-space: nowrap; }
+  /* sohbet kartları */
+  .cards { display: grid; gap: 10px; }
+  .ccard { background: #fff; border: 1px solid var(--line); border-radius: 13px; box-shadow: var(--shadow); padding: 12px 14px; }
+  .cc-top { display: flex; align-items: center; gap: 9px; }
+  .cc-flag { font-size: 23px; }
+  .cc-top b { font-size: 14.5px; display: block; line-height: 1.2; }
+  .cc-top span.sub { font-size: 11px; color: var(--muted); font-weight: 600; }
+  .vbadge { margin-left: auto; font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: .3px; white-space: nowrap; }
   .vb-free { background: var(--green-soft); color: var(--green); }
   .vb-id { background: var(--blue-soft); color: #1f6fd0; }
   .vb-door { background: var(--amber-soft); color: #b45309; }
   .vb-visa { background: var(--red-soft); color: var(--red); }
-  .dc-route { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--ink); margin-top: 11px; }
+  .cc-price { display: flex; align-items: flex-end; justify-content: space-between; margin-top: 8px; }
+  .cc-price .lbl { font-size: 9.5px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); font-weight: 700; display: block; }
+  .cc-price b.big { font-size: 19px; color: var(--price); }
+  .cc-price .cc-4 { text-align: right; font-size: 11px; color: var(--muted); font-weight: 600; }
+  .cc-price .cc-4 b { display: block; font-size: 13.5px; color: var(--ink); }
+  .months-row { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
+  .mchip { font-size: 10px; font-weight: 700; background: var(--green-soft); color: var(--green); border-radius: 6px; padding: 3px 7px; }
+  .cc-acts { display: flex; gap: 7px; margin-top: 10px; flex-wrap: wrap; }
+  .cbtn { border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 11.5px; font-weight: 700; padding: 7px 11px; border-radius: 9px; cursor: pointer; }
+  .cbtn:hover { border-color: var(--primary); color: var(--primary); }
+  .cbtn.green { background: var(--green); border-color: var(--green); color: #fff; }
+  .cbtn.green:hover { color: #fff; filter: brightness(1.06); }
+  .cbtn.blue { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .cbtn.blue:hover { color: #fff; background: var(--primary-d); }
+
+  /* ---------- ÇİPLER + GİRDİ ---------- */
+  .chips-bar { display: flex; gap: 7px; overflow-x: auto; padding: 6px 4px 8px; scrollbar-width: none; }
+  .chips-bar::-webkit-scrollbar { display: none; }
+  .chip { flex: 0 0 auto; border: 1px solid var(--line); background: #fff; color: var(--primary); font-size: 12px; font-weight: 700; padding: 8px 13px; border-radius: 999px; cursor: pointer; box-shadow: var(--shadow); transition: .15s; }
+  .chip:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+  .chat-in { display: flex; gap: 8px; padding: 4px 4px 14px; }
+  .chat-in input { flex: 1; border: 1px solid var(--line); background: #fff; border-radius: 14px; padding: 14px 16px; font-size: 14px; font-family: inherit; outline: 0; color: var(--ink); box-shadow: var(--shadow); }
+  .chat-in input:focus { border-color: var(--primary); }
+  .chat-in button { border: 0; width: 50px; border-radius: 14px; background: linear-gradient(135deg, var(--primary), #6b78f0); color: #fff; font-size: 18px; cursor: pointer; box-shadow: 0 6px 18px rgba(63,81,212,.35); }
+  .chat-in button:hover { filter: brightness(1.06); }
+
+  /* ---------- SAYFA (SHEET) PANELLERİ ---------- */
+  .sheet { position: fixed; inset: 0; z-index: 95; background: var(--bg); display: none; flex-direction: column; }
+  .sheet.open { display: flex; }
+  .sheet-head { display: flex; align-items: center; gap: 12px; background: #fff; border-bottom: 1px solid var(--line); padding: 12px 18px; }
+  .sheet-head h2 { margin: 0; font-size: 16px; }
+  .sheet-head .sh-sub { font-size: 11.5px; color: var(--muted); font-weight: 600; }
+  .sheet-close { margin-left: auto; border: 1px solid var(--line); background: #fff; width: 36px; height: 36px; border-radius: 10px; font-size: 16px; cursor: pointer; }
+  .sheet-close:hover { background: var(--red-soft); color: var(--red); border-color: var(--red-soft); }
+  .sheet-body { flex: 1; overflow-y: auto; padding: 16px; }
+  .sheet-in { max-width: 1080px; margin: 0 auto; }
+
+  /* ---------- FİLTRE + ROTA KARTLARI ---------- */
+  .filters { background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: 13px 15px; box-shadow: var(--shadow); }
+  .frow { display: flex; gap: 9px; flex-wrap: wrap; align-items: center; }
+  .frow + .frow { margin-top: 9px; }
+  .fsearch { flex: 1; min-width: 180px; display: flex; align-items: center; gap: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
+  .fsearch input { border: 0; outline: 0; background: transparent; font-family: inherit; font-size: 13px; flex: 1; color: var(--ink); }
+  select.sel { border: 1px solid var(--line); background: var(--bg); border-radius: 10px; padding: 8px 11px; font-family: inherit; font-size: 12.5px; font-weight: 600; color: var(--ink); cursor: pointer; outline: 0; }
+  select.sel:focus { border-color: var(--primary); }
+  .fchip { border: 1px solid var(--line); background: #fff; color: var(--muted); font-size: 12px; font-weight: 600; padding: 7px 13px; border-radius: 999px; cursor: pointer; }
+  .fchip:hover { border-color: var(--primary); color: var(--primary); }
+  .fchip.on { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .freset { margin-left: auto; border: 0; background: transparent; color: var(--red); font-size: 12px; font-weight: 700; cursor: pointer; }
+  .fcount { font-size: 12px; color: var(--muted); font-weight: 600; }
+  .fcount b { color: var(--primary); }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 15px; margin-top: 15px; }
+  .dcard { background: #fff; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: .18s; }
+  .dcard:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(23,29,46,.13); }
+  .dcard.approved { border-color: #9fe0cb; }
+  .dc-top { padding: 14px 15px 9px; }
+  .dc-head { display: flex; align-items: center; gap: 10px; }
+  .dc-flag { font-size: 25px; }
+  .dc-title { font-size: 15.5px; font-weight: 800; line-height: 1.2; }
+  .dc-country { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+  .dc-route { display: flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; margin-top: 10px; }
   .dc-route .plane { color: var(--primary); }
-  .dc-route .dur { color: var(--muted); font-weight: 600; font-size: 12px; }
-  .dc-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 9px; }
-  .mtag { font-size: 11px; font-weight: 700; background: var(--bg); border: 1px solid var(--line); color: var(--muted); padding: 4px 8px; border-radius: 7px; }
+  .dc-route .dur { color: var(--muted); font-weight: 600; font-size: 11.5px; }
+  .dc-meta { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
+  .mtag { font-size: 10.5px; font-weight: 700; background: var(--bg); border: 1px solid var(--line); color: var(--muted); padding: 3px 7px; border-radius: 6px; }
   .mtag.air { color: var(--primary); background: var(--primary-soft); border-color: #d6dbff; }
-  .months-row { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
-  .mchip { font-size: 10.5px; font-weight: 700; background: var(--green-soft); color: var(--green); border-radius: 6px; padding: 3px 7px; }
-  .dc-price { display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; padding: 10px 16px 4px; margin-top: auto; }
-  .price .lbl { font-size: 10.5px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
-  .price .val { font-size: 23px; font-weight: 800; color: var(--price); line-height: 1.15; }
-  .price .val small { font-size: 12px; font-weight: 700; }
-  .total4 { text-align: right; font-size: 11.5px; color: var(--muted); font-weight: 600; }
-  .total4 b { display: block; font-size: 14.5px; color: var(--ink); }
-  .dc-actions { display: flex; gap: 8px; padding: 12px 16px 15px; }
-  .btn { border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 12.5px; font-weight: 700; padding: 10px 14px; border-radius: 10px; cursor: pointer; transition: .15s; flex: 1; }
+  .dc-price { display: flex; align-items: flex-end; justify-content: space-between; padding: 9px 15px 2px; margin-top: auto; }
+  .price .lbl { font-size: 10px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+  .price .val { font-size: 21px; font-weight: 800; color: var(--price); line-height: 1.15; }
+  .price .val small { font-size: 12px; }
+  .total4 { text-align: right; font-size: 11px; color: var(--muted); font-weight: 600; }
+  .total4 b { display: block; font-size: 14px; color: var(--ink); }
+  .dc-actions { display: flex; gap: 7px; padding: 11px 15px 14px; }
+  .btn { border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 12px; font-weight: 700; padding: 9px 12px; border-radius: 10px; cursor: pointer; flex: 1; }
   .btn:hover { border-color: var(--primary); color: var(--primary); }
   .btn.plan { background: var(--primary-soft); border-color: #d6dbff; color: var(--primary); }
-  .btn.plan:hover { background: var(--primary); color: #fff; }
   .btn.appr { background: var(--green); border-color: var(--green); color: #fff; }
-  .btn.appr:hover { filter: brightness(1.07); color: #fff; }
-  .btn.add { background: #fff; }
-  .nocard { text-align: center; color: var(--muted); font-size: 14px; background: #fff; border: 1px dashed var(--line); border-radius: var(--r); padding: 36px; grid-column: 1/-1; }
-
-  /* ---------- ONAY ÖZETİ ---------- */
-  .section-h { display: flex; align-items: center; gap: 10px; margin: 34px 0 12px; }
-  .section-h h2 { margin: 0; font-size: 20px; letter-spacing: -.3px; }
-  .section-h .sh-ic { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-size: 16px; background: var(--primary-soft); }
-  .section-h .sh-sub { font-size: 12.5px; color: var(--muted); font-weight: 600; }
-
-  .appr-panel { background: #fff; border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); overflow: hidden; }
-  .appr-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; background: var(--green-soft); border-bottom: 1px solid #bfe9db; padding: 13px 18px; }
-  .appr-head .st { font-weight: 800; color: var(--green); font-size: 14px; }
-  .appr-head .tot { font-weight: 800; color: var(--ink); font-size: 15px; }
-  .appr-head .tot span { color: var(--price); }
-  .appr-actions { display: flex; gap: 8px; }
-  .appr-actions .btn { flex: 0 0 auto; padding: 8px 13px; font-size: 12px; }
-  table.atbl { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-  table.atbl th, table.atbl td { text-align: left; padding: 11px 18px; border-bottom: 1px solid var(--line); }
-  table.atbl th { font-size: 10.5px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); background: #fafbfe; }
-  table.atbl tr:last-child td { border-bottom: 0; }
-  table.atbl .ok { color: var(--green); font-weight: 800; white-space: nowrap; }
-  table.atbl .num { font-weight: 800; color: var(--ink); white-space: nowrap; }
-  .rowx { border: 0; background: transparent; color: var(--red); font-weight: 700; font-size: 12px; cursor: pointer; }
-  .rowx:hover { text-decoration: underline; }
-  .empty-appr { padding: 26px; text-align: center; color: var(--muted); font-size: 13.5px; }
-
-  /* ---------- AY REHBERİ ---------- */
-  .months { display: grid; grid-template-columns: repeat(12, 1fr); gap: 7px; }
-  @media (max-width: 860px) { .months { grid-template-columns: repeat(6, 1fr); } }
-  @media (max-width: 480px) { .months { grid-template-columns: repeat(3, 1fr); } }
-  .mbox { background: #fff; border: 1px solid var(--line); border-radius: 11px; padding: 10px 7px; text-align: center; }
-  .mbox .m { font-size: 12px; font-weight: 800; text-transform: uppercase; }
-  .mbox .t { font-size: 10.5px; color: var(--muted); margin-top: 4px; line-height: 1.45; }
-  .mbox.best { background: var(--green-soft); border-color: #bfe9db; }
-  .mbox.best .t { color: #35695a; }
-  .mbox.ok2 { background: var(--amber-soft); border-color: #f5ddb0; }
-  .mbox.ok2 .t { color: #92600a; }
-
-  /* ---------- KONTROL ---------- */
-  .cgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
-  .cbox { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; font-size: 13px; }
-  .cbox b { display: block; font-size: 13.5px; margin-bottom: 3px; }
-  .cbox span { color: var(--muted); }
-
-  footer { border-top: 1px solid var(--line); background: #fff; padding: 26px 18px; text-align: center; color: var(--muted); font-size: 12px; line-height: 1.8; }
-
-  /* ---------- MODAL ---------- */
-  .overlay { position: fixed; inset: 0; background: rgba(15, 20, 40, .55); backdrop-filter: blur(3px); z-index: 90; display: none; align-items: flex-start; justify-content: center; padding: 26px 14px; overflow-y: auto; }
-  .overlay.open { display: flex; }
-  .modal { background: #fff; border-radius: 18px; width: min(760px, 100%); overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.35); animation: pop .2s ease; }
-  @keyframes pop { from { transform: scale(.96); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-  .m-head { display: flex; align-items: center; gap: 12px; padding: 18px 22px; background: linear-gradient(135deg, #2c3bb8, #4f5ec4); color: #fff; }
-  .m-head .mf { font-size: 30px; }
-  .m-head h3 { margin: 0; font-size: 19px; }
-  .m-head .ms { font-size: 12px; opacity: .85; font-weight: 600; }
-  .m-close { margin-left: auto; background: rgba(255,255,255,.16); border: 0; color: #fff; width: 34px; height: 34px; border-radius: 9px; font-size: 17px; cursor: pointer; }
-  .m-close:hover { background: rgba(255,255,255,.3); }
-  .m-body { padding: 20px 22px 24px; }
-  .m-tabs { display: flex; gap: 6px; margin-bottom: 16px; background: var(--bg); border: 1px solid var(--line); border-radius: 11px; padding: 5px; }
-  .m-tab { flex: 1; border: 0; background: transparent; font-weight: 700; font-size: 12.5px; padding: 9px; border-radius: 8px; cursor: pointer; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
-  .m-tab.on { background: var(--primary); color: #fff; }
-  .m-pane { display: none; }
-  .m-pane.on { display: block; }
-  .day { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 13.5px; }
-  .day:last-child { border-bottom: 0; }
-  .day b { flex: 0 0 60px; color: var(--price); font-size: 12px; padding-top: 2px; }
-  .steps { counter-reset: s; list-style: none; margin: 0; padding: 0; }
-  .steps li { counter-increment: s; position: relative; padding: 9px 0 9px 40px; border-bottom: 1px dashed var(--line); font-size: 13.5px; }
-  .steps li:last-child { border-bottom: 0; }
-  .steps li::before { content: counter(s); position: absolute; left: 0; top: 8px; width: 26px; height: 26px; border-radius: 50%; background: var(--primary-soft); color: var(--primary); font-weight: 800; font-size: 12.5px; display: grid; place-items: center; }
-  .m-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
-  @media (max-width: 560px) { .m-info { grid-template-columns: 1fr; } }
-  .m-info .i { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; text-align: center; }
-  .m-info .i .k { font-size: 10px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); font-weight: 700; }
-  .m-info .i .v { font-size: 13.5px; font-weight: 800; margin-top: 2px; }
-
-  .toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--ink); color: #fff; font-size: 13.5px; font-weight: 600; padding: 12px 22px; border-radius: 999px; z-index: 120; opacity: 0; transition: .25s; pointer-events: none; }
-  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-
-  /* ---------- GÜNLÜK ASİSTAN ---------- */
-  .daily-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; }
-  .dbox { background: #fff; border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); padding: 16px 18px; }
-  .dbox h3 { margin: 0 0 4px; font-size: 15px; display: flex; align-items: center; gap: 8px; }
-  .dbox .dsub { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
-  .tip-card { background: linear-gradient(135deg, #eef0ff, #f7f8ff); border: 1px dashed #b9c0ff; border-radius: 12px; padding: 13px 15px; }
-  .tip-card .tt { font-weight: 800; font-size: 13.5px; color: var(--primary); margin-bottom: 3px; }
-  .tip-card .tx { font-size: 13px; color: #3d4460; }
-  .stat-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-  .stat { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 7px 12px; font-size: 11.5px; font-weight: 700; color: var(--muted); }
-  .stat b { color: var(--ink); font-size: 12.5px; }
-  .task { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px dashed var(--line); font-size: 13px; }
-  .task:last-child { border-bottom: 0; }
-  .task .tck { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 7px; border: 1.5px solid var(--line); background: #fff; display: grid; place-items: center; font-size: 12px; font-weight: 800; color: var(--muted); margin-top: 2px; }
-  .task.done .tck { background: var(--green); border-color: var(--green); color: #fff; }
-  .task .tbody { flex: 1; }
-  .task .tt2 { font-weight: 700; font-size: 13px; }
-  .task.done .tt2 { text-decoration: line-through; color: var(--muted); }
-  .task .tdesc { color: var(--muted); font-size: 12px; }
-  .task .tbtn { flex: 0 0 auto; font-size: 11.5px; font-weight: 700; border: 1px solid var(--line); background: #fff; color: var(--primary); border-radius: 8px; padding: 6px 10px; cursor: pointer; white-space: nowrap; }
-  .task .tbtn:hover { background: var(--primary-soft); border-color: var(--primary); }
-  .streak { display: inline-flex; align-items: center; gap: 6px; background: var(--amber-soft); color: #92600a; border: 1px solid #f5ddb0; border-radius: 999px; padding: 5px 12px; font-size: 11.5px; font-weight: 800; white-space: nowrap; }
+  .nocard { text-align: center; color: var(--muted); font-size: 13.5px; background: #fff; border: 1px dashed var(--line); border-radius: var(--r); padding: 34px; grid-column: 1/-1; }
 
   /* ---------- REZERVASYON MERKEZİ ---------- */
-  .rez-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
-  .rez-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); padding: 14px 16px; transition: .18s; }
-  .rez-card:hover { transform: translateY(-2px); }
+  .appr-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; background: var(--green-soft); border: 1px solid #bfe9db; border-radius: var(--r); padding: 12px 16px; margin-bottom: 14px; }
+  .appr-head .st { font-weight: 800; color: var(--green); font-size: 13.5px; }
+  .appr-head .tot { font-weight: 800; font-size: 14px; }
+  .appr-head .tot span { color: var(--price); }
+  .appr-actions { display: flex; gap: 8px; }
+  .appr-actions .btn { flex: 0 0 auto; padding: 7px 12px; font-size: 11.5px; }
+  .rez-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; }
+  .rez-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); padding: 14px 16px; }
   .rez-card.done { border-color: #9fe0cb; background: linear-gradient(180deg, #fff, #f4fcf9); }
   .rez-card .rh { display: flex; align-items: center; gap: 9px; }
-  .rez-card .rf { font-size: 22px; }
-  .rez-card .rt { font-weight: 800; font-size: 15px; }
-  .rez-card .rs { font-size: 11.5px; color: var(--muted); font-weight: 600; }
-  .rez-badge { margin-left: auto; font-size: 10.5px; font-weight: 800; padding: 4px 9px; border-radius: 999px; background: var(--blue-soft); color: #1f6fd0; white-space: nowrap; }
+  .rez-card .rf { font-size: 21px; }
+  .rez-card .rt { font-weight: 800; font-size: 14.5px; }
+  .rez-card .rs { font-size: 11px; color: var(--muted); font-weight: 600; }
+  .rez-badge { margin-left: auto; font-size: 10px; font-weight: 800; padding: 4px 9px; border-radius: 999px; background: var(--blue-soft); color: #1f6fd0; white-space: nowrap; }
   .rez-badge.done { background: var(--green-soft); color: var(--green); }
   .bar { height: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; margin: 11px 0 6px; }
   .bar > span { display: block; height: 100%; background: linear-gradient(90deg, var(--primary), #7b86ff); transition: width .3s; }
   .bar > span.done { background: linear-gradient(90deg, var(--green), #42d6a0); }
-  .rez-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 11.5px; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
-  .rez-btn { width: 100%; border: 0; background: var(--primary); color: #fff; font-weight: 700; font-size: 13px; padding: 10px; border-radius: 10px; cursor: pointer; font-family: inherit; }
+  .rez-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
+  .rez-btn { width: 100%; border: 0; background: var(--primary); color: #fff; font-weight: 700; font-size: 12.5px; padding: 10px; border-radius: 10px; cursor: pointer; }
   .rez-btn:hover { background: var(--primary-d); }
   .rez-btn.done { background: var(--green); }
-  .rez-empty { grid-column: 1/-1; text-align: center; padding: 26px; color: var(--muted); font-size: 13.5px; background: #fff; border: 1px dashed var(--line); border-radius: var(--r); }
+  .rez-empty { text-align: center; padding: 26px; color: var(--muted); font-size: 13px; background: #fff; border: 1px dashed var(--line); border-radius: var(--r); }
 
-  /* ---------- REZERVASYON SİHİRBAZI ---------- */
-  .wiz-steps { display: flex; gap: 6px; margin-bottom: 16px; }
-  .wiz-step { flex: 1; text-align: center; font-size: 11px; font-weight: 800; color: var(--muted); background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 8px 4px; cursor: pointer; text-transform: uppercase; letter-spacing: .3px; font-family: inherit; }
+  /* ---------- MODAL (program / sihirbaz) ---------- */
+  .overlay { position: fixed; inset: 0; background: rgba(15, 20, 40, .55); backdrop-filter: blur(3px); z-index: 100; display: none; align-items: flex-start; justify-content: center; padding: 26px 14px; overflow-y: auto; }
+  .overlay.open { display: flex; }
+  .modal { background: #fff; border-radius: 18px; width: min(720px, 100%); overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.35); animation: pop .2s ease; }
+  .m-head { display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: linear-gradient(135deg, #2c3bb8, #4f5ec4); color: #fff; }
+  .m-head .mf { font-size: 28px; }
+  .m-head h3 { margin: 0; font-size: 18px; }
+  .m-head .ms { font-size: 11.5px; opacity: .85; font-weight: 600; }
+  .m-close { margin-left: auto; background: rgba(255,255,255,.16); border: 0; color: #fff; width: 32px; height: 32px; border-radius: 9px; font-size: 16px; cursor: pointer; }
+  .m-close:hover { background: rgba(255,255,255,.3); }
+  .m-body { padding: 18px 20px 22px; }
+  .m-tabs { display: flex; gap: 6px; margin-bottom: 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 11px; padding: 5px; }
+  .m-tab { flex: 1; border: 0; background: transparent; font-weight: 700; font-size: 12px; padding: 9px; border-radius: 8px; cursor: pointer; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
+  .m-tab.on { background: var(--primary); color: #fff; }
+  .m-pane { display: none; }
+  .m-pane.on { display: block; }
+  .day { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 13px; }
+  .day:last-child { border-bottom: 0; }
+  .day b { flex: 0 0 58px; color: var(--price); font-size: 11.5px; padding-top: 2px; }
+  .steps { counter-reset: s; list-style: none; margin: 0; padding: 0; }
+  .steps li { counter-increment: s; position: relative; padding: 9px 0 9px 38px; border-bottom: 1px dashed var(--line); font-size: 13px; }
+  .steps li:last-child { border-bottom: 0; }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: 8px; width: 25px; height: 25px; border-radius: 50%; background: var(--primary-soft); color: var(--primary); font-weight: 800; font-size: 12px; display: grid; place-items: center; }
+  .m-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+  .m-info .i { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 8px 11px; text-align: center; }
+  .m-info .i .k { font-size: 9.5px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); font-weight: 700; }
+  .m-info .i .v { font-size: 13px; font-weight: 800; margin-top: 2px; }
+  .wiz-steps { display: flex; gap: 6px; margin-bottom: 14px; }
+  .wiz-step { flex: 1; text-align: center; font-size: 10.5px; font-weight: 800; color: var(--muted); background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 8px 3px; cursor: pointer; text-transform: uppercase; }
   .wiz-step.on { background: var(--primary); border-color: var(--primary); color: #fff; }
   .wiz-step.past { background: var(--green-soft); border-color: #bfe9db; color: var(--green); }
   .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 9px; margin: 12px 0; }
   .llink { display: flex; flex-direction: column; gap: 2px; background: var(--bg); border: 1px solid var(--line); border-radius: 11px; padding: 11px 13px; color: var(--ink); transition: .15s; }
   .llink:hover { border-color: var(--primary); background: var(--primary-soft); transform: translateY(-2px); }
-  .llink .lk { font-size: 13px; font-weight: 800; }
-  .llink .ld { font-size: 11px; color: var(--muted); }
+  .llink .lk { font-size: 12.5px; font-weight: 800; }
+  .llink .ld { font-size: 10.5px; color: var(--muted); }
   .llink.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
   .llink.primary .ld { color: #dfe3ff; }
   .llink.primary:hover { background: var(--primary-d); }
-  .note { background: var(--amber-soft); border: 1px solid #f5ddb0; color: #92600a; border-radius: 10px; padding: 10px 13px; font-size: 12.5px; margin-top: 10px; }
-  .chk { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 13.5px; cursor: pointer; }
+  .note { background: var(--amber-soft); border: 1px solid #f5ddb0; color: #92600a; border-radius: 10px; padding: 10px 12px; font-size: 12px; margin-top: 10px; }
+  .chk { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 13px; cursor: pointer; }
   .chk:last-child { border-bottom: 0; }
   .chk input { margin-top: 3px; accent-color: var(--green); width: 16px; height: 16px; cursor: pointer; flex: 0 0 auto; }
   .chk.done span { color: var(--muted); text-decoration: line-through; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 10px; }
-  .form-row input { border: 1px solid var(--line); background: var(--bg); border-radius: 10px; padding: 11px 13px; font-family: inherit; font-size: 13.5px; outline: 0; width: 100%; color: var(--ink); }
+  .form-row input { border: 1px solid var(--line); background: var(--bg); border-radius: 10px; padding: 11px 13px; font-family: inherit; font-size: 13px; outline: 0; width: 100%; color: var(--ink); }
   .form-row input:focus { border-color: var(--primary); background: #fff; }
   .form-row .full { grid-column: 1/-1; }
-  .wiz-actions { display: flex; gap: 9px; margin-top: 16px; }
-  .wiz-actions .btn { flex: 1; padding: 12px; font-size: 13px; }
+  .wiz-actions { display: flex; gap: 9px; margin-top: 14px; }
+  .wiz-actions .btn { flex: 1; padding: 11px; font-size: 12.5px; }
   .btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
-  .btn.primary:hover { background: var(--primary-d); color: #fff; }
   .btn.success { background: var(--green); border-color: var(--green); color: #fff; }
-  .btn.success:hover { color: #fff; filter: brightness(1.06); }
-  .sum-box { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 13px; font-size: 12.5px; white-space: pre-wrap; font-family: Consolas, monospace; max-height: 220px; overflow-y: auto; margin-top: 12px; color: #3d4460; user-select: all; }
+  .sum-box { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px; font-size: 12px; white-space: pre-wrap; font-family: Consolas, monospace; max-height: 200px; overflow-y: auto; margin-top: 12px; color: #3d4460; user-select: all; }
 
-  /* ---------- ASİSTAN KABUĞU ---------- */
-  .fab { position: fixed; left: 20px; bottom: 20px; z-index: 80; width: 54px; height: 54px; border-radius: 50%; border: 0; background: linear-gradient(135deg, var(--primary), #7b86ff); color: #fff; font-size: 23px; cursor: pointer; box-shadow: 0 10px 26px rgba(63,81,212,.4); }
-  .fab:hover { transform: scale(1.06); }
-  .fab .dot { position: absolute; top: 2px; right: 2px; width: 14px; height: 14px; background: var(--red); border: 2px solid #fff; border-radius: 50%; }
-  .a-panel { position: fixed; left: 20px; bottom: 84px; z-index: 81; width: min(340px, calc(100vw - 40px)); background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 24px 60px rgba(15,20,40,.25); overflow: hidden; display: none; }
-  .a-panel.open { display: block; animation: pop .18s ease; }
-  .a-head { background: linear-gradient(135deg, #2c3bb8, #4f5ec4); color: #fff; padding: 13px 15px; font-weight: 800; font-size: 14px; display: flex; align-items: center; gap: 8px; }
-  .a-head span { font-weight: 600; font-size: 11.5px; opacity: .85; }
-  .a-head button { margin-left: auto; background: transparent; border: 0; color: #fff; cursor: pointer; font-size: 16px; }
-  .a-body { padding: 13px 15px; max-height: 52vh; overflow-y: auto; }
-  .a-msg { font-size: 13px; padding: 8px 11px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line); margin-bottom: 8px; line-height: 1.5; }
-  .a-msg b { color: var(--primary); }
-  .a-actions { display: flex; gap: 7px; padding: 0 15px 14px; }
-  .a-actions .btn { font-size: 11.5px; padding: 8px 10px; }
+  .toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--ink); color: #fff; font-size: 13px; font-weight: 600; padding: 11px 20px; border-radius: 999px; z-index: 130; opacity: 0; transition: .25s; pointer-events: none; }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
   @media (max-width: 720px) {
-    nav.menu { display: none; }
-    .hero h1 { font-size: 24px; }
-    .searchbar { flex-direction: column; }
-    .searchbar button { padding: 13px; }
-    .filters { position: static; }
-    table.atbl th:nth-child(3), table.atbl td:nth-child(3) { display: none; }
-    .daily-grid { grid-template-columns: 1fr; }
-    .wiz-steps .wiz-step { font-size: 9.5px; padding: 7px 2px; }
-    .fab { width: 48px; height: 48px; font-size: 20px; }
+    .hbtn span.t { display: none; }
+    .bub { max-width: 92%; font-size: 13.2px; }
+    .m-info { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -289,214 +242,126 @@
 <header>
   <div class="hbar">
     <div class="logo">
-      <div class="ic">✈️</div>
-      <div>Asistan Seyahat<small>ANKARA (ESB) KALKIŞLI FIRSATLAR</small></div>
+      <div class="ic">🤖</div>
+      <div>Asistan<small>SEYAHAT &amp; REZERVASYON ASİSTANIN</small></div>
     </div>
-    <nav class="menu">
-      <a href="#gunluk">🤖 Asistan</a>
-      <a href="#rotalar">Rotalar</a>
-      <a href="#onaylar">Onaylarım</a>
-      <a href="#rezervasyon">🎟 Rezervasyon</a>
-      <a href="#aylar">Ay Rehberi</a>
-    </nav>
     <div class="hspacer"></div>
-    <button class="approve-pill" onclick="document.getElementById('onaylar').scrollIntoView()">✅ <span id="pillCount">0</span> Onaylı</button>
+    <button class="hbtn" onclick="openSheet('destSheet')">🗺 <span class="t">Rotalar</span></button>
+    <button class="hbtn" onclick="openSheet('rezSheet')">🎟 <span class="t">Rezervasyonlarım</span></button>
+    <button class="approve-pill" onclick="openSheet('rezSheet')">✅ <span id="pillCount">0</span> onaylı</button>
   </div>
 </header>
 
-<section class="hero">
-  <div class="hero-in">
-    <h1>Ankara'dan dünyaya — önce <u>vizesiz</u> rotalar</h1>
-    <p>3 yetişkin + 1 çocuk (15) · Direkt uçuşlu, en uygun aylara göre filtrelenmiş teklifler · Rezervasyon onayına hazır</p>
-    <div class="searchbar">
-      <input id="heroSearch" type="text" placeholder="Nereye? (örn. Belgrad, Tiflis, deniz...)" />
-      <button onclick="applyHeroSearch()">Rota Ara</button>
-    </div>
-    <div class="chips">
-      <span>🛫 36 ülkede 89 direkt nokta</span>
-      <span>🛂 Vizesiz & kimlikle giriş</span>
-      <span>💰 4 kişi gidiş-dönüş fiyatlar</span>
-      <span>📅 En uygun aylar işaretli</span>
-    </div>
-  </div>
-</section>
-
-<div class="wrap">
-
-  <!-- ONAY BANNER -->
-  <div class="banner">
-    <div class="bi">✅</div>
+<main class="chatwrap">
+  <div class="chat-head">
+    <div class="av">🤖</div>
     <div>
-      <b>Toplu program onayı uygulandı — tüm rotalar ONAYLI.</b>
-      <p>Sizin talimatınız üzerine (12 Ekim 2026) tüm programlar onaylandı. Beğenmediğiniz rotayı karttaki "✓ Onaylı" düğmesinden geri alabilirsiniz. <b>Devamı için:</b> aşağıdaki <b>Rezervasyon Merkezi</b>'ndeki sihirbaz adım adım bilet arama, otel ve PNR kaydını yürütür. 🤖 <b>Asistan Günlüğü</b> her gün kontrol edip size özel öneri üretir.</p>
+      <div class="nm">Asistan</div>
+      <div class="stt"><span class="dot"></span>Çevrimiçi · fiyat, rota ve rezervasyon asistanın</div>
     </div>
+    <button class="bell" onclick="askNotify()">🔔 Günlük bildirim</button>
   </div>
 
-  <!-- GÜNLÜK ASİSTAN -->
-  <div class="section-h" id="gunluk">
-    <div class="sh-ic">🤖</div>
-    <div>
-      <h2>Asistan Günlüğü</h2>
-      <div class="sh-sub">Her gün kontrol eder, onaylı rotalarına göre öneri üretir</div>
-    </div>
-    <div style="margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-      <span class="streak" id="streakBox">🔥 Kontrol serisi: —</span>
-      <button class="btn" style="flex:0 0 auto;padding:8px 12px;font-size:12px" onclick="askNotify()">🔔 Günlük bildirim</button>
-    </div>
+  <div class="chat-log" id="chatLog"></div>
+  <div class="chips-bar" id="chipsBar"></div>
+  <form class="chat-in" id="chatForm" autocomplete="off">
+    <input id="chatInput" type="text" placeholder="Asistan'a yaz... Örn: &quot;Kasım'da vizesiz nereye gideyim?&quot;" />
+    <button type="submit" title="Gönder">➤</button>
+  </form>
+</main>
+
+<!-- ROTALAR SAYFASI -->
+<div class="sheet" id="destSheet">
+  <div class="sheet-head">
+    <div><h2>🗺 Rotalar</h2><div class="sh-sub">Ankara (ESB) kalkışlı · 3 yetişkin + 1 çocuk (15) · fiyatlar tahmini</div></div>
+    <button class="sheet-close" onclick="closeSheet('destSheet')">✕</button>
   </div>
-  <div class="daily-grid">
-    <div class="dbox">
-      <h3>💡 Bugünün Önerisi <span style="margin-left:auto;font-size:11.5px;color:var(--muted);font-weight:600" id="todayDate">—</span></h3>
-      <div class="dsub" id="focusLine">—</div>
-      <div class="tip-card">
-        <div class="tt" id="tipTitle">—</div>
-        <div class="tx" id="tipText">—</div>
+  <div class="sheet-body"><div class="sheet-in">
+    <div class="filters">
+      <div class="frow">
+        <div class="fsearch">🔍 <input id="q" type="text" placeholder="Ülke veya şehir ara..." /></div>
+        <select class="sel" id="fVisa">
+          <option value="">🛂 Vize durumu</option>
+          <option value="vizesiz">Vizesiz</option>
+          <option value="kimlik">Kimlikle giriş</option>
+          <option value="kapi">Kapı vizesi</option>
+          <option value="schengen">Schengen / vize gerekli</option>
+        </select>
+        <select class="sel" id="fMonth"><option value="">📅 Ay</option></select>
+        <select class="sel" id="fBudget">
+          <option value="">💰 Bütçe (4 kişi)</option>
+          <option value="low">Düşük — 20.000 ₺ altı</option>
+          <option value="mid">Orta — 20.000-50.000 ₺</option>
+          <option value="high">Rahat — 50.000 ₺ üzeri</option>
+        </select>
+        <select class="sel" id="fSort">
+          <option value="rec">⭐ Öneri sırası</option>
+          <option value="priceAsc">💸 Fiyat (artan)</option>
+          <option value="durAsc">⏱ Uçuş süresi (artan)</option>
+          <option value="freqAsc">🛫 Uçuş sıklığı (artan)</option>
+        </select>
+        <button class="freset" onclick="resetFilters()">Sıfırla ✕</button>
       </div>
-      <div class="stat-row">
-        <span class="stat">Son kontrol: <b id="lastCheck">—</b></span>
-        <span class="stat">Onaylı: <b id="dAppr">—</b></span>
-        <span class="stat">Rezervasyon: <b id="dRez">—</b></span>
-        <span class="stat">Sıradaki sezon: <b id="dNext">—</b></span>
+      <div class="frow" id="regionChips">
+        <button class="fchip on" data-r="">Tümü</button>
+        <button class="fchip" data-r="balkan">Balkanlar</button>
+        <button class="fchip" data-r="kafkasya">Kafkasya</button>
+        <button class="fchip" data-r="korfez">Körfez</button>
+        <button class="fchip" data-r="ortaasya">Orta Asya</button>
+        <button class="fchip" data-r="akdeniz">Akdeniz &amp; Orta Doğu</button>
+        <button class="fchip" data-r="avrupa">Avrupa (Schengen)</button>
+        <button class="fchip" data-r="uzak">Uzak Coğrafya</button>
+        <span class="fcount"><b id="cCount">0</b> rota</span>
       </div>
     </div>
-    <div class="dbox">
-      <h3>✅ Günlük Kontrol Listesi</h3>
-      <div class="dsub" id="taskSub">Görevler her gün yenilenir — tamamladıklarınız işaretlenir.</div>
-      <div id="taskList"></div>
-    </div>
-  </div>
+    <div class="grid" id="grid"></div>
+  </div></div>
+</div>
 
-  <!-- FİLTRELER -->
-  <div class="filters" id="rotalar">
-    <div class="frow">
-      <div class="fsearch">🔍 <input id="q" type="text" placeholder="Ülke veya şehir ara..." /></div>
-      <select class="sel" id="fVisa">
-        <option value="">🛂 Tümü (vize durumu)</option>
-        <option value="vizesiz">Vizesiz</option>
-        <option value="kimlik">Kimlikle giriş</option>
-        <option value="kapi">Kapı vizesi</option>
-        <option value="schengen">Schengen / vize gerekli</option>
-      </select>
-      <select class="sel" id="fMonth">
-        <option value="">📅 Tüm aylar</option>
-      </select>
-      <select class="sel" id="fBudget">
-        <option value="">💰 Bütçe (4 kişi)</option>
-        <option value="low">Düşük — 20.000 ₺ altı</option>
-        <option value="mid">Orta — 20.000-50.000 ₺</option>
-        <option value="high">Rahat — 50.000 ₺ üzeri</option>
-      </select>
-      <select class="sel" id="fSort">
-        <option value="rec">⭐ Öneri sırası</option>
-        <option value="priceAsc">💸 Fiyat (artan)</option>
-        <option value="durAsc">⏱ Uçuş süresi (artan)</option>
-        <option value="freqAsc">🛫 Uçuş sıklığı (artan)</option>
-      </select>
-      <button class="freset" onclick="resetFilters()">Sıfırla ✕</button>
-    </div>
-    <div class="frow" id="regionChips">
-      <button class="fchip on" data-r="">Tümü</button>
-      <button class="fchip" data-r="balkan">Balkanlar</button>
-      <button class="fchip" data-r="kafkasya">Kafkasya</button>
-      <button class="fchip" data-r="korfez">Körfez</button>
-      <button class="fchip" data-r="ortaasya">Orta Asya</button>
-      <button class="fchip" data-r="akdeniz">Akdeniz & Orta Doğu</button>
-      <button class="fchip" data-r="avrupa">Avrupa (Schengen)</button>
-      <button class="fchip" data-r="uzak">Uzak Coğrafya</button>
-      <span class="fcount"><b id="cCount">0</b> rota listeleniyor</span>
-    </div>
+<!-- REZERVASYONLAR SAYFASI -->
+<div class="sheet" id="rezSheet">
+  <div class="sheet-head">
+    <div><h2>🎟 Rezervasyonlarım</h2><div class="sh-sub">Onaylanan rotalar ve adım adım sihirbaz</div></div>
+    <button class="sheet-close" onclick="closeSheet('rezSheet')">✕</button>
   </div>
-
-  <!-- KARTLAR -->
-  <div class="grid" id="grid"></div>
-
-  <!-- ONAY ÖZETİ -->
-  <div class="section-h" id="onaylar">
-    <div class="sh-ic">📋</div>
-    <div>
-      <h2>Rezervasyon Onay Listesi</h2>
-      <div class="sh-sub">Onaylanan programlar — bilet arama sırası buradan belirlenir</div>
-    </div>
-  </div>
-  <div class="appr-panel">
+  <div class="sheet-body"><div class="sheet-in">
     <div class="appr-head">
-      <div class="st">✅ <span id="apprCount">0</span> program onaylı</div>
+      <div class="st">✅ <span id="apprCount">0</span> program onaylı · <span id="apprDone">0</span> rezervasyon tamam</div>
       <div class="tot">4 kişi toplam (uçak): <span id="apprTotal">0 ₺</span></div>
       <div class="appr-actions">
         <button class="btn" onclick="approveAll()">Tümünü Onayla</button>
         <button class="btn" onclick="clearAll()" style="color:var(--red)">Tümünü Geri Al</button>
       </div>
     </div>
-    <div id="apprBody"></div>
-  </div>
-
-  <!-- REZERVASYON MERKEZİ -->
-  <div class="section-h" id="rezervasyon">
-    <div class="sh-ic">🎟</div>
-    <div>
-      <h2>Rezervasyon Merkezi</h2>
-      <div class="sh-sub">Onay sonrası adım adım sihirbaz: canlı arama linkleri → kontrol listesi → PNR kaydı</div>
-    </div>
-  </div>
-  <div class="rez-grid" id="rezGrid"></div>
-
-  <!-- AY REHBERİ -->
-  <div class="section-h" id="aylar">
-    <div class="sh-ic">📅</div>
-    <div>
-      <h2>En Uygun Ay Rehberi</h2>
-      <div class="sh-sub">Yeşil = en iyi dönem · Sarı = iyi / dikkatli</div>
-    </div>
-  </div>
-  <div class="months">
-    <div class="mbox best"><div class="m">Oca</div><div class="t">Doha, Şarm, Amman</div></div>
-    <div class="mbox best"><div class="m">Şub</div><div class="t">Doha, Şarm, Tayland</div></div>
-    <div class="mbox best"><div class="m">Mar</div><div class="t">Amman, Doha, bahar</div></div>
-    <div class="mbox best"><div class="m">Nis</div><div class="t">Tiflis, Bakü, Taşkent</div></div>
-    <div class="mbox best"><div class="m">May</div><div class="t">Belgrad, Bakü, Saraybosna</div></div>
-    <div class="mbox best"><div class="m">Haz</div><div class="t">Balkanlar, Karadağ</div></div>
-    <div class="mbox ok2"><div class="m">Tem</div><div class="t">Karadağ/Bosna deniz · Körfez sıcak</div></div>
-    <div class="mbox ok2"><div class="m">Ağu</div><div class="t">Karadağ · Doha/Amman sıcak</div></div>
-    <div class="mbox best"><div class="m">Eyl</div><div class="t">Balkanlar en iyisi, Bakü</div></div>
-    <div class="mbox best"><div class="m">Eki</div><div class="t">Belgrad, Tiflis, Şarm</div></div>
-    <div class="mbox best"><div class="m">Kas</div><div class="t">Doha, Amman</div></div>
-    <div class="mbox best"><div class="m">Ara</div><div class="t">Doha, Şarm, kampanyalar</div></div>
-  </div>
-
-  <!-- HAZIRLIK -->
-  <div class="section-h" id="hazirlik">
-    <div class="sh-ic">🧳</div>
-    <div>
-      <h2>Hazırlık Kontrol Listesi</h2>
-      <div class="sh-sub">Rezervasyon öncesi son kontroller</div>
-    </div>
-  </div>
-  <div class="cgrid">
-    <div class="cbox"><b>🪪 Belge</b><span>Vizesiz rotalarda kimlik yeterli (Azerbaycan, Gürcistan). Diğerleri için pasaport 6+ ay geçerli olmalı.</span></div>
-    <div class="cbox"><b>👤 15 yaş kuralı</b><span>Çoğu havayolunda 15 yaş yetişkin sayılır → 4 yetişkin bileti gibi planlayın.</span></div>
-    <div class="cbox"><b>💺 Koltuk</b><span>4 kişilik birlik koltuk için online check-in'i ilk dakikada açın.</span></div>
-    <div class="cbox"><b>🏨 Konaklama</b><span>2 oda veya "3 yetişkin + ek yatak" — 15 yaş otellerde yetişkin sayılır.</span></div>
-    <div class="cbox"><b>🛡️ Sigorta</b><span>Seyahat sağlık sigortası Schengen'de zorunlu, vizesiz rotalarda tavsiye edilir.</span></div>
-    <div class="cbox"><b>📆 Tarih</b><span>Tarihler esnek: Salı/Çarşamba kalkışlar genelde daha ucuz — en uygun hafta seçilir.</span></div>
-  </div>
-
+    <div class="rez-grid" id="rezGrid"></div>
+  </div></div>
 </div>
 
-<footer>
-  <b>Asistan Seyahat</b> · Ankara Esenboğa (ESB) kalkışlı · 3 yetişkin + 1 çocuk (15)<br/>
-  Fiyatlar tahminidir (Ekim 2026 uçuş verileri: FlightConnections, AJet, Skyscanner, momondo, obilet) — bilet alımında teyit edilir.<br/>
-  🤖 Asistan tarafından hazırlanmıştır.
-</footer>
+<!-- PROGRAM MODALI -->
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="m-head">
+      <div class="mf" id="mFlag">🇹🇷</div>
+      <div><h3 id="mTitle">—</h3><div class="ms" id="mSub">—</div></div>
+      <button class="m-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="m-body">
+      <div class="m-tabs">
+        <button class="m-tab on" data-pane="p1" onclick="switchTab(this)">🗺 Gezi Programı</button>
+        <button class="m-tab" data-pane="p2" onclick="switchTab(this)">🎟 Rezervasyon Adımları</button>
+      </div>
+      <div class="m-pane on" id="pane-p1"></div>
+      <div class="m-pane" id="pane-p2"></div>
+    </div>
+  </div>
+</div>
 
 <!-- REZERVASYON SİHİRBAZI -->
 <div class="overlay" id="wizOverlay" onclick="if(event.target===this)closeWizard()">
   <div class="modal">
     <div class="m-head">
       <div class="mf" id="wFlag">✈️</div>
-      <div>
-        <h3 id="wTitle">—</h3>
-        <div class="ms" id="wSub">—</div>
-      </div>
+      <div><h3 id="wTitle">—</h3><div class="ms" id="wSub">—</div></div>
       <button class="m-close" onclick="closeWizard()">✕</button>
     </div>
     <div class="m-body">
@@ -511,39 +376,6 @@
       <div class="m-pane" id="wpane-3"></div>
       <div class="m-pane" id="wpane-4"></div>
       <div class="wiz-actions" id="wizActions"></div>
-    </div>
-  </div>
-</div>
-
-<!-- ASİSTAN KABUĞU -->
-<button class="fab" id="fab" title="Asistan" onclick="toggleAssistant()">🤖<span class="dot" id="fabDot"></span></button>
-<div class="a-panel" id="aPanel">
-  <div class="a-head">🤖 Asistan <span id="aDate"></span><button onclick="toggleAssistant()">✕</button></div>
-  <div class="a-body" id="aBody"></div>
-  <div class="a-actions">
-    <button class="btn" onclick="document.getElementById('gunluk').scrollIntoView();toggleAssistant()">Günlük kontrol</button>
-    <button class="btn" onclick="document.getElementById('rezervasyon').scrollIntoView();toggleAssistant()">Rezervasyon</button>
-  </div>
-</div>
-
-<!-- MODAL -->
-<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <div class="m-head">
-      <div class="mf" id="mFlag">🇹🇷</div>
-      <div>
-        <h3 id="mTitle">—</h3>
-        <div class="ms" id="mSub">—</div>
-      </div>
-      <button class="m-close" onclick="closeModal()">✕</button>
-    </div>
-    <div class="m-body">
-      <div class="m-tabs">
-        <button class="m-tab on" data-pane="p1" onclick="switchTab(this)">🗺 Gezi Programı</button>
-        <button class="m-tab" data-pane="p2" onclick="switchTab(this)">🎟 Rezervasyon Adımları</button>
-      </div>
-      <div class="m-pane on" id="pane-p1"></div>
-      <div class="m-pane" id="pane-p2"></div>
     </div>
   </div>
 </div>
@@ -744,9 +576,26 @@ const D = [
 
 const REGION_LABEL = { balkan:'Balkanlar', kafkasya:'Kafkasya', korfez:'Körfez', ortaasya:'Orta Asya', akdeniz:'Akdeniz & Orta Doğu', avrupa:'Avrupa', uzak:'Uzak Coğrafya' };
 const VISA_CLASS = { vizesiz:'vb-free', kimlik:'vb-id', kapi:'vb-door', schengen:'vb-visa' };
+const ALIAS = {
+  belgrad:['belgrad','sırps'], tiflis:['tiflis','tbilisi','batumi'], baku:['bakü','baku','şeki'],
+  podgorica:['podgorica','kotor','karadağ','monte'], sarajevo:['saraybosna','mostar','bosna'],
+  tiran:['tiran','arnavut'], doha:['doha','katar'], amman:['amman','petra','ürdün'],
+  taskent:['taşkent','özbek'], bishkek:['bişkek','kırgız','issyk'], sharm:['şarm','sina','mısır','hurghada'],
+  beyrut:['beyrut','lübnan'], adalar:['ada','sakız','midilli','rodos','yunan','feribot'],
+  budapest:['budapeşte','budapest','macar'], berlin:['berlin','almanya'],
+  tokyo:['tokyo','osaka','japonya'], bangkok:['bangkok','phuket','tayland']
+};
+const SEASON_MAP = {
+  deniz:['adalar','podgorica','sharm','bangkok','tiran','baku','tiflis'], plaj:['adalar','podgorica','sharm','bangkok','tiran'],
+  kayak:['sarajevo'], dag:['bishkek','podgorica','taskent'], doga:['bishkek','podgorica','taskent','amman'],
+  kultur:['belgrad','sarajevo','budapest','berlin','amman','baku','taskent','tokyo'], tarih:['belgrad','sarajevo','budapest','amman','baku','taskent'],
+  aile:['belgrad','baku','doha','budapest','tokyo','sharm'], col:['doha','amman','baku'], uzak:['tokyo','bangkok'],
+  bahar:['belgrad','tiflis','baku','sarajevo'], kis:['doha','sharm','sarajevo']
+};
+const MONTH_NAMES = { ocak:1, subat:2, mart:3, nisan:4, mayis:5, haziran:6, temmuz:7, agustos:8, eylul:9, ekim:10, kasim:11, aralik:12 };
 
-/* ============ ASİSTAN: GÜNLÜK & REZERVASYON DURUMU ============ */
-const REZ_KEY = 'asistan-rez-v1', GUN_KEY = 'asistan-gunluk-v1';
+/* ================= DURUM ================= */
+const REZ_KEY = 'asistan-rez-v1', GUN_KEY = 'asistan-gunluk-v1', ONAY_KEY = 'asistan-onay-v3';
 const CHECKLIST = [
   '4 yetişkin seçildi (15 yaş dahil)',
   'Gidiş-dönüş + 20 kg bagaj eklendi',
@@ -765,270 +614,37 @@ const TIPS = [
   { t:'Kapı vizesi zamanlaması', x:'Yunan adaları kapı vizesinde seyahat planı en az 10 gün önce yapılmalı; kimlik + feribot bileti yeterli.' },
   { t:'15 yaş kuralı', x:'Çocuğun 15 — çoğu havayolunda yetişkin tarifesi geçerli. Bilet aramada \u201C4 yetişkin\u201D seçmek en doğru fiyatı verir.' },
   { t:'20 kg bagaj', x:'Ailede 2. bagaj genelde 1. bagajdan daha hesaplıdır; dönüş için 20 kg\u2019ı baştan ekle, sonradan pahalıya gelir.' },
-  { t:'Otel: 2 oda', x:'15 yaş otellerde yetişkin sayılır — tek odada \u201C3 yetişkin + çocuk\u201D limiti aşılabilir, 2 oda veya 3+1 tipi ara.' },
+  { t:'Otel: 2 oda', x:'15 yaş otellerde yetişkin sayılır — tek odada limit aşılabilir, 2 oda veya \u201C3 yetişkin + ek yatak\u201D ara.' },
   { t:'Schengen vizesi', x:'Schengen başvurusu uçuştan 15-45 gün önce yapılır. Onaylı bir Schengen rotan varsa evrakları bugün hazırla.' },
   { t:'En uygun ay', x:'Balkanlar mayıs-haziran ve eylül, körfez kasım-mart, Kafkasya nisan-ekimde en iyi. Tarih esnekse aya göre bilet kes.' },
-  { t:'Fiyat takibi', x:'Google Flights\u2019ta \u201CFiyat takibi\u201D aç — rota düşerse haber verir. Günlük görevdeki \u201CCanlı ara\u201D düğmesi bunun için.' },
+  { t:'Fiyat takibi', x:'Google Flights\u2019ta \u201CFiyat takibi\u201D aç — rota düşerse haber verir. Sohbette \u201Canlı fiyat\u201D da dediğin an linki veririm.' },
   { t:'Seyahat sigortası', x:'Schengen\u2019de zorunlu, vizesiz rotalarda da ~20-30 €. Ailenin tamamını tek poliçede almak daha ucuz.' },
   { t:'Sabah uçuşu', x:'İlk gün uzun olmasın: 08:00-11:00 arası kalkış seç; gecikme riski düşük, akşama şehir turu sığar.' },
   { t:'Check-in ilk dakika', x:'Online check-in açılır açılmaz gir: yan yana 4 koltuk ve daha geniş bagaj hakkı için kritik.' }
 ];
+
+let approved = new Set();
+let filters = { q:'', visa:'', month:'', budget:'', region:'', sort:'rec' };
 let rez = {}, gunluk = null;
 let wizId = null, wizStepNo = 1;
 
-/* ================= DURUM ================= */
-const LS_KEY = 'asistan-onay-v3';
-let approved = new Set();
-let filters = { q:'', visa:'', month:'', budget:'', region:'', sort:'rec' };
-
-function loadState() {
-  try {
-    const raw = localStorage.getItem(LS_KEY);
-    if (raw === null) {
-      // Kullanıcı talimatı: tüm programlar onaylı başlasın
-      D.forEach((d) => approved.add(d.id));
-      saveState();
-    } else {
-      approved = new Set(JSON.parse(raw) || []);
-    }
-  } catch (e) {
-    D.forEach((d) => approved.add(d.id));
-  }
-}
-function saveState() {
-  try { localStorage.setItem(LS_KEY, JSON.stringify([...approved])); } catch (e) {}
-}
-
+/* ================= YARDIMCILAR ================= */
 const fmt = (n) => n.toLocaleString('tr-TR') + ' ₺';
-const durText = (d) => d.dur;
-
-/* ================= FİLTRE + RENDER ================= */
-function getFiltered() {
-  let list = D.filter((d) => {
-    if (filters.q) {
-      const hay = (d.city + ' ' + d.country + ' ' + d.tags.join(' ') + ' ' + d.plan.map(p => p[1]).join(' ')).toLocaleLowerCase('tr');
-      if (!hay.includes(filters.q.toLocaleLowerCase('tr'))) return false;
-    }
-    if (filters.visa && d.visa !== filters.visa) {
-      // vize durumu birebir eşleşmeli (tüm etiketler doğru sınıflandırıldı)
-      return false;
-    }
-    if (filters.month && !d.months.includes(Number(filters.month))) return false;
-    if (filters.region && d.region !== filters.region) return false;
-    if (filters.budget) {
-      const t4 = d.price * 4;
-      if (filters.budget === 'low' && t4 >= 20000) return false;
-      if (filters.budget === 'mid' && (t4 < 20000 || t4 > 50000)) return false;
-      if (filters.budget === 'high' && t4 <= 50000) return false;
-    }
-    return true;
-  });
-
-  if (filters.sort === 'priceAsc') list.sort((a, b) => a.price - b.price);
-  else if (filters.sort === 'durAsc') list.sort((a, b) => a.durMin - b.durMin);
-  else if (filters.sort === 'freqAsc') list.sort((a, b) => (b.freq || 0) - (a.freq || 0));
-  else list.sort((a, b) => a.pop - b.pop);
-  return list;
-}
-
-function monthName(m) { return MONTHS[m - 1]; }
-
-function renderGrid() {
-  const list = getFiltered();
-  document.getElementById('cCount').textContent = list.length;
-  const grid = document.getElementById('grid');
-
-  if (!list.length) {
-    grid.innerHTML = '<div class="nocard">🔍 Kriterlere uyan rota bulunamadı — filtreleri sıfırlayıp tekrar deneyin.</div>';
-    return;
-  }
-
-  grid.innerHTML = list.map((d) => {
-    const isOk = approved.has(d.id);
-    return `
-    <div class="dcard${isOk ? ' approved' : ''}" data-id="${d.id}">
-      <div class="dc-top">
-        <div class="dc-head">
-          <div class="dc-flag">${d.flag}</div>
-          <div>
-            <div class="dc-title">${d.city}</div>
-            <div class="dc-country">${d.country} · ${REGION_LABEL[d.region] || ''}</div>
-          </div>
-          <span class="vbadge ${VISA_CLASS[d.visa]}">${d.visaTxt}</span>
-        </div>
-        <div class="dc-route">ESB <span class="plane">✈</span> ${d.code} <span class="dur">· ${durText(d)}</span></div>
-        <div class="dc-meta">
-          <span class="mtag air">${d.airline}</span>
-          <span class="mtag">${d.freq ? d.freq + ' uçuş/ay' : 'sefer sıklığı değişken'}</span>
-          ${d.tags.map((t) => `<span class="mtag">${t}</span>`).join('')}
-        </div>
-        <div class="months-row">${d.months.slice(0, 8).map((m) => `<span class="mchip">${monthName(m)}</span>`).join('')}${d.months.length > 8 ? '<span class="mchip">+ ' + (d.months.length - 8) + '</span>' : ''}</div>
-      </div>
-      <div class="dc-price">
-        <div class="price">
-          <div class="lbl">Gidiş-Dönüş / kişi</div>
-          <div class="val">${d.price.toLocaleString('tr-TR')} <small>₺</small></div>
-        </div>
-        <div class="total4">4 kişi toplam<b>${(d.price * 4).toLocaleString('tr-TR')} ₺</b></div>
-      </div>
-      <div class="dc-actions">
-        <button class="btn plan" onclick="openModal('${d.id}')">📋 Program</button>
-        ${isOk
-          ? `<button class="btn appr" onclick="toggle('${d.id}')">✓ Onaylı</button>`
-          : `<button class="btn add" onclick="toggle('${d.id}')">＋ Onaya Ekle</button>`}
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function renderApproval() {
-  const list = D.filter((d) => approved.has(d.id));
-  const total = list.reduce((s, d) => s + d.price * 4, 0);
-  document.getElementById('apprCount').textContent = list.length;
-  document.getElementById('apprTotal').textContent = fmt(total);
-  document.getElementById('pillCount').textContent = list.length;
-
-  const body = document.getElementById('apprBody');
-  if (!list.length) {
-    body.innerHTML = '<div class="empty-appr">Henüz onaylı program yok. Kartlardaki "＋ Onaya Ekle" ile ekleyebilir veya "Tümünü Onayla" ile hepsini onaylayabilirsin.</div>';
-    return;
-  }
-  body.innerHTML = `
-    <table class="atbl">
-      <thead><tr><th>Rota</th><th>Önerilen dönem</th><th>Havayolu</th><th>4 kişi</th><th>Durum</th><th>İşlem</th></tr></thead>
-      <tbody>
-      ${list.map((d) => `
-        <tr>
-          <td>${d.flag} <b>${d.city}</b><br/><span style="font-size:11.5px;color:var(--muted)">${d.country} · ${d.visaTxt}</span></td>
-          <td>${d.months.slice(0, 4).map(monthName).join(', ')}<span style="color:var(--muted)"> için</span></td>
-          <td>${d.airline}</td>
-          <td class="num">${fmt(d.price * 4)}</td>
-          <td class="ok">${isDone(d.id) ? '🎫 TAMAM' : '✅ ONAYLANDI'}</td>
-          <td style="white-space:nowrap"><button class="rowx" style="color:var(--primary)" onclick="openWizard('${d.id}')">rezervasyon →</button> <button class="rowx" onclick="toggle('${d.id}')">geri al</button></td>
-        </tr>`).join('')}
-      </tbody>
-      <tfoot><tr>
-        <td colspan="3" style="font-weight:800">TOPLAM (uçak, gidiş-dönüş)</td>
-        <td class="num" style="color:var(--price);font-size:15px">${fmt(total)}</td>
-        <td colspan="2" style="color:var(--muted);font-size:12px">Fiyatlar tahminidir</td>
-      </tr></tfoot>
-    </table>`;
-}
-
-function refresh() { renderGrid(); renderApproval(); renderRezCenter(); renderDaily(); saveState(); }
-
-/* ================= ONAYLAR ================= */
-function toggle(id) {
-  const d = D.find((x) => x.id === id);
-  if (approved.has(id)) {
-    approved.delete(id);
-    toast(`❌ ${d.city} onayı geri alındı`);
-  } else {
-    approved.add(id);
-    toast(`✅ ${d.city} onaylandı`);
-  }
-  refresh();
-}
-function approveAll() {
-  D.forEach((d) => approved.add(d.id));
-  refresh();
-  toast('✅ Tüm programlar onaylandı');
-}
-function clearAll() {
-  approved.clear();
-  refresh();
-  toast('Tüm onaylar geri alındı');
-}
-function applyHeroSearch() {
-  filters.q = document.getElementById('heroSearch').value.trim();
-  document.getElementById('q').value = filters.q;
-  refresh();
-  document.getElementById('rotalar').scrollIntoView();
-}
-function resetFilters() {
-  filters = { q:'', visa:'', month:'', budget:'', region:'', sort:'rec' };
-  document.getElementById('q').value = '';
-  document.getElementById('heroSearch').value = '';
-  document.getElementById('fVisa').value = '';
-  document.getElementById('fMonth').value = '';
-  document.getElementById('fBudget').value = '';
-  document.getElementById('fSort').value = 'rec';
-  document.querySelectorAll('#regionChips .fchip').forEach((c, i) => c.classList.toggle('on', i === 0));
-  refresh();
-  toast('Filtreler sıfırlandı');
-}
-
-/* ================= MODAL ================= */
-function bookingSteps(d) {
-  const visaNote = {
-    vizesiz: 'Vize gerekmiyor — pasaport yeterli. Sınırda dönüş bileti + konaklama kanıtı hazır olsun.',
-    kimlik: 'T.C. kimlik kartı yeterli, pasaport şart değil. Yine de pasaportu yanına al.',
-    kapi: 'Kapı vizesi: nüfus cüzdanı + feribot bileti. Seyahat en az 10 gün önce planlanmalı.',
-    schengen: 'Schengen: 15-45 gün önce vize başvurusu yap (banka dökümü, otel, uçuş). Uçuş tarihini vize onayına göre kes.',
-  }[d.visa];
-
-  return [
-    `<b>ajet.com</b> (veya ${d.airline.split(' / ')[0]} sitesi) → "Bilet Al" → Kalkış: <b>Ankara (ESB)</b>, Varış: <b>${d.code}</b>.`,
-    `Tarih: aşağıdaki uygun aylardan <b>Salı/Çarşamba kalkışlı</b> en ucuz haftayı seç (${d.months.slice(0, 4).map(monthName).join(', ')} öncelikli).`,
-    `<b>4 yolcu</b> seç: 3 yetişkin + 1 (15 yaş → çoğu havayolunda <b>yetişkin tarifesi</b>, child değil).`,
-    `Bagaj: dönüş için en az <b>20 kg</b> — aile için 1 ortak valiz + 1 kabin genelde yeterli olmayabilir, 20 kg eklemek mantıklı.`,
-    `Koltuk: PNR alınca <b>4 kişilik yan yana</b> koltuk seç; check-in açılır açılmaz onayla.`,
-    `Ödeme sonrası PNR'ı kaydet → <b>Booking.com</b>'dan ${d.months.slice(0, 2).map(monthName).join('/')} için 2 oda ara (15 yaş yetişkin sayılır).`,
-    `<b>${visaNote}</b>`,
-    `Çıkıştan önce Dışişleri'nin seyahat uyarılarını ve havalimanı uçuş saatini kontrol et.`,
-  ];
-}
-
-function openModal(id) {
-  const d = D.find((x) => x.id === id);
-  document.getElementById('mFlag').textContent = d.flag;
-  document.getElementById('mTitle').textContent = d.city;
-  document.getElementById('mSub').textContent = `${d.country} · ESB ✈ ${d.code} · ${d.visaTxt} · ${d.airline}`;
-
-  document.getElementById('pane-p1').innerHTML = `
-    ${d.plan.map((p) => `<div class="day"><b>${p[0]}</b><span>${p[1]}</span></div>`).join('')}
-    <div class="m-info">
-      <div class="i"><div class="k">Uçuş</div><div class="v">${durText(d)}</div></div>
-      <div class="i"><div class="k">4 kişi uçak</div><div class="v" style="color:var(--price)">${fmt(d.price * 4)}</div></div>
-      <div class="i"><div class="k">En uygun aylar</div><div class="v">${d.months.slice(0, 5).map(monthName).join(', ')}</div></div>
-    </div>`;
-
-  document.getElementById('pane-p2').innerHTML = `
-    <ol class="steps">${bookingSteps(d).map((s) => `<li>${s}</li>`).join('')}</ol>
-    <div class="m-info">
-      <div class="i"><div class="k">Kişi başı (G-D)</div><div class="v" style="color:var(--price)">${fmt(d.price)}</div></div>
-      <div class="i"><div class="k">4 kişi toplam</div><div class="v" style="color:var(--price)">${fmt(d.price * 4)}</div></div>
-      <div class="i"><div class="k">Durum</div><div class="v" style="color:var(--green)">${approved.has(d.id) ? (isDone(d.id) ? '🎫 TAMAM' : '✅ ONAYLI') : '— onay bekliyor'}</div></div>
-    </div>
-    <button class="btn primary" style="width:100%;margin-top:14px" onclick="closeModal();openWizard('${d.id}')">▶ Rezervasyon Sihirbazına Geç</button>`;
-
-  document.querySelectorAll('.m-tab').forEach((t, i) => t.classList.toggle('on', i === 0));
-  document.getElementById('pane-p1').classList.add('on');
-  document.getElementById('pane-p2').classList.remove('on');
-  document.getElementById('overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-  document.getElementById('overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function switchTab(btn) {
-  document.querySelectorAll('.m-tab').forEach((t) => t.classList.remove('on'));
-  btn.classList.add('on');
-  document.querySelectorAll('.m-pane').forEach((p) => p.classList.remove('on'));
-  document.getElementById('pane-' + btn.dataset.pane).classList.add('on');
-}
-
-/* ================= ASİSTAN: REZERVASYON YARDIMCILARI ================= */
+const monthName = (m) => MONTHS[m - 1];
 function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+function normalize(s) { return String(s).toLocaleLowerCase('tr').replace(/[.,!?;:()"'\u2019\u201C]/g, ' ').replace(/\s+/g, ' ').trim(); }
+function baseCity(d) { if (d.id === 'adalar') return 'Sakız Adası'; return d.city.split(' + ')[0].split(' / ')[0]; }
+function loadState() { try { const raw = localStorage.getItem(ONAY_KEY); if (raw === null) { D.forEach((d) => approved.add(d.id)); saveState(); } else approved = new Set(JSON.parse(raw) || []); } catch (e) { D.forEach((d) => approved.add(d.id)); } }
+function saveState() { try { localStorage.setItem(ONAY_KEY, JSON.stringify([...approved])); } catch (e) {} }
 function loadRez() { try { rez = JSON.parse(localStorage.getItem(REZ_KEY)) || {}; } catch (e) { rez = {}; } }
 function saveRez() { try { localStorage.setItem(REZ_KEY, JSON.stringify(rez)); } catch (e) {} }
 function rezOf(id) { if (!rez[id]) rez[id] = { chk: [], pnr: '', paid: '', fdate: '', done: false, doneAt: '' }; return rez[id]; }
 function isDone(id) { return !!(rez[id] && rez[id].done); }
 function chkCount(id) { const r = rez[id]; return r ? r.chk.filter(Boolean).length : 0; }
-function toggleChk(id, i) { const r = rezOf(id); r.chk[i] = !r.chk[i]; saveRez(); renderWizard(); renderRezCenter(); renderDaily(); }
-function saveField(k, v) { if (!wizId) return; const r = rezOf(wizId); r[k] = v; saveRez(); }
-function baseCity(d) { if (d.id === 'adalar') return 'Sakız Adası'; return d.city.split(' + ')[0].split(' / ')[0]; }
+function todayStr() { const t = new Date(); return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0'); }
+function yesterdayStr() { const t = new Date(Date.now() - 86400000); return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0'); }
+function dayOfYear() { const t = new Date(); return Math.floor((t - new Date(t.getFullYear(), 0, 0)) / 86400000); }
+
 function flightsLink(d) { return 'https://www.google.com/travel/flights?q=' + encodeURIComponent('Flights from Ankara to ' + baseCity(d) + ' for 4 adults') + '&curr=TRY'; }
 function skyLink(d) { if (d.code === 'ADE') return 'https://www.google.com/search?q=' + encodeURIComponent('Çeşme Sakız adası feribot saatleri'); return 'https://www.skyscanner.net/transport/flights/esb/' + d.code.toLowerCase() + '/?adultsv2=4&cabinclass=economy&rtn=1'; }
 function bookingLink(d) { return 'https://www.booking.com/searchresults.tr.html?ss=' + encodeURIComponent(baseCity(d)) + '&group_adults=3&group_children=1&age=15&no_rooms=2&lang=tr&selected_currency=TRY'; }
@@ -1040,6 +656,287 @@ function airlineLinks(d) {
   if (/Royal/.test(d.airline)) l.push(['Royal Jordanian', 'rj.com', 'https://www.rj.com']);
   if (/Feribot/.test(d.airline)) l.push(['Feribot', 'Çeşme hattı — saatler', skyLink(d)]);
   return l;
+}
+function saveGunluk() { try { localStorage.setItem(GUN_KEY, JSON.stringify(gunluk)); } catch (e) {} }
+function loadGunluk() {
+  let g = null;
+  try { g = JSON.parse(localStorage.getItem(GUN_KEY)); } catch (e) {}
+  const today = todayStr();
+  if (!g || g.date !== today) {
+    const streak = (g && g.date === yesterdayStr()) ? (g.streak || 0) + 1 : 1;
+    g = { date: today, streak: streak };
+    gunluk = g; saveGunluk();
+    if (streak > 1) notifyDaily();
+  } else gunluk = g;
+}
+function notifyDaily() {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  const list = D.filter((d) => approved.has(d.id));
+  try { new Notification('🤖 Asistan günlük kontrolü', { body: list.length + ' onaylı rota takibimde — bugünün önerileri hazır.' }); } catch (e) {}
+}
+function askNotify() {
+  if (!('Notification' in window)) { toast('Tarayıcın bildirimleri desteklemiyor'); return; }
+  Notification.requestPermission().then((p) => {
+    if (p === 'granted') { toast('🔔 Günlük asistan bildirimi açıldı'); try { new Notification('🤖 Asistan hazır', { body: 'Her gün kontrol edip öneri göndereceğim.' }); } catch (e) {} }
+    else toast('Bildirim izni verilmedi');
+  }).catch(() => toast('Bildirim izni verilemedi'));
+}
+function nextSeasonDest(list) {
+  if (!list.length) return { d: D[0], m: 1, gap: 0 };
+  const m = new Date().getMonth() + 1;
+  let best = null, bestGap = 99, bestM = 1;
+  list.forEach((d) => d.months.forEach((mm) => {
+    const gap = (mm - m + 12) % 12;
+    if (gap < bestGap) { bestGap = gap; best = d; bestM = mm; }
+  }));
+  return { d: best || D[0], m: bestM, gap: bestGap };
+}
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+/* ================= ONAYLAR / ROTALAR ================= */
+function toggle(id) {
+  const d = D.find((x) => x.id === id);
+  if (approved.has(id)) { approved.delete(id); toast('❌ ' + baseCity(d) + ' onayı geri alındı'); }
+  else { approved.add(id); toast('✅ ' + baseCity(d) + ' onaylandı'); }
+  refreshAll();
+}
+function approveAll() { D.forEach((d) => approved.add(d.id)); refreshAll(); toast('✅ Tüm programlar onaylandı'); }
+function clearAll() { approved.clear(); refreshAll(); toast('Tüm onaylar geri alındı'); }
+function refreshAll() { saveState(); renderGrid(); renderRezCenter(); renderApprovalHeader(); }
+
+function getFiltered() {
+  let list = D.filter((d) => {
+    if (filters.q) {
+      const hay = normalize(d.city + ' ' + d.country + ' ' + d.tags.join(' '));
+      if (!hay.includes(filters.q)) return false;
+    }
+    if (filters.visa && d.visa !== filters.visa) return false;
+    if (filters.month && !d.months.includes(Number(filters.month))) return false;
+    if (filters.region && d.region !== filters.region) return false;
+    if (filters.budget) {
+      const t4 = d.price * 4;
+      if (filters.budget === 'low' && t4 >= 20000) return false;
+      if (filters.budget === 'mid' && (t4 < 20000 || t4 > 50000)) return false;
+      if (filters.budget === 'high' && t4 <= 50000) return false;
+    }
+    return true;
+  });
+  if (filters.sort === 'priceAsc') list.sort((a, b) => a.price - b.price);
+  else if (filters.sort === 'durAsc') list.sort((a, b) => a.durMin - b.durMin);
+  else if (filters.sort === 'freqAsc') list.sort((a, b) => (b.freq || 0) - (a.freq || 0));
+  else list.sort((a, b) => a.pop - b.pop);
+  return list;
+}
+function renderGrid() {
+  const list = getFiltered();
+  const cc = document.getElementById('cCount');
+  if (cc) cc.textContent = list.length;
+  const grid = document.getElementById('grid');
+  if (!grid) return;
+  if (!list.length) { grid.innerHTML = '<div class="nocard">🔍 Kriterlere uyan rota bulunamadı — filtreleri sıfırlayın.</div>'; return; }
+  grid.innerHTML = list.map((d) => `
+    <div class="dcard${approved.has(d.id) ? ' approved' : ''}">
+      <div class="dc-top">
+        <div class="dc-head">
+          <div class="dc-flag">${d.flag}</div>
+          <div><div class="dc-title">${d.city}</div><div class="dc-country">${d.country} · ${REGION_LABEL[d.region] || ''}</div></div>
+          <span class="vbadge ${VISA_CLASS[d.visa]}">${d.visaTxt}</span>
+        </div>
+        <div class="dc-route">ESB <span class="plane">✈</span> ${d.code} <span class="dur">· ${d.dur}</span></div>
+        <div class="dc-meta">
+          <span class="mtag air">${d.airline}</span>
+          <span class="mtag">${d.freq ? d.freq + ' uçuş/ay' : 'sefer değişken'}</span>
+          ${d.tags.map((t) => `<span class="mtag">${t}</span>`).join('')}
+        </div>
+        <div class="months-row">${d.months.slice(0, 8).map((m) => `<span class="mchip">${monthName(m)}</span>`).join('')}</div>
+      </div>
+      <div class="dc-price">
+        <div class="price"><div class="lbl">Gidiş-Dönüş / kişi</div><div class="val">${d.price.toLocaleString('tr-TR')} <small>₺</small></div></div>
+        <div class="total4">4 kişi toplam<b>${(d.price * 4).toLocaleString('tr-TR')} ₺</b></div>
+      </div>
+      <div class="dc-actions">
+        <button class="btn plan" onclick="openModal('${d.id}')">📋 Program</button>
+        ${approved.has(d.id)
+          ? `<button class="btn appr" onclick="toggle('${d.id}')">✓ Onaylı</button>`
+          : `<button class="btn" onclick="toggle('${d.id}')">＋ Onaya Ekle</button>`}
+      </div>
+    </div>`).join('');
+}
+function renderApprovalHeader() {
+  const list = D.filter((d) => approved.has(d.id));
+  const total = list.reduce((s, d) => s + d.price * 4, 0);
+  const done = list.filter((d) => isDone(d.id)).length;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  set('pillCount', list.length); set('apprCount', list.length); set('apprDone', done); set('apprTotal', fmt(total));
+}
+function renderRezCenter() {
+  const g = document.getElementById('rezGrid');
+  if (!g) return;
+  const list = D.filter((d) => approved.has(d.id));
+  if (!list.length) { g.innerHTML = '<div class="rez-empty">Onaylı rota yok — sohbette "onayla" diyebilir veya Rotalar sayfasından ekleyebilirsin.</div>'; return; }
+  g.innerHTML = list.map((d) => {
+    const r = rezOf(d.id);
+    const c = chkCount(d.id);
+    const pct = Math.round((c / CHECKLIST.length) * 100);
+    return `
+    <div class="rez-card${r.done ? ' done' : ''}">
+      <div class="rh">
+        <div class="rf">${d.flag}</div>
+        <div><div class="rt">${d.city}</div><div class="rs">ESB ✈ ${d.code} · ${d.months.slice(0, 3).map(monthName).join(', ')}</div></div>
+        <span class="rez-badge${r.done ? ' done' : ''}">${r.done ? '🎫 TAMAM' : 'ADIM ' + c + '/' + CHECKLIST.length}</span>
+      </div>
+      <div class="bar"><span class="${r.done ? 'done' : ''}" style="width:${r.done ? 100 : pct}%"></span></div>
+      <div class="rez-meta"><span>${r.done ? ('PNR: ' + esc(r.pnr) || '—') : 'bilet → otel → PNR adımları'}</span><span>${fmt(d.price * 4)}</span></div>
+      <button class="rez-btn${r.done ? ' done' : ''}" onclick="openWizard('${d.id}')">${r.done ? 'Ticket, özet ve kaydı gör' : '🎟 Rezervasyona Devam Et →'}</button>
+    </div>`;
+  }).join('');
+}
+function resetFilters() {
+  filters = { q:'', visa:'', month:'', budget:'', region:'', sort:'rec' };
+  document.getElementById('q').value = '';
+  document.getElementById('fVisa').value = '';
+  document.getElementById('fMonth').value = '';
+  document.getElementById('fBudget').value = '';
+  document.getElementById('fSort').value = 'rec';
+  document.querySelectorAll('#regionChips .fchip').forEach((c, i) => c.classList.toggle('on', i === 0));
+  renderGrid();
+}
+
+/* ================= PANEL (SHEET) ================= */
+function openSheet(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeSheet(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
+
+/* ================= PROGRAM MODALI ================= */
+function bookingSteps(d) {
+  const visaNote = {
+    vizesiz: 'Vize gerekmiyor — pasaport yeterli. Sınırda dönüş bileti + konaklama kanıtı hazır olsun.',
+    kimlik: 'T.C. kimlik kartı yeterli, pasaport şart değil. Yine de pasaportu yanına al.',
+    kapi: 'Kapı vizesi: nüfus cüzdanı + feribot bileti. Seyahat en az 10 gün önce planlanmalı.',
+    schengen: 'Schengen: 15-45 gün önce vize başvurusu yap (banka dökümü, otel, uçuş). Uçuş tarihini vize onayına göre kes.',
+  }[d.visa];
+  return [
+    '<b>ajet.com</b> (veya ' + d.airline.split(' / ')[0] + ' sitesi) → "Bilet Al" → Kalkış: <b>Ankara (ESB)</b>, Varış: <b>' + d.code + '</b>.',
+    'Tarih: uygun aylardan <b>Salı/Çarşamba kalkışlı</b> en ucuz haftayı seç (' + d.months.slice(0, 4).map(monthName).join(', ') + ' öncelikli).',
+    '<b>4 yolcu</b> seç: 3 yetişkin + 1 (15 yaş → çoğu havayolunda <b>yetişkin tarifesi</b>).',
+    'Bagaj: dönüş için en az <b>20 kg</b> — aile için 2 bagaj daha hesaplı olabilir.',
+    'Koltuk: PNR alınca <b>4 kişilik yan yana</b> koltuk seç; check-in açılır açılmaz onayla.',
+    'Ödeme sonrası PNR\'ı kaydet → <b>Booking.com</b>\'dan ' + d.months.slice(0, 2).map(monthName).join('/') + ' için 2 oda ara (15 yaş yetişkin sayılır).',
+    '<b>' + visaNote + '</b>',
+    'Çıkıştan önce Dışişleri seyahat uyarılarını ve havalimanı uçuş saatini kontrol et.',
+  ];
+}
+function openModal(id) {
+  const d = D.find((x) => x.id === id);
+  document.getElementById('mFlag').textContent = d.flag;
+  document.getElementById('mTitle').textContent = d.city;
+  document.getElementById('mSub').textContent = d.country + ' · ESB ✈ ' + d.code + ' · ' + d.visaTxt + ' · ' + d.airline;
+  document.getElementById('pane-p1').innerHTML = `
+    ${d.plan.map((p) => `<div class="day"><b>${p[0]}</b><span>${p[1]}</span></div>`).join('')}
+    <div class="m-info">
+      <div class="i"><div class="k">Uçuş</div><div class="v">${d.dur}</div></div>
+      <div class="i"><div class="k">4 kişi uçak</div><div class="v" style="color:var(--price)">${fmt(d.price * 4)}</div></div>
+      <div class="i"><div class="k">En uygun aylar</div><div class="v">${d.months.slice(0, 5).map(monthName).join(', ')}</div></div>
+    </div>`;
+  document.getElementById('pane-p2').innerHTML = `
+    <ol class="steps">${bookingSteps(d).map((s) => `<li>${s}</li>`).join('')}</ol>
+    <div class="m-info">
+      <div class="i"><div class="k">Kişi başı (G-D)</div><div class="v" style="color:var(--price)">${fmt(d.price)}</div></div>
+      <div class="i"><div class="k">4 kişi toplam</div><div class="v" style="color:var(--price)">${fmt(d.price * 4)}</div></div>
+      <div class="i"><div class="k">Durum</div><div class="v" style="color:var(--green)">${approved.has(d.id) ? (isDone(d.id) ? '🎫 TAMAM' : '✅ ONAYLI') : '— onay bekliyor'}</div></div>
+    </div>
+    <button class="btn primary" style="width:100%;margin-top:14px" onclick="closeModal();openWizard('${d.id}')">▶ Rezervasyon Sihirbazına Geç</button>`;
+  document.querySelectorAll('.m-tab').forEach((t, i) => t.classList.toggle('on', i === 0));
+  document.getElementById('pane-p1').classList.add('on');
+  document.getElementById('pane-p2').classList.remove('on');
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() { document.getElementById('overlay').classList.remove('open'); document.body.style.overflow = ''; }
+function switchTab(btn) {
+  document.querySelectorAll('.m-tab').forEach((t) => t.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('#overlay .m-pane').forEach((p) => p.classList.remove('on'));
+  document.getElementById('pane-' + btn.dataset.pane).classList.add('on');
+}
+
+/* ================= REZERVASYON SİHİRBAZI ================= */
+function openWizard(id) { wizId = id; wizStepNo = 1; renderWizard(); document.getElementById('wizOverlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeWizard() { document.getElementById('wizOverlay').classList.remove('open'); document.body.style.overflow = ''; wizId = null; }
+function wizNav(n) { wizStepNo = n; renderWizard(); }
+function renderWizard() {
+  const d = D.find((x) => x.id === wizId);
+  if (!d) return;
+  const r = rezOf(d.id);
+  document.getElementById('wFlag').textContent = d.flag;
+  document.getElementById('wTitle').textContent = d.city;
+  document.getElementById('wSub').textContent = 'ESB ✈ ' + d.code + ' · ' + d.airline + ' · ' + d.visaTxt + ' · 4 kişi ≈ ' + fmt(d.price * 4);
+  document.querySelectorAll('.wiz-step').forEach((b, i) => { b.classList.toggle('on', i + 1 === wizStepNo); b.classList.toggle('past', i + 1 < wizStepNo); });
+  for (let i = 1; i <= 4; i++) document.getElementById('wpane-' + i).classList.toggle('on', i === wizStepNo);
+
+  if (wizStepNo === 1) {
+    document.getElementById('wpane-1').innerHTML = `
+      <div class="note">💡 Aynı rotada en ucuz bileti bulmak için 3 sitede karşılaştırma yap. ${d.months.slice(0, 3).map(monthName).join('/')} aylarında <b>Salı-Çarşamba</b> kalkışlarını dene.</div>
+      <div class="link-grid">
+        <a class="llink primary" target="_blank" rel="noopener" href="${flightsLink(d)}"><span class="lk">🔎 Google Flights</span><span class="ld">4 yetişkin · ESB → ${d.code}</span></a>
+        <a class="llink" target="_blank" rel="noopener" href="${skyLink(d)}"><span class="lk">🔎 Skyscanner</span><span class="ld">tarih esnek arama</span></a>
+        ${airlineLinks(d).map((l) => `<a class="llink" target="_blank" rel="noopener" href="${l[2]}"><span class="lk">${l[0]}</span><span class="ld">${l[1]}</span></a>`).join('')}
+      </div>
+      <div class="note">⚠️ Arama sonuçlarında <b>4 yetişkin</b> seç (15 yaş child değil, yetişkin tarifesi). Bagaj dahil mi kontrol et.</div>
+      <div class="m-info">
+        <div class="i"><div class="k">Kişi başı hedef</div><div class="v" style="color:var(--price)">${fmt(d.price)}</div></div>
+        <div class="i"><div class="k">4 kişi hedef</div><div class="v" style="color:var(--price)">${fmt(d.price * 4)}</div></div>
+        <div class="i"><div class="k">Uçuş süresi</div><div class="v">${d.dur}</div></div>
+      </div>`;
+  } else if (wizStepNo === 2) {
+    document.getElementById('wpane-2').innerHTML = `
+      <div class="note">📅 Uygun aylar: <b>${d.months.slice(0, 6).map(monthName).join(', ')}</b> — esnek tarihsen bu aylardaki en ucuz haftayı seç.</div>
+      <div class="link-grid">
+        <a class="llink primary" target="_blank" rel="noopener" href="${bookingLink(d)}"><span class="lk">🏨 Booking.com</span><span class="ld">3 yetişkin + 1 (15) · 2 oda</span></a>
+        <a class="llink" target="_blank" rel="noopener" href="https://www.google.com/search?q=${encodeURIComponent(baseCity(d) + ' nerede kalınır aile')}"><span class="lk">🔎 "Nerede kalınır"</span><span class="ld">mahalle karşılaştırması</span></a>
+      </div>
+      <div class="note">🏨 15 yaş otellerde yetişkin sayılır: tek oda limiti aşabilir → 2 oda veya "3 yetişkin + ek yatak" ara.</div>`;
+  } else if (wizStepNo === 3) {
+    document.getElementById('wpane-3').innerHTML =
+      CHECKLIST.map((c, i) => `<label class="chk ${r.chk[i] ? 'done' : ''}"><input type="checkbox" ${r.chk[i] ? 'checked' : ''} onchange="toggleChk('${d.id}',${i})" /><span>${c}</span></label>`).join('') +
+      `<div class="note">İlerlemen tarayıcıda saklanır — sayfayı kapatsan da kaldığın yerden devam edersin.</div>`;
+  } else {
+    document.getElementById('wpane-4').innerHTML = `
+      ${r.done ? `<div class="note" style="background:var(--green-soft);border-color:#bfe9db;color:#0a7d55">🎫 <b>REZERVASYON TAMAMLANDI</b> — ${r.doneAt} tarihinde kaydedildi. PNR: <b>${esc(r.pnr) || '—'}</b>${r.paid ? ' · ödenen: ' + esc(r.paid) : ''}</div>` : `
+      <div class="form-row">
+        <input id="wPnr" placeholder="PNR / rezervasyon kodu (örn. AB12XY)" value="${esc(r.pnr)}" oninput="saveField('pnr', this.value)" />
+        <input id="wPaid" placeholder="Ödenen tutar (örn. 41.500 ₺)" value="${esc(r.paid)}" oninput="saveField('paid', this.value)" />
+        <input id="wDate" class="full" type="date" value="${esc(r.fdate)}" onchange="saveField('fdate', this.value)" />
+      </div>
+      <div class="note">Ödeme yaptıktan sonra PNR\u2019ı buraya yaz → rota \u201Ctamamlandı\u201D işaretlensin; ben günlük kontrolde bu rotayı kapatırım.</div>`}
+      <div class="sum-box">${esc(summaryText(d))}</div>`;
+  }
+  document.getElementById('wizActions').innerHTML = `
+    ${wizStepNo > 1 ? `<button class="btn" onclick="wizNav(${wizStepNo - 1})">← Geri</button>` : ''}
+    ${wizStepNo < 4
+      ? `<button class="btn primary" onclick="wizNav(${wizStepNo + 1})">İleri →</button>`
+      : `<button class="btn success" onclick="finishRez('${d.id}')">${r.done ? '✓ Kaydı güncelle' : '✅ Rezervasyonu Tamamla'}</button>`}
+    <button class="btn" onclick="copySummary('${d.id}')">📋 Özeti Kopyala</button>`;
+}
+function toggleChk(id, i) { const r = rezOf(id); r.chk[i] = !r.chk[i]; saveRez(); renderWizard(); renderRezCenter(); renderApprovalHeader(); }
+function saveField(k, v) { if (!wizId) return; const r = rezOf(wizId); r[k] = v; saveRez(); }
+function finishRez(id) {
+  const r = rezOf(id);
+  const d = D.find((x) => x.id === id);
+  const pnrEl = document.getElementById('wPnr');
+  if (pnrEl) { r.pnr = pnrEl.value.trim(); r.paid = document.getElementById('wPaid').value.trim(); r.fdate = document.getElementById('wDate').value; }
+  if (!r.pnr) { toast('Önce PNR kodunu gir — ödeme yapılmadıysa kaydetme'); return; }
+  r.done = true; r.doneAt = new Date().toLocaleDateString('tr-TR');
+  saveRez();
+  renderRezCenter(); renderApprovalHeader();
+  renderWizard();
+  toast('🎫 Rezervasyon tamamlandı: ' + baseCity(d));
+  botSay('🎉 <b>' + baseCity(d) + '</b> rezervasyonu tamam! PNR: <b>' + esc(r.pnr) + '</b>. Uçuş tarihin yaklaştıkça check-in için yine yaz — bagaj ve koltuk hatırlatması da yaparım.');
 }
 function summaryText(d) {
   const r = rezOf(d.id);
@@ -1053,92 +950,8 @@ function summaryText(d) {
     '✅ Program onaylı: ' + (approved.has(d.id) ? 'evet' : 'hayır'),
     '🔗 Bilet: ' + flightsLink(d),
     '🏨 Otel: ' + bookingLink(d),
-    '— Asistan Seyahat planı'
+    '— Asistan planı'
   ].join('\n');
-}
-
-/* ================= ASİSTAN: SİHİRBAZ ================= */
-function openWizard(id) {
-  wizId = id; wizStepNo = 1;
-  renderWizard();
-  document.getElementById('wizOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeWizard() {
-  document.getElementById('wizOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-  wizId = null;
-}
-function wizNav(n) { wizStepNo = n; renderWizard(); }
-function renderWizard() {
-  const d = D.find((x) => x.id === wizId);
-  if (!d) return;
-  const r = rezOf(d.id);
-  document.getElementById('wFlag').textContent = d.flag;
-  document.getElementById('wTitle').textContent = d.city;
-  document.getElementById('wSub').textContent = 'ESB ✈ ' + d.code + ' · ' + d.airline + ' · ' + d.visaTxt + ' · 4 kişi ≈ ' + fmt(d.price * 4);
-  const steps = document.querySelectorAll('.wiz-step');
-  steps.forEach((b, i) => { b.classList.toggle('on', i + 1 === wizStepNo); b.classList.toggle('past', i + 1 < wizStepNo); });
-  for (let i = 1; i <= 4; i++) document.getElementById('wpane-' + i).classList.toggle('on', i === wizStepNo);
-
-  if (wizStepNo === 1) {
-    document.getElementById('wpane-1').innerHTML = `
-      <div class="note">💡 Amaç: aynı rotada en ucuz bileti bulmak için 3 sitede karşılaştırma yap. ${d.months.slice(0, 3).map(monthName).join('/')} aylarında <b>Salı-Çarşamba</b> kalkışlarını dene.</div>
-      <div class="link-grid">
-        <a class="llink primary" target="_blank" rel="noopener" href="${flightsLink(d)}" onclick="taskDone('fly')"><span class="lk">🔎 Google Flights</span><span class="ld">4 yetişkin · ESB → ${d.code}</span></a>
-        <a class="llink" target="_blank" rel="noopener" href="${skyLink(d)}" onclick="taskDone('fly')"><span class="lk">🔎 Skyscanner</span><span class="ld">tarih esnek arama</span></a>
-        ${airlineLinks(d).map((l) => `<a class="llink" target="_blank" rel="noopener" href="${l[2]}"><span class="lk">${l[0]}</span><span class="ld">${l[1]}</span></a>`).join('')}
-      </div>
-      <div class="note">⚠️ Arama sonuçlarında <b>4 yetişkin</b> seç (15 yaş child değil, yetişkin tarifesi). Bagaj dahil mi kontrol et.</div>
-      <div class="m-info">
-        <div class="i"><div class="k">Kişi başı hedef</div><div class="v" style="color:var(--price)">${fmt(d.price)}</div></div>
-        <div class="i"><div class="k">4 kişi hedef</div><div class="v" style="color:var(--price)">${fmt(d.price * 4)}</div></div>
-        <div class="i"><div class="k">Uçuş süresi</div><div class="v">${d.dur}</div></div>
-      </div>`;
-  } else if (wizStepNo === 2) {
-    document.getElementById('wpane-2').innerHTML = `
-      <div class="note">📅 Uygun aylar: <b>${d.months.slice(0, 6).map(monthName).join(', ')}</b> — esnek tarihsen bu aylardaki en ucuz haftayı seç, takvim görünümüne bak.</div>
-      <div class="link-grid">
-        <a class="llink primary" target="_blank" rel="noopener" href="${bookingLink(d)}" onclick="taskDone('otel')"><span class="lk">🏨 Booking.com</span><span class="ld">3 yetişkin + 1 (15) · 2 oda</span></a>
-        <a class="llink" target="_blank" rel="noopener" href="https://www.google.com/search?q=${encodeURIComponent(baseCity(d) + ' nerede kalınır aile')}"><span class="lk">🔎 "Nerede kalınır"</span><span class="ld">mahalle karşılaştırması</span></a>
-      </div>
-      <div class="note">🏨 15 yaş otellerde yetişkin sayılır: tek oda "3 yetişkin" limitini aşabilir → 2 oda veya "3 yetişkin + ek yatak" ara.</div>`;
-  } else if (wizStepNo === 3) {
-    document.getElementById('wpane-3').innerHTML =
-      CHECKLIST.map((c, i) => `<label class="chk ${r.chk[i] ? 'done' : ''}"><input type="checkbox" ${r.chk[i] ? 'checked' : ''} onchange="toggleChk('${d.id}',${i})" /><span>${c}</span></label>`).join('') +
-      `<div class="note">İlerlemen tarayıcıda saklanır — sayfayı kapatsan da kaldığın yerden devam edersin; asistan günlük kontrolde bu adımları takip eder.</div>`;
-  } else {
-    document.getElementById('wpane-4').innerHTML = `
-      ${r.done ? `<div class="note" style="background:var(--green-soft);border-color:#bfe9db;color:#0a7d55">🎫 <b>REZERVASYON TAMAMLANDI</b> — ${r.doneAt} tarihinde kaydedildi. PNR: <b>${esc(r.pnr) || '—'}</b>${r.paid ? ' · ödenen: ' + esc(r.paid) : ''}</div>` : `
-      <div class="form-row">
-        <input id="wPnr" placeholder="PNR / rezervasyon kodu (örn. AB12XY)" value="${esc(r.pnr)}" oninput="saveField('pnr', this.value)" />
-        <input id="wPaid" placeholder="Ödenen tutar (örn. 41.500 ₺)" value="${esc(r.paid)}" oninput="saveField('paid', this.value)" />
-        <input id="wDate" class="full" type="date" value="${esc(r.fdate)}" onchange="saveField('fdate', this.value)" />
-      </div>
-      <div class="note">Ödeme yaptıktan sonra PNR\u2019ı buraya yaz → rota \u201Ctamamlandı\u201D işaretlensin; asistan günlük kontrolde bu rotayı kapatır.</div>`}
-      <div class="sum-box">${esc(summaryText(d))}</div>`;
-  }
-
-  const el = document.getElementById('wizActions');
-  el.innerHTML = `
-    ${wizStepNo > 1 ? `<button class="btn" onclick="wizNav(${wizStepNo - 1})">← Geri</button>` : ''}
-    ${wizStepNo < 4
-      ? `<button class="btn primary" onclick="wizNav(${wizStepNo + 1})">İleri →</button>`
-      : `<button class="btn success" onclick="finishRez('${d.id}')">${r.done ? '✓ Kaydı güncelle' : '✅ Rezervasyonu Tamamla'}</button>`}
-    <button class="btn" onclick="copySummary('${d.id}')">📋 Özeti Kopyala</button>`;
-}
-function finishRez(id) {
-  const r = rezOf(id);
-  const d = D.find((x) => x.id === id);
-  const pnrEl = document.getElementById('wPnr');
-  if (pnrEl) { r.pnr = pnrEl.value.trim(); r.paid = document.getElementById('wPaid').value.trim(); r.fdate = document.getElementById('wDate').value; }
-  if (!r.pnr) { toast('Önce PNR kodunu gir — ödeme yapılmadıysa kaydetme'); return; }
-  r.done = true;
-  r.doneAt = new Date().toLocaleDateString('tr-TR');
-  saveRez();
-  renderRezCenter(); renderApproval(); renderDaily();
-  renderWizard();
-  toast('🎫 Rezervasyon tamamlandı: ' + baseCity(d));
 }
 function copySummary(id) {
   const d = D.find((x) => x.id === id);
@@ -1158,189 +971,307 @@ function copySummary(id) {
   toast(ok ? '📋 Kopyalandı — WhatsApp/e-postaya yapıştırabilirsin' : 'Kopyalanamadı — aşağıdaki metni elle seç');
 }
 
-/* ================= ASİSTAN: REZERVASYON MERKEZİ ================= */
-function renderRezCenter() {
-  const g = document.getElementById('rezGrid');
-  if (!g) return;
-  const list = D.filter((d) => approved.has(d.id));
-  if (!list.length) {
-    g.innerHTML = '<div class="rez-empty">Onaylı rota yok — önce rotaları onaylayın (kartlardaki "＋ Onaya Ekle").</div>';
-    return;
-  }
-  g.innerHTML = list.map((d) => {
-    const r = rezOf(d.id);
-    const c = chkCount(d.id);
-    const pct = Math.round((c / CHECKLIST.length) * 100);
-    return `
-    <div class="rez-card${r.done ? ' done' : ''}">
-      <div class="rh">
-        <div class="rf">${d.flag}</div>
-        <div><div class="rt">${d.city}</div><div class="rs">ESB ✈ ${d.code} · ${d.months.slice(0, 3).map(monthName).join(', ')}</div></div>
-        <span class="rez-badge${r.done ? ' done' : ''}">${r.done ? '🎫 TAMAM' : 'ADIM ' + c + '/' + CHECKLIST.length}</span>
-      </div>
-      <div class="bar"><span class="${r.done ? 'done' : ''}" style="width:${r.done ? 100 : pct}%"></span></div>
-      <div class="rez-meta"><span>${r.done ? ('PNR: ' + esc(r.pnr) || '—') : 'bilet → otel → PNR adımları'}</span><span>${fmt(d.price * 4)}</span></div>
-      <button class="rez-btn${r.done ? ' done' : ''}" onclick="openWizard('${d.id}')">${r.done ? 'Ticket, özet ve kaydı gör' : '🎟 Rezervasyona Devam Et →'}</button>
-    </div>`;
-  }).join('');
+/* ================= SOHBET MOTORU ================= */
+const chatLog = () => document.getElementById('chatLog');
+function scrollChat() { const c = chatLog(); c.scrollTop = c.scrollHeight; }
+function userSay(text) {
+  const div = document.createElement('div');
+  div.className = 'bub me';
+  div.textContent = text;
+  chatLog().appendChild(div);
+  scrollChat();
+}
+function botSay(html) {
+  const div = document.createElement('div');
+  div.className = 'bub bot';
+  div.innerHTML = html;
+  chatLog().appendChild(div);
+  scrollChat();
+}
+function botCards(listHtml) {
+  const div = document.createElement('div');
+  div.className = 'bub bot wide';
+  div.innerHTML = '<div class="cards">' + listHtml + '</div>';
+  chatLog().appendChild(div);
+  scrollChat();
+}
+function typing() {
+  const div = document.createElement('div');
+  div.className = 'bub bot';
+  div.id = 'typingBub';
+  div.innerHTML = '<span class="typing"><span></span><span></span><span></span></span>';
+  chatLog().appendChild(div);
+  scrollChat();
+}
+function untyping() { const t = document.getElementById('typingBub'); if (t) t.remove(); }
+function botSeq(parts) {
+  let i = 0;
+  const next = () => {
+    if (i >= parts.length) return;
+    const p = parts[i++];
+    typing();
+    setTimeout(() => {
+      untyping();
+      if (p && p.cards) botCards(p.cards); else botSay(p);
+      next();
+    }, 480 + Math.random() * 380);
+  };
+  next();
+}
+function setChips(items) {
+  document.getElementById('chipsBar').innerHTML = items.map((it) =>
+    it.a
+      ? `<button class="chip" onclick="${it.a}">${it.t}</button>`
+      : `<button class="chip" onclick="askChip(this.textContent)">${it.t}</button>`
+  ).join('');
+}
+function askChip(q) { userSay(q); respond(q); }
+
+function destCard(d) {
+  return `
+  <div class="ccard">
+    <div class="cc-top">
+      <span class="cc-flag">${d.flag}</span>
+      <div><b>${d.city}</b><span class="sub">${d.country} · ESB ✈ ${d.code} · ${d.dur}</span></div>
+      <span class="vbadge ${VISA_CLASS[d.visa]}">${d.visaTxt}</span>
+    </div>
+    <div class="cc-price">
+      <div><span class="lbl">Gidiş-Dönüş / kişi</span><b class="big">${fmt(d.price)}</b></div>
+      <div class="cc-4">4 kişi toplam<b>${fmt(d.price * 4)}</b></div>
+    </div>
+    <div class="months-row">${d.months.slice(0, 6).map((m) => `<span class="mchip">${monthName(m)}</span>`).join('')}</div>
+    <div class="cc-acts">
+      <button class="cbtn" onclick="openModal('${d.id}')">📋 Program</button>
+      <button class="cbtn blue" onclick="chatLive('${d.id}')">🔍 Canlı fiyat</button>
+      ${approved.has(d.id)
+        ? (isDone(d.id)
+          ? `<button class="cbtn green" onclick="openWizard('${d.id}')">🎫 Tamam — gör</button>`
+          : `<button class="cbtn green" onclick="chatReserve('${d.id}')">🎟 Rezervasyon yap</button>`)
+        : `<button class="cbtn" onclick="chatApprove('${d.id}')">＋ Onayla</button>`}
+    </div>
+  </div>`;
+}
+const cardsOf = (list) => list.map(destCard).join('');
+
+function chatLive(id) {
+  const d = D.find((x) => x.id === id);
+  botSeq(['🔍 <b>' + baseCity(d) + '</b> için anlık fiyat aramasını hazırladım — aşağıdaki düğmeden Google Flights\'ta <b>4 yetişkin</b> olarak açılır. ' + (d.months.slice(0, 2).map(monthName).join('/') + ' aylarına ve Salı-Çarşamba kalkışlarına bak, genelde onlar daha ucuz.')]);
+  setChips([{ t: '🏨 Otel de bak', a: "window.open('" + bookingLink(d) + "','_blank')" }, { t: '🎟 Rezervasyon yap', a: "chatReserve('" + d.id + "')" }, { t: 'En ucuz 3 rota' }]);
+}
+function chatApprove(id) {
+  const d = D.find((x) => x.id === id);
+  if (!approved.has(id)) { approved.add(id); saveState(); refreshAll(); }
+  botSeq(['✅ <b>' + baseCity(d) + '</b> onaylandı — takip listeme eklendi. Şimdi fiyat kontrolü ve rezervasyon adımlarını senin için yürütebilirim.']);
+  setChips([{ t: '🔍 Canlı fiyat', a: "chatLive('" + id + "')" }, { t: '🎟 Rezervasyon yap', a: "chatReserve('" + id + "')" }, { t: 'Rezervasyonlarım' }]);
+}
+function chatReserve(id) {
+  const d = D.find((x) => x.id === id);
+  const r = rezOf(id);
+  if (!approved.has(id)) { approved.add(id); saveState(); refreshAll(); }
+  botSeq([
+    '🎟 <b>' + baseCity(d) + '</b> rezervasyonunu başlatıyorum. Hedef: <b>' + fmt(d.price * 4) + '</b> / 4 kişi (kişi başı ' + fmt(d.price) + '), ' + d.airline + '.',
+    { cards: destCard(d) },
+    'Sihirbazda adım adım ilerliyoruz: 1) <b>canlı arama linkleri</b> → 2) tarih &amp; otel → 3) kontrol listesi → 4) <b>PNR kaydı</b>. Hazır olduğunda \u201CSihirbazı aç\u201D de, kaldığın yerden devam edelim' + (r.done ? ' — bu rotanın kaydı zaten tamam 🎫' : chkCount(id) > 0 ? ' — ' + chkCount(id) + '/9 adımın zaten işaretli.' : '.')
+  ]);
+  setChips([{ t: '▶ Sihirbazı aç', a: "openWizard('" + id + "')" }, { t: '🔍 Önce canlı fiyat', a: "chatLive('" + id + "')" }, { t: 'Rezervasyonlarım' }]);
 }
 
-/* ================= ASİSTAN: GÜNLÜK MOD ================= */
-function todayStr() { const t = new Date(); return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0'); }
-function yesterdayStr() { const t = new Date(Date.now() - 86400000); return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0'); }
-function dayOfYear() { const t = new Date(); return Math.floor((t - new Date(t.getFullYear(), 0, 0)) / 86400000); }
-function humanAgo(ms) { const m = Math.floor(ms / 60000); if (m < 2) return 'az önce'; if (m < 60) return m + ' dk önce'; const h = Math.floor(m / 60); if (h < 24) return h + ' saat önce'; return Math.floor(h / 24) + ' gün önce'; }
-function saveGunluk() { try { localStorage.setItem(GUN_KEY, JSON.stringify(gunluk)); } catch (e) {} }
-function loadGunluk() {
-  let g = null;
-  try { g = JSON.parse(localStorage.getItem(GUN_KEY)); } catch (e) {}
-  const today = todayStr();
-  if (!g || g.date !== today) {
-    const streak = (g && g.date === yesterdayStr()) ? (g.streak || 0) + 1 : 1;
-    const rollover = !!g;
-    g = { date: today, tasks: {}, streak: streak, lastVisit: g ? g.lastVisit : 0 };
-    gunluk = g;
-    saveGunluk();
-    if (rollover) notifyDaily();
-  } else {
-    gunluk = g;
+/* niyet çözümleme */
+function findDests(text) {
+  const t = normalize(text);
+  const words = t.split(' ').filter((w) => w.length >= 3);
+  const scored = [];
+  D.forEach((d) => {
+    let s = 0;
+    const names = (ALIAS[d.id] || []).concat([normalize(d.city), normalize(d.country)]);
+    names.forEach((a) => { if (a && t.includes(a)) s += 5; });
+    const hay = normalize(d.tags.join(' ') + ' ' + REGION_LABEL[d.region] + ' ' + d.visaTxt + ' ' + d.airline);
+    words.forEach((w) => { if (hay.includes(w)) s += 1; if (d.tags.some((tag) => normalize(tag).includes(w))) s += 2; });
+    if (s > 0) scored.push({ d: d, s: s });
+  });
+  scored.sort((a, b) => b.s - a.s);
+  return scored.slice(0, 3).map((x) => x.d);
+}
+function detectMonth(t) {
+  for (const name in MONTH_NAMES) {
+    if (t.includes(name)) return MONTH_NAMES[name];
+    if (name === 'subat' && t.includes('şub')) return 2;
+    if (name === 'haziran' && t.includes('haz')) return 6;
+    if (name === 'temmuz' && t.includes('tem')) return 7;
+    if (name === 'agustos' && (t.includes('ağus') || t.includes('ağu'))) return 8;
+    if (name === 'eylul' && t.includes('eyl')) return 9;
   }
-  gunluk.ago = gunluk.lastVisit ? humanAgo(Date.now() - gunluk.lastVisit) : 'ilk ziyaret';
-  gunluk.lastVisit = Date.now();
-  saveGunluk();
+  const short = { 'oca':1, 'şub':2, 'mar':3, 'nis':4, 'may':5, 'haz':6, 'tem':7, 'ağu':8, 'eyl':9, 'eki':10, 'kas':11, 'ara':12 };
+  for (const s in short) { if (t.includes(' ' + s + ' ') || t.endsWith(' ' + s)) return short[s]; }
+  return 0;
 }
-function notifyDaily() {
-  if (!('Notification' in window) || Notification.permission !== 'granted') return;
-  const list = D.filter((d) => approved.has(d.id));
-  try { new Notification('🤖 Asistan günlük kontrolü', { body: list.length + ' onaylı rota · bugünün önerisi hazır. Sayfayı aç, kontrol listesini gör.' }); } catch (e) {}
-}
-function askNotify() {
-  if (!('Notification' in window)) { toast('Tarayıcın bildirimleri desteklemiyor'); return; }
-  Notification.requestPermission().then((p) => {
-    if (p === 'granted') {
-      toast('🔔 Günlük asistan bildirimi açıldı');
-      try { new Notification('🤖 Asistan hazır', { body: 'Her gün kontrol edip öneri göndereceğim.' }); } catch (e) {}
-    } else toast('Bildirim izni verilmedi');
-  }).catch(() => toast('Bildirim izni verilemedi'));
-}
-function focusRoute() {
-  const pool = D.filter((d) => approved.has(d.id));
-  const list = pool.length ? pool : D;
-  return list[dayOfYear() % list.length];
-}
-function nextSeason(list) {
-  if (!list.length) return '—';
-  const m = new Date().getMonth() + 1;
-  let best = null, bestGap = 99, bestM = 1;
-  list.forEach((d) => d.months.forEach((mm) => {
-    const gap = (mm - m + 12) % 12;
-    if (gap < bestGap) { bestGap = gap; best = d; bestM = mm; }
-  }));
-  if (!best) return '—';
-  const when = bestGap === 0 ? 'bu ay' : bestGap === 1 ? 'önümüzdeki ay' : bestGap + ' ay sonra';
-  return MONTHS[bestM - 1] + ' · ' + baseCity(best) + ' (' + when + ')';
-}
-function tasksFor() {
-  const f = focusRoute();
-  const r = rezOf(f.id);
-  const out = [];
-  out.push({ k: 'fly', t: 'Bilet fiyatı kontrolü — ' + baseCity(f), d: f.airline + ' · ' + f.months.slice(0, 3).map(monthName).join('/') + ' en uygun · hedef ' + fmt(f.price * 4) + ' / 4 kişi', btn: '🔍 Canlı ara', href: flightsLink(f) });
-  if (!r.done) out.push({ k: 'rez', t: 'Rezervasyon adımlarını ilerlet — ' + baseCity(f), d: chkCount(f.id) + '/' + CHECKLIST.length + ' adım tamam' + (r.pnr ? ' · PNR: ' + r.pnr : ''), btn: '▶ Devam et', fn: "openWizard('" + f.id + "')" });
-  else out.push({ k: 'done', t: 'Teyit — ' + baseCity(f) + ' rezervasyonu tamam', d: 'PNR ' + (r.pnr || '—') + (r.fdate ? ' · uçuş ' + r.fdate : '') + ' · kimlik ve otel teyidini kontrol et', btn: '✓ Teyit et', fn: "taskDone('done')" });
-  out.push({ k: 'tip', t: 'Günün önerisini oku', d: 'Asistan notunu not al — yarın yenisini getireceğim', btn: 'Okudum ✓', fn: "taskDone('tip')" });
-  return out;
-}
-function allDone() { return tasksFor().every((t) => gunluk && gunluk.tasks[t.k]); }
-function doneCount() { return tasksFor().filter((t) => gunluk && gunluk.tasks[t.k]).length; }
-function taskDone(k) {
-  if (!gunluk) return;
-  if (gunluk.tasks[k]) return;
-  gunluk.tasks[k] = 1;
-  saveGunluk();
-  renderDaily();
-  const t = tasksFor().find((x) => x.k === k);
-  toast('✅ Görev tamam: ' + (t ? t.t : k));
-  if (allDone()) setTimeout(() => toast('🎉 Günlük kontrol tamam — yarın yeni görevlerle dönerim!'), 2600);
-}
-function renderDaily() {
-  if (!gunluk) return;
-  const el = (id) => document.getElementById(id);
-  if (!el('taskList')) return;
+function greetingParts() {
+  const now = new Date();
+  const t = now.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' });
   const tip = TIPS[dayOfYear() % TIPS.length];
-  const f = focusRoute();
-  const list = D.filter((d) => approved.has(d.id));
-  const rezDone = list.filter((d) => isDone(d.id)).length;
-  el('todayDate').textContent = new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' });
-  el('focusLine').innerHTML = 'Bugünün odağı: <b>' + f.flag + ' ' + esc(baseCity(f)) + '</b> · onaylı ' + list.length + ' rotan var, ' + rezDone + ' tanesi rezervasyon tamam.';
-  el('tipTitle').textContent = tip.t;
-  el('tipText').textContent = tip.x;
-  el('streakBox').textContent = '🔥 Kontrol serisi: ' + gunluk.streak + ' gün';
-  el('lastCheck').textContent = gunluk.ago || '—';
-  el('dAppr').textContent = list.length + ' rota';
-  el('dRez').textContent = rezDone + '/' + list.length + ' tamam';
-  el('dNext').textContent = nextSeason(list);
-  const tasks = tasksFor();
-  el('taskList').innerHTML = tasks.map((t) => {
-    const done = !!(gunluk && gunluk.tasks[t.k]);
-    const action = done ? '' : (t.href
-      ? `<button class="tbtn" onclick="taskDone('${t.k}');window.open('${t.href}','_blank')">${t.btn}</button>`
-      : `<button class="tbtn" onclick="${t.fn || `taskDone('${t.k}')`}">${t.btn}</button>`);
-    return `<div class="task${done ? ' done' : ''}"><div class="tck">${done ? '✓' : ''}</div><div class="tbody"><div class="tt2">${t.t}</div><div class="tdesc">${t.d}</div></div>${action}</div>`;
-  }).join('');
-  el('taskSub').textContent = allDone() ? '✅ Bugünkü kontrol tamam — yarın yeni görevlerle dönerim.' : 'Görevler her gün yenilenir · ' + doneCount() + '/' + tasks.length + ' tamam';
-  const dot = el('fabDot');
-  if (dot) dot.style.display = allDone() ? 'none' : 'block';
-  renderAssistant();
-}
-
-/* ================= ASİSTAN: KABUK ================= */
-function toggleAssistant() {
-  const p = document.getElementById('aPanel');
-  p.classList.toggle('open');
-  if (p.classList.contains('open')) renderAssistant();
-}
-function renderAssistant() {
-  const p = document.getElementById('aPanel');
-  if (!p || !gunluk) return;
-  const f = focusRoute();
-  const list = D.filter((d) => approved.has(d.id));
-  const pending = list.filter((d) => !isDone(d.id));
-  const tip = TIPS[dayOfYear() % TIPS.length];
-  document.getElementById('aDate').textContent = new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' });
-  const msgs = [
-    'Merhaba Ömer 👋 Bugün <b>' + new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }) + '</b> — kontrol serisi <b>' + gunluk.streak + ' gün</b>.',
-    '💡 <b>' + tip.t + ':</b> ' + tip.x,
-    '<b>' + f.flag + ' ' + esc(baseCity(f)) + '</b> bugünün odağı: ' + f.months.slice(0, 2).map(monthName).join('/') + ' en uygun ay, hedef ' + fmt(f.price * 4) + ' / 4 kişi.',
-    pending.length
-      ? '⏳ ' + pending.length + ' rotada rezervasyon açık: ' + pending.slice(0, 3).map((d) => baseCity(d)).join(', ') + (pending.length > 3 ? '…' : '') + ' — Rezervasyon Merkezi\u2019nde devam edebilirsin.'
-      : '🎫 Tüm onaylı rotaların rezervasyonu tamam!'
+  const ns = nextSeasonDest(D);
+  const cheap = D.slice().sort((a, b) => a.price - b.price)[0];
+  const streak = gunluk && gunluk.streak > 1 ? ' Bu arada kontrol serimiz <b>' + gunluk.streak + ' gün</b> oldu 🔥' : '';
+  const parts = [
+    'Merhaba Ömer 👋 Ben <b>Asistan</b> — uçuş, fiyat ve rezervasyon işlerini senin için takip ederim.' + streak,
+    'Bugün <b>' + t + '</b>. Sana özel önerilerim var:',
+    { cards: destCard(ns.d) + destCard(cheap) },
+    '💸 <b>' + baseCity(ns.d) + '</b> ' + MONTHS[ns.m - 1] + ' ayı tam sezonunda' + (ns.gap === 0 ? ' — bu ay uçulabilir!' : ' (' + ns.gap + ' ay sonra)').replace(')', ')') + '. <b>' + baseCity(cheap) + '</b> ise listemin en uygun fiyatı (' + fmt(cheap.price) + ' / kişi).',
+    '💡 Günün ipucu — <b>' + tip.t + ':</b> ' + tip.x,
+    'Bana yazman yeterli: nereyi, hangi ayı veya bütçeni sorabilirsin; rota bulur, canlı fiyat linki verir, <b>rezervasyonu adım adım senin için yaparım</b>.'
   ];
-  document.getElementById('aBody').innerHTML = msgs.map((m) => '<div class="a-msg">' + m + '</div>').join('');
+  return { parts: parts, chips: [
+    { t: '✨ Bugünkü öneriler', q: 'Bugün ne öneriyorsun?' },
+    { t: '💸 En ucuz 3 rota', q: 'En ucuz 3 rota' },
+    { t: '🛂 Vizesiz rotalar', q: 'Vizesiz rotalar' },
+    { t: '🌊 Deniz tatili öner', q: 'Deniz tatili öner' },
+    { t: '🎟 Rezervasyon yapmak istiyorum', q: 'Rezervasyon yapmak istiyorum' },
+    { t: '🧠 Ne yapabilirsin?', q: 'Ne yapabilirsin?' }
+  ] };
 }
-
-/* ================= TOAST ================= */
-let toastTimer;
-function toast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+function helpParts() {
+  return { parts: [
+    'Şunları yapabilirim 💪',
+    '• <b>Rota bulma:</b> "Kasım\'da vizesiz nereye gideyim?", "en ucuz 3 rota", "deniz tatili öner"\n• <b>Bilgi:</b> fiyat, uçuş süresi, uygun aylar, vize durumu (Belgrad, Doha, Bakü... 17 rota)\n• <b>Anlık kontrol:</b> seçtiğin rota için Google Flights / Skyscanner linkini anında açarım\n• <b>Rezervasyon:</b> onaydan PNR kaydına kadar adım adım sihirbazı yürütürüm\n• <b>Program:</b> günlük gezi planı gösteririm ("Belgrad programı")\n• <b>Takip:</b> onaylı rotalarını ve rezervasyon durumunu hatırlarım',
+    'Yazman yeterli — natural yaz, ben anlarım 😊'
+  ], chips: [{ t: 'En ucuz 3 rota' }, { t: 'Vizesiz rotalar' }, { t: 'Rezervasyonlarım', a: "openSheet('rezSheet')" }] };
+}
+function destParts(dests) {
+  const d = dests[0];
+  const same = D.filter((x) => x.country === d.country && x.id !== d.id);
+  return { parts: [
+    '<b>' + d.flag + ' ' + d.city + '</b> — güzel seçim! İşte özet ve seçenekler:',
+    { cards: cardsOf(dests) },
+    baseCity(d) + ' için en uygun aylar <b>' + d.months.slice(0, 6).map(monthName).join(', ') + '</b>; ' + d.airline + ' ile haftada ' + (d.freq ? Math.round(d.freq / 4) : 'birkaç') + ' sefer var. ' + (d.visa === 'vizesiz' ? 'Vize yok, pasaport yeterli.' : d.visa === 'kimlik' ? '<b>T.C. kimlik kartı</b> yeterli, pasaport gerekmez.' : d.visa === 'kapi' ? 'Kapı vizesi: kimlik + feribot bileti yeterli.' : 'Dikkat: Schengen vizesi gerekiyor — 45 gün önce başvur.')
+  ], chips: [{ t: '🔍 Canlı fiyat', a: "chatLive('" + d.id + "')" }, { t: '📋 Programı gör', a: "openModal('" + d.id + "')" }, { t: '🎟 Rezervasyon yap', a: "chatReserve('" + d.id + "')" }, { t: 'Rezervasyonlarım', a: "openSheet('rezSheet')" }] };
+}
+function suggestParts() {
+  const ns = nextSeasonDest(D);
+  const cheap3 = D.slice().sort((a, b) => a.price - b.price).slice(0, 3);
+  const tip = TIPS[dayOfYear() % TIPS.length];
+  return { parts: [
+    'Bugün sana 3 öneri hazırladım 👇',
+    { cards: destCard(ns.d) + cardsOf(cheap3.slice(0, 2)) },
+    '1️⃣ Sezon gereği: <b>' + baseCity(ns.d) + '</b> — ' + MONTHS[ns.m - 1] + ' ayı en uygun dönemi.\n2️⃣ Bütçe dostu: <b>' + cheap3.map((d) => baseCity(d)).join(', ') + '</b> en ucuz uçuşlar.\n3️⃣ Günün ipucu: <b>' + tip.t + '</b> — ' + tip.x
+  ], chips: [{ t: 'Vizesiz rotalar' }, { t: 'Deniz tatili öner' }, { t: '🎟 Rezervasyon yapmak istiyorum' }] };
+}
+function resvParts(dests) {
+  if (dests.length) {
+    const d = dests[0];
+    return { parts: [
+      'Tabii! <b>' + baseCity(d) + '</b> rezervasyonunu senin için yürütelim:',
+      { cards: destCard(d) },
+      'Canlı fiyat linkiyle başlayalım, sonra sihirbazda otel ve PNR adımlarına geçeriz. \u201CRezervasyon yap\u201D de, hemen başlayayım.'
+    ], chips: [{ t: '▶ Rezervasyon yap', a: "chatReserve('" + d.id + "')" }, { t: '🔍 Canlı fiyat', a: "chatLive('" + d.id + "')" }, { t: 'Başka rota öner' }] };
+  }
+  const list = D.slice().sort((a, b) => a.price - b.price).slice(0, 3);
+  return { parts: [
+    'Tabii, rezervasyonu ben yürütürüm 🎫 Hangi rota? İşte en uygun 3 başlangıç:',
+    { cards: cardsOf(list) },
+    'Bir rota seç — onaylar, canlı fiyatı kontrol eder, sihirbazla PNR\'a kadar götürürüm.'
+  ], chips: [{ t: '▶ Bakü rezervasyonu', a: "chatReserve('baku')" }, { t: '▶ Tiflis rezervasyonu', a: "chatReserve('tiflis')" }, { t: '▶ Belgrad rezervasyonu', a: "chatReserve('belgrad')" }] };
+}
+function monthParts(m) {
+  const list = D.filter((d) => d.months.includes(m)).sort((a, b) => a.price - b.price);
+  const full = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'][m - 1];
+  if (!list.length) return { parts: [full + ' için takibimde uygun rota yok — başka ay deneyebilir ya da esnek tarihli kampanyaları takip edebilirim.'], chips: [{ t: 'En ucuz 3 rota' }, { t: 'Vizesiz rotalar' }] };
+  return { parts: [
+    '<b>' + full + '</b>' + ' için uçulabilecek ' + list.length + ' rota var — en uygunları:',
+    { cards: cardsOf(list.slice(0, 3)) },
+    list.length > 3 ? 'Toplam ' + list.length + ' seçenek; fiyat artan sıraya göre ilk 3\'ü gösterdim. Detay istersen yaz.' : 'Hepsi bu kadar — birine basıp program ve rezervasyon adımlarına geçebilirsin.'
+  ], chips: [{ t: '🔍 Canlı fiyat', a: "chatLive('" + list[0].id + "')" }, { t: 'Vizesiz rotalar' }, { t: 'Rezervasyon yapmak istiyorum' }] };
+}
+function visaParts(t) {
+  if (t.includes('kimlik')) {
+    const list = D.filter((d) => d.visa === 'kimlik');
+    return { parts: ['<b>Kimlikle giriş</b> — pasaport bile gerekmez, T.C. kimlik kartın yeterli:', { cards: cardsOf(list) }, 'Gürcistan 1 yıl, Azerbaycan 90 gün kalış hakkı var. Çocuğun kimliği de yanındaysa yeterli.'], chips: [{ t: '🔍 Canlı fiyat', a: "chatLive('tiflis')" }, { t: 'Vizesiz rotalar' }] };
+  }
+  if (t.includes('kapı')) {
+    const d = D.find((x) => x.visa === 'kapi');
+    return { parts: ['<b>Kapı vizesi</b> — Yunan adaları: kimlik + feribot bileti yeterli, 1-7 gün kalış:', { cards: destCard(d) }, 'Seyahat planı en az 10 gün önce yapılmalı; yaz sezonunda feribotlar erken doluyor.'], chips: [{ t: '📋 Program', a: "openModal('adalar')" }, { t: 'Vizesiz rotalar' }] };
+  }
+  const list = D.filter((d) => d.visa === 'vizesiz').sort((a, b) => a.price - b.price);
+  return { parts: [
+    '<b>Vizesiz rotalar</b> — pasaportla girilebilen, en uygun fiyatlılardan başlayarak:',
+    { cards: cardsOf(list.slice(0, 3)) },
+    'Toplam ' + list.length + ' vizesiz rotan var; kimlikle girilen Tiflis ve Bakü de buna dahil değil ama onlar da kimlik yeterli 👍'
+  ], chips: [{ t: '🔍 Canlı fiyat', a: "chatLive('" + list[0].id + "')" }, { t: 'Kimlikle neresi?' }, { t: 'Rezervasyon yapmak istiyorum' }] };
+}
+function seasonParts(t) {
+  let ids = [];
+  for (const k in SEASON_MAP) { if (t.includes(k)) ids = ids.concat(SEASON_MAP[k]); }
+  ids = [...new Set(ids)];
+  const list = ids.map((id) => D.find((x) => x.id === id)).filter(Boolean).sort((a, b) => a.price - b.price);
+  if (!list.length) return suggestParts();
+  const word = (Object.keys(SEASON_MAP).find((k) => t.includes(k)) || 'öneri');
+  return { parts: [
+    '<b>' + word.toLocaleUpperCase('tr') + '</b> için en iyi rotalarım:',
+    { cards: cardsOf(list.slice(0, 3)) },
+    list[0].tags.join(' · ') + ' — 4 kişi toplam ' + fmt(list[0].price * 4) + '. Detay ister misin?'
+  ], chips: [{ t: '📋 Program', a: "openModal('" + list[0].id + "')" }, { t: '🔍 Canlı fiyat', a: "chatLive('" + list[0].id + "')" }, { t: '🎟 Rezervasyon yap', a: "chatReserve('" + list[0].id + "')" }] };
+}
+function cheapParts(dests) {
+  if (dests.length && dests.length < 3) {
+    const d = dests[0];
+    return { parts: ['<b>' + baseCity(d) + '</b> fiyat özeti:', { cards: destCard(d) }, 'Kişi başı ' + fmt(d.price) + ' (gidiş-dönüş), 4 kişi <b>' + fmt(d.price * 4) + '</b>. Canlı fiyat için link vereyim mi?'], chips: [{ t: '🔍 Canlı fiyat', a: "chatLive('" + d.id + "')" }, { t: 'En ucuz 3 rota', q: 'En ucuz 3 rota' }] };
+  }
+  const list = D.slice().sort((a, b) => a.price - b.price).slice(0, 3);
+  return { parts: [
+    'Bütçeyi zorlamayalım 💸 Listemin en ucuz 3 rotası:',
+    { cards: cardsOf(list) },
+    'Üçü de vizesiz/kimlikle girişli ve doğrudan uçuşlu. 4 kişi toplam: ' + list.map((d) => baseCity(d) + ' ' + fmt(d.price * 4)).join(' · ')
+  ], chips: [{ t: '▶ Bakü rezervasyonu', a: "chatReserve('baku')" }, { t: 'Vizesiz rotalar' }, { t: 'Kasım önerileri', q: 'Kasım da nereye gideyim' }] };
+}
+function statusParts() {
+  const list = D.filter((d) => approved.has(d.id));
+  const done = list.filter((d) => isDone(d.id));
+  const pending = list.filter((d) => !isDone(d.id));
+  if (!list.length) return { parts: ['Henüz onaylı rotan yok. Bir rota seçince \u201Conayla\u201D demen yeterli — gerisini ben hallederim.'], chips: [{ t: 'En ucuz 3 rota' }, { t: 'Vizesiz rotalar' }] };
+  return { parts: [
+    '📋 Durumun: <b>' + list.length + ' rota onaylı</b>, <b>' + done.length + ' tanesi rezervasyon tamam</b> 🎫' + (done.length ? ' (' + done.map((d) => baseCity(d)).join(', ') + ')' : ''),
+    pending.length ? '⏳ Açık rezervasyonlar: <b>' + pending.slice(0, 4).map((d) => baseCity(d)).join(', ') + '</b>' + (pending.length > 4 ? '…' : '') + ' — istediğin için sihirbaza devam edebilirim.' : 'Tebrikler, açık rezervasyonun yok 👏',
+    '4 kişi toplam (uçak, tahmini): <b>' + fmt(list.reduce((s, d) => s + d.price * 4, 0)) + '</b>'
+  ], chips: [{ t: '🎟 Rezervasyonlarım', a: "openSheet('rezSheet')" }, pending.length ? { t: '▶ Devam et', a: "chatReserve('" + pending[0].id + "')" } : { t: 'Yeni rota öner' }] };
+}
+function programParts(d) {
+  return { parts: [
+    '<b>' + d.flag + ' ' + baseCity(d) + '</b> günlük programı hazır — açıp detaylı okuyabilirsin:',
+    { cards: destCard(d) },
+    'Program kartların \u201C📋 Program\u201D düğmesinde: ' + d.plan.length + ' günlük, adım adım.'
+  ], chips: [{ t: '🔍 Canlı fiyat', a: "chatLive('" + d.id + "')" }, { t: '🎟 Rezervasyon yap', a: "chatReserve('" + d.id + "')" }] };
+}
+function fallbackParts() {
+  return { parts: [
+    'Tam anlayamadım 🤔 ama merak etme, şöyle deneyebilirsin:',
+    '• "Kasım\'da nereye gideyim?"\n• "En ucuz 3 rota"\n• "Vizesiz rotalar" / "Kimlikle neresi?"\n• "Deniz tatili öner" / "Kışın kayak"\n• "Belgrad programı" / "Bakü fiyat"\n• "Rezervasyon yapmak istiyorum"',
+    'Ya da doğrudan yaz: nereyi merak ediyorsan city/ülke/ayar — ben anlarım 😊'
+  ], chips: [{ t: '✨ Öneri ver', q: 'Bugün ne öneriyorsun?' }, { t: 'En ucuz 3 rota' }, { t: 'Ne yapabilirsin?' }] };
+}
+function respond(text) {
+  const t = normalize(text);
+  const dests = findDests(text);
+  const G = ['merhaba', 'selam', 'selamlar', 'hey', 'günaydın', 'mrb', 'naber', 'nasılsın'];
+  if (G.some((g) => t.startsWith(g)) && t.length < 35) { const g = greetingParts(); botSeq(g.parts); setChips(g.chips); return; }
+  if (t.includes('yardım') || t.includes('yardim') || t.includes('ne yapabilirsin') || t.includes('neler yapabilirsin')) { const h = helpParts(); botSeq(h.parts); setChips(h.chips); return; }
+  if (t.includes('rezervasyon') || t.includes('bilet') || t.includes('uçuş') || t.includes('ucus') || t.includes('uçak') || t.includes('ayrıt') || t.includes('ayırt')) { const r = resvParts(dests); botSeq(r.parts); setChips(r.chips); return; }
+  const m = detectMonth(t);
+  if (m) { const mm = monthParts(m); botSeq(mm.parts); setChips(mm.chips); return; }
+  if (t.includes('vize') || t.includes('kimlik') || t.includes('pasaport')) { const v = visaParts(t); botSeq(v.parts); setChips(v.chips); return; }
+  if (['deniz', 'plaj', 'kayak', 'dağ', 'doga', 'doğa', 'kültür', 'kultur', 'tarih', 'aile', 'çocuk', 'öl', 'cöl', 'çöl', 'bahar', 'kış', 'uzak', 'ada'].some((k) => t.includes(k))) { const s = seasonParts(t); botSeq(s.parts); setChips(s.chips); return; }
+  if (t.includes('ucuz') || t.includes('ekonomik') || t.includes('hesaplı') || t.includes('bütçe') || t.includes('butce') || t.includes('fiyat') || t.includes('kaça') || t.includes('ne kadar')) { const c = cheapParts(dests); botSeq(c.parts); setChips(c.chips); return; }
+  if (t.includes('öner') || t.includes('oner') || t.includes('nereye') || t.includes('neresi') || t.includes('tavsiye') || t.includes('karar ver')) { const s = suggestParts(); botSeq(s.parts); setChips(s.chips); return; }
+  if (t.includes('onay') || t.includes('durum') || t.includes('liste') || t.includes('özet') || t.includes('ozet') || t.includes('toplam')) { const s = statusParts(); botSeq(s.parts); setChips(s.chips); return; }
+  if (dests.length) { const p = programParts(dests[0]); botSeq(p.parts); setChips(p.chips); return; }
+  const f = fallbackParts(); botSeq(f.parts); setChips(f.chips);
 }
 
 /* ================= BAŞLAT ================= */
 (function init() {
-  // Ay filtresi
-  const fm = document.getElementById('fMonth');
-  MONTHS.forEach((m, i) => {
-    const o = document.createElement('option');
-    o.value = String(i + 1);
-    o.textContent = m;
-    fm.appendChild(o);
-  });
+  loadState(); loadRez(); loadGunluk();
 
-  document.getElementById('q').addEventListener('input', (e) => { filters.q = e.target.value.trim(); renderGrid(); });
-  document.getElementById('heroSearch').addEventListener('keydown', (e) => { if (e.key === 'Enter') applyHeroSearch(); });
+  const fm = document.getElementById('fMonth');
+  MONTHS.forEach((name, i) => { const o = document.createElement('option'); o.value = String(i + 1); o.textContent = name; fm.appendChild(o); });
+  document.getElementById('q').addEventListener('input', (e) => { filters.q = normalize(e.target.value); renderGrid(); });
   document.getElementById('fVisa').addEventListener('change', (e) => { filters.visa = e.target.value; renderGrid(); });
   document.getElementById('fMonth').addEventListener('change', (e) => { filters.month = e.target.value; renderGrid(); });
   document.getElementById('fBudget').addEventListener('change', (e) => { filters.budget = e.target.value; renderGrid(); });
@@ -1353,12 +1284,22 @@ function toast(msg) {
       renderGrid();
     });
   });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeModal(); closeWizard(); } });
+  document.getElementById('chatForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = document.getElementById('chatInput').value.trim();
+    if (!v) return;
+    document.getElementById('chatInput').value = '';
+    userSay(v);
+    respond(v);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeModal(); closeWizard(); document.querySelectorAll('.sheet.open').forEach((s) => closeSheet(s.id)); }
+  });
 
-  loadRez();
-  loadState();
-  loadGunluk();
-  refresh();
+  renderGrid(); renderRezCenter(); renderApprovalHeader();
+  const g = greetingParts();
+  botSeq(g.parts);
+  setChips(g.chips);
 })();
 </script>
 </body>
