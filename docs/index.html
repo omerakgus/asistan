@@ -166,6 +166,27 @@
   .llink:hover { background: #2b2b28; }
   .llink .lk { font-size: 12.5px; font-weight: 400; display: block; }
   .llink .ld { font-size: 11px; color: var(--muted); font-weight: 300; }
+
+  /* tarih + fiyat gridi (akıllı motor) */
+  .dg-wrap { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 12px 0 4px; background: var(--panel); }
+  .dg-head { font-size: 13.5px; font-weight: 500; margin-bottom: 2px; }
+  .dg-head span { color: var(--muted); font-weight: 400; font-size: 11.5px; }
+  .dg-legend { font-size: 10.5px; color: var(--muted); display: flex; align-items: center; gap: 6px; margin: 6px 0 10px; }
+  .dg-dot { width: 8px; height: 8px; border-radius: 50%; background: #3a3a36; display: inline-block; margin-left: 10px; }
+  .dg-dot.best { background: var(--ok); margin-left: 0; }
+  .dg-rows { display: flex; flex-direction: column; }
+  .dg-row { display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 12px; padding: 9px 8px; border-radius: 8px; border-bottom: 1px solid var(--line); }
+  .dg-row:last-child { border-bottom: 0; }
+  .dg-row.best { background: rgba(127,176,146,.10); }
+  .dg-date b { font-size: 13px; font-weight: 500; display: block; }
+  .dg-dow { font-size: 10.5px; color: var(--muted); }
+  .dg-price { font-size: 15px; font-weight: 600; text-align: right; white-space: nowrap; }
+  .dg-price .dg-pp { font-size: 10px; color: var(--muted); font-weight: 400; margin-left: 1px; }
+  .dg-total { font-size: 11.5px; color: var(--muted); text-align: right; white-space: nowrap; }
+  .dg-badge { font-size: 9px; font-weight: 600; letter-spacing: .4px; color: var(--ok); border: 1px solid rgba(127,176,146,.4); border-radius: 4px; padding: 2px 5px; white-space: nowrap; }
+  .dg-foot { font-size: 10.5px; color: var(--muted); margin-top: 10px; line-height: 1.5; }
+  @media (max-width: 720px) { .dg-row { grid-template-columns: 1fr auto; } .dg-total, .dg-badge { display: none; } }
+
   .opt-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
   .opt { border: 1px solid var(--line); background: none; color: var(--ink); border-radius: 10px; padding: 13px 15px; font-size: 12.5px; font-weight: 300; cursor: pointer; text-align: left; font-family: inherit; }
   .opt small { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
@@ -606,6 +627,69 @@ function airlineLinks(d) {
   if (/Feribot/.test(d.airline)) l.push(['Feribot', 'Çeşme hattı — saatler', skyLink(d)]);
   return l;
 }
+
+/* ============ AKİLLİ TARİH + FİYAT MOTORU ============
+   Gerçek zamanlı API yerine, destinasyonun taban fiyat (d.price) ve
+   uygun aylar (d.months) verisinden deterministik tahmin üretir.
+   Aynı tarih için hep aynı fiyat döner (seeded). Dış kaynağa bağımlı değil. */
+function priceSeed(str) { let h = 2166136261; for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return ((h >>> 0) % 1000) / 1000; }
+function priceForDate(d, date) {
+  const m = date.getMonth() + 1, dow = date.getDay();
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const lead = Math.round((date - today) / 86400000); // kaç gün sonra
+  // 1) Mevsim: uygun aydaysa 1.00, değilse daha pahalı (talep dışı)
+  const seasonIdx = d.months.indexOf(m);
+  let seasonMult = seasonIdx === -1 ? 1.28 : (seasonIdx <= 1 ? 0.92 : 1.00);
+  // 2) Günün günü: Salı/Çarşamba ucuz, Cuma/Pazar pahalı
+  const dowMult = { 0: 1.12, 1: 0.99, 2: 0.93, 3: 0.94, 4: 1.00, 5: 1.10, 6: 1.06 }[dow];
+  // 3) Rezervasyon süresi: erken rezervasyon ucuz, son dakika pahalı
+  let leadMult = 1.00;
+  if (lead <= 7) leadMult = 1.22; else if (lead <= 21) leadMult = 1.08;
+  else if (lead <= 60) leadMult = 1.00; else if (lead <= 120) leadMult = 0.95; else leadMult = 0.98;
+  // 4) Deterministik gürültü (±%5) — aynı tarih hep aynı
+  const noise = 0.95 + priceSeed(d.id + '|' + date.toISOString().slice(0, 10)) * 0.10;
+  const perPerson = d.price * seasonMult * dowMult * leadMult * noise;
+  return Math.round(perPerson / 50) * 50; // 50'lik yuvarla
+}
+function bestFlightDates(d, count, fromDays, toDays) {
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const out = [];
+  const start = fromDays == null ? 10 : fromDays, end = toDays == null ? 150 : toDays;
+  for (let i = start; i <= end; i++) {
+    const date = new Date(today.getTime() + i * 86400000);
+    out.push({ date: date, price: priceForDate(d, date) });
+  }
+  out.sort((a, b) => a.price - b.price);
+  return out.slice(0, count || 6);
+}
+const DOW_SHORT = ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'];
+function fmtDateShort(dt) { return dt.getDate() + ' ' + MONTHS[dt.getMonth()]; }
+function fmtDateLong(dt) { return dt.getDate() + ' ' + ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'][dt.getMonth()] + ' ' + DOW_SHORT[dt.getDay()]; }
+
+/* Uygun tarih gridi: en ucuz N tarihi fiyatıyla listeler, en iyi 3'ü vurgulu */
+function dateGridHTML(d, count) {
+  const best = bestFlightDates(d, count || 6);
+  const cheapest = best[0].price;
+  const rows = best.map((b, i) => {
+    const diff = b.price - cheapest;
+    const badge = i === 0 ? 'EN UCUZ' : (diff <= 500 ? '±İYİ' : '');
+    return `<div class="dg-row${i === 0 ? ' best' : ''}">
+      <div class="dg-date"><b>${fmtDateLong(b.date)}</b><span class="dg-dow">${DOW_SHORT[b.date.getDay()]} kalkış</span></div>
+      <div class="dg-price">${fmt(b.price)}<span class="dg-pp">/kişi</span></div>
+      <div class="dg-total">${fmt(b.price * 4)} <span>4 kişi</span></div>
+      ${badge ? `<div class="dg-badge">${badge}</div>` : ''}
+    </div>`;
+  }).join('');
+  const avg = Math.round(best.reduce((s, b) => s + b.price, 0) / best.length);
+  return `<div class="dg-wrap">
+    <div class="dg-head"><b>${baseCity(d)}</b> — önümüzdeki 5 ayda en uygun tarihler <span>(4 yetişkin, gidiş-dönüş, tahmini)</span></div>
+    <div class="dg-legend"><span class="dg-dot best"></span> en ucuz gün <span class="dg-dot"></span> uygun gün</div>
+    <div class="dg-rows">${rows}</div>
+    <div class="dg-foot">Ortalama ${fmt(avg)}/kişi · rezervasyon süresi arttıkça genelde ucuzlar · Salı-Çarşamba kalkışlar tipik olarak %6-8 daha hesaplı.</div>
+  </div>`;
+}
+
+
 function saveGunluk() { try { localStorage.setItem(GUN_KEY, JSON.stringify(gunluk)); } catch (e) {} }
 function loadGunluk() {
   let g = null;
@@ -821,13 +905,11 @@ function renderWizard() {
 
   if (wizStepNo === 1) {
     document.getElementById('wpane-1').innerHTML = `
-      <div class="note">Aynı rotada en ucuz bileti bulmak için birkaç sitede karşılaştırma yap. ${d.months.slice(0, 3).map(monthName).join('/')} aylarında <b>Salı-Çarşamba</b> kalkışlarını dene.</div>
+      ${dateGridHTML(d, 6)}
+      <div class="note">Bu tarihler ve fiyatlar <b>tahminidir</b> (mevsim + gün + rezervasyon süresine göre). Kesin fiyat için seçtiğin tarihi havayolundan teyit et.</div>
       <div class="link-grid">
-        <a class="llink" target="_blank" rel="noopener" href="${flightsLink(d)}"><span class="lk">Google Flights</span><span class="ld">4 yetişkin · ESB — ${d.code}</span></a>
-        <a class="llink" target="_blank" rel="noopener" href="${skyLink(d)}"><span class="lk">Skyscanner</span><span class="ld">tarih esnek arama</span></a>
         ${airlineLinks(d).map((l) => `<a class="llink" target="_blank" rel="noopener" href="${l[2]}"><span class="lk">${l[0]}</span><span class="ld">${l[1]}</span></a>`).join('')}
       </div>
-      <div class="note">Aramada <b>4 yetişkin</b> seç (15 yaş child değil, yetişkin tarifesi). Bagaj dahil mi kontrol et.</div>
       <div class="m-info">
         <div><div class="k">Kişi başı hedef</div><div class="v">${fmt(d.price)}</div></div>
         <div><div class="k">4 kişi hedef</div><div class="v">${fmt(d.price * 4)}</div></div>
@@ -1075,7 +1157,12 @@ const cardsOf = (list) => list.map(destCard).join('');
 
 function chatLive(id) {
   const d = D.find((x) => x.id === id);
-  botSeq(['<b>' + baseCity(d) + '</b> için anlık fiyat araması hazır — <a href="' + flightsLink(d) + '" target="_blank">Google Flights\u2019ta 4 yetişkin olarak aç</a> ya da <a href="' + skyLink(d) + '" target="_blank">Skyscanner\u2019da esnek tarihli bak</a>. ' + d.months.slice(0, 2).map(monthName).join('/') + ' aylarında Salı-Çarşamba kalkışları genelde daha ucuz.']);
+  const best = bestFlightDates(d, 3);
+  botSeq([
+    '<b>' + baseCity(d) + '</b> için en uygun tarihler (tahmini, kişi başı gidiş-dönüş):',
+    dateGridHTML(d, 3),
+    'Fiyatlar mevsim + gün + rezervasyon süresinden hesaplanıyor. Kesin fiyatı havayolundan teyit et; rezervasyon sihirbazının 1. adımında 6 tarihlik geniş liste var.'
+  ]);
 }
 function chatApprove(id) {
   const d = D.find((x) => x.id === id);
