@@ -175,15 +175,20 @@
   .dg-dot { width: 8px; height: 8px; border-radius: 50%; background: #3a3a36; display: inline-block; margin-left: 10px; }
   .dg-dot.best { background: var(--ok); margin-left: 0; }
   .dg-rows { display: flex; flex-direction: column; }
-  .dg-row { display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 12px; padding: 9px 8px; border-radius: 8px; border-bottom: 1px solid var(--line); }
+  .dg-row { display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 12px; padding: 9px 8px; border-radius: 8px; border-bottom: 1px solid var(--line); cursor: pointer; transition: background .15s, box-shadow .15s; }
   .dg-row:last-child { border-bottom: 0; }
+  .dg-row:hover { background: rgba(139,148,220,.10); }
   .dg-row.best { background: rgba(127,176,146,.10); }
+  .dg-row.best:hover { background: rgba(127,176,146,.16); }
+  .dg-row.sel { background: rgba(139,148,220,.18); box-shadow: inset 0 0 0 1px rgba(139,148,220,.5); }
   .dg-date b { font-size: 13px; font-weight: 500; display: block; }
   .dg-dow { font-size: 10.5px; color: var(--muted); }
   .dg-price { font-size: 15px; font-weight: 600; text-align: right; white-space: nowrap; }
   .dg-price .dg-pp { font-size: 10px; color: var(--muted); font-weight: 400; margin-left: 1px; }
   .dg-total { font-size: 11.5px; color: var(--muted); text-align: right; white-space: nowrap; }
   .dg-badge { font-size: 9px; font-weight: 600; letter-spacing: .4px; color: var(--ok); border: 1px solid rgba(127,176,146,.4); border-radius: 4px; padding: 2px 5px; white-space: nowrap; }
+  .dg-badge.soft { color: var(--muted); border-color: var(--line); }
+  .dg-badge.sel { color: #16161a; background: var(--accent); border-color: var(--accent); }
   .dg-foot { font-size: 10.5px; color: var(--muted); margin-top: 10px; line-height: 1.5; }
   @media (max-width: 720px) { .dg-row { grid-template-columns: 1fr auto; } .dg-total, .dg-badge { display: none; } }
 
@@ -666,27 +671,49 @@ const DOW_SHORT = ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'];
 function fmtDateShort(dt) { return dt.getDate() + ' ' + MONTHS[dt.getMonth()]; }
 function fmtDateLong(dt) { return dt.getDate() + ' ' + ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'][dt.getMonth()] + ' ' + DOW_SHORT[dt.getDay()]; }
 
-/* Uygun tarih gridi: en ucuz N tarihi fiyatıyla listeler, en iyi 3'ü vurgulu */
+/* Uygun tarih gridi: en ucuz N tarihi fiyatıyla listeler, en iyi 3'ü vurgulu.
+   Satırlar tıklanabilir — seçilen tarih rezervasyon akışına taşınır. */
+function isoDateLocal(dt) { return dt.getFullYear() + '-' + String(dt.getMonth() + 1).padStart(2, '0') + '-' + String(dt.getDate()).padStart(2, '0'); }
 function dateGridHTML(d, count) {
   const best = bestFlightDates(d, count || 6);
   const cheapest = best[0].price;
+  const r = rezOf(d.id);
   const rows = best.map((b, i) => {
     const diff = b.price - cheapest;
-    const badge = i === 0 ? 'EN UCUZ' : (diff <= 500 ? '±İYİ' : '');
-    return `<div class="dg-row${i === 0 ? ' best' : ''}">
+    const iso = isoDateLocal(b.date);
+    const sel = r.fdate === iso;
+    const badge = sel
+      ? '<div class="dg-badge sel">SEÇİLİ</div>'
+      : (i === 0 ? '<div class="dg-badge">EN UCUZ</div>' : (diff <= 500 ? '<div class="dg-badge soft">±İYİ</div>' : ''));
+    return `<div class="dg-row${i === 0 ? ' best' : ''}${sel ? ' sel' : ''}" onclick="pickDate('${d.id}','${iso}',${b.price})" title="Bu tarihi seç">
       <div class="dg-date"><b>${fmtDateLong(b.date)}</b><span class="dg-dow">${DOW_SHORT[b.date.getDay()]} kalkış</span></div>
       <div class="dg-price">${fmt(b.price)}<span class="dg-pp">/kişi</span></div>
       <div class="dg-total">${fmt(b.price * 4)} <span>4 kişi</span></div>
-      ${badge ? `<div class="dg-badge">${badge}</div>` : ''}
+      ${badge}
     </div>`;
   }).join('');
   const avg = Math.round(best.reduce((s, b) => s + b.price, 0) / best.length);
   return `<div class="dg-wrap">
     <div class="dg-head"><b>${baseCity(d)}</b> — önümüzdeki 5 ayda en uygun tarihler <span>(4 yetişkin, gidiş-dönüş, tahmini)</span></div>
-    <div class="dg-legend"><span class="dg-dot best"></span> en ucuz gün <span class="dg-dot"></span> uygun gün</div>
+    <div class="dg-legend"><span class="dg-dot best"></span> en ucuz gün <span class="dg-dot"></span> uygun gün <span style="margin-left:auto">bir tarihe tıkla → seçilsin</span></div>
     <div class="dg-rows">${rows}</div>
     <div class="dg-foot">Ortalama ${fmt(avg)}/kişi · rezervasyon süresi arttıkça genelde ucuzlar · Salı-Çarşamba kalkışlar tipik olarak %6-8 daha hesaplı.</div>
   </div>`;
+}
+/* Grid satırından tarih seçimi: rezervasyona kaydeder, akışa devam önerir */
+function pickDate(id, iso, price) {
+  const d = D.find((x) => x.id === id);
+  const r = rezOf(id);
+  r.fdate = iso; r.selPrice = price; saveRez();
+  const dt = new Date(iso + 'T00:00:00');
+  if (wizId === id) { renderWizard(); renderRezCenter(); toast('Tarih seçildi: ' + fmtDateLong(dt)); return; }
+  renderRezCenter();
+  botSay('<b>' + baseCity(d) + '</b> için <b>' + fmtDateLong(dt) + '</b> seçildi — tahmini ' + fmt(price) + '/kişi (' + fmt(price * 4) + ' / 4 kişi). Bu tarih rezervasyonuma kaydedildi.');
+  const div = document.createElement('div');
+  div.className = 'msg bot';
+  div.innerHTML = '<button class="wbtn" onclick="openWizard(\'' + id + '\')">Bu tarihle rezervasyona devam et →</button>';
+  chatLog().appendChild(div);
+  scrollChat();
 }
 
 
