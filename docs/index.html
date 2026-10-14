@@ -359,7 +359,7 @@
         <button class="wiz-step on" onclick="wizNav(1)">1 · uçuş ara</button>
         <button class="wiz-step" onclick="wizNav(2)">2 · tarih &amp; otel</button>
         <button class="wiz-step" onclick="wizNav(3)">3 · kontrol</button>
-        <button class="wiz-step" onclick="wizNav(4)">4 · kayıt</button>
+        <button class="wiz-step" onclick="wizNav(4)">4 · havayolu sitesi</button>
       </div>
       <div class="m-pane on" id="wpane-1"></div>
       <div class="m-pane" id="wpane-2"></div>
@@ -590,7 +590,7 @@ const CHECKLIST = [
   'Gidiş-dönüş + 20 kg bagaj eklendi',
   '4 koltuk yan yana seçildi',
   'Ödeme yapıldı, PNR kodu alındı',
-  'PNR / uçuş tarihi 4. adımda kaydedildi',
+  'Havayolu sitesinde tarih & fiyat kesinleştirildi',
   'Konaklama arandı (2 oda veya 3+1)',
   'Konaklama rezervasyonu tamamlandı',
   'Kimlik / pasaport geçerliliği kontrol edildi',
@@ -631,6 +631,15 @@ function airlineLinks(d) {
   if (/Royal/.test(d.airline)) l.push(['Royal Jordanian', 'rj.com', 'https://www.rj.com']);
   if (/Feribot/.test(d.airline)) l.push(['Feribot', 'Çeşme hattı — saatler', skyLink(d)]);
   return l;
+}
+/* Birincil rezervasyon sitesi: havayolunun kendi sitesi (yoksa Google Flights) */
+function airlineUrl(d) {
+  const l = airlineLinks(d);
+  return l.length ? l[0][2] : flightsLink(d);
+}
+function airlineName(d) {
+  const l = airlineLinks(d);
+  return l.length ? l[0][0] : 'havayolu sitesi';
 }
 
 /* ============ AKİLLİ TARİH + FİYAT MOTORU ============
@@ -969,20 +978,21 @@ function renderWizard() {
       `<div class="note">İlerlemen tarayıcıda saklanır — sayfayı kapatsan da kaldığın yerden devam edersin.${r.skipHotel ? ' Otel adımlarını atladın, tamamlama için engel değil.' : ''}</div>`;
   } else {
     document.getElementById('wpane-4').innerHTML = `
-      ${r.done ? `<div class="note">Rezervasyon <b>tamamlandı</b> — ${r.doneAt} tarihinde kaydedildi. PNR: <b>${esc(r.pnr) || '—'}</b>${r.paid ? ' · ödenen: ' + esc(r.paid) : ''}</div>` : `
-      <div class="form-row">
-        <input id="wPnr" placeholder="PNR / rezervasyon kodu (örn. AB12XY)" value="${esc(r.pnr)}" oninput="saveField('pnr', this.value)" />
-        <input id="wPaid" placeholder="ödenen tutar (örn. 41.500 ₺)" value="${esc(r.paid)}" oninput="saveField('paid', this.value)" />
-        <input id="wDate" class="full" type="date" value="${esc(r.fdate)}" onchange="saveField('fdate', this.value)" />
+      ${r.done ? `<div class="note">Rezervasyon <b>tamamlandı</b> — ${r.doneAt} tarihinde kaydedildi.${r.pnr ? ' PNR: <b>' + esc(r.pnr) + '</b>' : ''}${r.paid ? ' · ödenen: ' + esc(r.paid) : ''}</div>` : ''}
+      ${r.fdate ? `<div class="note">Seçilen tarih: <b>${esc(r.fdate)}</b></div>` : `<div class="note">Tarih seçilmedi — 1. adımdan bir tarih seçebilirsin.</div>`}
+      <div class="note">PNR girmene gerek yok. Aşağıdan <b>${esc(airlineName(d))}</b> sitesinde bizzat ara, karşılaştır ve karar ver; istediğin an buraya dönebilirsin.</div>
+      <div class="link-grid">
+        <a class="llink" target="_blank" rel="noopener" href="${airlineUrl(d)}"><span class="lk">${esc(airlineName(d))} sitesinde aç →</span><span class="ld">ESB — ${d.code} · 4 yetişkin</span></a>
+        <a class="llink" target="_blank" rel="noopener" href="${flightsLink(d)}"><span class="lk">Google Flights</span><span class="ld">karşılaştırma için</span></a>
+        <a class="llink" target="_blank" rel="noopener" href="${skyLink(d)}"><span class="lk">Skyscanner</span><span class="ld">esnek tarih</span></a>
       </div>
-      <div class="note">Ödeme yaptıktan sonra PNR'ı buraya yaz — rota "tamamlandı" işaretlensin.</div>`}
       <div class="sum-box">${esc(summaryText(d))}</div>`;
   }
   document.getElementById('wizActions').innerHTML = `
     ${wizStepNo > 1 ? `<button class="wbtn plain" onclick="wizNav(${wizStepNo - 1})">← geri</button>` : ''}
     ${wizStepNo < 4
       ? `<button class="wbtn" onclick="wizNav(${wizStepNo + 1})">ileri →</button>`
-      : `<button class="wbtn ok" onclick="finishRez('${d.id}')">${r.done ? 'kaydı güncelle' : 'rezervasyonu tamamla'}</button>`}
+      : `<button class="wbtn ok" onclick="finishRez('${d.id}')">${r.done ? 'havayolu sitesini tekrar aç' : 'havayolu sitesinde devam et →'}</button>`}
     <button class="wbtn plain" onclick="copySummary('${d.id}')">özeti kopyala</button>`;
 }
 function toggleChk(id, i) { const r = rezOf(id); r.chk[i] = !r.chk[i]; saveRez(); renderWizard(); renderRezCenter(); renderApprovalHeader(); }
@@ -990,15 +1000,15 @@ function saveField(k, v) { if (!wizId) return; const r = rezOf(wizId); r[k] = v;
 function finishRez(id) {
   const r = rezOf(id);
   const d = D.find((x) => x.id === id);
-  const pnrEl = document.getElementById('wPnr');
-  if (pnrEl) { r.pnr = pnrEl.value.trim(); r.paid = document.getElementById('wPaid').value.trim(); r.fdate = document.getElementById('wDate').value; }
-  if (!r.pnr) { toast('Önce PNR kodunu gir — ödeme yapılmadıysa kaydetme'); return; }
-  r.done = true; r.doneAt = new Date().toLocaleDateString('tr-TR');
-  saveRez();
-  renderRezCenter(); renderApprovalHeader();
+  if (!r.done) {
+    r.done = true; r.doneAt = new Date().toLocaleDateString('tr-TR');
+    saveRez();
+    renderRezCenter(); renderApprovalHeader();
+    toast('Rezervasyon başlatıldı: ' + baseCity(d));
+    botSay('<b>' + baseCity(d) + '</b> için havayolu sitesini açtım — oradan bizzat ara ve karar ver. Seçtiğin tarih özet kutusunda duruyor, dilediğin an bu sihirbazdan geri dönebilirsin.');
+  }
   renderWizard();
-  toast('Rezervasyon tamamlandı: ' + baseCity(d));
-  botSay('<b>' + baseCity(d) + '</b> rezervasyonu tamam. PNR: <b>' + esc(r.pnr) + '</b>. ' + (r.skipHotel ? 'Otelini gittiğinde bakarsın — istersen otel önerileri de sorarım.' : 'Uçuş tarihi yaklaştıkça check-in için yaz, hatırlatayım.'));
+  window.open(airlineUrl(d), '_blank', 'noopener');
 }
 function summaryText(d) {
   const r = rezOf(d.id);
